@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="/db.properties">
+	</properties>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers> <!-- 실제 적용할 sql mapper들의 집합 -->
+	  <!-- 프로젝트 밑에 모든 폴더에 모든 임플이 오면 그걸 써라 -->
+	   <!-- 베이스패키지만 설정해 주면 밑에 어떤 매퍼를 만들던지 얘가 알아서 읽어줄거야 -->
+		
+	</mappers>
+</configuration>
