@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="/db.properties">
+	<properties resource="config/db.properties">
 	</properties>
 
 	<environments default="development">
@@ -22,6 +22,18 @@
 	<mappers> <!-- 실제 적용할 sql mapper들의 집합 -->
 	  <!-- 프로젝트 밑에 모든 폴더에 모든 임플이 오면 그걸 써라 -->
 	   <!-- 베이스패키지만 설정해 주면 밑에 어떤 매퍼를 만들던지 얘가 알아서 읽어줄거야 -->
+		<mapper resource="co/animal/prj/member/serviceImpl/Member-map.xml" />
+	<!-- <mapper resource="co/animal/prj/board/serviceImpl/Board-map.xml" />
+		<mapper resource="co/animal/prj/findhelp/serviceImpl/FindHelp-map.xml" />
+		<mapper resource="co/animal/prj/image/serviceImpl/Image-map.xml" />
+		<mapper resource="co/animal/prj/csc/serviceImpl/Csc-map.xml" />
+		<mapper resource="co/animal/prj/lost/serviceImpl/Lost-map.xml" />
+		<mapper resource="co/animal/prj/offerhelp/serviceImpl/OfferHelp-map.xml" />
+		<mapper resource="co/animal/prj/payment/serviceImpl/Payment-map.xml" />
+		<mapper resource="co/animal/prj/report/serviceImpl/Report-map.xml" />
+		<mapper resource="co/animal/prj/sales/serviceImpl/Sales-map.xml" />
+		<mapper resource="co/animal/prj/comment/serviceImpl/Comment-map.xml" />
+		 -->
 		
 	</mappers>
 </configuration>

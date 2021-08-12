@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
+import co.animal.prj.member.command.Test;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// 
 		map.put("/home.do", new Home());
+		map.put("/test.do", new Test());
 	}
 
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
