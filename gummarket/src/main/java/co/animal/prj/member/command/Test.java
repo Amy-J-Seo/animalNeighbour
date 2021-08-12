@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.common.Command;
 import co.animal.prj.member.serviceImpl.MemberServiceImpl;
-import co.animal.prj.member.vo.MemberVO;
 
 public class Test implements Command {
 

@@ -7,11 +7,13 @@ public class PaymentVO {
 	private String mId;
 	private int sNo;
 	private String pPayment;
+	private String pDone;
 	private Date pDate;
-	private char pDone;
+	
 	public PaymentVO() {
 		super();
 	}
+	
 	public int getpNo() {
 		return pNo;
 	}
@@ -42,10 +44,10 @@ public class PaymentVO {
 	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
-	public char getpDone() {
+	public String getpDone() {
 		return pDone;
 	}
-	public void setpDone(char pDone) {
+	public void setpDone(String pDone) {
 		this.pDone = pDone;
 	}
 	@Override

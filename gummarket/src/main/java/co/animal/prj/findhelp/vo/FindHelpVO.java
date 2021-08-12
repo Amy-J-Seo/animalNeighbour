@@ -12,6 +12,8 @@ public class FindHelpVO {
 	private String fhNeed;
 	private String fhCharacter;
 	private String fhHow;
+	private String fhHide;
+	
 	public FindHelpVO() {
 		super();
 	}
@@ -81,13 +83,21 @@ public class FindHelpVO {
 	public void setFhHow(String fhHow) {
 		this.fhHow = fhHow;
 	}
+	
+	public String getFhHide() {
+		return fhHide;
+	}
+	public void setFhHide(String fhHide) {
+		this.fhHide = fhHide;
+	}
 	@Override
 	public String toString() {
 		return "FindHelpVO [fhNo=" + fhNo + ", mId=" + mId + ", fhCategory=" + fhCategory + ", fhTitle=" + fhTitle
 				+ ", fhAnimal=" + fhAnimal + ", fhSize=" + fhSize + ", fhAge=" + fhAge + ", fhImg=" + fhImg
-				+ ", fhNeed=" + fhNeed + ", fhCharacter=" + fhCharacter + ", fhHow=" + fhHow + "]";
+				+ ", fhNeed=" + fhNeed + ", fhCharacter=" + fhCharacter + ", fhHow=" + fhHow + ", fhHide=" + fhHide
+				+ "]";
 	}
-
+	
 	
 
 }

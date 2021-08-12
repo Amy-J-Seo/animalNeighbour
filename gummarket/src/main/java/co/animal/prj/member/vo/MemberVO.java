@@ -4,14 +4,14 @@ public class MemberVO {
 	private String mId;
 	private String mName;
 	private String nickname;
-	private String adress;
+	private String address;
 	private String phone;
 	private String petInfo;
-	private String reviewPoint;
+	private int reviewPoint;
 	private String role;
 	private String state;
 	private String password;
-	private String buyPoint;
+	private int buyPoint;
 	private String email;
 	
 	public MemberVO() {
@@ -42,12 +42,12 @@ public class MemberVO {
 		this.nickname = nickname;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getPhone() {
@@ -66,11 +66,11 @@ public class MemberVO {
 		this.petInfo = petInfo;
 	}
 
-	public String getReviewPoint() {
+	public int getReviewPoint() {
 		return reviewPoint;
 	}
 
-	public void setReviewPoint(String reviewPoint) {
+	public void setReviewPoint(int reviewPoint) {
 		this.reviewPoint = reviewPoint;
 	}
 
@@ -98,11 +98,11 @@ public class MemberVO {
 		this.password = password;
 	}
 
-	public String getBuyPoint() {
+	public int getBuyPoint() {
 		return buyPoint;
 	}
 
-	public void setBuyPoint(String buyPoint) {
+	public void setBuyPoint(int buyPoint) {
 		this.buyPoint = buyPoint;
 	}
 
@@ -116,7 +116,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [mId=" + mId + ", mName=" + mName + ", nickname=" + nickname + ", adress=" + adress
+		return "MemberVO [mId=" + mId + ", mName=" + mName + ", nickname=" + nickname + ", address=" + address
 				+ ", phone=" + phone + ", petInfo=" + petInfo + ", reviewPoint=" + reviewPoint + ", role=" + role
 				+ ", state=" + state + ", password=" + password + ", buyPoint=" + buyPoint + ", email=" + email + "]";
 	}

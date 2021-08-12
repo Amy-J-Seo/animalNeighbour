@@ -11,9 +11,13 @@ public class LostVO {
 	private String lWhere;
 	private String lCharacter;
 	private String lImg;
+	private String lHide;
+	
+	
 	public LostVO() {
 		super();
 	}
+	
 	public int getlNo() {
 		return lNo;
 	}
@@ -74,11 +78,20 @@ public class LostVO {
 	public void setlImg(String lImg) {
 		this.lImg = lImg;
 	}
+	public String getlHide() {
+		return lHide;
+	}
+	public void setlHide(String lHide) {
+		this.lHide = lHide;
+	}
+	
 	@Override
 	public String toString() {
 		return "LostVO [lNo=" + lNo + ", mId=" + mId + ", lTitle=" + lTitle + ", lName=" + lName + ", lGender="
 				+ lGender + ", lAge=" + lAge + ", lWhen=" + lWhen + ", lWhere=" + lWhere + ", lCharacter=" + lCharacter
-				+ ", lImg=" + lImg + "]";
+				+ ", lImg=" + lImg + ", lHide=" + lHide + "]";
 	}
+	
+	
 	
 }

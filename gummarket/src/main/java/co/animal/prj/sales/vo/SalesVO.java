@@ -9,14 +9,15 @@ public class SalesVO {
 	private String sTitle;
 	private int sHit;
 	private int sLike;
-	private String sThumnail;
-	private Date sPurchaseDate;
-	private int sUseDatys;
+	private String sImg;
+	private Date sPurchasedDate;
+	private int sUseDays;
 	private String sReason;
 	private String sCondition;
 	private int sPrice;
 	private int sNetPrice;
-	private char sStatus;
+	private String sStatus;
+	private String sHide;
 	
 	public SalesVO() {
 		super();
@@ -70,28 +71,28 @@ public class SalesVO {
 		this.sLike = sLike;
 	}
 
-	public String getsThumnail() {
-		return sThumnail;
+	public String getsImg() {
+		return sImg;
 	}
 
-	public void setsThumnail(String sThumnail) {
-		this.sThumnail = sThumnail;
+	public void setsImg(String sImg) {
+		this.sImg = sImg;
 	}
 
-	public Date getsPurchaseDate() {
-		return sPurchaseDate;
+	public Date getsPurchasedDate() {
+		return sPurchasedDate;
 	}
 
-	public void setsPurchaseDate(Date sPurchaseDate) {
-		this.sPurchaseDate = sPurchaseDate;
+	public void setsPurchasedDate(Date sPurchasedDate) {
+		this.sPurchasedDate = sPurchasedDate;
 	}
 
-	public int getsUseDatys() {
-		return sUseDatys;
+	public int getsUseDays() {
+		return sUseDays;
 	}
 
-	public void setsUseDatys(int sUseDatys) {
-		this.sUseDatys = sUseDatys;
+	public void setsUseDays(int sUseDays) {
+		this.sUseDays = sUseDays;
 	}
 
 	public String getsReason() {
@@ -126,21 +127,30 @@ public class SalesVO {
 		this.sNetPrice = sNetPrice;
 	}
 
-	public char getsStatus() {
+	public String getsStatus() {
 		return sStatus;
 	}
 
-	public void setsStatus(char sStatus) {
+	public void setsStatus(String sStatus) {
 		this.sStatus = sStatus;
+	}
+
+	public String getsHide() {
+		return sHide;
+	}
+
+	public void setsHide(String sHide) {
+		this.sHide = sHide;
 	}
 
 	@Override
 	public String toString() {
 		return "SalesVO [sNo=" + sNo + ", mId=" + mId + ", sCategory=" + sCategory + ", sTitle=" + sTitle + ", sHit="
-				+ sHit + ", sLike=" + sLike + ", sThumnail=" + sThumnail + ", sPurchaseDate=" + sPurchaseDate
-				+ ", sUseDatys=" + sUseDatys + ", sReason=" + sReason + ", sCondition=" + sCondition + ", sPrice="
-				+ sPrice + ", sNetPrice=" + sNetPrice + ", sStatus=" + sStatus + "]";
+				+ sHit + ", sLike=" + sLike + ", sImg=" + sImg + ", sPurchasedDate=" + sPurchasedDate + ", sUseDays="
+				+ sUseDays + ", sReason=" + sReason + ", sCondition=" + sCondition + ", sPrice=" + sPrice
+				+ ", sNetPrice=" + sNetPrice + ", sStatus=" + sStatus + ", sHide=" + sHide + "]";
 	}
 
+	
 
 }

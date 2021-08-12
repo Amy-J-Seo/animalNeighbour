@@ -4,9 +4,11 @@ public class ReportVO {
 	private int rNo;
 	private int sNo;
 	private String rWhy;
+	
 	public ReportVO() {
 		super();
 	}
+	
 	public int getrNo() {
 		return rNo;
 	}
@@ -25,6 +27,7 @@ public class ReportVO {
 	public void setrWhy(String rWhy) {
 		this.rWhy = rWhy;
 	}
+	
 	@Override
 	public String toString() {
 		return "ReportVO [rNo=" + rNo + ", sNo=" + sNo + ", rWhy=" + rWhy + "]";

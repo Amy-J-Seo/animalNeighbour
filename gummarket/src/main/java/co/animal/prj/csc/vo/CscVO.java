@@ -8,9 +8,12 @@ public class CscVO {
 	private String csTitle;
 	private Date csDate;
 	private String csContents;
+	private String csHide;
+	
 	public CscVO() {
 		super();
 	}
+	
 	public int getCsNo() {
 		return csNo;
 	}
@@ -41,10 +44,20 @@ public class CscVO {
 	public void setCsContents(String csContents) {
 		this.csContents = csContents;
 	}
+	
+	public String getCsHide() {
+		return csHide;
+	}
+	public void setCsHide(String csHide) {
+		this.csHide = csHide;
+	}
+	
 	@Override
 	public String toString() {
 		return "CscVO [csNo=" + csNo + ", mId=" + mId + ", csTitle=" + csTitle + ", csDate=" + csDate + ", csContents="
-				+ csContents + "]";
+				+ csContents + ", csHide=" + csHide + "]";
 	}
+	
+	
 	
 }

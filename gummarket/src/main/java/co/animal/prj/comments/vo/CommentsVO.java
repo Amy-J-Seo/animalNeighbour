@@ -1,12 +1,14 @@
-package co.animal.prj.comment.vo;
+package co.animal.prj.comments.vo;
 
 
-public class CommentVO {
+public class CommentsVO {
 	private int cNo;
 	private String mId;
 	private String cType;
 	private String cContents;
-	public CommentVO() {
+	private int cMainNum;
+	
+	public CommentsVO() {
 		super();
 	}
 	public int getcNo() {
@@ -33,9 +35,17 @@ public class CommentVO {
 	public void setcContents(String cContents) {
 		this.cContents = cContents;
 	}
-	@Override
-	public String toString() {
-		return "CommentVO [cNo=" + cNo + ", mId=" + mId + ", cType=" + cType + ", cContents=" + cContents + "]";
+	public int getcMainNum() {
+		return cMainNum;
+	}
+	public void setcMainNum(int cMainNum) {
+		this.cMainNum = cMainNum;
 	}
 	
+	@Override
+	public String toString() {
+		return "CommentsVO [cNo=" + cNo + ", mId=" + mId + ", cType=" + cType + ", cContents=" + cContents
+				+ ", cMainNum=" + cMainNum + "]";
+	}
+
 }

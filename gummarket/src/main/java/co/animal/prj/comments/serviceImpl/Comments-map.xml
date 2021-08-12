@@ -4,7 +4,7 @@
 	namespace="co.animal.prj.comment.service.CommentServiceMapper">
 	<!-- ServiceMapper interface 위치 -->
 	<select id="commentSelectList"
-		resultType="co.animal.prj.answer.vo.CommentVO">
+		resultType="co.animal.prj.comments.vo.CommentsVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM comment
