@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.animal.prj.answer.service.AnswerServiceMapper">
+	<!-- ServiceMapper interface 위치 -->
+	<select id="answerSelectList"
+		resultType="co.animal.prj.answer.vo.AnswerVO">
+		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
+		<!-- resultType, parameterType => VO객체위치 -->
+		SELECT * FROM answer
+	</select>
+<!--  	<select id="" resultType="">
+
+	</select>
+	<insert id="" parameterType="">
+
+	</insert>
+	<delete id="" parameterType="">
+
+	</delete>
+	<insert id="" parameterType="">
+
+	</insert>-->
+</mapper>
