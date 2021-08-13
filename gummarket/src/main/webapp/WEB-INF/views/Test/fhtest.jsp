@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>This is test page</title>
 </head>
 <body>
-
-<jsp:forward page="fhtest.do" />
-
+${list }
 </body>
 </html>
