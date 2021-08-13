@@ -9,16 +9,19 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM findhelp
 	</select>
-<!--  	<select id="" resultType="">
-
+	<select id="findHelpSelect"  parameterType="string" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select * from findhelp where id=#{id}
 	</select>
-	<insert id="" parameterType="">
 
+	<insert id="findHelpInsert" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
+	insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhImg},#{fhNeed},#{fhCharacter},#{fhHow},'n')
 	</insert>
-	<delete id="" parameterType="">
-
+	
+	<delete id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+	update findhelp set fhhide=#{fhHide} where fhno = #{fhNO}
 	</delete>
-	<insert id="" parameterType="">
-
-	</insert>-->
+	<update id="findHelpUpdate" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+	update findhelp set fhNeed=#{fhNeed;}, fhCharacter=#{fhCharacter},fhHow=#{fhHow} where fhno = #{fhNO}
+	</update>
 </mapper>
