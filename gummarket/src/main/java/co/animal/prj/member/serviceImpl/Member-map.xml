@@ -10,7 +10,8 @@
 		SELECT * FROM member
 	</select>
   	<select id="Login" resultType="co.animal.prj.member.vo.MemberVO">
-		select name, role from member where id=? and password=? and state = 'Y'
+		select nickname, role, mId from member where mId=#{mId} and password=#{password}
+		
 	</select>
 <!--	
 	<insert id="" parameterType="">

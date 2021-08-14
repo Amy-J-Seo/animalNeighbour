@@ -13,14 +13,7 @@ public class LoginForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		MemberService dao = new MemberServiceImpl();
-		MemberVO vo = new MemberVO();
 		
-		HttpSession session = request.getSession();
-		vo.setmId(request.getParameter("mid"));
-		vo.setPassword(request.getParameter("password"));
-		
-		return null;
+		return "login/loginForm";
 	}
-
 }
