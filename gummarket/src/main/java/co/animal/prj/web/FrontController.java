@@ -46,7 +46,6 @@ public class FrontController extends HttpServlet {
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
 
-
 		
 		
 		
@@ -54,7 +53,6 @@ public class FrontController extends HttpServlet {
 		map.put("/fhtest.do", new FhTest());
 		map.put("/findHelpMain.do", new FindHelpMain());
 		map.put("/fhDetail.do", new FhDetail());
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
