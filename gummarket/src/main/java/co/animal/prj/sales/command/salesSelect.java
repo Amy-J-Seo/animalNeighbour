@@ -12,14 +12,14 @@ public class salesSelect implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// TODO 상품 디테일페이지 + 안에 댓글도 가져오기.
 		SalesService salesDao = new SalesServiceImpl();
 		SalesVO vo = new SalesVO();
 		
-		vo.setmId(request.getParameter("sNo"));
+		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
 		request.setAttribute("list", salesDao.salesSelect(vo));
 		
-		return "test/salesSelectTest";
+		return "Test/salesSelectTest";
 	
 	}
 

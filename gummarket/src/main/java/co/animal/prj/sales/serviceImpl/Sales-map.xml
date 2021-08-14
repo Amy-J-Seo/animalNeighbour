@@ -24,14 +24,15 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select a.*, b. *
-		from sales a left outer join comments b on (a.sno = b.cmainnum) and (a.scategory = b.ctype) 
-		where a.sno = #{sNo};
+		select a.*, b. *  
+		from sales a left outer join comments b 
+		on (a.sno = b.cmainnum) and (b.ctype='sales')
+		where a.sno = #{sNo}
 	</select>
 	
 	<!-- 상품 삭제 -->
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
-		delete from sales where sno=#{sNo};
+		delete from sales where sno=#{sNo}
 	</delete>
 	
 	

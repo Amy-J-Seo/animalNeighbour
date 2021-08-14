@@ -6,13 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 메인페이지 - 인기상품</title>
-<script>
-	function getSalesDetail(n) {
-		console.log(n);
-		salesFrm.sNo.value = n;
-		salesFrm.submit();
-	}
-</script>
 
 </head>
 <body>
@@ -77,11 +70,22 @@
 	                  </div>
 	            	</div>
    				</c:forEach>
+   				<!-- 버튼 누르면 salesSelect.do로가서 상세보기 페이지로 넘어감. -->
                	<form id="salesFrm" name="salesFrm" action="salesSelect.do" method="post">
 					<input type="hidden" id="sNo" name="sNo">
 				</form>
 		</div>
 	</div>
 	</section>
+	
+	<script>
+	function getSalesDetail(n) {
+		console.log(n);
+		salesFrm.sNo.value = n;
+		salesFrm.submit();
+	}
+</script>
+	
+	
 </body>
 </html>
