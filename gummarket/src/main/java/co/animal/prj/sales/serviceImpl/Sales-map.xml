@@ -18,9 +18,9 @@
 	</select>
 	
 	<!-- 상품 삭제 -->
-	<delete id="" parameterType="">
+	<!-- <delete id="" parameterType="">
 		delete from sales where sno=#{sNo};
-	</delete>
+	</delete> -->
 	
 	
 <!--  	

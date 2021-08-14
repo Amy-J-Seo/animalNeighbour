@@ -9,11 +9,11 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM offerhelp
 	</select>
-	<select id="offerHelpSelect" parameterType="string" resultType="co.animal.pri.offerhelp.vo.FindHelpVO">
+	<select id="offerHelpSelect" parameterType="string" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
 		select * from offerhelp where mid=#{mid}
 	</select>
 	
-	<insert id="offerHelpInsert" parameterType="co.animal.pri.offerhelp.vo.FindHelpVO">
+	<insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
 	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
 		insert into offerhelp values(oh_seq.nextval,#{mId},#{ohCategory},#{ohTitle},#{ohContents},#{ohHistory},#{ohAddress},#{ohCharacter},#{ohDetails},#{ohImg},#{ofHide})
 	</insert>

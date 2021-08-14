@@ -10,7 +10,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #4e73df;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -2780,14 +2780,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning {
-  color: #f6c23e;
-  border-color: #f6c23e;
+  color:rgb(252, 221, 33);
+  border-color:rgb(252, 221, 33);
 }
 
 .btn-outline-warning:hover {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color:rgb(252, 221, 33);
+  border-color:rgb(252, 221, 33);
 }
 
 .btn-outline-warning:focus, .btn-outline-warning.focus {
@@ -9829,6 +9829,19 @@ a:focus {
   line-height: 46px;
 }
 
+.write-btn {
+  position: fixed;
+  right: 1rem;
+  bottom: 4rem;
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(90, 92, 105, 0.5);
+  line-height: 46px;
+}
+
 .scroll-to-top:focus, .scroll-to-top:hover {
   color: white;
 }
@@ -9840,6 +9853,19 @@ a:focus {
 .scroll-to-top i {
   font-weight: 800;
 }
+
+.write-btn:focus, .write-btn:hover {
+  color: white;
+}
+
+.write-btn:hover {
+  background: #5a5c69;
+}
+
+.write-btn i {
+  font-weight: 800;
+}
+
 
 @-webkit-keyframes growIn {
   0% {
@@ -11293,4 +11319,3 @@ body.sidebar-toggled footer.sticky-footer {
   text-decoration: none;
   color: #5a5c69;
 }
-
