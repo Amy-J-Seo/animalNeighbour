@@ -31,7 +31,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public MemberVO Login(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return map.Login(vo);
 	}
 	@Override
