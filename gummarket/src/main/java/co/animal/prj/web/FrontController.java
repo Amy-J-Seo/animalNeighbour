@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
+import co.animal.prj.findhelp.command.FhDetail;
 import co.animal.prj.findhelp.command.FhTest;
+import co.animal.prj.findhelp.command.FindHelpMain;
 import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
-import co.animal.prj.sales.command.salesSelect;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -38,8 +39,14 @@ public class FrontController extends HttpServlet {
 		map.put("/registerForm.do", new RegisterForm());
 		
 		map.put("/test.do", new Test());
+		
+		
+		
+		
+		//주윤 맵
 		map.put("/fhtest.do", new FhTest());
-		map.put("/salesSelect.do", new salesSelect());
+		map.put("/findHelpMain.do", new FindHelpMain());
+		map.put("/fhDetail.do", new FhDetail());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

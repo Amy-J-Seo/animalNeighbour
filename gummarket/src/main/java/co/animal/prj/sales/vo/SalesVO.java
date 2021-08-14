@@ -2,7 +2,9 @@ package co.animal.prj.sales.vo;
 
 import java.sql.Date;
 
-public class SalesVO {
+import co.animal.prj.comments.vo.CommentsVO;
+
+public class SalesVO extends CommentsVO{
 	private int sNo;
 	private String mId;
 	private String sCategory;

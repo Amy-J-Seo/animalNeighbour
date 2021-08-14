@@ -9,8 +9,8 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM findhelp
 	</select>
-	<select id="findHelpSelect"  parameterType="string" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
-		select * from findhelp where id=#{id}
+	<select id="findHelpSelect"  parameterType="co.animal.prj.findhelp.vo.FindHelpVO" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select * from findhelp where fhno=#{fhNo}
 	</select>
 
 	<insert id="findHelpInsert" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
