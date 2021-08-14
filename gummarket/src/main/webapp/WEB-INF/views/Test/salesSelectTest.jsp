@@ -6,6 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세보기 페이지</title>
+<!-- 삭제버튼 누르면 alert -->
+<script>
+	function confirmDel(n) {
+	   alert("글을 삭제할까요?");
+	   if(confirm("삭제되었습니다.")){
+	    frm.sNo.value= n;
+		frm.submit();
+	    location.href='deleteSales.do';
+	   }else{
+	    return false;
+	   }
+	  }
+</script>
 </head>
 <body>
  <div align="center">
@@ -22,6 +35,12 @@
 			${list.cContents }<br>
 		</c:forEach>
 	</div>
+	<!-- 게시글 삭제 버튼 -->
+	<!-- 삭제는 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
+	<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel()" />
  </div>
+ 	<form id="frm" name="frm" action="deleteSales.do" method="post">
+			<input type= "hidden" id="sNo" name="sNo">
+		</form>
 </body>
 </html>

@@ -16,7 +16,8 @@ import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhTest;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.member.command.Test;
-import co.animal.prj.sales.command.salesSelect;
+import co.animal.prj.sales.command.DeleteSales;
+import co.animal.prj.sales.command.SalesSelect;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -30,11 +31,12 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		//
-		map.put("/home.do", new Home());
+		map.put("/home.do", new Home());//인기상품 조회
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/test.do", new Test());
 		map.put("/fhtest.do", new FhTest());
-		map.put("/salesSelect.do", new salesSelect());
+		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
+		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

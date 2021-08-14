@@ -8,7 +8,7 @@ import co.animal.prj.sales.service.SalesService;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
 
-public class salesSelect implements Command {
+public class SalesSelect implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
