@@ -20,6 +20,11 @@ import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
+<<<<<<< HEAD
+=======
+import co.animal.prj.sales.command.DeleteSales;
+import co.animal.prj.sales.command.SalesSelect;
+>>>>>>> branch 'main' of https://github.com/Cbear1234/animalNeighbour.git
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -33,13 +38,21 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		//
-		map.put("/home.do", new Home());
+		map.put("/home.do", new Home());//인기상품 조회
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do",new Login());
 		map.put("/registerForm.do", new RegisterForm());
 		
 		map.put("/test.do", new Test());
+<<<<<<< HEAD
 		
+=======
+
+		//인영 맵
+		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
+		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
+
+>>>>>>> branch 'main' of https://github.com/Cbear1234/animalNeighbour.git
 		
 		
 		
