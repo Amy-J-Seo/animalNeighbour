@@ -33,10 +33,10 @@
 	</select>
 	
 	<!-- 상품 삭제 -->
-
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
+
 
 	
 <!--  	
