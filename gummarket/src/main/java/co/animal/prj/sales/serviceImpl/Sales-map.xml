@@ -3,25 +3,41 @@
 <mapper
 	namespace="co.animal.prj.sales.service.SalesServiceMapper">
 	<!-- ServiceMapper interface 위치 -->
-	<select id="salesSelectList"
-		resultType="co.animal.prj.sales.vo.SalesVO">
+	
+	<!-- 주의! shide='n'인 애들만 데려오기! -->
+	
+	<!-- 상품 전체 조회 -->
+	<select id="salesSelectList" resultType="co.animal.prj.sales.vo.SalesVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM sales
+		SELECT * FROM sales where shide='n'
+	</select>
+	
+	<!-- top10 인기상품 조회하기 -->
+	<select id="salesListTOP10" resultType="co.animal.prj.sales.vo.SalesVO">
+		
+		<![CDATA[
+		select * from (
+    	select * from sales order by slike desc)
+    	where rownum <= 10 and shide='n'
+    	]]>
+ 
 	</select>
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select a.*, b. *
-		from sales a left outer join comments b on (a.sno = b.cmainnum) and (a.scategory = b.ctype) 
-		where a.sno = #{sNo};
+		select a.*, b. *  
+		from sales a left outer join comments b 
+		on (a.sno = b.cmainnum) and (b.ctype='sales')
+		where a.sno = #{sNo}
 	</select>
 	
 	<!-- 상품 삭제 -->
-	<!-- <delete id="" parameterType="">
-		delete from sales where sno=#{sNo};
-	</delete> -->
-	
+	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
+		update sales set shide ='y' where sno=#{sNo}
+	</delete>
+
+
 	
 <!--  	
 	<insert id="" parameterType="">
