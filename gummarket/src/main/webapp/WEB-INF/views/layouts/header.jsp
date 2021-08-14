@@ -87,7 +87,7 @@
 	                            </div>
 	                        </li>
                       <%--   </c:if> --%>
-                        <li><button class="btn mt-3" style="background-color: rgb(252, 221, 33);">로 그 인</button></li>
+                        <li><button class="btn mt-3" onclick="location.href='loginForm.do'" style="background-color: rgb(252, 221, 33);">로 그 인</button></li>
                         
                     </ul>
                 </nav>

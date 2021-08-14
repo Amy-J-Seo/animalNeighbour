@@ -9,9 +9,10 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM member
 	</select>
-<!--  	<select id="" resultType="">
-
+  	<select id="Login" resultType="co.animal.prj.member.vo.MemberVO">
+		select name, role from member where id=? and password=? and state = 'Y'
 	</select>
+<!--	
 	<insert id="" parameterType="">
 
 	</insert>
