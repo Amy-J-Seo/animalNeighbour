@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhTest;
+import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.sales.command.salesSelect;
@@ -32,6 +33,7 @@ public class FrontController extends HttpServlet {
 		//
 		map.put("/home.do", new Home());
 		map.put("/loginForm.do", new LoginForm());
+		map.put("/login.do",new Login());
 		map.put("/test.do", new Test());
 		map.put("/fhtest.do", new FhTest());
 		map.put("/salesSelect.do", new salesSelect());
