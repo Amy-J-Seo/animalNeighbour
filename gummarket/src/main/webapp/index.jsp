@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:forward page="home.do" />
+<jsp:forward page="fhtest.do" />
 
 </body>
 </html>
