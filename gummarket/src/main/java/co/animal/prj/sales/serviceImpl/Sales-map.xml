@@ -16,12 +16,7 @@
 	<!-- top10 인기상품 조회하기 -->
 	<select id="salesListTOP10" resultType="co.animal.prj.sales.vo.SalesVO">
 		
-		<![CDATA[
-		select * from (
-    	select * from sales order by slike desc)
-    	where rownum <= 10 and shide='n'
-    	]]>
- 
+	
 	</select>
 	
 	<!-- sales 개별상품 조회-->
@@ -32,17 +27,11 @@
 		where a.sno = #{sNo}
 	</select>
 	
-<<<<<<< HEAD
-
-=======
 	<!-- 상품 삭제 -->
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
 
-
-	
->>>>>>> branch 'main' of https://github.com/Cbear1234/animalNeighbour.git
 <!--  	
 	<insert id="" parameterType="">
 
