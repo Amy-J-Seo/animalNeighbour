@@ -9,6 +9,22 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM offerhelp
 	</select>
+	<select id="offerHelpSelect" parameterType="string" resultType="co.animal.pri.offerhelp.vo.FindHelpVO">
+		select * from offerhelp where mid=#{mid}
+	</select>
+	
+	<insert id="offerHelpInsert" parameterType="co.animal.pri.offerhelp.vo.FindHelpVO">
+	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
+		insert into offerhelp values(oh_seq.nextval,#{mId},#{ohCategory},#{ohTitle},#{ohContents},#{ohHistory},#{ohAddress},#{ohCharacter},#{ohDetails},#{ohImg},#{ofHide})
+	</insert>
+	
+	<delete id="offerHelpDelete" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
+		update offerhelp set ofhide=#{ofHide} where ohno = #{ohNO}
+	</delete>
+	
+	<update id="offerHelpUpdate" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
+		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNO}
+	</update>
 <!--  	<select id="" resultType="">
 
 	</select>
