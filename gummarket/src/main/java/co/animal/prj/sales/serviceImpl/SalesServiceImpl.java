@@ -43,4 +43,10 @@ public class SalesServiceImpl implements SalesService {
 		return map.salesInsert(vo);
 	}
 
+	@Override
+	public List<SalesVO> salesListTOP10() {
+		// TODO top 10 인기상품 조회하기
+		return map.salesListTOP10();
+	}
+
 }
