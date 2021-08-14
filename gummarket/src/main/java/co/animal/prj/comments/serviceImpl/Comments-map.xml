@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="co.animal.prj.comment.service.CommentServiceMapper">
+	namespace="co.animal.prj.comments.service.CommentsServiceMapper">
 	<!-- ServiceMapper interface 위치 -->
-	<select id="commentSelectList"
+	<select id="commentsSelectList"
 		resultType="co.animal.prj.comments.vo.CommentsVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->

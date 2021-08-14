@@ -29,4 +29,13 @@ public class MemberServiceImpl implements MemberService{
 	public int memberInsert(MemberVO vo){
 		return map.memberInsert(vo);
 	}
+	@Override
+	public MemberVO Login(MemberVO vo) {
+		return map.Login(vo);
+	}
+	@Override
+	public int checkId(String eid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

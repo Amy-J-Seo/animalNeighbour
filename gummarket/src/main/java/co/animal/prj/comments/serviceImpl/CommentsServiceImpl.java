@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import co.animal.prj.comment.service.CommentsService;
-import co.animal.prj.comment.service.CommentsServiceMapper;
+import co.animal.prj.comments.service.CommentsService;
+import co.animal.prj.comments.service.CommentsServiceMapper;
 import co.animal.prj.comments.vo.CommentsVO;
 import co.animal.prj.common.DataSource;
 
@@ -14,33 +14,33 @@ public class CommentsServiceImpl implements CommentsService {
 	private CommentsServiceMapper map = sqlSession.getMapper(CommentsServiceMapper.class);
 	
 	@Override
-	public List<CommentsVO> commentSelectList() {
+	public List<CommentsVO> commentsSelectList() {
 		// TODO Auto-generated method stub
-		return map.commentSelectList();
+		return map.commentsSelectList();
 	}
 
 	@Override
-	public CommentsVO commentSelect(CommentsVO vo) {
+	public CommentsVO commentsSelect(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		return map.commentSelect(vo);
+		return map.commentsSelect(vo);
 	}
 
 	@Override
-	public int commentUpdate(CommentsVO vo) {
+	public int commentsUpdate(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		return map.commentUpdate(vo);
+		return map.commentsUpdate(vo);
 	}
 
 	@Override
-	public int commentDelete(CommentsVO vo) {
+	public int commentsDelete(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		return map.commentDelete(vo);
+		return map.commentsDelete(vo);
 	}
 
 	@Override
-	public int commentInsert(CommentsVO vo) {
+	public int commentsInsert(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		return map.commentInsert(vo);
+		return map.commentsInsert(vo);
 	}
 
 }
