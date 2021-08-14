@@ -15,6 +15,7 @@ import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhTest;
 import co.animal.prj.member.command.Test;
+import co.animal.prj.sales.command.salesSelect;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -31,6 +32,7 @@ public class FrontController extends HttpServlet {
 		map.put("/home.do", new Home());
 		map.put("/test.do", new Test());
 		map.put("/fhtest.do", new FhTest());
+		map.put("/salesSelect.do", new salesSelect());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
