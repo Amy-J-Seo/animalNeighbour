@@ -42,6 +42,13 @@
 		insert into sales(sno, mid, scategory, stitle, spurchaseddate,susedays,sreason,scondition,sprice,snetprice) 
 		values(s_seq.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sPurchasedDate}, #{sUseDays}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice})
 	</insert>
+	
+	<!-- 상품 정보 수정 -->
+	<update id="">
+		update sales 
+		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchaseDate}, sreason = #{sReason}, scondition =#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
+		where sno=#{sNo}
+	</update>
 
 	
 <!--  	

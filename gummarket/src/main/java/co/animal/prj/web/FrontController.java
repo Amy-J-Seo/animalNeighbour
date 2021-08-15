@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.command.Home;
+import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhDetail;
 import co.animal.prj.findhelp.command.FhTest;
@@ -21,11 +22,11 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.sales.command.DeleteSales;
+import co.animal.prj.sales.command.SalesInsert;
+import co.animal.prj.sales.command.SalesInsertForm;
+import co.animal.prj.sales.command.SalesListAll;
 import co.animal.prj.sales.command.SalesSelect;
-import co.animal.prj.sales.command.salesInsert;
-import co.animal.prj.sales.command.salesInsertForm;
-import co.animal.prj.sales.command.salesListAll;
-import co.animal.prj.sales.command.updateSales;
+import co.animal.prj.sales.command.UpdateSales;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -47,12 +48,14 @@ public class FrontController extends HttpServlet {
 		map.put("/test.do", new Test());
 
 		//인영 맵
-		map.put("/salesListAll.do", new salesListAll()); //전체 상품 조회
+		map.put("/salesListAll.do", new SalesListAll()); //전체 상품 조회
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
-		map.put("/updateSales.do", new updateSales());//상품 글 업데이트
-		map.put("/salesInsertForm.do", new salesInsertForm());//글 입력 폼
-		map.put("/salesInsert.do", new salesInsert());//글 입력
+		map.put("/updateSales.do", new UpdateSales());//상품 글 업데이트
+		map.put("/salesInsertForm.do", new SalesInsertForm());//글 입력 폼
+		map.put("/salesInsert.do", new SalesInsert());//글 입력
+		
+		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
 
 		
 		

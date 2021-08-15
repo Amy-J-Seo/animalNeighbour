@@ -11,7 +11,7 @@ import co.animal.prj.sales.service.SalesService;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
 
-public class salesInsert implements Command {
+public class SalesInsert implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -21,7 +21,6 @@ public class salesInsert implements Command {
 		
 		HttpSession session = request.getSession();
 		
-		System.out.println(session.getAttribute("mId"));
 		
 		vo.setsTitle(request.getParameter("stitle"));
 		vo.setmId(String.valueOf(session.getAttribute("mId"))); 

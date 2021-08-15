@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.common.Command;
 
-public class salesInsertForm implements Command {
+public class UpdateSales implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 인서트 폼으로~
-		return "sales/salesInsert";
+		// TODO Auto-generated method stub
+		return "sales/updateSales";
 	}
 
 }

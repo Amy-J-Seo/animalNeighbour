@@ -14,8 +14,9 @@
 
 
 
-<!-- 삭제버튼 누르면 alert -->
 <script>
+	
+	//삭제버튼 누르면 alert
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
 	   console.log(n);
@@ -29,12 +30,13 @@
 	   }
 	  }
 	
-	
+	//글 수정
 	function updateSales(n) {
 		frm1.sNo.value=n;
 		frm1.submit();
 		//location.href='updateSales.do';
 	}
+	
 	
 	//좋아요 버튼js
 	
@@ -85,13 +87,34 @@
 				<div class="card shadow mb-4">
 				<div class="card-header py-3">댓글</div>
 				<div class="card-body">
+				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
 					<c:forEach var="list" items="${list }">
 						${list.mId }:
 						${list.cContents }<br>
 					</c:forEach>
 				</div>
 				</div> 
-				
+				<!-- 댓글 입력 -->
+				<div class="card mb-2">
+					<div class="card-header bg-light">
+					        <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<form action="commentInsert.do" method="post">
+							<ul class="list-group list-group-flush">
+							    <li class="list-group-item">
+								<div class="form-inline mb-2">
+									<i class="fas fa-cat"></i>&nbsp;&nbsp;
+									<span> ${nickname }</span>
+								</div>
+								<input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
+								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+								<button type="submit" class="btn btn-dark mt-3">post reply</button>
+							    </li>
+							</ul>
+						</form>
+					</div>
+				</div>
 			</div>
 			
 			<div>

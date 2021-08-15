@@ -9,12 +9,14 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM comment
 	</select>
+	
+	
+	<insert id="commentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		insert into comments values(c_seq.nextval,#{mId},'sales',#{cMainNum},#{cContents})
+	</insert>
 <!--  	<select id="" resultType="">
 
 	</select>
-	<insert id="" parameterType="">
-
-	</insert>
 	<delete id="" parameterType="">
 
 	</delete>
