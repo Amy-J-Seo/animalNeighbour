@@ -34,8 +34,7 @@ public class MemberServiceImpl implements MemberService{
 		return map.Login(vo);
 	}
 	@Override
-	public int checkId(String eid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int checkId(String mId) {
+		return map.checkId(mId);
 	}
 }
