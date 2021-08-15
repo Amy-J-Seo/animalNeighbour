@@ -68,7 +68,7 @@
 				</tr>
 				<tr>
 					<th>닉 네 임</th>
-					<td><input type="text" id="nickName" name="nickName"
+					<td><input type="text" id="nickname" name="nickname"
 						placeholder="닉네임" required="required"></td>
 				</tr>
 				<tr>

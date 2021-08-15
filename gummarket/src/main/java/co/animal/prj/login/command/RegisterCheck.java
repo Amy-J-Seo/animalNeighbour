@@ -21,14 +21,15 @@ public class RegisterCheck implements Command {
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setPhone(request.getParameter("phone"));
 		vo.setEmail(request.getParameter("email"));
-		vo.setPetInfo(request.getParameter("perInfo"));
+		vo.setPetInfo(request.getParameter("petInfo"));
 		vo.setAddress(request.getParameter("address"));
+		System.out.println(vo.getNickname() + "스팟1");
 		int result = dao.memberInsert(vo);
-		
+		System.out.println(vo);
 		String page= "";
 		if(result !=0) {
 			page="login/registerCheck";
-			request.setAttribute("member", vo);
+			request.setAttribute("member", vo.getNickname());
 		}
 		return page;
 	}

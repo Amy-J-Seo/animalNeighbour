@@ -16,7 +16,7 @@
 <body>
 	<div id="wrap">
         <br><br>
-        <font color="blue">${member.nickname }</font>님 가입을 축하드립니다.
+        <font color="blue">가입을 축하드립니다.</font>
         
         <br>
         <input type="button" value="확인" onclick="checkok()">

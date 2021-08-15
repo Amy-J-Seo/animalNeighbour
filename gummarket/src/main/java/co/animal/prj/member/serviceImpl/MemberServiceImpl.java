@@ -10,7 +10,7 @@ import co.animal.prj.member.service.MemberServiceMapper;
 import co.animal.prj.member.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService{
-	private SqlSession sqlSession =DataSource.getInstance().openSession();
+	private SqlSession sqlSession =DataSource.getInstance().openSession(true);
 	
 	private MemberServiceMapper map = sqlSession.getMapper(MemberServiceMapper.class);
 	//MemberServiceMapper 메소드 사용
