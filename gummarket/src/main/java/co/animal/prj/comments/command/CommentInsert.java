@@ -20,12 +20,12 @@ public class CommentInsert implements Command {
 		
 		HttpSession session = request.getSession();
 		
-		vo.setmId((String)session.getAttribute("mId"));
+		vo.setmId(String.valueOf( session.getAttribute("mId")));
 		vo.setcMainNum(Integer.valueOf(request.getParameter("cMainNum")));
 		vo.setcContents(request.getParameter("cContent"));
 		
 		comDao.commentsInsert(vo);
-		System.out.println(vo.getcContents()+ vo.getcMainNum() +vo.getmId());
+		System.out.println(vo.getcContents()+ vo.getcMainNum() +vo.getmId()+"commentinsert.java");
 		
 		return "sales/salesDetail";
 	}
