@@ -10,7 +10,7 @@ import co.animal.prj.sales.service.SalesServiceMapper;
 import co.animal.prj.sales.vo.SalesVO;
 
 public class SalesServiceImpl implements SalesService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession();
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	
 	private SalesServiceMapper map = sqlSession.getMapper(SalesServiceMapper.class);
 	@Override

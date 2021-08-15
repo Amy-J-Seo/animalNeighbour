@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장터 메인페이지 - 인기상품</title>
+<title>장터 전체 상품 조회</title>
 
 </head>
 <body>
 	<section>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div class="continer my-auto pb-3">
-				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">Best 10 items!</p>
+				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">On sale items!</p>
 			</div>
 			<div class="continer my-auto">
 				<!-- Main Content -->
@@ -41,6 +41,8 @@
         	<c:forEach var="list" items="${list }">
 		   		<div class="col mb-5">
 	                <div class="card h-100">
+	                
+	                <!-- 인기상품만 인기상품 badge달려면???? -->
 	                    <!-- 인기상품 badge-->
 	                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">인기상품
 	                    </div>
