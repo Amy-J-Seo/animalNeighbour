@@ -18,8 +18,9 @@ public class DeleteSales implements Command {
 		SalesVO vo = new SalesVO();
 		
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		System.out.println("넘어온 번호는"+vo.getsNo());
+		
 		int n = salesDao.salesDelete(vo);
+	
 		String page ="";
 		
 		if(n !=0) {
