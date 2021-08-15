@@ -19,7 +19,7 @@ public class SalesSelect implements Command {
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
 		request.setAttribute("list", salesDao.salesSelect(vo));
 		
-		return "Test/salesSelectTest";
+		return "sales/salesDetail";
 	
 	}
 
