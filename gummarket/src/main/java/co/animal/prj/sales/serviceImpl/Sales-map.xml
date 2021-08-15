@@ -16,12 +16,7 @@
 	<!-- top10 인기상품 조회하기 -->
 	<select id="salesListTOP10" resultType="co.animal.prj.sales.vo.SalesVO">
 		
-		<![CDATA[
-		select * from (
-    	select * from sales order by slike desc)
-    	where rownum <= 10 and shide='n'
-    	]]>
- 
+	
 	</select>
 	
 	<!-- sales 개별상품 조회-->
@@ -37,8 +32,6 @@
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
 
-
-	
 <!--  	
 	<insert id="" parameterType="">
 

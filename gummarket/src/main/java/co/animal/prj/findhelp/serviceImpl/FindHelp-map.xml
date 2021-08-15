@@ -7,20 +7,31 @@
 		resultType="co.animal.prj.findhelp.vo.FindHelpVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM findhelp
+		
+		select * from findhelp
 	</select>
+	
 	<select id="findHelpSelect"  parameterType="co.animal.prj.findhelp.vo.FindHelpVO" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
-		select * from findhelp where fhno=#{fhNo}
+		select a.*, b.nickname, b.reviewpoint
+      		from findhelp a left outer join member b
+      		on (a.mid = b.mid) 
+      		where a.fhno = #{fhNo}
 	</select>
 
 	<insert id="findHelpInsert" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
-	insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhImg},#{fhNeed},#{fhCharacter},#{fhHow},'n')
+		insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhCharacter},#{fhNeed},#{fhHow},null,default)
+	
+	   <!--    <selectkey keyproperty="sabun" resulttype="String" order="AFTER"> 
+		SELECT fh_seq.CURRVAL FROM DUAL
+         </selectkey> -->
+	
 	</insert>
 	
 	<delete id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	update findhelp set fhhide=#{fhHide} where fhno = #{fhNO}
 	</delete>
+	
 	<update id="findHelpUpdate" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	update findhelp set fhNeed=#{fhNeed;}, fhCharacter=#{fhCharacter},fhHow=#{fhHow} where fhno = #{fhNO}
 	</update>

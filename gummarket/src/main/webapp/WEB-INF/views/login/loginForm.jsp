@@ -5,6 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>LoginForm</title>
+	<script src="http://developers.kakao.com/sdk/js/kakao.js">
+		window.Kakao.init("b170e6c8bb0d86b449f0f677f1ae873f");
+		
+		function KakaoLogin(){
+			window.Kakao.Auth.login({
+				scope : 'profile_nickname,account_email ',
+				success: function(authObj){
+					console.log(authObj);
+					window.Kakao.API.request
+				} 
+			})
+		}
+	</script>
 </head>
 <body>
 	<div align="center">

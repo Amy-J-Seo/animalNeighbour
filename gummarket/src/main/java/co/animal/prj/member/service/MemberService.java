@@ -11,5 +11,5 @@ public interface MemberService {
 	public int memberDelete(MemberVO vo);
 	public int memberInsert(MemberVO vo);
 	public MemberVO Login(MemberVO vo);
-	public int checkId(String eid);
+	public int checkId(String mId);
 }
