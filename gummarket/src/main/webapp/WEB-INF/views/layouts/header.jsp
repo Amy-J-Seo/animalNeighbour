@@ -53,7 +53,7 @@
 					style="width: 85px; height: 85px;"></a>
 				<ul class="navbar-nav ml-auto">
 					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
-					<li style="margin: auto;"><a href="#"
+					<li style="margin: auto;"><a href="salesListAll.do"
 						style="text-decoration: none; color: rgb(94, 94, 94)">&nbsp;중고장터</a>&nbsp;
 						|&nbsp; <a href="#"
 						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a></li>
