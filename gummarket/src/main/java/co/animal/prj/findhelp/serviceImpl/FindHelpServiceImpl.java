@@ -10,7 +10,7 @@ import co.animal.prj.findhelp.service.FindHelpServiceMapper;
 import co.animal.prj.findhelp.vo.FindHelpVO;
 
 public class FindHelpServiceImpl implements FindHelpService {
-	private SqlSession sqlSession=DataSource.getInstance().openSession();
+	private SqlSession sqlSession=DataSource.getInstance().openSession(true);
 	private FindHelpServiceMapper map = sqlSession.getMapper(FindHelpServiceMapper.class);
 	@Override
 	public List<FindHelpVO> findHelpSelectList() {
