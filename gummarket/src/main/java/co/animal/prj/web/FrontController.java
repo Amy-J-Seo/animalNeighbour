@@ -15,11 +15,15 @@ import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
+
 import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
+
+import co.animal.prj.offerhelp.command.OfferHelpMain;
+import co.animal.prj.offerhelp.command.OhDetail;
 
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesSelect;
@@ -54,11 +58,11 @@ public class FrontController extends HttpServlet {
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
 
+
 		
-//		//주윤 맵
-//		map.put("/fhtest.do", new FhTest());
-//		map.put("/findHelpMain.do", new FindHelpMain());
-//		map.put("/fhDetail.do", new FhDetail());
+		//제은 맵
+		map.put("/offerHelpMain.do", new OfferHelpMain());
+		map.put("/ohDetail.do", new OhDetail());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

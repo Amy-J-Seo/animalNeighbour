@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="co.animal.prj.offerhelp.service.OfferHelpServiceMapper">
+	namespace="co.animal.prj.offerhelp.service.OfferHelpMapper">
 	<!-- ServiceMapper interface 위치 -->
 	<select id="offerHelpSelectList"
 		resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM offerhelp
+		select o.*, m.mname 
+		from offerhelp o 
+		inner join member m 
+		on o.mid = m.mid
 	</select>
     <select id="offerHelpSelect" parameterType="string" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      select * from offerhelp where mid=#{mid}
+      select * from offerhelp where mid=#{mId}
     </select>
    
     <insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
@@ -19,11 +22,11 @@
     </insert>
    
     <delete id="offerHelpDelete" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      update offerhelp set ofhide=#{ofHide} where ohno = #{ohNO}
+      update offerhelp set ofhide=#{ofHide} where ohno = #{ohNo}
     </delete>
 	
 	 <update id="offerHelpUpdate" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNO}
+		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNo}
 	 </update>
 <!--  	<select id="" resultType="">
 
