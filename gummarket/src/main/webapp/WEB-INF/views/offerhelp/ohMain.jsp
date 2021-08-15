@@ -50,9 +50,10 @@
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<button type="button" class="btn btn-primary float-right">글 등록</button>
+								<button type="button" class="btn btn-warning float-right">글
+									등록</button>
 								<th>No.</th>
-								<th>글내용</th>
+								<th>글제목</th>
 								<th>작성자</th>
 							</tr>
 						</thead>
@@ -79,6 +80,21 @@
 
 			<!-- Core plugin JavaScript-->
 			<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+			<!--  Pagination -->
+			<div class="text-center">
+			<ul class="pagination">
+				<li><a href="#">&laquo;</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>
+			</div>
+			
+
 </body>
 
 </html>
