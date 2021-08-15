@@ -32,17 +32,18 @@
 		where a.sno = #{sNo}
 	</select>
 	
-	<!-- 상품 삭제 -->
+	<!-- 상품 삭제 : 진짜 삭제 하지 말고 hide y해서 숨기기~-->
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
-
+	
+	<!-- 상품등록 -->
+	<insert id="salesInsert" parameterType="co.animal.prj.sales.vo.SalesVO">
+		insert into sales values(sno.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sHit}, #{sLike}, #{sImg}, #{sPurchasedDate}, #{sUseDate}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice}, #{sStatus}, #{sHit})
+	</insert>
 
 	
 <!--  	
-	<insert id="" parameterType="">
-
-	</insert>
 	
 	<insert id="" parameterType="">
 

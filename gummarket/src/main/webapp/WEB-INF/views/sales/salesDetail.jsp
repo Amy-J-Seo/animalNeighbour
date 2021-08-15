@@ -7,14 +7,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<!-- like button css -->
+<style>
+	
+</style>
+
+
+
 <!-- 삭제버튼 누르면 alert -->
 <script>
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
-	    sNo.value= n;
-		submit();
+	   console.log(n);
 	   if(confirm("삭제되었습니다.")){
-	    location.href='deleteSales.do';
+	    frm.sNo.value= n;
+	    console.log(n);
+		frm.submit();
+	  
 	   }else{
 	    return false;
 	   }
@@ -26,6 +35,9 @@
 		frm.submit();
 		location.href='updateSales.do';
 	}
+	
+	//좋아요 버튼js
+	
 </script>
 
 <body>
@@ -66,6 +78,9 @@
 				</div>
 				</div>
 				<p></p>
+				<!-- 좋아요버튼 -->
+				
+				
 				<!-- 댓글조회 -->
 				<div class="card shadow mb-4">
 				<div class="card-header py-3">댓글</div>
@@ -93,9 +108,11 @@
 					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" />
 				<%-- </c:if> --%>
 			</div>
+		
+			
 		</div>
 		
-		<form id="frm" name="frm" method="post">
+		<form id="frm" name="frm" action="deleteSales.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		
