@@ -35,12 +35,13 @@
 			${list.cContents }<br>
 		</c:forEach>
 	</div>
-	<!-- 게시글 삭제 버튼 -->
-	<!-- 삭제는 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
-	<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel()" />
+	<!-- 게시글 삭제, 수정 버튼 -->
+	<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
+	<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭x제하기" onclick="confirmDel(${list[0].sNo})" />
+	<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales()" />
  </div>
- 	<form id="frm" name="frm" action="deleteSales.do" method="post">
-			<input type= "hidden" id="sNo" name="sNo">
-		</form>
+ 	<form id="frm" name="frm" method="post">
+		<input type= "hidden" id="sNo" name="sNo">
+	</form>
 </body>
 </html>

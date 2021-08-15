@@ -22,6 +22,7 @@ import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesSelect;
+import co.animal.prj.sales.command.salesListAll;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -43,6 +44,7 @@ public class FrontController extends HttpServlet {
 		map.put("/test.do", new Test());
 
 		//인영 맵
+		map.put("/salesListAll.do", new salesListAll());
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
 
