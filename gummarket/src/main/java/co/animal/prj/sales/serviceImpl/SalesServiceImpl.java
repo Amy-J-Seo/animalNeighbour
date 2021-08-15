@@ -20,7 +20,7 @@ public class SalesServiceImpl implements SalesService {
 	}
 
 	@Override
-	public SalesVO salesSelect(SalesVO vo) {
+	public List<SalesVO> salesSelect(SalesVO vo) {
 		// TODO Auto-generated method stub
 		return map.salesSelect(vo);
 	}
@@ -41,6 +41,12 @@ public class SalesServiceImpl implements SalesService {
 	public int salesInsert(SalesVO vo) {
 		// TODO Auto-generated method stub
 		return map.salesInsert(vo);
+	}
+
+	@Override
+	public List<SalesVO> salesListTOP10() {
+		// TODO top 10 인기상품 조회하기
+		return map.salesListTOP10();
 	}
 
 }

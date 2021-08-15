@@ -11,50 +11,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.animal.prj.command.Home;
 import co.animal.prj.common.Command;
-import co.animal.prj.login.command.IdCheckForm;
-import co.animal.prj.login.command.IdCheckPro;
-
-import co.animal.prj.login.command.Login;
-import co.animal.prj.login.command.LoginForm;
-import co.animal.prj.login.command.RegisterCheck;
-import co.animal.prj.member.command.RegisterForm;
-import co.animal.prj.member.command.Test;
-
-import co.animal.prj.sales.command.DeleteSales;
-import co.animal.prj.sales.command.SalesSelect;
+import co.animal.prj.findhelp.command.FhDetail;
+import co.animal.prj.findhelp.command.FhTest;
+import co.animal.prj.findhelp.command.FindHelpInsert;
+import co.animal.prj.findhelp.command.FindHelpMain;
+import co.animal.prj.findhelp.command.WriteFHForm;
 
 
-@WebServlet("*.do")
-public class FrontController extends HttpServlet {
+
+
+@WebServlet("*.doBB")
+public class FrontControllerBB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HashMap<String, Command> map = new HashMap<String, Command>();
 
-	public FrontController() {
+	public FrontControllerBB() {
 		super();
 
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		//
-		map.put("/home.do", new Home());//인기상품 조회
-		map.put("/loginForm.do", new LoginForm());
-		map.put("/login.do",new Login());
-		map.put("/registerForm.do", new RegisterForm());
-		map.put("/idCheckForm.do", new IdCheckForm());
-		map.put("/idCheckPro.do", new IdCheckPro());
-		map.put("/registerCheck.do", new RegisterCheck());
-		
-		
-		
-		
-		map.put("/test.do", new Test());
-
-		//인영 맵
-		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
-		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
-
+			
+		//주윤 맵
+		map.put("/findHelpMain.doBB", new FindHelpMain());
+		map.put("/fhtest.doBB", new FhTest());
+		map.put("/fhDetail.doBB", new FhDetail());
+		map.put("/writeFHForm.doBB", new WriteFHForm());
+		map.put("/findHelpInsert.doBB", new FindHelpInsert());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -70,7 +54,7 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.execute(request, response);
 
 		// making view resolve..
-		if (!viewPage.endsWith(".do")) { // home.do
+		if (!viewPage.endsWith(".doBB")) { // home.do
 			if (!viewPage.endsWith(".jsp")) { // use tiles
 				viewPage = viewPage + ".tiles"; // home/home
 			} else { // 타일즈 안태울거야
