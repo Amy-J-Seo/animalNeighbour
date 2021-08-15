@@ -23,6 +23,9 @@ import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
 
+import co.animal.prj.offerhelp.command.OfferHelpMain;
+import co.animal.prj.offerhelp.command.OhDetail;
+
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
@@ -66,6 +69,11 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
 
+
+		
+		//제은 맵
+		map.put("/offerHelpMain.do", new OfferHelpMain());
+		map.put("/ohDetail.do", new OhDetail());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
