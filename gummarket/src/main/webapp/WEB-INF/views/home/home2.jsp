@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 메인페이지 - 인기상품</title>
+
 </head>
 <body>
 	<section>
@@ -33,10 +34,58 @@
 		
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-        <!--  -->
-        
+        <!--인기메뉴 카드로 보여주기 c:foreach활용! -->
+        	<c:forEach var="list" items="${list }">
+		   		<div class="col mb-5">
+	                <div class="card h-100">
+	                    <!-- 인기상품 badge-->
+	                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">인기상품
+	                    </div>
+	                    <!-- 상품 썸네일-->
+	                    <img class="card-img-top" src="img/${list.sImg }" alt="" />
+	                    <!-- 상품 details-->
+	                    <div class="card-body p-4">
+	                        <div class="text-center">
+	                            <!-- 상품 타이틀-->
+	                            <h5 class="fw-bolder">${list.sTitle}</h5>
+	                            <!-- 상품 별점?-->
+	                            <div class="d-flex justify-content-center small text-warning mb-2">
+	                                <div class="bi-star-fill"></div>
+	                                <div class="bi-star-fill"></div>
+	                                <div class="bi-star-fill"></div>
+	                                <div class="bi-star-fill"></div>
+	                                <div class="bi-star-fill"></div>
+	                            </div>
+	                            <!-- 조회수-->
+	                            조회수 :${list.sHit }
+	                            카테고리: ${list.sCategory }
+	                            가격: ${list.sPrice }
+	                            할인 된 가격: ${list.sNetPrice }
+	                        </div>
+	                    </div>
+	                    <!-- Product actions-->
+	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo})">Read more</button></div>
+	                    </div>
+	                  </div>
+	            	</div>
+   				</c:forEach>
+   				<!-- 버튼 누르면 salesSelect.do로가서 상세보기 페이지로 넘어감. -->
+               	<form id="salesFrm" name="salesFrm" action="salesSelect.do" method="post">
+					<input type="hidden" id="sNo" name="sNo">
+				</form>
 		</div>
 	</div>
 	</section>
+	
+	<script>
+	function getSalesDetail(n) {
+		console.log(n);
+		salesFrm.sNo.value = n;
+		salesFrm.submit();
+	}
+</script>
+	
+	
 </body>
 </html>
