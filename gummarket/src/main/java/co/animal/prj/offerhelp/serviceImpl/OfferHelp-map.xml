@@ -10,7 +10,7 @@
 		SELECT * FROM offerhelp
 	</select>
     <select id="offerHelpSelect" parameterType="string" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      select * from offerhelp where mid=#{mid}
+      select * from offerhelp where mid=#{mId}
     </select>
    
     <insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
@@ -19,11 +19,11 @@
     </insert>
    
     <delete id="offerHelpDelete" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      update offerhelp set ofhide=#{ofHide} where ohno = #{ohNO}
+      update offerhelp set ofhide=#{ofHide} where ohno = #{ohNo}
     </delete>
 	
 	 <update id="offerHelpUpdate" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNO}
+		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNo}
 	 </update>
 <!--  	<select id="" resultType="">
 
