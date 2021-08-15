@@ -50,7 +50,7 @@
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<button type="button" class="btn float-right">글 등록</button>
+								<button type="button" class="btn btn-primary float-right">글 등록</button>
 								<th>No.</th>
 								<th>글내용</th>
 								<th>작성자</th>
@@ -61,7 +61,7 @@
 								<tr>
 									<td>${help.ohNo }</td>
 									<td>${help.ohTitle }</td>
-									<td>${help.mId }</td>
+									<td>${help.mName }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
