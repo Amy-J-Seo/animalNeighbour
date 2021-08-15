@@ -49,16 +49,16 @@
                                          <div class="col-lg-12 col-sm-6 mb-3 mb-sm-0">
                                            <div class="form-group">
 										      <label for="sel1">상품 카테고리:</label>
-										      <select class="form-control" id="sel1" name="sellist1">
-										        <option>의류/하네스</option>
-										        <option>간식/사료</option>
-										        <option>그 외 용품</option>
-										        <option>나눔</option>
+										      <select class="form-control" id="scategory" name="scategory">
+										        <option value="clothing">의류/하네스</option>
+										        <option value="food">간식/사료</option>
+										        <option value="etc">그 외 용품</option>
+										        <option value="free">나눔</option>
 										      </select>
                                          </div>
 										</div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                             <input type="text" class="form-control form-control-user"
+                                             <input type="date" class="form-control form-control-user"
                                                  id="spurchasedate" name="spurchasedate" placeholder="언제 구매하셨나요?  YYYY/MM/DD">
                                          </div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">

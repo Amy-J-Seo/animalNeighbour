@@ -31,9 +31,9 @@
 	
 	
 	function updateSales(n) {
-		frm.sNo.value=n;
-		frm.submit();
-		location.href='updateSales.do';
+		frm1.sNo.value=n;
+		frm1.submit();
+		//location.href='updateSales.do';
 	}
 	
 	//좋아요 버튼js
@@ -62,7 +62,7 @@
 					<span>조회 수 : ${list[0].sHit }</span> |
 					<span>찜 수 : ${list[0].sLike }</span>
 					</h6>
-				</p>
+				<p></p>
 				<br />
 				<p></p>
 				<div class="card shadow mb-4">
@@ -113,6 +113,9 @@
 		</div>
 		
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
+			<input type= "hidden" id="sNo" name="sNo">
+		</form>
+		<form id="frm1" name="frm1" action="updateSales.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		

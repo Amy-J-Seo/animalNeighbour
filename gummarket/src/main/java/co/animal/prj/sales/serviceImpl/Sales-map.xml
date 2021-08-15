@@ -39,7 +39,8 @@
 	
 	<!-- 상품등록 -->
 	<insert id="salesInsert" parameterType="co.animal.prj.sales.vo.SalesVO">
-		insert into sales values(sno.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sHit}, #{sLike}, #{sImg}, #{sPurchasedDate}, #{sUseDate}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice}, #{sStatus}, #{sHit})
+		insert into sales(sno, mid, scategory, stitle, spurchaseddate,susedays,sreason,scondition,sprice,snetprice) 
+		values(s_seq.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sPurchasedDate}, #{sUseDays}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice})
 	</insert>
 
 	

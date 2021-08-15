@@ -92,7 +92,7 @@
   color: #fff;
   background: rgb(252, 221, 33);
   line-height: 46px;
-  border-radius: 0.35rem" href="salesInsert.do">
+  border-radius: 0.35rem" href="salesInsertForm.do">
         <i class="fas fa-edit"></i>
     </a>
     <!-- Scroll to Top Button-->

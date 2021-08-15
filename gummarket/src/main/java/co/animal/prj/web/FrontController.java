@@ -23,6 +23,7 @@ import co.animal.prj.member.command.Test;
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesSelect;
 import co.animal.prj.sales.command.salesInsert;
+import co.animal.prj.sales.command.salesInsertForm;
 import co.animal.prj.sales.command.salesListAll;
 import co.animal.prj.sales.command.updateSales;
 
@@ -50,6 +51,7 @@ public class FrontController extends HttpServlet {
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
 		map.put("/updateSales.do", new updateSales());//상품 글 업데이트
+		map.put("/salesInsertForm.do", new salesInsertForm());//글 입력 폼
 		map.put("/salesInsert.do", new salesInsert());//글 입력
 
 		
