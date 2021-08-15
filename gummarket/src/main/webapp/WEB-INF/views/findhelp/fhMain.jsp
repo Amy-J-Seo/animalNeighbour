@@ -71,7 +71,7 @@ function getDetails(num) {
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.fhNo})">Read more</button></div>
 	                    </div>
-	                    <form id="getFhNo" name="getFhNo" action="fhDetail.do" method="post">
+	                    <form id="getFhNo" name="getFhNo" action="fhDetail.doBB" method="post">
 	                    	<input type="hidden" id="fhNo" name="fhNo">
 	                    </form>
 	                </div>
@@ -100,7 +100,7 @@ function getDetails(num) {
   color: #fff;
   background: rgb(252, 221, 33);
   line-height: 46px;
-  border-radius: 0.35rem" href="#">
+  border-radius: 0.35rem" href="writeFHForm.doBB">
         <i class="fas fa-edit"></i>
     </a>
     <!-- Scroll to Top Button-->

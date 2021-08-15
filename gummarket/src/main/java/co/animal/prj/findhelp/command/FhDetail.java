@@ -18,7 +18,7 @@ public class FhDetail implements Command {
 		String selectedNo =request.getParameter("fhNo");
 		int fhNo=Integer.parseInt(selectedNo);
 		vo.setFhNo(fhNo);
-		System.out.println(vo.getFhNo());
+		
 		request.setAttribute("item", dao.findHelpSelect(vo));
 		
 		return "findhelp/fhItemDetail";

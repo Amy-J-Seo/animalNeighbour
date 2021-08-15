@@ -13,10 +13,16 @@
 		select nickname, role, mId from member where mId=#{mId} and password=#{password}
 		
 	</select>
-<!--	
-	<insert id="" parameterType="">
-
+	
+	<select id="checkId" resultType="int">
+	select count(mId) from member where mId=#{mId}
+	</select>
+	
+	<insert id="memberInsert" parameterType="co.animal.prj.member.vo.MemberVO">
+	INSERT INTO member(mId,password,mName,nickname,phone,email,petInfo,address)
+	VALUES(#{mId},#{password},#{mName},#{nickname},#{phone},#{email},#{petInfo},#{address})
 	</insert>
+<!--	
 	<delete id="" parameterType="">
 
 	</delete>
