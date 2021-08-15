@@ -1,6 +1,8 @@
 package co.animal.prj.findhelp.vo;
 
-public class FindHelpVO {
+import co.animal.prj.member.vo.MemberVO;
+
+public class FindHelpVO extends MemberVO{
 	private int fhNo;
 	private String mId;
 	private String fhCategory;
