@@ -7,6 +7,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<!-- 삭제버튼 누르면 alert -->
+<script>
+	function confirmDel(n) {
+	   alert("글을 삭제할까요?");
+	    sNo.value= n;
+		submit();
+	   if(confirm("삭제되었습니다.")){
+	    location.href='deleteSales.do';
+	   }else{
+	    return false;
+	   }
+	  }
+	
+	
+	function updateSales(n) {
+		frm.sNo.value=n;
+		frm.submit();
+		location.href='updateSales.do';
+	}
+</script>
+
 <body>
 
 <!-- Begin Page Content -->
@@ -63,9 +84,20 @@
 				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='home.do'">To Main</button> &nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='salesListAll.do'">To List</button>&nbsp;&nbsp;&nbsp;
 			</div>
+			<br>
+			<div align="center">
+				<!-- 게시글 삭제, 수정 버튼 -->
+				<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
+				<%-- <c:if test="${list[0].mId eq '로그인된mid' }"> --%>
+					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
+					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" />
+				<%-- </c:if> --%>
+			</div>
 		</div>
 		
-		
+		<form id="frm" name="frm" method="post">
+			<input type= "hidden" id="sNo" name="sNo">
+		</form>
 		
 	</div>
 	<!-- /.container-fluid -->
