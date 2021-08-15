@@ -9,5 +9,6 @@
 <body>
 ${list }
 <h1>a<a href="findHelpMain.do">도움찾아요 메인</a></h1>
+<h1>a<a href="offerHelpMain.do">도움찾아요 메인</a></h1>
 </body>
 </html>
