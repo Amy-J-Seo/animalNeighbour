@@ -1,6 +1,8 @@
 package co.animal.prj.offerhelp.vo;
 
-public class OfferHelpVO {
+import co.animal.prj.member.vo.MemberVO;
+
+public class OfferHelpVO extends MemberVO{
 	private int ohNo;
 	private String mId;
 	private String ohCategory;
