@@ -7,7 +7,7 @@
 <script type="text/javascript">
 	<!-- 필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수 -->
 		function checkValue(){
-			if(!document.frm.id.value){
+			if(!document.frm.mId.value){
 				alert("아이디를 입력하세요.");
 				return false;
 			}
@@ -24,13 +24,13 @@
 		}
 		
 		function winopen(){
-			window.open("idCheckForm.lo", "아이디 중복 체크", "width=400, height=350");
+			window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=350");
 		}
 		
 		function winopen1(){
 			frm = document.getElementById('frm');
 			window.open("", "a", "width=600, height=600");
-			frm.action="signUpCheck.lo";
+			frm.action="registerCheck.do";
 			frm.method="post";
 			frm.submit();
 		}
@@ -41,24 +41,67 @@
 <body>
 
 	<div align="center">
-		<form class="user" id="frm" name="frm" action="signUpCheck.lo"
-			target="a" method="post" onsubmit="return checkValue()">
-			<input type="text" id="id" name="id" placeholder="아이디"
-				required="required">
-			<button onclick="winopen()">중복체크</button><br>
-			<input type="password" id="password" name="password"placeholder="비밀번호" required="required"> 
-			<br>
-			<input type="password" id="passwordok" name="passwordok" placeholder="비밀번호 확인">
-			<br>
-			 <input type="text" id="name" name="name" placeholder="이름">
-			  <br>
-			  <input type="number" id="age"name="age" placeholder="나이"><br> 성별: &nbsp;&nbsp; <label>
-				<br>
-				<input type="radio" id="gender" name="gender" value="남자">남자</label>&nbsp;&nbsp;&nbsp;
-			<label>
-			<input type="radio" id="gender" name="gender"
-				value="여자">여자</label>
-				<br>
+		<div><h2>회원가입</h2></div>
+		<form id="frm" name="frm" action="signUpCheck.do" target="a"
+			method="post" onsubmit="return checkValue()">
+			<table>
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" id="mId" name="mId" placeholder="아이디"
+						required="required"></td>
+
+					<td>
+						<button onclick="winopen()">중복체크</button>
+					</td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" id="password" name="password"
+						placeholder="비밀번호" required="required"></td>
+					<td><input type="password" id="passwordok" name="passwordok"
+						placeholder="비밀번호 확인"></td>
+				</tr>
+				<tr>
+					<th>이 름</th>
+					<td><input type="text" id="mName" name="mName" placeholder="이름"
+						required="required"></td>
+				</tr>
+				<tr>
+					<th>닉 네 임</th>
+					<td><input type="text" id="nickname" name="nickname"
+						placeholder="닉네임" required="required"></td>
+				</tr>
+				<tr>
+					<th>휴 대 번 호</th>
+					<td><input type="text" id="phone" name="phone"
+						placeholder="휴대번호" required="required"></td>
+				</tr>
+				<tr>
+					<th>이 메 일</th>
+					<td><input type="email" id="email" name="email"
+						placeholder="이메일" required="required"></td>
+				</tr>
+				<tr>
+					<th>멍냥이 정보</th>
+					<td><input type="text" id="petInfo" name="petInfo"></td>
+				</tr>
+				<tr>
+					<th>주 소</th>
+					<td><input type="text" id="address" name="address"></td>
+				</tr>
+			</table>
+
+			<label> <input type="checkbox" id="admit" name="admit">이용약관동의(필수)
+			</label><br>
+			 <label> <input type="checkbox" id="admit"
+				name="admit">이용약관동의(필수)
+			</label><br>
+			 <label> <input type="checkbox" id="admit"
+				name="admit">이용약관동의(필수)
+			</label><br>
+			 <label> <input type="checkbox" id="admit"
+				name="admit">이용약관동의(필수)
+			</label> <br>
 			<button type="submit" onclick="winopen1()">회원 가입</button>
 		</form>
 	</div>
