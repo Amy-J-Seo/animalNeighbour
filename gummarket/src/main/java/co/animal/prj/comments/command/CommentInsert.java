@@ -32,7 +32,7 @@ public class CommentInsert implements Command {
 		vo.setCmId(String.valueOf(session.getAttribute("mId")));
 		vo.setcMainNum(Integer.valueOf(request.getParameter("cMainNum")));
 		vo.setcContents(request.getParameter("cContent"));
-		
+		vo.setcNo(Integer.valueOf(request.getParameter("cNo")));
 		comDao.commentsInsert(vo);
 		
 		request.setAttribute("sNo", vo.getsNo());

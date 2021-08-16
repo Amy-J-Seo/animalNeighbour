@@ -66,6 +66,7 @@
 				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
 				$(tr).append(td)
 			}
+		
 			let delBtn = $('<td><button type="button">삭제</button></td>')
 			let updBtn =$('<td><button type="button">수정</button></td>') //수정버튼 추가
 			
@@ -76,8 +77,7 @@
 			$(tr).append(updBtn);
 
 			$(table).append(tr);
-
-
+			
 		}
 		$('#show').append(table);
 	}
@@ -107,7 +107,7 @@
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 		console.log('aaa')
 		console.log(data)
-		let tr = $('<tr />');
+		let tr = $('<tr />').attr('id',data.cNo) ;
 		for (let field of fields) {
 			let td = $('<td />').text(data[field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
 			$(tr).append(td)
@@ -116,8 +116,9 @@
 		let delBtn = $('<td><button type="button">삭제</button></td>')
 		let updBtn =$('<td><button type="button">수정</button></td>')
 			delBtn.click(kill);
-			updBtn.click(update);
+			updBtn.click(updateTest);
 			$(tr).append(delBtn);
+			$(tr).append(updBtn);
 		$('table').append(tr);
 	}
 	
@@ -134,14 +135,42 @@
 				e.target.parentNode.parentNode.remove();
 			},
 			error: function () {
-				alert("에러발생!!")
+				alert("삭제에서 에러발생!!")
 			}
 		})
 	}
 	
+	//수정버튼 누르면 폼 가져오기
+	function updateForm(){
+		var cNo = data.cNo;
+	}
+	
+	//업데이트 테스트!
+	function updateTest(){
+		let textBox= $('<textarea>')
+		$('#showComUpdate').append(textBox);
+	}
+	
 	//댓글 수정하기
 	function update(){
-			
+		
+		/* $("#your-comment").removeAttr("readonly");
+		$(this).attr("id","review-update-submit");
+		$(this).attr("value","수정하기"); */
+		
+		$.ajax({
+			url: 'UpdateCommentServ',
+			data: {
+				cNo: $(this).parent().attr('id')
+			},
+			success: function () {
+				//e.target.parentNode.parentNode.hide();
+				$(this).parent().parent().hide();
+			},
+			error: function () {
+				alert("수정에서 에러발생!!")
+			}
+		})
 	}
 	
 </script>
@@ -209,7 +238,7 @@
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
-					        <i class="fa fa-comment fa"></i> REPLY
+					     <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
 						<form id="reply" action="CommentInsertServ" method="post">
@@ -226,6 +255,10 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- 댓글 수정하면 보이게 (테스트)-->
+			<div id="showComUpdate"></div>
+			
 			
 			
 			<br>

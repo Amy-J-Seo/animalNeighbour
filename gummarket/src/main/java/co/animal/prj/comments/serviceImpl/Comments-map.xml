@@ -13,11 +13,18 @@
 	
 	<insert id="commentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		insert into comments values(c_seq.nextval,#{cmId},'sales',#{cMainNum},#{cContents})
+		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
+			SELECT c_seq.currval from dual
+		</selectKey>
 	</insert>
 	
 	<delete id="commentsDelete" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		delete from comments where cno=#{cNo}
 	</delete>
+	
+	<update id="commentsUpdate" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		update comments set ccontents=#{cContents} where cno=#{cNo}
+	</update>
 	
 <!--  	
 	<select id="commentsInsertSelect" resultType="">

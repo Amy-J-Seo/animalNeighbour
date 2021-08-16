@@ -43,7 +43,7 @@ public class SelectCommentServ extends HttpServlet {
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);
-		System.out.println(list.get(0).getcContents());
+		System.out.println(list.get(0).getcNo());
 		
 		//request.setAttribute("list", list);
 		

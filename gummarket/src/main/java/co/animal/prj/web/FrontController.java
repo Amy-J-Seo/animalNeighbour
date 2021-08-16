@@ -13,20 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
-import co.animal.prj.comments.command.CommentInsertTest;
 import co.animal.prj.common.Command;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
-
 import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
-
 import co.animal.prj.offerhelp.command.OfferHelpMain;
 import co.animal.prj.offerhelp.command.OhDetail;
-
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
@@ -71,7 +67,6 @@ public class FrontController extends HttpServlet {
 		map.put("/salesInsert.do", new SalesInsert());//글 입력
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
-		map.put("/commentInsertTest.do", new CommentInsertTest());
 
 		
 		//제은 맵
