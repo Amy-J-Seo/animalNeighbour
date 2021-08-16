@@ -51,7 +51,7 @@
 	<!-- 상품 정보 수정 -->
 	<update id="salesUpdate" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales 
-		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchasedDate}, sreason = #{sReason}, scondition =#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
+		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchasedDate}, sreason=#{sReason}, scondition=#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
 		where sno=#{sNo}
 	</update>
 

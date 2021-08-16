@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
+import co.animal.prj.comments.command.CommentInsertTest;
 import co.animal.prj.common.Command;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
@@ -70,7 +71,7 @@ public class FrontController extends HttpServlet {
 		map.put("/salesInsert.do", new SalesInsert());//글 입력
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
-
+		map.put("/commentInsertTest.do", new CommentInsertTest());
 
 		
 		//제은 맵

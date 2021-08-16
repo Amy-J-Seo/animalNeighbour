@@ -15,14 +15,14 @@
 		insert into comments values(c_seq.nextval,#{cmId},'sales',#{cMainNum},#{cContents})
 	</insert>
 	
+	<delete id="commentsDelete" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		delete from comments where cno=#{cNo}
+	</delete>
 	
 <!--  	
 	<select id="commentsInsertSelect" resultType="">
 
 	</select>
-	<delete id="" parameterType="">
-
-	</delete>
 	<insert id="" parameterType="">
 
 	</insert>-->
