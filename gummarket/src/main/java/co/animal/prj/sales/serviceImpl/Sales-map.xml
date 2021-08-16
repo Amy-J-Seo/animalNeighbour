@@ -26,7 +26,7 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select a.*, b. *  
+		 select a.*, b.*
 		from sales a left outer join comments b 
 		on (a.sno = b.cmainnum) and (b.ctype='sales')
 		where a.sno = #{sNo}

@@ -89,7 +89,7 @@
 				<div class="card-body">
 				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
 					<c:forEach var="list" items="${list }">
-						${list.mId }:
+						${list.cmId }:
 						${list.cContents }<br>
 					</c:forEach>
 				</div>

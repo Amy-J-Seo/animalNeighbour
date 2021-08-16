@@ -8,6 +8,7 @@ import co.animal.prj.comments.service.CommentsService;
 import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
 import co.animal.prj.comments.vo.CommentsVO;
 import co.animal.prj.common.Command;
+import co.animal.prj.sales.vo.SalesVO;
 
 public class CommentInsert implements Command {
 
@@ -16,17 +17,19 @@ public class CommentInsert implements Command {
 		// TODO 댓글 등록하기
 		
 		CommentsService comDao = new CommentsServiceImpl();
-		CommentsVO vo = new CommentsVO();
+		SalesVO vo = new SalesVO();
 		
 		HttpSession session = request.getSession();
 		
-		vo.setmId(String.valueOf( session.getAttribute("mId")));
+		vo.setsNo(Integer.valueOf(request.getParameter("cMainNum")));
+		vo.setCmId(String.valueOf(session.getAttribute("mId")));
 		vo.setcMainNum(Integer.valueOf(request.getParameter("cMainNum")));
 		vo.setcContents(request.getParameter("cContent"));
 		
 		comDao.commentsInsert(vo);
-		System.out.println(vo.getcContents()+ vo.getcMainNum() +vo.getmId()+" commentinsert.java");
 		
+		request.setAttribute("sNo", vo.getsNo());
+				
 		return "salesSelect.do";
 	}
 
