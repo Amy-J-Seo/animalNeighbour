@@ -8,7 +8,7 @@
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
 		
-		select * from findhelp
+		select * from findhelp where fhhide='n'
 	</select>
 	
 	<select id="findHelpSelect"  parameterType="co.animal.prj.findhelp.vo.FindHelpVO" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
@@ -29,10 +29,11 @@
 	</insert>
 	
 	<delete id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
-	update findhelp set fhhide=#{fhHide} where fhno = #{fhNO}
+	update findhelp set fhhide=#{fhHide} where fhno=#{fhNo}
 	</delete>
 	
+	
 	<update id="findHelpUpdate" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
-	update findhelp set fhNeed=#{fhNeed;}, fhCharacter=#{fhCharacter},fhHow=#{fhHow} where fhno = #{fhNO}
+	update findhelp set fhCategory=#{fhCategory}, fhTitle=#{fhTitle}, fhNeed=#{fhNeed}, fhCharacter=#{fhCharacter},fhHow=#{fhHow} where fhno = #{fhNo}
 	</update>
 </mapper>
