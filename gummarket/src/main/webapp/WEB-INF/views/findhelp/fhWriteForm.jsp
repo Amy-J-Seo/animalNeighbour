@@ -8,7 +8,7 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
-   <title>상품 등록하기</title>
+   <title>도움 찾기 등록 양식</title>
 
 <!-- Custom fonts for this template from register.html-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,9 @@
  <body>
 
      <div class="container">
-
+	<div class="continer my-auto pb-3">
+			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 찾아요!</p>
+	</div>
          <div class="card o-hidden border-0 shadow-lg my-5">
              <div class="card-body p-0">
                 

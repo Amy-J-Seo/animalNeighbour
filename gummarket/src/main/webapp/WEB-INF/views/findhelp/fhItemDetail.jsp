@@ -10,6 +10,44 @@
 
 
 <script type="text/javascript">
+
+$(document).ready(function () {
+	//set up function on submit the form for report
+    $("#itemReportBtn").click(function () {
+   
+    	 //set up a function for onSubmit
+        $('#fhReport').on('submit', function (e) {
+            e.preventDefault();
+            
+            //let s = $('#fhReport').serialize();
+            
+            //processing form submit;
+            $.ajax({
+                url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
+                method: 'post',
+                //data: $('#fhReport').serialize(),
+                data: {category: $('#itemCategory').text(),
+                		rWhy: $('#fhReport input[name="reason"]').val(),
+                		mainNo: $('#fhReport #fhNo').val()
+                },
+                dataType: 'json',
+                success: function(response){
+                	alert("신고가 접수 되었습니다. 감사합니다 :) ");
+            		$('#closeRModal').click();
+                },
+                error: function (reject) {
+                    console.log(reject);
+                }
+
+            });
+        });
+        
+    });
+    
+});
+
+
+
 function fhItemUpdate(n) {
 	fhUpdate.fhNo.value=n;
 	console.log(fhUpdate.fhNo.value);
@@ -23,14 +61,16 @@ function fhItemDelete(n) {
 		  fhDelete.fhNo.value=n;
 		  fhDelete.submit();
 	 	 }
-	}	 
-
+	}
 </script>
 
 </head>
 <body id="page-top">
 <!-- Begin Page Content -->
 	<div class="container-fluid">
+	<div class="continer my-auto pb-3">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 찾아요!</p>
+	</div>
 		<!-- DataTales Example -->
 		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
@@ -84,7 +124,7 @@ function fhItemDelete(n) {
 				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
 				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="fas fa-phone-alt"></i> 연락하기</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-					data-target="#logoutModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 				
 				</div>
 				
@@ -115,25 +155,43 @@ function fhItemDelete(n) {
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- report moral -->
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 이 게시글을 신고하시겠습니까?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                	<form id="fhReport" name="fhReport" action="FhItemReportServlet" method="post">
+                <div class="modal-body">
+						  <input type="radio" id="bannedItem" name="reason" value="banItem">
+						  <label for="bannedItem">판매금지 품목이에요</label><br>
+						  <input type="radio" id="notSecondHand" name="reason" value="notForSecondhand">
+						  <label for="notSecondHand">중고거래 게시글이 아니에요</label><br>
+						  <input type="radio" id="repeated" name="reason" value="repeated">
+						  <label for="repeated">중복 게시글이에요</label><br>
+						  <input type="radio" id="profSeller" name="reason" value="profSeller">
+						  <label for="profSeller">전문 판매업자 같아요</label><br>
+						  <input type="radio" id="scam" name="reason" value="scam">
+						  <label for="scam">사기 글이에요</label><br>
+						  <input type="radio" id="notSecondHand" name="reason" value="notForSecondhand">
+						  <label for="notSecondHand">기타 이유</label><br>
+						  <input type="hidden" id="fhNo" name="fhNo" value="${item.fhNo }">
                 </div>
+                
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
+                    <button class="btn btn-danger" type="submit" id="itemReportBtn"><i class="far fa-angry"></i> 신고</button>
+                </div>
+					</form>
             </div>
         </div>
     </div>
+	<!-- End of report modal -->
 	
 	<!-- fhItem 메인 글 수정, 삭제 폼 -->
 		<form id="fhUpdate" name="fhUpdate" action="fhItemUpdateForm.doBB" method="post">

@@ -45,6 +45,7 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/fhItemUpdate.doBB", new FhItemUpdate());
 		map.put("/fhItemUpdateForm.doBB", new FhItemUpdateForm());
 		map.put("/fhItemDelete.doBB", new FhItemDelete());
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

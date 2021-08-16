@@ -28,13 +28,14 @@
 		<mapper resource="co/animal/prj/findhelp/serviceImpl/FindHelp-map.xml" />
 
 		<mapper resource="co/animal/prj/offerhelp/serviceImpl/OfferHelp-map.xml" />
-
+		<mapper resource="co/animal/prj/report/serviceImpl/Report-map.xml" />
+		
 <!-- 		<mapper resource="co/animal/prj/board/serviceImpl/Board-map.xml" />
 		<mapper resource="co/animal/prj/image/serviceImpl/Image-map.xml" />
 		<mapper resource="co/animal/prj/csc/serviceImpl/Csc-map.xml" />
 		<mapper resource="co/animal/prj/lost/serviceImpl/Lost-map.xml" />
 		<mapper resource="co/animal/prj/payment/serviceImpl/Payment-map.xml" />
-		<mapper resource="co/animal/prj/report/serviceImpl/Report-map.xml" />
+		
  -->		 
 		
 	</mappers>
