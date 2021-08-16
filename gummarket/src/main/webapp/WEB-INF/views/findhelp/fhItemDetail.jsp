@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>도움찾아요 상세보기</title>
 
-
-
 <script type="text/javascript">
 
 $(document).ready(function () {
@@ -56,6 +54,9 @@ $(document).ready(function () {
 	            data: {mainNo: $('#likeFrm #mainNo').val()},
 	            success: function(response){
 	            	alert("게시글 좋아요 눌렀어요 :) ");
+    				$('#likeBtn').css("background-color", "RGB(146, 168, 209)");
+    				$('#likeText').html(" Liked It!");
+    				$('#likeBTNicon').css("color", "#F7CAC9");
 	            	let a = parseInt($('#likeNum').text())+1;
 	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
 	            	
@@ -121,6 +122,7 @@ function fhItemDelete(n) {
 				
 				<div class="card-header py-3">${item.fhCategory } : ${item.fhTitle }
 					<c:if test="${item.fhLike > 0 }">
+					
 						<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}</span>
 					</c:if>
 				</div>
@@ -141,11 +143,15 @@ function fhItemDelete(n) {
 				<div class="pb-3 mx-auto"  style="align-items: center;">
 				
 				<!-- To do style again -->
+				
 				<!-- Like btn form -->
 				<form id="likeFrm" name="likeFrm" action="UpdateLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${item.fhNo }">
-				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
-				<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="fas fa-phone-alt"></i> 연락하기</button>
+					
+				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
+				<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+				<i class="fas fa-phone-alt"></i> 연락하기</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 				</form>	
@@ -229,6 +235,7 @@ function fhItemDelete(n) {
         </div>
     </div>
 	<!-- End of report modal -->
+	
 	
 	
 </body>
