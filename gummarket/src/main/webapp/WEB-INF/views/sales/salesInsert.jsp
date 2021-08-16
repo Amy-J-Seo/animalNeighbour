@@ -59,7 +59,7 @@
 										</div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="date" class="form-control form-control-user"
-                                                 id="spurchasedate" name="spurchasedate" placeholder="언제 구매하셨나요?  YYYY/MM/DD">
+                                                 id="spurchasedate" name="spurchasedate">
                                          </div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="text" class="form-control form-control-user"

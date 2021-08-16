@@ -31,6 +31,7 @@ import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
 import co.animal.prj.sales.command.SalesListAll;
 import co.animal.prj.sales.command.SalesSelect;
+import co.animal.prj.sales.command.SalesUpdate;
 import co.animal.prj.sales.command.UpdateSales;
 
 
@@ -63,7 +64,8 @@ public class FrontController extends HttpServlet {
 		map.put("/salesListAll.do", new SalesListAll()); //전체 상품 조회
 		map.put("/salesSelect.do", new SalesSelect());//상품 단건 조회
 		map.put("/deleteSales.do", new DeleteSales());//상품 글 삭제
-		map.put("/updateSales.do", new UpdateSales());//상품 글 업데이트
+		map.put("/updateSalesForm.do", new UpdateSales());//상품 글 업데이트 폼으로
+		map.put("/salesUpdate.do", new SalesUpdate());
 		map.put("/salesInsertForm.do", new SalesInsertForm());//글 입력 폼
 		map.put("/salesInsert.do", new SalesInsert());//글 입력
 		

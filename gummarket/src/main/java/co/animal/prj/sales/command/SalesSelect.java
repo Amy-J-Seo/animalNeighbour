@@ -17,11 +17,11 @@ public class SalesSelect implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 상품 디테일페이지 + 안에 댓글도 가져오기.
 		SalesService salesDao = new SalesServiceImpl();
-		//CommentsService comDao = new CommentsServiceImpl();
+		
 		SalesVO vo = new SalesVO();
-		System.out.println(request.getParameter("sNo"));
+		//System.out.println(request.getParameter("sNo"));
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		System.out.println(vo.getsNo() + "salesSelect.java");
+		//System.out.println(vo.getsNo() + "salesSelect.java");
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);

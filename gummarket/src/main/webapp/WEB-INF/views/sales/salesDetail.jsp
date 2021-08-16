@@ -36,7 +36,7 @@
 		frm1.submit();
 		//location.href='updateSales.do';
 	}
-	
+
 	
 	//좋아요 버튼js
 	
@@ -50,8 +50,14 @@
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >판매상품 상세페이지</h3>
-				
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
+				 <%-- <c:if test="${session.mId == item.mId}">  --%>
+				 <%-- <input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
+					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" /> --%>
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+				 <%-- </c:if> --%>
+				 </h3>	
 			</div>
 			<div class="card-body">
 				<!-- 여기에 이미지도 넣기 -->
@@ -127,8 +133,8 @@
 				<!-- 게시글 삭제, 수정 버튼 -->
 				<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
 				<%-- <c:if test="${list[0].mId eq '로그인된mid' }"> --%>
-					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
-					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" />
+					<%-- <input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
+					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" /> --%>
 				<%-- </c:if> --%>
 			</div>
 		
@@ -138,7 +144,7 @@
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
-		<form id="frm1" name="frm1" action="updateSales.do" method="post">
+		<form id="frm1" name="frm1" action="updateSalesForm.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		

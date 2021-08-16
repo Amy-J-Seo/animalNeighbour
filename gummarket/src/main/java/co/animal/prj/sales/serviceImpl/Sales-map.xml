@@ -32,6 +32,11 @@
 		where a.sno = #{sNo}
 	</select>
 	
+	<!-- 수정위한 개별상품 조회 (댓글 없이) -->
+	<select id="salesOne" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where sno=#{sNo}
+	</select>
+	
 	<!-- 상품 삭제 : 진짜 삭제 하지 말고 hide y해서 숨기기~-->
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales set shide ='y' where sno=#{sNo}
@@ -44,9 +49,9 @@
 	</insert>
 	
 	<!-- 상품 정보 수정 -->
-	<update id="">
+	<update id="salesUpdate" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales 
-		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchaseDate}, sreason = #{sReason}, scondition =#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
+		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchasedDate}, sreason = #{sReason}, scondition =#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
 		where sno=#{sNo}
 	</update>
 
