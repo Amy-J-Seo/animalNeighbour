@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhDetail;
+import co.animal.prj.findhelp.command.FhItemDelete;
+import co.animal.prj.findhelp.command.FhItemUpdate;
+import co.animal.prj.findhelp.command.FhItemUpdateForm;
 import co.animal.prj.findhelp.command.FhTest;
 import co.animal.prj.findhelp.command.FindHelpInsert;
 import co.animal.prj.findhelp.command.FindHelpMain;
@@ -39,6 +42,9 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/fhDetail.doBB", new FhDetail());
 		map.put("/writeFHForm.doBB", new WriteFHForm());
 		map.put("/findHelpInsert.doBB", new FindHelpInsert());
+		map.put("/fhItemUpdate.doBB", new FhItemUpdate());
+		map.put("/fhItemUpdateForm.doBB", new FhItemUpdateForm());
+		map.put("/fhItemDelete.doBB", new FhItemDelete());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -40,8 +40,10 @@
                              <p></p>
                              <br>
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post">
+                             <form class="user" id="frm" name="frm" action="fhItemUpdate.doBB" method="post">
+                             <input type="hidden" id="fhNo" name="fhNo" value="${itemToUpdate.fhNo}">
                              
+                             <!-- 테스트벨류 -->
                              <input type="hidden" id="mId" name="mId" value="bb123">
                              <!-- 나중에 세션정보 가져와서 집어넣기!  -->
                            <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
@@ -64,7 +66,7 @@
                              <hr>
                                  <div class="form-group">
                                      <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="fhTitle" name="fhTitle" placeholder="제목을 입력해 주세요" required>
+                                     id="fhTitle" name="fhTitle" value="${itemToUpdate.fhTitle }" required >
                                  </div>
                                  
                                 
@@ -72,37 +74,37 @@
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                      <span><i class="fas fa-paw"></i></span><input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhAnimal" name="fhAnimal" placeholder="정보: 강아지/고양이/토끼/등...">
+                                     id="fhAnimal" name="fhAnimal" value="${itemToUpdate.fhAnimal }" readonly>
                                  </div>
                                  
                                  <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                     <span><i class="fas fa-weight"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhSize" name="fhSize" placeholder="체급: 대형/중형/소형/마이크로...">
+                                     id="fhSize" name="fhSize" value="${itemToUpdate.fhSize }" readonly>
                                  </div>
                               </div>
                                      <hr>
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                     <span><i class="fas fa-baby-carriage"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhAge" name="fhAge" placeholder="나이는 몇 살인가요? 개월 수로 입력해 주세요.">
+                                     id="fhAge" name="fhAge" value="${itemToUpdate.fhAge }" readonly>
                                  </div>
                                  
                                  <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                 <span><i class="fas fa-hand-holding-heart"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhNeed" name="fhNeed" placeholder="구체적으로 어떤 도움인가요? 예) 산책 30-60분">
+                                     id="fhNeed" name="fhNeed" placeholder="${itemToUpdate.fhNeed }">
                                  </div>
                               </div>
                                 <hr>
                                    <div class="form-group">
                                      <span><i class="far fa-address-card"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="fhCharacter" name="fhCharacter" placeholder="반려동물의 성격, 특이점을 알려주세요.">
+                                     id="fhCharacter" name="fhCharacter" placeholder="${itemToUpdate.fhCharacter }">
                                  </div>
                             
                                 <hr>
-                                                        
+                                                              
                                  <div class="form-group">
                                      <textarea class="form-control" rows="13" id="fhHow"
-                                         name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
+                                         name="fhHow" placeholder="${itemToUpdate.fhHow }" required></textarea>
                                  </div>
 
                   <br>
@@ -110,7 +112,7 @@
                   <div class="pb-3 mx-auto"  style="align-items: center;">
 				
 				<!-- To do style again -->
-				<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
+				<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 내용수정</button>
 				<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>

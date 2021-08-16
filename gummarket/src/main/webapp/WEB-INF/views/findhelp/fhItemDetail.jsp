@@ -1,10 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>도움찾아요 상세보기</title>
+
+
+
+<script type="text/javascript">
+function fhItemUpdate(n) {
+	fhUpdate.fhNo.value=n;
+	console.log(fhUpdate.fhNo.value);
+	
+	fhUpdate.submit();
+}
+
+function fhItemDelete(n) {	
+	  let result = confirm(" 정말 삭제하시겠습니까?? ");
+	  if(result) {
+		  fhDelete.fhNo.value=n;
+		  fhDelete.submit();
+	 	 }
+	}	 
+
+</script>
+
 </head>
 <body id="page-top">
 <!-- Begin Page Content -->
@@ -12,9 +34,13 @@
 		<!-- DataTales Example -->
 		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
-				
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }</h3>
-				
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }
+				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
+				 <%-- <c:if test="${session.mId == item.mId}"> --%>
+				<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+				 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+				 <%-- </c:if> --%>
+				 </h3>				
 			</div>
 			<div class="card-body">
 				<div>
@@ -108,6 +134,18 @@
             </div>
         </div>
     </div>
+	
+	<!-- fhItem 메인 글 수정, 삭제 폼 -->
+		<form id="fhUpdate" name="fhUpdate" action="fhItemUpdateForm.doBB" method="post">
+			<input type="hidden" id="fhNo" name="fhNo">
+		</form>
+
+		<form id="fhDelete" name="fhDelete" action="fhItemDelete.doBB" method="post">
+			<input type="hidden" id="fhNo" name="fhNo">
+		</form>
+	
+	
+	
 	
 	
 </body>
