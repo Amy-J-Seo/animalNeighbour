@@ -25,9 +25,9 @@ public class CommentInsert implements Command {
 		vo.setcContents(request.getParameter("cContent"));
 		
 		comDao.commentsInsert(vo);
-		System.out.println(vo.getcContents()+ vo.getcMainNum() +vo.getmId()+"commentinsert.java");
+		System.out.println(vo.getcContents()+ vo.getcMainNum() +vo.getmId()+" commentinsert.java");
 		
-		return "sales/salesDetail";
+		return "salesSelect.do";
 	}
 
 }

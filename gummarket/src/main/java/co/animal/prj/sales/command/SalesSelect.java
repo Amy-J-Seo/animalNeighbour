@@ -19,6 +19,8 @@ public class SalesSelect implements Command {
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
 		request.setAttribute("list", salesDao.salesSelect(vo));
 		
+		//댓글 불러오기
+		
 		return "sales/salesDetail";
 	
 	}
