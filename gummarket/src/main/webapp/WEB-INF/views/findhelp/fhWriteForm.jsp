@@ -106,16 +106,20 @@
                                      <textarea class="form-control" rows="13" id="fhHow"
                                          name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
                                  </div>
-
+                                 <hr>
+                                 <div class="form-group">
+                                    사진 업로드 <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
+                                 </div>
+					<hr>
                   <br>
                   
-                  <div class="pb-3 mx-auto"  style="align-items: center;">
+                <div class="pb-3 mx-auto"  style="align-items: center;">
 				
-				<!-- To do style again -->
-				<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
-				<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
-				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-					data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
+					<!-- To do style again -->
+					<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
+					<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
+					<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
+						data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
 				
 				</div>
                        

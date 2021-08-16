@@ -44,8 +44,28 @@ $(document).ready(function () {
         
     });
     
+    
+		$('#likeFrm').on('submit', function (e) {
+    		
+    		e.preventDefault();
+	        
+    		$.ajax({
+	            url: $('#likeFrm').attr('action'), //'../AddItemServlet.do'
+	            method: 'post',
+	            //data: $('#likeFrm').serialize(),
+	            data: {mainNo: $('#likeFrm #mainNo').val()},
+	            success: function(response){
+	            	alert("게시글 좋아요 눌렀어요 :) ");
+	            	let a = parseInt($('#likeNum').text())+1;
+	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
+	            	
+	            },
+	            error: function (reject) {
+	                console.log(reject);
+	            }
+	    }); 
+    });
 });
-
 
 
 function fhItemUpdate(n) {
@@ -68,22 +88,22 @@ function fhItemDelete(n) {
 <body id="page-top">
 <!-- Begin Page Content -->
 	<div class="container-fluid">
-	<div class="continer my-auto pb-3">
-			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 찾아요!</p>
+	<div class="continer my-auto pl-4 pb-3">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  도움 찾아요!</p>
 	</div>
 		<!-- DataTales Example -->
 		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }
 				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
-				 <%-- <c:if test="${session.mId == item.mId}"> --%>
+				 </h3>
+				  <%-- <c:if test="${session.mId == item.mId}"> --%>
 				<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
 				 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
-				 <%-- </c:if> --%>
-				 </h3>				
+				 <%-- </c:if> --%>				
 			</div>
 			<div class="card-body">
-				<div>
+				<div style="width:100%" class="d-flex justify-content-center">
 				<!-- img class card-img 하고 싶은데 그러면 풀 화면일때 이미지가 너무 커서 줄이려고 해 봤지만 ㅠㅠ 안되네요... -->
 					<img class="card" src="img/rabbitWalk.webp">
 				</div>
@@ -99,10 +119,14 @@ function fhItemDelete(n) {
 				<br />
 				<p><hr></p>
 				
-				<div class="card-header py-3">${item.fhCategory } : ${item.fhTitle }</div>
+				<div class="card-header py-3">${item.fhCategory } : ${item.fhTitle }
+					<c:if test="${item.fhLike > 0 }">
+						<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}</span>
+					</c:if>
+				</div>
 				
 				<div class="card-body">
-				<div class="pb-1">
+				<div class="pb-1 d-flex align-items-center">
 				<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${item.nickname }</span>
 				</div>
 				<hr>
@@ -113,18 +137,18 @@ function fhItemDelete(n) {
 				</div>
 				</div>
 				<p></p>
-				<%-- <div class="card shadow mb-4">
-				<div class="card-header py-3">Recipe method</div>
-				<div class="card-body">${recipe.rpMethod }</div>
-				</div> --%>
 				
 				<div class="pb-3 mx-auto"  style="align-items: center;">
 				
 				<!-- To do style again -->
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="fas fa-phone-alt"></i> 연락하기</button>
+				<!-- Like btn form -->
+				<form id="likeFrm" name="likeFrm" action="UpdateLikeServlet" method="post">
+					<input type="hidden" id="mainNo" name="mainNo" value="${item.fhNo }">
+				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
+				<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="fas fa-phone-alt"></i> 연락하기</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+				</form>	
 				
 				</div>
 				
@@ -134,7 +158,19 @@ function fhItemDelete(n) {
 		</div>
 	<!-- /.container-fluid -->
 	
-		<!-- write btn-->
+
+	<!-- fhItem 메인 글 수정, 삭제 폼 -->
+		<form id="fhUpdate" name="fhUpdate" action="fhItemUpdateForm.doBB" method="post">
+			<input type="hidden" id="fhNo" name="fhNo">
+		</form>
+
+		<form id="fhDelete" name="fhDelete" action="fhItemDelete.doBB" method="post">
+			<input type="hidden" id="fhNo" name="fhNo">
+		</form>
+	
+		
+	
+	<!-- write btn-->
     <a style="position: fixed;
   right: 1rem;
   bottom: 4rem;
@@ -148,13 +184,14 @@ function fhItemDelete(n) {
   border-radius: 0.35rem" href="writeFHForm.doBB">
         <i class="fas fa-edit"></i>
     </a>
+	<!-- End of write btn-->
 	
-	
-	    <!-- Scroll to Top Button-->
+    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+	 <!-- End of Scroll to Top Button-->
+	 
     <!-- report moral -->
     <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel"
         aria-hidden="true">
@@ -192,18 +229,6 @@ function fhItemDelete(n) {
         </div>
     </div>
 	<!-- End of report modal -->
-	
-	<!-- fhItem 메인 글 수정, 삭제 폼 -->
-		<form id="fhUpdate" name="fhUpdate" action="fhItemUpdateForm.doBB" method="post">
-			<input type="hidden" id="fhNo" name="fhNo">
-		</form>
-
-		<form id="fhDelete" name="fhDelete" action="fhItemDelete.doBB" method="post">
-			<input type="hidden" id="fhNo" name="fhNo">
-		</form>
-	
-	
-	
 	
 	
 </body>
