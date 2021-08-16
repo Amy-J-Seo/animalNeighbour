@@ -56,7 +56,7 @@
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
 		console.log(data);	
-		let table = $('<table />').attr('border', '1');
+		let table = $('<table />').attr('border', '0');
 		$(table).append(
 			$('<tr />').append('<th>닉네임</th><th>댓글</th>')
 		);
@@ -85,14 +85,14 @@
 	//댓글 입력 ajax
 	$('#reply').on('submit', function (event) {
 		event.preventDefault(); //디폴트값은 못들어가게
-		let s = $('#frm').serialize();
+		let s = $('#reply').serialize();
 		console.log(s);
 
 		//폼 전송처리
 		$.ajax({
-			url: $('#frm').attr('action'), //='../AddItemServ.do'
+			url: $('#reply').attr('action'), //='../AddItemServ.do'
 			method: 'post',
-			data: $('#frm').serialize(), //파라미터로 넘김
+			data: $('#reply').serialize(), //파라미터로 넘김
 			dataType: 'json', //받아오는 값
 			success: addItemFunc,
 			error: function (reject) {
@@ -102,6 +102,7 @@
 	})
 });
 
+	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 		console.log('aaa')
@@ -113,7 +114,9 @@
 		}
 		console.log($('table'))
 		let delBtn = $('<td><button type="button">삭제</button></td>')
+		let updBtn =$('<td><button type="button">수정</button></td>')
 			delBtn.click(kill);
+			updBtn.click(update);
 			$(tr).append(delBtn);
 		$('table').append(tr);
 	}
@@ -209,7 +212,7 @@
 					        <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
-						<form id="reply" action="commentInsertServ" method="post">
+						<form id="reply" action="CommentInsertServ" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
