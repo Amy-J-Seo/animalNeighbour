@@ -141,7 +141,7 @@
 	
 	//댓글 수정하기
 	function update(){
-		
+			
 	}
 	
 </script>
@@ -232,7 +232,7 @@
 			<div class="pb-3 mx-auto"  style="align-items: center;">
 				<!-- To do style again -->
 				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="fas fa-phone-alt"></i> 연락하기</button>
+				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#logoutModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 			</div>
