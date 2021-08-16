@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script>
+   function getRecord(n){
+      frm.ohNo.value = n;
+      frm.submit();
+   }
+</script>
 <head>
 
 <meta charset="utf-8">
@@ -59,7 +65,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="help" items="${list }">
-								<tr>
+								<tr onclick="getRecord(${help.ohNo })">
 									<td>${help.ohNo }</td>
 									<td>${help.ohTitle }</td>
 									<td>${help.mName }</td>
@@ -68,6 +74,11 @@
 						</tbody>
 					</table>
 				</div>
+				<div>
+         <form id="frm" name="frm" action="ohItemDetail.do" method="post">
+            <input type="hidden" id="ohNo" name="ohNo">
+         </form>
+      </div>
 				<!-- /.container-fluid -->
 
 			</div>

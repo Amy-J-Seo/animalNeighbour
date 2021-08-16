@@ -22,10 +22,13 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.member.command.RegisterForm;
 import co.animal.prj.member.command.Test;
-
+import co.animal.prj.offerhelp.command.OfferHelpInsert;
 import co.animal.prj.offerhelp.command.OfferHelpMain;
 import co.animal.prj.offerhelp.command.OhDetail;
-
+import co.animal.prj.offerhelp.command.OhItemDelete;
+import co.animal.prj.offerhelp.command.OhItemUpdate;
+import co.animal.prj.offerhelp.command.OhItemUpdateForm;
+import co.animal.prj.offerhelp.command.WriteOHForm;
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
@@ -73,7 +76,12 @@ public class FrontController extends HttpServlet {
 		//제은 맵
 		map.put("/offerHelpMain.do", new OfferHelpMain());
 		map.put("/ohDetail.do", new OhDetail());
-
+		map.put("/writeOHForm.do", new WriteOHForm());
+		map.put("/offerHelpInsert.do", new OfferHelpInsert());
+		map.put("/ohItemUpdate.do", new OhItemUpdate());
+		map.put("/ohItemUpdateForm.do", new OhItemUpdateForm());
+		map.put("/ohItemDelete.do", new OhItemDelete());
+		map.put("/ohItemDetail.do", new OhDetail());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
