@@ -8,15 +8,15 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
-   <title>도움 찾기 등록 양식</title>
+   <title></title>
 
 </head>
 
  <body>
 
      <div class="container">
-	<div class="continer my-auto pb-3">
-			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 찾아요!</p>
+	<div class="continer my-auto pb-2">
+			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">이벤트/공지사항 등록</p>
 	</div>
          <div class="card o-hidden border-0 shadow-lg my-5">
              <div class="card-body p-0">
@@ -27,28 +27,26 @@
                      <div class="col-lg-12">
                          <div class="p-5" align="center">
                              <div class="continer my-auto pb-3" align="center">
-                                 <p class="h3 mb-0 mt-5 ml-5 text-gray-700" style="font-weight: 900;"><i class="far fa-handshake"></i> 도와줘요 멍냥이웃!</p>
+                                 <p class="h3 mb-0 mt-5 ml-5 text-gray-700" style="font-weight: 800;"><i class="far fa-calendar-check"></i> 이벤트와 공지 <i class="far fa-calendar-check"></i></p>
                              </div>
                              <p></p>
                              <br>
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post">
+                             <form class="user" id="frm" name="frm" action="boardInsert.doBB" method="post">
                              
-                             <input type="hidden" id="mId" name="mId" value="bb123">
+                             <input type="hidden" id="mId" name="mId" value="${session.mId}">
                              <!-- 나중에 세션정보 가져와서 집어넣기!  -->
                            <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
-                             	어떤 도움을 찾으시나요?
+                             	어떤 글을 쓰시겠어요?
                              	</div>
                                  <div class="col-lg-12">
                                     <div class="form-group col-lg-9 col-sm-12 mb-3 mb-sm-0">
-                                    <select class="form-control" id="fhCategory" name="fhCategory" required>
-                                      <option value="">도움 카테고리 선택</option>
-                                      <option value="walk">산책/놀이</option>
-                                      <option value="dayCare">데이케어</option>
-                                      <option value="longCare">장기케어</option>
+                                    <select class="form-control" id="bCategory" name="bCategory" required>
+                                      <option value="notice">공지사항</option>
+                                      <option value="event">이벤트</option>
                                     </select>
                                      </div>
                           	    </div>
@@ -56,49 +54,28 @@
                              <hr>
                                  <div class="form-group">
                                      <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="fhTitle" name="fhTitle" placeholder="제목을 입력해 주세요" required>
+                                     id="bTitle" name="bTitle" placeholder="제목을 입력해 주세요" required>
                                  </div>
                                  
                                 
                                  <hr>
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                     <span><i class="fas fa-paw"></i></span><input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhAnimal" name="fhAnimal" placeholder="정보: 강아지/고양이/토끼/등...">
+                                     <span><i class="fas fa-calendar-day"></i></span><input type="date" style="border:none;" class="col-lg-10"
+                                     id="bDate" name="bDate">
                                  </div>
-                                 
-                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                    <span><i class="fas fa-weight"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhSize" name="fhSize" placeholder="체급: 대형/중형/소형/마이크로...">
-                                 </div>
+                               
                               </div>
-                                     <hr>
-                                     <div class="form-group row">
-                                  		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                    <span><i class="fas fa-baby-carriage"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhAge" name="fhAge" placeholder="나이는 몇 살인가요? 개월 수로 입력해 주세요.">
-                                 </div>
-                                 
-                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                <span><i class="fas fa-hand-holding-heart"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="fhNeed" name="fhNeed" placeholder="구체적으로 어떤 도움인가요? 예) 산책 30-60분">
-                                 </div>
-                              </div>
-                                <hr>
-                                   <div class="form-group">
-                                     <span><i class="far fa-address-card"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="fhCharacter" name="fhCharacter" placeholder="반려동물의 성격, 특이점을 알려주세요.">
-                                 </div>
-                            
+                                    
                                 <hr>
                                                         
                                  <div class="form-group">
-                                     <textarea class="form-control" rows="13" id="fhHow"
-                                         name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
+                                     <textarea class="form-control" rows="13" id="bContents"
+                                         name="bContents" placeholder="이벤트/공지사항 내용 입력" required></textarea>
                                  </div>
                                  <hr>
                                  <div class="form-group">
-                               	    사진 업로드: <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
+                               	  <i class="fas fa-camera"></i>  사진 업로드: <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
                                  </div>
                               
 					<hr>

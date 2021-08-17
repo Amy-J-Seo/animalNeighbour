@@ -14,32 +14,37 @@ public class FindHelpServiceImpl implements FindHelpService {
 	private FindHelpServiceMapper map = sqlSession.getMapper(FindHelpServiceMapper.class);
 	@Override
 	public List<FindHelpVO> findHelpSelectList() {
-		// TODO Auto-generated method stub
 		return map.findHelpSelectList();
 	}
 
 	@Override
 	public FindHelpVO findHelpSelect(FindHelpVO vo) {
-		// TODO Auto-generated method stub
 		return map.findHelpSelect(vo);
 	}
 
 	@Override
 	public int findHelpUpdate(FindHelpVO vo) {
-		// TODO Auto-generated method stub
 		return map.findHelpUpdate(vo);
 	}
 
 	@Override
 	public int findHelpDelete(FindHelpVO vo) {
-		// TODO Auto-generated method stub
 		return map.findHelpDelete(vo);
 	}
 
 	@Override
 	public int findHelpInsert(FindHelpVO vo) {
-		// TODO Auto-generated method stub
 		return map.findHelpInsert(vo);
+	}
+
+	@Override
+	public int updateLike(FindHelpVO vo) {
+		return map.updateLike(vo);
+	}
+
+	@Override
+	public FindHelpVO findHelpLike(FindHelpVO vo) {
+		return map.findHelpLike(vo);
 	}
 
 }

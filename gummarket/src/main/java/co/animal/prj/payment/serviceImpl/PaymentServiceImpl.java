@@ -10,7 +10,7 @@ import co.animal.prj.payment.service.PaymentServiceMapper;
 import co.animal.prj.payment.vo.PaymentVO;
 
 public class PaymentServiceImpl implements PaymentService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession()	;
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	
 	private PaymentServiceMapper map =sqlSession.getMapper(PaymentServiceMapper.class);
 	@Override

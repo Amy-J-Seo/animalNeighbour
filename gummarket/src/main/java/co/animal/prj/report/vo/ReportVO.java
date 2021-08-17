@@ -2,8 +2,9 @@ package co.animal.prj.report.vo;
 
 public class ReportVO {
 	private int rNo;
-	private int sNo;
+	private int mainNo;
 	private String rWhy;
+	private String category;
 	
 	public ReportVO() {
 		super();
@@ -15,11 +16,11 @@ public class ReportVO {
 	public void setrNo(int rNo) {
 		this.rNo = rNo;
 	}
-	public int getsNo() {
-		return sNo;
+	public int getmainNo() {
+		return mainNo;
 	}
-	public void setsNo(int sNo) {
-		this.sNo = sNo;
+	public void setmainNo(int mainNo) {
+		this.mainNo = mainNo;
 	}
 	public String getrWhy() {
 		return rWhy;
@@ -27,10 +28,18 @@ public class ReportVO {
 	public void setrWhy(String rWhy) {
 		this.rWhy = rWhy;
 	}
-	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
-		return "ReportVO [rNo=" + rNo + ", sNo=" + sNo + ", rWhy=" + rWhy + "]";
+		return "ReportVO [rNo=" + rNo + ", mainNo=" + mainNo + ", rWhy=" + rWhy + ", category=" + category + "]";
 	}
 	
+
 }

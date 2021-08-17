@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:forward page="fhtest.doBB" />
+<jsp:forward page="loginForm.do" />
 
 </body>
 </html>

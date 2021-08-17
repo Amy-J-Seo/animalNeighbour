@@ -11,6 +11,10 @@
 		select * from findhelp where fhhide='n'
 	</select>
 	
+	<select id="findHelpLike" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+	select * from findhelp where fhno=#{fhNo}
+	</select>
+	
 	<select id="findHelpSelect"  parameterType="co.animal.prj.findhelp.vo.FindHelpVO" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
 		select a.*, b.nickname, b.reviewpoint
       		from findhelp a left outer join member b
@@ -21,19 +25,26 @@
 	<insert id="findHelpInsert" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
 		insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhCharacter},#{fhNeed},#{fhHow},null,default)
-	
-	   <!--    <selectkey keyproperty="sabun" resulttype="String" order="AFTER"> 
-		SELECT fh_seq.CURRVAL FROM DUAL
-         </selectkey> -->
+		
+		<selectKey keyProperty="fhNo" resultType="Integer" order="AFTER">
+                select fh_seq.CURRVAL FROM DUAL
+            </selectKey>
+       
 	
 	</insert>
 	
-	<delete id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+	<update id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	update findhelp set fhhide=#{fhHide} where fhno=#{fhNo}
-	</delete>
+	</update>
 	
 	
 	<update id="findHelpUpdate" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	update findhelp set fhCategory=#{fhCategory}, fhTitle=#{fhTitle}, fhNeed=#{fhNeed}, fhCharacter=#{fhCharacter},fhHow=#{fhHow} where fhno = #{fhNo}
 	</update>
+	
+	<update id="updateLike" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+		update findhelp set fhlike = fhlike+1 where fhno=#{fhNo}
+	</update>
+	
+	
 </mapper>

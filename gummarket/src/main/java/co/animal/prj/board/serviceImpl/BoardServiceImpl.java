@@ -10,7 +10,7 @@ import co.animal.prj.board.vo.BoardVO;
 import co.animal.prj.common.DataSource;
 
 public class BoardServiceImpl implements BoardService {
-	private SqlSession sqlSession =DataSource.getInstance().openSession();
+	private SqlSession sqlSession =DataSource.getInstance().openSession(true);
 	
 	private BoardServiceMapper map= sqlSession.getMapper(BoardServiceMapper.class);
 	@Override
@@ -42,5 +42,19 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return map.boardInsert(vo);
 	}
+
+	@Override
+	public List<BoardVO> boardSelectListEvent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BoardVO> boardSelectListNotice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
