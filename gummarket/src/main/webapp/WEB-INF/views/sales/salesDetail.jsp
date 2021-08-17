@@ -11,6 +11,8 @@
 
 <script>
 	
+	
+	
 	//삭제버튼 누르면 alert
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
@@ -37,6 +39,9 @@
 
 	//댓글 불러오기 ajax
 	$(document).ready(function(){
+		// 수정 폼 숨기기
+		$('#showComUpdate').hide();
+		
 		console.log($('#cMainNum'));
 		//전체 데이터 출력.
 		$.ajax({
@@ -71,7 +76,7 @@
 			let updBtn =$('<td><button type="button">수정</button></td>') //수정버튼 추가
 			
 			delBtn.click(kill);
-			updBtn.click(update);
+			updBtn.click(updateTest);
 			
 			$(tr).append(delBtn);
 			$(tr).append(updBtn);
@@ -143,12 +148,42 @@
 	//수정버튼 누르면 폼 가져오기
 	function updateForm(){
 		var cNo = data.cNo;
+		
 	}
 	
-	//업데이트 테스트!
-	function updateTest(){
-		let textBox= $('<textarea>')
-		$('#showComUpdate').append(textBox);
+	//업데이트 폼나오게 테스트!
+	function updateTest(e){
+		
+		let modForm = $("#showComUpdate");
+		$(this).parent().append(modForm);
+		let content = $(this).parent().children().eq(1).text();
+		/* $(this).children().eq(0).hide(); */
+		modForm.show();
+		
+		$(modForm).find("#cUpdated").val(content);
+	}
+	
+	//업데이트 테스트
+	function updateCom(){
+		event.preventDefault(); //디폴트값은 못들어가게
+		let s = $('#updateRep').serialize();
+		console.log(s);
+
+		//폼 전송처리
+		$.ajax({
+			url: $('#updateRep').attr('action'), //='../AddItemServ.do'
+			method: 'post',
+			data: $('#updateRep').serialize(), //파라미터로 넘김
+			dataType: 'json', //받아오는 값
+			success: updateItemFunc,
+			error: function (reject) {
+				console.error(reject);
+			}
+		})
+	}
+	
+	function updateItemFunc(){
+		
 	}
 	
 	//댓글 수정하기
@@ -257,7 +292,12 @@
 			</div>
 			
 			<!-- 댓글 수정하면 보이게 (테스트)-->
-			<div id="showComUpdate"></div>
+			<div id="showComUpdate">
+				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
+					<input type="text" id="cUpdated" name="cUpdated">
+					<button type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
+				</form>
+			</div>
 			
 			
 			

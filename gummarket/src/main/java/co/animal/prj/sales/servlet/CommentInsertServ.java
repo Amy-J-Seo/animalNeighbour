@@ -1,4 +1,4 @@
-package co.animal.prj.sales.service;
+package co.animal.prj.sales.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,20 +1,29 @@
 package co.animal.prj.sales.command;
 
+
+import java.io.File;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.animal.prj.common.Command;
-import co.animal.prj.image.service.ImageService;
-import co.animal.prj.image.serviceImpl.ImageServiceImpl;
-import co.animal.prj.image.vo.ImageVO;
 import co.animal.prj.sales.service.SalesService;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
 
 public class SalesInsert implements Command {
+	
+	private static final String UPLOAD_DIR = "C:\\animalNaver\\src\\main\\webapp\\img";
+	private static final int MEMORY_TRESHOLD = 1024 * 1024 * 3; // 3mb
+	private static final long MAX_FILE_SIZE = 1024 * 1024 * 100; // 100mb
+	private static final long MAX_REQUEST_SIZE = 1024 * 1024 * 100; // 100mb
+
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -38,6 +47,15 @@ public class SalesInsert implements Command {
 		vo.setsReason(request.getParameter("sreason"));
 		vo.setsCondition(request.getParameter("scondition"));
 		vo.setsImg(request.getParameter("thumbNailFile")); //썸네일 이미지 넣기~?
+		
+		
+		
+		//썸네일 이미지만 넣어보기!
+			
+	Map<String, String> formMap = new HashMap<String, String>();
+	
+	
+		
 		
 		//iVo.setImgPath(request.getParameter("uploadFile1"));
 		//iMainNum = sNo 근데 sNo어떻게 불러오지?
