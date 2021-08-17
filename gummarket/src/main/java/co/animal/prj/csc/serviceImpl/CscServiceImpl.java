@@ -10,7 +10,7 @@ import co.animal.prj.csc.service.CscServiceMapper;
 import co.animal.prj.csc.vo.CscVO;
 
 public class CscServiceImpl implements CscService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession();
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private CscServiceMapper map = sqlSession.getMapper(CscServiceMapper.class);
 	@Override
 	public List<CscVO> cscSelectList() {

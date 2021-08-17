@@ -25,19 +25,16 @@ import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberUpdate;
 import co.animal.prj.member.command.Test;
-<<<<<<< HEAD
+
 import co.animal.prj.offerhelp.command.OfferHelpInsert;
-=======
->>>>>>> refs/heads/main
+
 import co.animal.prj.offerhelp.command.OfferHelpMain;
 import co.animal.prj.offerhelp.command.OhDetail;
-<<<<<<< HEAD
 import co.animal.prj.offerhelp.command.OhItemDelete;
 import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
 import co.animal.prj.offerhelp.command.WriteOHForm;
-=======
->>>>>>> refs/heads/main
+
 import co.animal.prj.sales.command.DeleteSales;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;

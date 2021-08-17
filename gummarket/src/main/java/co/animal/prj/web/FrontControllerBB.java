@@ -11,6 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animal.prj.board.command.BDetail;
+import co.animal.prj.board.command.BItemDelete;
+import co.animal.prj.board.command.BItemUpdateForm;
+import co.animal.prj.board.command.BoardInsert;
+import co.animal.prj.board.command.BoardUpdate;
+import co.animal.prj.board.command.EventMain;
+import co.animal.prj.board.command.NoticeMain;
+import co.animal.prj.board.command.SearchNoticeItem;
+import co.animal.prj.board.command.WriteBoardForm;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhDetail;
 import co.animal.prj.findhelp.command.FhItemDelete;
@@ -36,7 +45,7 @@ public class FrontControllerBB extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 			
-		//주윤 맵
+		//주윤 맵 findHelp
 		map.put("/findHelpMain.doBB", new FindHelpMain());
 		map.put("/fhtest.doBB", new FhTest());
 		map.put("/fhDetail.doBB", new FhDetail());
@@ -45,6 +54,21 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/fhItemUpdate.doBB", new FhItemUpdate());
 		map.put("/fhItemUpdateForm.doBB", new FhItemUpdateForm());
 		map.put("/fhItemDelete.doBB", new FhItemDelete());
+		
+		//주윤 맵 이벤트+노티스
+		map.put("/eventMain.doBB", new EventMain());
+		map.put("/noticeMain.doBB", new NoticeMain());
+		map.put("/writeBoardForm.doBB", new WriteBoardForm());
+		map.put("/boardInsert.doBB", new BoardInsert());
+		map.put("/bDetail.doBB",new BDetail());
+		map.put("/bItemDelete.doBB", new BItemDelete());
+		map.put("/bItemUpdateForm.doBB", new BItemUpdateForm());
+		map.put("/boardUpdate.doBB", new BoardUpdate());
+		map.put("/searchNoticeItem.doBB", new SearchNoticeItem());
+		
+		
+		
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

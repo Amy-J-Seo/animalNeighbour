@@ -8,7 +8,7 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
-   <title>상품 등록하기</title>
+   <title>도움 찾기 글 등록</title>
 
 <!-- Custom fonts for this template from register.html-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,9 @@
  <body>
 
      <div class="container">
-
+<div class="continer my-auto pb-3">
+			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 찾아요!</p>
+	</div>
          <div class="card o-hidden border-0 shadow-lg my-5">
              <div class="card-body p-0">
                 
@@ -42,11 +44,8 @@
                              <!-- form start -->
                              <form class="user" id="frm" name="frm" action="fhItemUpdate.doBB" method="post">
                              <input type="hidden" id="fhNo" name="fhNo" value="${itemToUpdate.fhNo}">
-                             
-                             <!-- 테스트벨류 -->
-                             <input type="hidden" id="mId" name="mId" value="bb123">
-                             <!-- 나중에 세션정보 가져와서 집어넣기!  -->
-                           <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
+                            
+                           <input type="hidden" id="mId" name="mId" value="${session.mId }">
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
@@ -131,6 +130,27 @@
          </div>
 
      </div>
+
+ <!-- return to main Modal-->
+    <div class="modal fade" id="cancelWriteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelWriteModal">Do you want to go back to main?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">다른 글들을 살펴보세요!</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"> 취 소 </button>
+                    <a class="btn btn-primary" href="findHelpMain.doBB">메인으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- End of return to main Modal-->
 
 
 <!-- Bootstrap core JavaScript-->

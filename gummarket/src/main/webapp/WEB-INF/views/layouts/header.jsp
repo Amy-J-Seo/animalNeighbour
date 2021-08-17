@@ -33,18 +33,19 @@
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
 
 					<!-- 노란헤더 이벤트, 공지사항 링크 -->
-					<li class="nav-item mt-2"><a href="#"
+					<li class="nav-item mt-2"><a href="eventMain.doBB"
 						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
 							class="mr-2  d-lg-inline small">이벤트</span>
 					</a></li>
 					<li class="mt-2 mr-2">|</li>
-					<li class="nav-item mt-2"><a href="#"
+					<li class="nav-item mt-2"><a href="noticeMain.doBB"
 						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
 							class="mr-2 d-lg-inline small">공지사항</span>
 					</a></li>
 				</ul>
 			</nav>
 			<!-- End of Topbar -->
+			
 			<!-- 여기부터 회색헤더 -->
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar static-top"
@@ -55,7 +56,7 @@
 					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
 					<li style="margin: auto;"><a href="salesListAll.do"
 						style="text-decoration: none; color: rgb(94, 94, 94)">&nbsp;중고장터</a>&nbsp;
-						|&nbsp; <a href="#"
+						|&nbsp; <a href="findHelpMain.doBB"
 						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a></li>
 				</ul>
 
