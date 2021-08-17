@@ -15,6 +15,7 @@ public class FindHelpVO extends MemberVO{
 	private String fhCharacter;
 	private String fhHow;
 	private String fhHide;
+	private int fhLike;
 	
 	public FindHelpVO() {
 		super();
@@ -92,13 +93,21 @@ public class FindHelpVO extends MemberVO{
 	public void setFhHide(String fhHide) {
 		this.fhHide = fhHide;
 	}
+	public int getFhLike() {
+		return fhLike;
+	}
+	public void setFhLike(int fhLike) {
+		this.fhLike = fhLike;
+	}
 	@Override
 	public String toString() {
 		return "FindHelpVO [fhNo=" + fhNo + ", mId=" + mId + ", fhCategory=" + fhCategory + ", fhTitle=" + fhTitle
 				+ ", fhAnimal=" + fhAnimal + ", fhSize=" + fhSize + ", fhAge=" + fhAge + ", fhImg=" + fhImg
 				+ ", fhNeed=" + fhNeed + ", fhCharacter=" + fhCharacter + ", fhHow=" + fhHow + ", fhHide=" + fhHide
-				+ "]";
+				+ ", fhLike=" + fhLike + "]";
 	}
+	
+
 	
 	
 

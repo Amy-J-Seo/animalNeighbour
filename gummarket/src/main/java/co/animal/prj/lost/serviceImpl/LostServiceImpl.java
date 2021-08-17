@@ -10,7 +10,7 @@ import co.animal.prj.lost.service.LostServiceMapper;
 import co.animal.prj.lost.vo.LostVO;
 
 public class LostServiceImpl implements LostService {
-	private SqlSession sqlSession =DataSource.getInstance().openSession();
+	private SqlSession sqlSession =DataSource.getInstance().openSession(true);
 	private LostServiceMapper map =sqlSession.getMapper(LostServiceMapper.class);
 	
 	@Override

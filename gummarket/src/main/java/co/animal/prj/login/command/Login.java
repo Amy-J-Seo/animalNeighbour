@@ -34,6 +34,7 @@ public class Login implements Command {
 			session.setAttribute("role", vo.getRole());
 			session.setAttribute("state", vo.getState());
 			session.setAttribute("session", vo);
+			
 			page = "home.do";
 			}else {
 				String message1 ="현재 휴면계정입니다. 관리자에게 문의하세요";

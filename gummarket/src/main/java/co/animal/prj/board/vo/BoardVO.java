@@ -6,10 +6,12 @@ public class BoardVO {
 	private int bNo;
 	private String bCategory;
 	private String bTitle;
+	private String mId;
 	private Date bDate;
 	private String bContents;
 	private String bIsOn;
 	private int bHit;
+	private int bLike;
 	public BoardVO() {
 		super();
 	}
@@ -55,10 +57,23 @@ public class BoardVO {
 	public void setbHit(int bHit) {
 		this.bHit = bHit;
 	}
+	
+	public String getmId() {
+		return mId;
+	}
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
+	public int getbLike() {
+		return bLike;
+	}
+	public void setbLike(int bLike) {
+		this.bLike = bLike;
+	}
 	@Override
 	public String toString() {
-		return "BoardVO [bNo=" + bNo + ", bCategory=" + bCategory + ", bTitle=" + bTitle + ", bDate=" + bDate
-				+ ", bContents=" + bContents + ", bIsOn=" + bIsOn + ", bHit=" + bHit + "]";
+		return "BoardVO [bNo=" + bNo + ", bCategory=" + bCategory + ", bTitle=" + bTitle + ", mId=" + mId + ", bDate="
+				+ bDate + ", bContents=" + bContents + ", bIsOn=" + bIsOn + ", bHit=" + bHit + ", bLike=" + bLike + "]";
 	}
 	
 	

@@ -7,18 +7,43 @@
 		resultType="co.animal.prj.board.vo.BoardVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM board
+		SELECT * FROM board where bison &lt;&gt; 'd'
 	</select>
-<!--  	<select id="" resultType="">
-
+	
+	<select id="boardSelectListEvent" resultType="co.animal.prj.board.vo.BoardVO">
+		SELECT * FROM board where bcategory='event'
 	</select>
-	<insert id="" parameterType="">
-
+	
+	<select id="boardSelectListNotice"
+		resultType="co.animal.prj.board.vo.BoardVO">
+		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
+		<!-- resultType, parameterType => VO객체위치 -->
+		SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd'
+	</select>
+	
+	<select id="boardSelect" resultType="co.animal.prj.board.vo.BoardVO">
+		SELECT * FROM board where bNo = #{bNo}
+			
+	</select>
+	
+	<insert id="boardInsert" parameterType="co.animal.prj.board.vo.BoardVO">
+		insert into board values(b_seq.nextval, #{bCategory}, #{bTitle}, #{bDate}, #{bContents}, default, default, #{mId}, default)
+		<selectKey keyProperty="bNo" resultType="Integer" order="AFTER">
+                select b_seq.CURRVAL FROM DUAL
+        </selectKey>
+	
 	</insert>
-	<delete id="" parameterType="">
+	
+	<update id="boardDelete" parameterType="co.animal.prj.board.vo.BoardVO">
+		update board set bison=#{bIsOn} where bno=#{bNo}
+	</update>
+	
+	<update id="boardUpdate" parameterType="co.animal.prj.board.vo.BoardVO">
+	update board set bCategory=#{bCategory}, bTitle=#{bTitle}, bContents=#{bContents} where bno = #{bNo}
+	</update>
+	
+	
+	
+	
 
-	</delete>
-	<insert id="" parameterType="">
-
-	</insert>-->
 </mapper>

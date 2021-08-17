@@ -10,7 +10,7 @@ import co.animal.prj.answer.vo.AnswerVO;
 import co.animal.prj.common.DataSource;
 
 public class AnswerServiceImpl implements AnswerService {
-	private SqlSession sqlsession = DataSource.getInstance().openSession();
+	private SqlSession sqlsession = DataSource.getInstance().openSession(true);
 	
 	private AnswerServiceMapper map = sqlsession.getMapper(AnswerServiceMapper.class);
 	

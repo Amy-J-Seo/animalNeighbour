@@ -6,6 +6,8 @@ import co.animal.prj.board.vo.BoardVO;
 
 public interface BoardService {
 	public List<BoardVO> boardSelectList();
+	public List<BoardVO> boardSelectListEvent();
+	public List<BoardVO> boardSelectListNotice();
 	public BoardVO boardSelect(BoardVO vo);
 	public int boardUpdate(BoardVO vo);
 	public int boardDelete(BoardVO vo);

@@ -9,16 +9,16 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM report
 	</select>
-<!--  	<select id="" resultType="">
+	<!-- <select id="" resultType="">
 
-	</select>
-	<insert id="" parameterType="">
-
+	</select> -->
+	<insert id="reportInsert" parameterType="co.animal.prj.report.vo.ReportVO">
+		insert into report values(r_seq.nextval,#{rWhy},#{category},#{mainNo})
 	</insert>
-	<delete id="" parameterType="">
+	<!-- <delete id="" parameterType="">
 
-	</delete>
-	<insert id="" parameterType="">
+	</delete> -->
+	<!-- <insert id="" parameterType="">
 
-	</insert>-->
+	</insert> -->
 </mapper>

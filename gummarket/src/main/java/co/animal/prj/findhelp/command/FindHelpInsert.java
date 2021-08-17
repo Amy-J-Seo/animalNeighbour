@@ -32,13 +32,13 @@ public class FindHelpInsert implements Command {
 		int n = dao.findHelpInsert(vo);
 		System.out.println(n + "item added successfully + FindHelpInsert.java");
 //		------insert finished---------
-		
-		
-//		-----get fhNo of inserted Item and return to detailed page------
+			
+//		작성된 글 디테일 페이지로 이동
 		dao= new FindHelpServiceImpl();
-		request.setAttribute("list", dao.findHelpSelectList());
 		
-		return "findhelp/fhMain";
+		request.setAttribute("item", dao.findHelpSelect(vo));
+		
+		return "findhelp/fhItemDetail";
 	}
 
 }
