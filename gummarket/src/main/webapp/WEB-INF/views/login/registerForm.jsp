@@ -4,9 +4,14 @@
 <html>
 <head>
 <title>회원가입</title>
+<!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script type="text/javascript">
 	<!-- 필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수 -->
-		function checkValue(){
+		
+	function checkValue(){
 			if(!document.frm.mId.value){
 				alert("아이디를 입력하세요.");
 				return false;
@@ -34,8 +39,11 @@
 			frm.method="post";
 			frm.submit();
 		}
+		
+		 var IMP = window.IMP; // 생략 가능
+		  IMP.init("{imp97896174}"); // 예: imp00000000
 	</script>
-
+	
 </head>
 
 <body>

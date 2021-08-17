@@ -81,9 +81,9 @@
 								</a> <a class="dropdown-item" href="#"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내 문의내역
 								</a>
-								<c:if test="${session.role eq '관리자' }">
-									<a class="dropdown-item" href="#"> <i
-										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 개인정보
+								<c:if test="${session.role eq 'ADMIN' }">
+									<a class="dropdown-item" href="memberList.do"> <i
+										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 회원 관리
 									</a>
 								</c:if>
 								<div class="dropdown-divider"></div>
