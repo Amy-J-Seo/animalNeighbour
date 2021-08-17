@@ -26,10 +26,15 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select a.*, b. *  
+		 select a.*, b.*
 		from sales a left outer join comments b 
 		on (a.sno = b.cmainnum) and (b.ctype='sales')
 		where a.sno = #{sNo}
+	</select>
+	
+	<!-- 수정위한 개별상품 조회 (댓글 없이) -->
+	<select id="salesOne" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where sno=#{sNo}
 	</select>
 	
 	<!-- 상품 삭제 : 진짜 삭제 하지 말고 hide y해서 숨기기~-->
@@ -39,17 +44,24 @@
 	
 	<!-- 상품등록 -->
 	<insert id="salesInsert" parameterType="co.animal.prj.sales.vo.SalesVO">
+		
 		insert into sales(sno, mid, scategory, stitle, spurchaseddate,susedays,sreason,scondition,sprice,snetprice) 
 		values(s_seq.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sPurchasedDate}, #{sUseDays}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice})
+		
 	</insert>
 	
+	
 	<!-- 상품 정보 수정 -->
-	<update id="">
+	<update id="salesUpdate" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales 
-		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchaseDate}, sreason = #{sReason}, scondition =#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
+		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchasedDate}, sreason=#{sReason}, scondition=#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
 		where sno=#{sNo}
 	</update>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="hitUpdate" parameterType="co.animal.prj.sales.vo.SalesVO">
+		update sales set shit = #{sHit} + 1 where sno = #{sNo}
+	</update>
 	
 <!--  	
 	
