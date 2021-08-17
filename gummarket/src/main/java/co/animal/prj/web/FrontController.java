@@ -19,10 +19,12 @@ import co.animal.prj.login.command.IdCheckPro;
 
 import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
+import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
+import co.animal.prj.member.command.MemberUpdate;
 import co.animal.prj.member.command.Test;
 
 import co.animal.prj.offerhelp.command.OfferHelpMain;
@@ -47,17 +49,19 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		//
+		//호준 맵
 		map.put("/home.do", new Home());//인기상품 조회
-		map.put("/loginForm.do", new LoginForm());
-		map.put("/login.do",new Login());
-		map.put("/registerForm.do", new RegisterForm());
-		map.put("/idCheckForm.do", new IdCheckForm());
-		map.put("/idCheckPro.do", new IdCheckPro());
-		map.put("/registerCheck.do", new RegisterCheck());
+		map.put("/loginForm.do", new LoginForm()); //로그인 폼
+		map.put("/login.do",new Login());//로그인 중
+		map.put("/logout.do",new Logout());//로그아웃
+		map.put("/registerForm.do", new RegisterForm());//회원가입
+		map.put("/idCheckForm.do", new IdCheckForm());//아이디 중복 조회 폼
+		map.put("/idCheckPro.do", new IdCheckPro());//아이디 중복 조회
+		map.put("/registerCheck.do", new RegisterCheck());//회원가입완료
 		
-		map.put("/memberList.do",new MemberList());
-		map.put("/memberDetail.do",new MemberDetail());
+		map.put("/memberList.do",new MemberList()); //관리자 맴버리스트
+		map.put("/memberDetail.do",new MemberDetail()); //관리자 맴버 상세보기
+		map.put("/memberUpdate.do", new MemberUpdate()); //관리자 및 회원 정보수정
 		
 		
 		

@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 <head>
 <title>회원가입</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <!-- jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-  <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <script type="text/javascript">
 	<!-- 필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수 -->
 		
@@ -43,76 +49,121 @@
 		 var IMP = window.IMP; // 생략 가능
 		  IMP.init("{imp97896174}"); // 예: imp00000000
 	</script>
-	
+
 </head>
 
 <body>
+	<div class="container">
 
-	<div align="center">
-		<div><h2>회원가입</h2></div>
-		<form id="frm" name="frm" action="signUpCheck.do" target="a"
-			method="post" onsubmit="return checkValue()">
-			<table>
-				<tr>
-					<th>아이디</th>
-					<td><input type="text" id="mId" name="mId" placeholder="아이디"
-						required="required"></td>
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
 
-					<td>
-						<button onclick="winopen()">중복체크</button>
-					</td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input type="password" id="password" name="password"
-						placeholder="비밀번호" required="required"></td>
-					<td><input type="password" id="passwordok" name="passwordok"
-						placeholder="비밀번호 확인"></td>
-				</tr>
-				<tr>
-					<th>이 름</th>
-					<td><input type="text" id="mName" name="mName" placeholder="이름"
-						required="required"></td>
-				</tr>
-				<tr>
-					<th>닉 네 임</th>
-					<td><input type="text" id="nickname" name="nickname"
-						placeholder="닉네임" required="required"></td>
-				</tr>
-				<tr>
-					<th>휴 대 번 호</th>
-					<td><input type="text" id="phone" name="phone"
-						placeholder="휴대번호" required="required"></td>
-				</tr>
-				<tr>
-					<th>이 메 일</th>
-					<td><input type="email" id="email" name="email"
-						placeholder="이메일" required="required"></td>
-				</tr>
-				<tr>
-					<th>멍냥이 정보</th>
-					<td><input type="text" id="petInfo" name="petInfo"></td>
-				</tr>
-				<tr>
-					<th>주 소</th>
-					<td><input type="text" id="address" name="address"></td>
-				</tr>
-			</table>
+					<div class="col-lg-12">
+						<div class="p-5" align="center">
+							<div class="col-lg-8 col-sm-4 mb-3 mb-sm-0">
+								<img src="img/1market.png" style="width: 70px; height: 70px;">
+								<p class="h3"
+									style="color: rgb(255, 190, 83); font-weight: 900;">회원가입</p>
 
-			<label> <input type="checkbox" id="admit" name="admit">이용약관동의(필수)
-			</label><br>
-			 <label> <input type="checkbox" id="admit"
-				name="admit">이용약관동의(필수)
-			</label><br>
-			 <label> <input type="checkbox" id="admit"
-				name="admit">이용약관동의(필수)
-			</label><br>
-			 <label> <input type="checkbox" id="admit"
-				name="admit">이용약관동의(필수)
-			</label> <br>
-			<button type="submit" onclick="winopen1()">회원 가입</button>
-		</form>
+								<br>
+								<form id="frm" name="frm" action="signUpCheck.do" target="a"
+									method="post" onsubmit="return checkValue()">
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">아이디</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="text" id="mId" name="mId" placeholder="아이디"
+												required="required" class="form-control form-control-user">
+										</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<button onclick="winopen()"
+												class="btn btn-warning btn-user btn-block">중복체크</button>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">비밀번호</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="password" id="password" name="password"
+												placeholder="비밀번호" required="required"
+												class="form-control form-control-user">
+										</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="password" id="passwordok" name="passwordok"
+												placeholder="비밀번호 확인" class="form-control form-control-user">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">이 름</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="text" id="mName" name="mName" placeholder="이름"
+												required="required" class="form-control form-control-user">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">닉네임</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="text" id="nickname" name="nickname"
+												placeholder="닉네임" required="required"
+												class="form-control form-control-user">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">휴대폰번호</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="text" id="phone" name="phone" placeholder="휴대번호"
+												required="required" class="form-control form-control-user">
+										</div>
+										<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
+											<button type="submit" onclick=""
+												class="btn btn-warning btn-user btn-block">인증하기</button>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">이 메 일</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="email" id="email" name="email" placeholder="이메일"
+												required="required" class="form-control form-control-user">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">멍냥이 정보</div>
+										<div class="col-lg-10 col-sm- mb-3 mb-sm-0 ">
+											<textarea id="petInfo" name="petInfo"
+												class="form-control form-control-user"
+												placeholder="멍냥이 정보를 입력해보아요."></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">주 소</div>
+										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+											<input type="text" id="address" name="address"
+												class="form-control form-control-user">
+										</div>
+									</div>
+									<p
+									style="color: rgb(255, 190, 83); font-weight: 900;">
+									<label> <input type="checkbox" id="admit" name="admit">이용약관동의(필수)
+									</label><br> <label> <input type="checkbox" id="admit"
+										name="admit" required="required"class="custom-control-input">이용약관동의(필수)
+									</label><br> <label> <input type="checkbox" id="admit"
+										name="admit"required="required" class="custom-control-input">개인정보 수집 이용동의(필수)
+									</label><br> <label> <input type="checkbox" id="admit"
+										name="admit" required="required"
+										class="btn btn-warning btn-user"class="custom-control-input">본인은 만 14세 이상입니다.
+									</label> <br></p>
+		
+									<button type="submit" onclick="winopen1()" 
+									class="btn btn-warning btn-user btn-block">회원 가입</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 
 </html>
