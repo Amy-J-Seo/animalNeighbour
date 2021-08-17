@@ -7,19 +7,29 @@
 		resultType="co.animal.prj.comments.vo.CommentsVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM comment
+		SELECT * FROM comments
 	</select>
 	
 	
 	<insert id="commentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
-		insert into comments values(c_seq.nextval,#{mId},'sales',#{cMainNum},#{cContents})
+		insert into comments values(c_seq.nextval,#{cmId},'sales',#{cMainNum},#{cContents})
+		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
+			SELECT c_seq.currval from dual
+		</selectKey>
 	</insert>
-<!--  	<select id="" resultType="">
+	
+	<delete id="commentsDelete" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		delete from comments where cno=#{cNo}
+	</delete>
+	
+	<update id="commentsUpdate" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		update comments set ccontents=#{cContents} where cno=#{cNo}
+	</update>
+	
+<!--  	
+	<select id="commentsInsertSelect" resultType="">
 
 	</select>
-	<delete id="" parameterType="">
-
-	</delete>
 	<insert id="" parameterType="">
 
 	</insert>-->

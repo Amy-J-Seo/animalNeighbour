@@ -1,5 +1,8 @@
 package co.animal.prj.sales.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,10 +17,20 @@ public class SalesSelect implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 상품 디테일페이지 + 안에 댓글도 가져오기.
 		SalesService salesDao = new SalesServiceImpl();
-		SalesVO vo = new SalesVO();
 		
+		SalesVO vo = new SalesVO();
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		request.setAttribute("list", salesDao.salesSelect(vo));
+		
+		int sHit = Integer.valueOf(request.getParameter("sHit"));
+		vo.setsHit(sHit);
+		salesDao.hitUpdate(vo);
+		//System.out.println(vo.getsHit() + "salesSelect.java");
+		
+		List<SalesVO> list = new ArrayList<SalesVO>();
+		list = salesDao.salesSelect(vo);
+	
+
+		request.setAttribute("list", list);
 		
 		return "sales/salesDetail";
 	

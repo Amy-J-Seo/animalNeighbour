@@ -10,7 +10,7 @@ import co.animal.prj.comments.vo.CommentsVO;
 import co.animal.prj.common.DataSource;
 
 public class CommentsServiceImpl implements CommentsService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession();
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private CommentsServiceMapper map = sqlSession.getMapper(CommentsServiceMapper.class);
 	
 	@Override

@@ -1,7 +1,9 @@
-package co.animal.prj.comments.command;
+package co.animal.prj.sales.servlet;
 
 import java.io.IOException;
-
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,18 +11,30 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
 import co.animal.prj.comments.service.CommentsService;
 import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
-import co.animal.prj.common.Command;
 import co.animal.prj.sales.vo.SalesVO;
 
 
-public class CommentInsert implements Command {
+@WebServlet("/CommentInsertServ")
+public class CommentInsertServ extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public CommentInsertServ() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 댓글 등록하기
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("text/json;charset=utf-8");
 		
 		CommentsService comDao = new CommentsServiceImpl();
@@ -32,7 +46,7 @@ public class CommentInsert implements Command {
 		vo.setCmId(String.valueOf(session.getAttribute("mId")));
 		vo.setcMainNum(Integer.valueOf(request.getParameter("cMainNum")));
 		vo.setcContents(request.getParameter("cContent"));
-		vo.setcNo(Integer.valueOf(request.getParameter("cNo")));
+		
 		comDao.commentsInsert(vo);
 		
 		request.setAttribute("sNo", vo.getsNo());
@@ -45,8 +59,6 @@ public class CommentInsert implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-				
-		return "salesSelect.do";
 	}
 
 }

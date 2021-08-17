@@ -2,11 +2,18 @@ package co.animal.prj.comments.vo;
 
 
 public class CommentsVO {
+	
 	private int cNo;
-	private String mId;
+	private String cmId;
 	private String cType;
 	private String cContents;
 	private int cMainNum;
+	
+	@Override
+	public String toString() {
+		return "CommentsVO [cNo=" + cNo + ", cmId=" + cmId + ", cType=" + cType + ", cContents=" + cContents
+				+ ", cMainNum=" + cMainNum + "]";
+	}
 	
 	public CommentsVO() {
 		super();
@@ -17,11 +24,12 @@ public class CommentsVO {
 	public void setcNo(int cNo) {
 		this.cNo = cNo;
 	}
-	public String getmId() {
-		return mId;
+	
+	public String getCmId() {
+		return cmId;
 	}
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setCmId(String cmId) {
+		this.cmId = cmId;
 	}
 	public String getcType() {
 		return cType;
@@ -42,10 +50,5 @@ public class CommentsVO {
 		this.cMainNum = cMainNum;
 	}
 	
-	@Override
-	public String toString() {
-		return "CommentsVO [cNo=" + cNo + ", mId=" + mId + ", cType=" + cType + ", cContents=" + cContents
-				+ ", cMainNum=" + cMainNum + "]";
-	}
 
 }
