@@ -7,22 +7,21 @@ import co.animal.prj.common.Command;
 import co.animal.prj.offerhelp.serviceImpl.OfferHelpServiceImpl;
 import co.animal.prj.offerhelp.vo.OfferHelpVO;
 
-public class OhDetail implements Command {
+public class OhItemDelete implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-
-		OfferHelpServiceImpl dao = new OfferHelpServiceImpl();
+		
+		OfferHelpServiceImpl ohDao = new OfferHelpServiceImpl();
 		OfferHelpVO vo = new OfferHelpVO();
-		
-		String selectedNo = request.getParameter("ohNo");
-		System.out.println(selectedNo);
-		int ohNo=Integer.parseInt(selectedNo);
+		int ohNo = Integer.valueOf(request.getParameter("ohNo"));
 		vo.setOhNo(ohNo);
-		System.out.println(vo.getOhNo());
-		request.setAttribute("item", dao.offerHelpSelect(vo));
+		vo.setOhHide("h");
 		
-		return "offerhelp/ohItemDetail";
+		ohDao.offerHelpDelete(vo);
+		
+		request.setAttribute("list", ohDao.offerHelpSelectList());
+		return "offerhelp/ohMain";
 	}
 
 }

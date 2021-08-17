@@ -12,8 +12,8 @@
 		inner join member m 
 		on o.mid = m.mid
 	</select>
-    <select id="offerHelpSelect" parameterType="string" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      select * from offerhelp where mid=#{mId}
+    <select id="offerHelpSelect" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
+      select * from offerhelp where ohNo=#{ohNo}
     </select>
    
     <insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">

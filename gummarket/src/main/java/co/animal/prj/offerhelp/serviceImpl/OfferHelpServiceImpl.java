@@ -10,7 +10,7 @@ import co.animal.prj.offerhelp.service.OfferHelpService;
 import co.animal.prj.offerhelp.vo.OfferHelpVO;
 
 public class OfferHelpServiceImpl implements OfferHelpService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession()	;
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private OfferHelpMapper map = sqlSession.getMapper(OfferHelpMapper.class);
 	@Override
 	public List<OfferHelpVO> offerHelpSelectList() {
