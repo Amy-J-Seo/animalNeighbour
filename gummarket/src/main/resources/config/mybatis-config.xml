@@ -24,14 +24,15 @@
 	   <!-- 베이스패키지만 설정해 주면 밑에 어떤 매퍼를 만들던지 얘가 알아서 읽어줄거야 -->
 		<mapper resource="co/animal/prj/member/serviceImpl/Member-map.xml" />
 		<mapper resource="co/animal/prj/sales/serviceImpl/Sales-map.xml" />
-
 		<mapper resource="co/animal/prj/findhelp/serviceImpl/FindHelp-map.xml" />
-
 		<mapper resource="co/animal/prj/offerhelp/serviceImpl/OfferHelp-map.xml" />
+
 		<mapper resource="co/animal/prj/report/serviceImpl/Report-map.xml" />
 		<mapper resource="co/animal/prj/board/serviceImpl/Board-map.xml" />
 		
 <!-- 		
+		<mapper resource="co/animal/prj/comments/serviceImpl/Comments-map.xml" />
+
 		<mapper resource="co/animal/prj/image/serviceImpl/Image-map.xml" />
 		<mapper resource="co/animal/prj/csc/serviceImpl/Csc-map.xml" />
 		<mapper resource="co/animal/prj/lost/serviceImpl/Lost-map.xml" />
