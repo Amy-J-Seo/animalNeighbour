@@ -66,7 +66,7 @@
 			$('<tr />').append('<th>닉네임</th><th>댓글</th>')
 		);
 		for (let i = 0; i < data.length; i++) {
-			let tr = $('<tr />').attr('id',data[i]['cNo']);
+			let tr = $('<tr />').attr('id',data[i]['cNo']);//tr에다가 id값으로 cNo줌.
 			for (let field of fields) {
 				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
 				$(tr).append(td)
@@ -145,11 +145,7 @@
 		})
 	}
 	
-	//수정버튼 누르면 폼 가져오기
-	function updateForm(){
-		var cNo = data.cNo;
-		
-	}
+	
 	
 	//업데이트 폼나오게 테스트!
 	function updateTest(e){
@@ -157,10 +153,12 @@
 		let modForm = $("#showComUpdate");
 		$(this).parent().append(modForm);
 		let content = $(this).parent().children().eq(1).text();
+		let cNo = $(this).parent().attr('id');// tr의 id값 가져옴~
 		/* $(this).children().eq(0).hide(); */
 		modForm.show();
 		
 		$(modForm).find("#cUpdated").val(content);
+		$(modForm).find('#cNo').val(cNo);
 	}
 	
 	//업데이트 테스트
@@ -171,7 +169,7 @@
 
 		//폼 전송처리
 		$.ajax({
-			url: $('#updateRep').attr('action'), //='../AddItemServ.do'
+			url: $('#updateRep').attr('action'), 
 			method: 'post',
 			data: $('#updateRep').serialize(), //파라미터로 넘김
 			dataType: 'json', //받아오는 값
@@ -182,8 +180,22 @@
 		})
 	}
 	
-	function updateItemFunc(){
+	function updateItemFunc(data){
 		
+		$.ajax({
+			url: 'UpdateCommentServ',
+			data: {
+				cNo: $(this).parent().attr('id')
+			},
+			success: function () {
+				$('#'+data.cNo).children().eq(1).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
+				$('#showComUpdate').hide();
+			},
+			error: function (e) {
+				alert("수정에서 에러발생!!")
+				console.error(e);
+			}
+		})
 	}
 	
 	//댓글 수정하기
@@ -294,7 +306,8 @@
 			<!-- 댓글 수정하면 보이게 (테스트)-->
 			<div id="showComUpdate">
 				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
-					<input type="text" id="cUpdated" name="cUpdated">
+					<input type="hidden" id="cNo" name="cNo">
+					<input type="text" id="cUpdated" name="cContents">
 					<button type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
 				</form>
 			</div>
