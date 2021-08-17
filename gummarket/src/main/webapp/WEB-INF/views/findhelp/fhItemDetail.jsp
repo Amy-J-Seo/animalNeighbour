@@ -120,16 +120,26 @@ function fhItemDelete(n) {
 				<br />
 				<p><hr></p>
 				
-				<div class="card-header py-3">${item.fhCategory } : ${item.fhTitle }
-					<c:if test="${item.fhLike > 0 }">
+				<div class="card-header py-3">
+				${item.fhCategory } : ${item.fhTitle }
+				
+					 <a class="btn btn-danger btn-sm ml-3" style="float:right;" href="#" data-toggle="modal"
+					data-target="#reportModal" ><i class="fas fa-bullhorn"></i> 신고하기</a>
 					
-						<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}</span>
+					<c:if test="${item.fhLike > 0 }">
+						<span class="pr-3" style="float:right; font-size: 20px;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}
+					</span>
 					</c:if>
+					
 				</div>
 				
 				<div class="card-body">
 				<div class="pb-1 d-flex align-items-center">
-				<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${item.nickname }</span>
+				<div>
+				<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
+				<span class="pl-3" style="font-size: 2rem;">${item.nickname }</span>
+				
+				</div>				
 				</div>
 				<hr>
 				<div>
@@ -152,8 +162,8 @@ function fhItemDelete(n) {
 				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
 				<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
 				<i class="fas fa-phone-alt"></i> 연락하기</button>
-				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+				<button class="btn btn-md mr-5" type="button" onclick="location.href='findHelpMain.doBB'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+				<i class="fas fa-undo-alt"></i> 메인으로</button>
 				</form>	
 				
 				</div>

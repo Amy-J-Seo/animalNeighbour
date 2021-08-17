@@ -27,7 +27,7 @@ public class Login implements Command {
 			session.setAttribute("mId", vo.getmId());
 			session.setAttribute("role", vo.getRole());
 			session.setAttribute("session", vo);
-			page = "home/home";
+			page = "home/home2";
 		} else {
 			String message = "존재하지 않는 아이디 혹은 비밀번호가 틀렸습니다.";
 			request.setAttribute("message", message);

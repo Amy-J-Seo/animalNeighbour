@@ -44,11 +44,8 @@
                              <!-- form start -->
                              <form class="user" id="frm" name="frm" action="fhItemUpdate.doBB" method="post">
                              <input type="hidden" id="fhNo" name="fhNo" value="${itemToUpdate.fhNo}">
-                             
-                             <!-- 테스트벨류 -->
-                             <input type="hidden" id="mId" name="mId" value="bb123">
-                             <!-- 나중에 세션정보 가져와서 집어넣기!  -->
-                           <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
+                            
+                           <input type="hidden" id="mId" name="mId" value="${session.mId }">
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
@@ -133,6 +130,27 @@
          </div>
 
      </div>
+
+ <!-- return to main Modal-->
+    <div class="modal fade" id="cancelWriteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelWriteModal">Do you want to go back to main?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">다른 글들을 살펴보세요!</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"> 취 소 </button>
+                    <a class="btn btn-primary" href="findHelpMain.doBB">메인으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- End of return to main Modal-->
 
 
 <!-- Bootstrap core JavaScript-->

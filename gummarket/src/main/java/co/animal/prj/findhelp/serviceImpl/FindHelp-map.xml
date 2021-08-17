@@ -33,9 +33,9 @@
 	
 	</insert>
 	
-	<delete id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
+	<update id="findHelpDelete" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	update findhelp set fhhide=#{fhHide} where fhno=#{fhNo}
-	</delete>
+	</update>
 	
 	
 	<update id="findHelpUpdate" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
