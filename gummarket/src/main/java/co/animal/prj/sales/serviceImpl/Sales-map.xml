@@ -57,7 +57,11 @@
 		set stitle=#{sTitle}, scategory=#{sCategory}, spurchaseddate=#{sPurchasedDate}, sreason=#{sReason}, scondition=#{sCondition}, sprice=#{sPrice}, snetprice=#{sNetPrice}
 		where sno=#{sNo}
 	</update>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="hitUpdate" parameterType="co.animal.prj.sales.vo.SalesVO">
+		update sales set shit = #{sHit} + 1 where sno = #{sNo}
+	</update>
 	
 <!--  	
 	

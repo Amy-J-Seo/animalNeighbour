@@ -55,4 +55,11 @@ public class SalesServiceImpl implements SalesService {
 		return map.salesOne(vo);
 	}
 
+	@Override
+	public int hitUpdate(SalesVO vo) {
+		// TODO 조회수 증가 메서드 
+		
+		return map.hitUpdate(vo);
+	}
+
 }

@@ -12,4 +12,7 @@ public interface SalesServiceMapper {
 	public int salesUpdate(SalesVO vo);
 	public int salesDelete(SalesVO vo);
 	public int salesInsert(SalesVO vo);
+	
+	
+	public int hitUpdate(SalesVO vo);
 }

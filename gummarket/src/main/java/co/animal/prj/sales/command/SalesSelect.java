@@ -19,15 +19,17 @@ public class SalesSelect implements Command {
 		SalesService salesDao = new SalesServiceImpl();
 		
 		SalesVO vo = new SalesVO();
-		//System.out.println(request.getParameter("sNo"));
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		//System.out.println(vo.getsNo() + "salesSelect.java");
+		
+		int sHit = Integer.valueOf(request.getParameter("sHit"));
+		vo.setsHit(sHit);
+		salesDao.hitUpdate(vo);
+		//System.out.println(vo.getsHit() + "salesSelect.java");
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);
-		
-		
-		
+	
+
 		request.setAttribute("list", list);
 		
 		return "sales/salesDetail";
