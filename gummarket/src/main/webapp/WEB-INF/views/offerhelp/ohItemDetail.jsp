@@ -30,15 +30,14 @@
 	   }
 	  }
 	
-	//글 수정
+	
+	
+	//메시지 보내기
 	function updateSales(n) {
 		frm1.ohNo.value=n;
 		frm1.submit();
 		//location.href='updateSales.do';
 	}
-	
-	
-	//좋아요 버튼js
 	
 </script>
 
@@ -67,6 +66,31 @@
 				
 				</div>
 				</div>
+				<!-- 댓글 입력 -->
+				<div class="card mb-2">
+					<div class="card-header bg-light">
+					        <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<form action="commentInsert.do" method="post">
+							<ul class="list-group list-group-flush">
+							    <li class="list-group-item">
+								<div class="form-inline mb-2">
+									<i class="fas fa-cat"></i>&nbsp;&nbsp;
+									
+								</div>
+								<input type="hidden" id="cMainNum" name="cMainNum" value="${item.ohNo }">
+								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+								<button type="submit" class="btn btn-dark mt-3">post reply</button>
+							    </li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div>
+			
 				
 			<!-- To do style again -->
 				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='home.do'">To Main</button> &nbsp;&nbsp;&nbsp;
@@ -77,11 +101,22 @@
 				<!-- 게시글 삭제, 수정 버튼 -->
 				<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
 				<%-- <c:if test="${list[0].mId eq '로그인된mid' }"> --%>
-					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel()" />
-					<input type="button" id="updateBtn" class="btn btn-warning" value="메세지 보내기" onclick="updateSales()" />
+					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${item.ohNo})" />
+					<input type="button" id="updateBtn" class="btn btn-warning" value="메시지 보내기" onclick="updateSales(${item.ohNo})" />
 				<%-- </c:if> --%>
 			</div>
 		
+			
+		</div>
+		
+		<form id="frm" name="frm" action="deleteSales.do" method="post">
+			<input type= "hidden" id="sNo" name="sNo">
+		</form>
+		<form id="frm1" name="frm1" action="updateSales.do" method="post">
+			<input type= "hidden" id="sNo" name="sNo">
+		</form>
+		
+	</div>
 	<!-- /.container-fluid -->
 </body>
 </html>

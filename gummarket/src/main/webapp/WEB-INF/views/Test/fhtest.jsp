@@ -15,7 +15,6 @@ ${list }
 
 >>>>>>> refs/heads/main
 <h1>a<a href="offerHelpMain.do">도움드려요 메인</a></h1>
-<h1>a<a href="ohDetail.do">도움드려요 상세보기</a></h1>
 <<<<<<< HEAD
 =======
 
