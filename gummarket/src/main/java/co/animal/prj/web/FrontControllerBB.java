@@ -11,14 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.animal.prj.board.command.BDetail;
+import co.animal.prj.admin.command.AdminMain;
 import co.animal.prj.board.command.BItemDelete;
 import co.animal.prj.board.command.BItemUpdateForm;
+import co.animal.prj.board.command.BoardDetail;
 import co.animal.prj.board.command.BoardInsert;
 import co.animal.prj.board.command.BoardUpdate;
 import co.animal.prj.board.command.EventMain;
 import co.animal.prj.board.command.NoticeMain;
 import co.animal.prj.board.command.SearchNoticeItem;
+import co.animal.prj.board.command.TotalEventTable;
 import co.animal.prj.board.command.WriteBoardForm;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.command.FhDetail;
@@ -28,7 +30,9 @@ import co.animal.prj.findhelp.command.FhItemUpdateForm;
 import co.animal.prj.findhelp.command.FhTest;
 import co.animal.prj.findhelp.command.FindHelpInsert;
 import co.animal.prj.findhelp.command.FindHelpMain;
+import co.animal.prj.findhelp.command.TotalCareTableView;
 import co.animal.prj.findhelp.command.WriteFHForm;
+import co.animal.prj.report.command.RSelectList;
 
 
 
@@ -60,12 +64,17 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/noticeMain.doBB", new NoticeMain());
 		map.put("/writeBoardForm.doBB", new WriteBoardForm());
 		map.put("/boardInsert.doBB", new BoardInsert());
-		map.put("/bDetail.doBB",new BDetail());
+		map.put("/bDetail.doBB",new BoardDetail());
 		map.put("/bItemDelete.doBB", new BItemDelete());
 		map.put("/bItemUpdateForm.doBB", new BItemUpdateForm());
 		map.put("/boardUpdate.doBB", new BoardUpdate());
 		map.put("/searchNoticeItem.doBB", new SearchNoticeItem());
 		
+		//주윤 맵 관리자 메인페이지 + 이벤트/공지사항 등
+		map.put("/adminMain.doBB", new AdminMain());
+		map.put("/totalEventTable.doBB", new TotalEventTable()); //전체이벤트테이블
+		map.put("/rSelectList.doBB", new RSelectList()); //전체 신고리스트
+		map.put("/totalCareTableView.doBB", new TotalCareTableView()); //전체 도움주고받기 테이블 뷰 ..
 		
 		
 		

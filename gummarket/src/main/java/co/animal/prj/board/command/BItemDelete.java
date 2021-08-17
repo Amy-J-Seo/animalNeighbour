@@ -33,8 +33,8 @@ public class BItemDelete implements Command {
 			System.out.println(cat);
 			List <BoardVO> list = new ArrayList<BoardVO>();
 			list =  bDao.boardSelectListEvent();
-			System.out.println(list);
-//			request.setAttribute("list", bDao.boardSelectListEvent());
+			System.out.println(list+" BItemDelete.java");
+			request.setAttribute("list", bDao.boardSelectListEvent());
 			path="noticeEvent/eventMain";
 		}else {
 			System.out.println(cat);

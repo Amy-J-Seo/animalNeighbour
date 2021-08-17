@@ -95,13 +95,14 @@ function fhItemDelete(n) {
 		<!-- DataTales Example -->
 		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }</h3>
 				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
-				 </h3>
-				  <%-- <c:if test="${session.mId == item.mId}"> --%>
-				<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
-				 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
-				 <%-- </c:if> --%>				
+				 <c:if test="${session.mId == item.mId}">
+					<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
+					<i class="far fa-trash-alt"></i> 글 삭제</button>
+					 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+					 <i class="far fa-edit"></i> 글 수정</button>
+				 </c:if>				
 			</div>
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">
