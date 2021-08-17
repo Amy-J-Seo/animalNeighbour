@@ -292,6 +292,7 @@
 			<%-- </c:forEach> --%>
         </div>
     </div>
+    
 </section>
 
 </body>

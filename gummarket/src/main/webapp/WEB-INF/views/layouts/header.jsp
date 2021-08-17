@@ -77,18 +77,18 @@
 								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="test.do"> <i
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
-								</a> <a class="dropdown-item" href="#"> <i
+								</a> <a class="dropdown-item" href="memberSelect.do"> <i
 									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
 								</a> <a class="dropdown-item" href="#"> <i
 									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내 문의내역
 								</a>
-								<c:if test="${session.role eq '관리자' }">
-									<a class="dropdown-item" href="#"> <i
-										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 개인정보
+								<c:if test="${session.role eq 'ADMIN' }">
+									<a class="dropdown-item" href="memberList.do"> <i
+										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 회원 관리
 									</a>
 								</c:if>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal"
+								<a class="dropdown-item" href="" data-toggle="modal"
 									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									로그아웃
@@ -104,7 +104,25 @@
 				</ul>
 			</nav>
 			<!-- End of Topbar -->
-
+ <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">밤빵마켓은 사랑입니다</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
+                    <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 		</div>
@@ -112,7 +130,7 @@
 
 	</div>
 	<!-- End of Page Wrapper -->
-
+	
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>
