@@ -16,10 +16,13 @@
 <body>
 	<div id="wrap">
         <br><br>
-        <font color="blue">가입을 축하드립니다.</font>
+        <font color="blue">축하합니다!
+        <br>회원 가입 완료~~:)
+        
+        </font>
         
         <br>
-        <input type="button" value="확인" onclick="checkok()">
+        <input type="button" value="로그인하기" onclick="checkok()">
     </div>
 </body>
 </html>

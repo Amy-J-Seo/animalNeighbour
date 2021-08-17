@@ -6,15 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<!-- like button css -->
-<style>
-	
-</style>
-
-
 
 <script>
+	
+	
 	
 	//삭제버튼 누르면 alert
 	function confirmDel(n) {
@@ -36,22 +33,199 @@
 		frm1.submit();
 		//location.href='updateSales.do';
 	}
+
 	
+//------------------------------댓글용-------------------------------//
+
+	//댓글 불러오기 ajax
+	$(document).ready(function(){
+		// 수정 폼 숨기기
+		$('#showComUpdate').hide();
+		
+		console.log($('#cMainNum'));
+		//전체 데이터 출력.
+		$.ajax({
+			url: 'SelectCommentServ',
+			dataType: 'json',
+			data: {
+				sNo:$('#cMainNum').val()
+			},
+			success: itemListFnc,
+			error: function () {
+				console.log("으악")
+			}
+	});
+		
+
+	let fields = ['cmId', 'cContents'];
+	//댓글 조회 콜백함수
+	function itemListFnc(data) {
+		console.log(data);	
+		let table = $('<table />').attr('border', '0');
+		$(table).append(
+			$('<tr />').append('<th>닉네임</th><th>댓글</th>')
+		);
+		for (let i = 0; i < data.length; i++) {
+			let tr = $('<tr />').attr('id',data[i]['cNo']);
+			for (let field of fields) {
+				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
+				$(tr).append(td)
+			}
+		
+			let delBtn = $('<td><button type="button">삭제</button></td>')
+			let updBtn =$('<td><button type="button">수정</button></td>') //수정버튼 추가
+			
+			delBtn.click(kill);
+			updBtn.click(updateTest);
+			
+			$(tr).append(delBtn);
+			$(tr).append(updBtn);
+
+			$(table).append(tr);
+			
+		}
+		$('#show').append(table);
+	}
 	
-	//좋아요 버튼js
+	//댓글 입력 ajax
+	$('#reply').on('submit', function (event) {
+		event.preventDefault(); //디폴트값은 못들어가게
+		let s = $('#reply').serialize();
+		console.log(s);
+
+		//폼 전송처리
+		$.ajax({
+			url: $('#reply').attr('action'), //='../AddItemServ.do'
+			method: 'post',
+			data: $('#reply').serialize(), //파라미터로 넘김
+			dataType: 'json', //받아오는 값
+			success: addItemFunc,
+			error: function (reject) {
+				console.error(reject);
+			}
+		})
+	})
+});
+
+	let fields = ['cmId', 'cContents'];
+	//입력처리 후 콜백함수
+	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
+		console.log('aaa')
+		console.log(data)
+		let tr = $('<tr />').attr('id',data.cNo) ;
+		for (let field of fields) {
+			let td = $('<td />').text(data[field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
+			$(tr).append(td)
+		}
+		console.log($('table'))
+		let delBtn = $('<td><button type="button">삭제</button></td>')
+		let updBtn =$('<td><button type="button">수정</button></td>')
+			delBtn.click(kill);
+			updBtn.click(updateTest);
+			$(tr).append(delBtn);
+			$(tr).append(updBtn);
+		$('table').append(tr);
+	}
+	
+	//댓글 삭제하기
+	function kill(e) {
+		console.log(e.target.parentNode.parentNode);
+		//location.href='../DeleteServ.do?itemNo='+$(this).parent().children().eq(0).text();
+		$.ajax({
+			url: 'DeleteCommentServ',
+			data: {
+				cNo: $(this).parent().attr('id')
+			},
+			success: function () {
+				e.target.parentNode.parentNode.remove();
+			},
+			error: function () {
+				alert("삭제에서 에러발생!!")
+			}
+		})
+	}
+	
+	//수정버튼 누르면 폼 가져오기
+	function updateForm(){
+		var cNo = data.cNo;
+		
+	}
+	
+	//업데이트 폼나오게 테스트!
+	function updateTest(e){
+		
+		let modForm = $("#showComUpdate");
+		$(this).parent().append(modForm);
+		let content = $(this).parent().children().eq(1).text();
+		/* $(this).children().eq(0).hide(); */
+		modForm.show();
+		
+		$(modForm).find("#cUpdated").val(content);
+	}
+	
+	//업데이트 테스트
+	function updateCom(){
+		event.preventDefault(); //디폴트값은 못들어가게
+		let s = $('#updateRep').serialize();
+		console.log(s);
+
+		//폼 전송처리
+		$.ajax({
+			url: $('#updateRep').attr('action'), //='../AddItemServ.do'
+			method: 'post',
+			data: $('#updateRep').serialize(), //파라미터로 넘김
+			dataType: 'json', //받아오는 값
+			success: updateItemFunc,
+			error: function (reject) {
+				console.error(reject);
+			}
+		})
+	}
+	
+	function updateItemFunc(){
+		
+	}
+	
+	//댓글 수정하기
+	function update(){
+		
+		/* $("#your-comment").removeAttr("readonly");
+		$(this).attr("id","review-update-submit");
+		$(this).attr("value","수정하기"); */
+		
+		$.ajax({
+			url: 'UpdateCommentServ',
+			data: {
+				cNo: $(this).parent().attr('id')
+			},
+			success: function () {
+				//e.target.parentNode.parentNode.hide();
+				$(this).parent().parent().hide();
+			},
+			error: function () {
+				alert("수정에서 에러발생!!")
+			}
+		})
+	}
 	
 </script>
 
-<body>
+<body id="page-top">
 
 <!-- Begin Page Content -->
-	<div class="container-fluid">
+	<div class="container-fluid" >
 		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
+		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
 				
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >판매상품 상세페이지</h3>
-				
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
+				 <%-- <c:if test="${session.mId == item.mId}">  --%>
+				 <%-- <input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
+					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" /> --%>
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+				 <%-- </c:if> --%>
+				 </h3>	
 			</div>
 			<div class="card-body">
 				<!-- 여기에 이미지도 넣기 -->
@@ -88,25 +262,25 @@
 				<div class="card-header py-3">댓글</div>
 				<div class="card-body">
 				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
-					<c:forEach var="list" items="${list }">
-						${list.mId }:
+					<div id="show"></div>
+				
+					<%-- <c:forEach var="list" items="${list }">
+						${list.cmId }:
 						${list.cContents }<br>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 				</div> 
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
-					        <i class="fa fa-comment fa"></i> REPLY
+					     <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
-						<form action="commentInsert.do" method="post">
+						<form id="reply" action="CommentInsertServ" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-								<div class="form-inline mb-2">
-									<i class="fas fa-cat"></i>&nbsp;&nbsp;
-									<span> ${nickname }</span>
-								</div>
+							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
+								
 								<input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
 								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
@@ -117,32 +291,87 @@
 				</div>
 			</div>
 			
-			<div>
-			<!-- To do style again -->
-				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='home.do'">To Main</button> &nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='salesListAll.do'">To List</button>&nbsp;&nbsp;&nbsp;
+			<!-- 댓글 수정하면 보이게 (테스트)-->
+			<div id="showComUpdate">
+				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
+					<input type="text" id="cUpdated" name="cUpdated">
+					<button type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
+				</form>
 			</div>
+			
+			
+			
 			<br>
-			<div align="center">
-				<!-- 게시글 삭제, 수정 버튼 -->
-				<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
-				<%-- <c:if test="${list[0].mId eq '로그인된mid' }"> --%>
-					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
-					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" />
-				<%-- </c:if> --%>
+			<div class="pb-3 mx-auto"  style="align-items: center;">
+				<!-- To do style again -->
+				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
+				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
+				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
+					data-target="#logoutModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 			</div>
+			
 		
 			
 		</div>
 		
+		<!-- 
+		메인으로 가기 버튼
+		<div align="center">
+		To do style again
+			&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='home.do'">To Main</button> &nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='salesListAll.do'">To List</button>&nbsp;&nbsp;&nbsp;
+		</div>
+		 -->
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
-		<form id="frm1" name="frm1" action="updateSales.do" method="post">
+		<form id="frm1" name="frm1" action="updateSalesForm.do" method="post">
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		
 	</div>
 	<!-- /.container-fluid -->
+	
+	<!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- write btn-->
+	<a style="position: fixed;
+	  right: 1rem;
+	  bottom: 4rem;
+	  display: inline;
+	  width: 2.75rem;
+	  height: 2.75rem;
+	  text-align: center;
+	  color: #fff;
+	  background: rgb(252, 221, 33);
+	  line-height: 46px;
+	  border-radius: 0.35rem" href="writeFHForm.doBB">
+	        <i class="fas fa-edit"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+	
 </body>
 </html>
