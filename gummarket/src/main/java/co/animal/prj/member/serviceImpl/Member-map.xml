@@ -22,6 +22,9 @@
 	INSERT INTO member(mId,password,mName,nickname,phone,email,petInfo,address)
 	VALUES(#{mId},#{password},#{mName},#{nickname},#{phone},#{email},#{petInfo},#{address})
 	</insert>
+	<select id="memberSelect" resultType="co.animal.prj.member.vo.MemberVO">
+		SELECT* FROM member WHERE mId=#{mId}
+	</select>
 <!--	
 	<delete id="" parameterType="">
 

@@ -5,18 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>LoginForm</title>
-	<script src="http://developers.kakao.com/sdk/js/kakao.js">
-		window.Kakao.init("b170e6c8bb0d86b449f0f677f1ae873f");
-		
-		function KakaoLogin(){
-			window.Kakao.Auth.login({
-				scope : 'profile_nickname,account_email ',
-				success: function(authObj){
-					console.log(authObj);
-					window.Kakao.API.request
-				} 
-			})
-		}
+	<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>	
+	window.Kakao.init("b170e6c8bb0d86b449f0f677f1ae873f");
+	
+	 function kakaoLogin(){
+	        window.Kakao.Auth.login({
+	            scope:'profile_nickname, account_email,',
+	            success: function(authObj) {
+	            console.log(authObj);
+	            window.Kakao.API.request({
+	                url:'/v2/user/me',
+	                success: res => {
+	                    const kakao_account = res.kakao_account;
+	                    console.log(kakao_account);
+	                    this.login(kakao_account);
+	                }
+	            });
+	            },
+	            
+	        });
+	    }
 	</script>
 </head>
 <body>
@@ -37,6 +46,8 @@
 			</table>
 			<div>
 				<input type="submit" value="로그인">
+				 <a href = "javascript:kakaoLogin();">
+				 <img src="http://gi.esmplus.com/buybye1/page/kakao-login.png" style="height: 40px; width:auto"></a>
 			</div>
 		</form>
 		<div>

@@ -20,7 +20,9 @@ import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
 import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.RegisterCheck;
-import co.animal.prj.member.command.RegisterForm;
+import co.animal.prj.login.command.RegisterForm;
+import co.animal.prj.member.command.MemberDetail;
+import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.Test;
 
 import co.animal.prj.offerhelp.command.OfferHelpMain;
@@ -53,6 +55,9 @@ public class FrontController extends HttpServlet {
 		map.put("/idCheckForm.do", new IdCheckForm());
 		map.put("/idCheckPro.do", new IdCheckPro());
 		map.put("/registerCheck.do", new RegisterCheck());
+		
+		map.put("/memberList.do",new MemberList());
+		map.put("/memberDetail.do",new MemberDetail());
 		
 		
 		
