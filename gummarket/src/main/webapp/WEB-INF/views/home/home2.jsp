@@ -68,7 +68,7 @@
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo})">Read more</button></div>
+	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
 	                    </div>
 	                  </div>
 	            	</div>
@@ -76,6 +76,7 @@
    				<!-- 버튼 누르면 salesSelect.do로가서 상세보기 페이지로 넘어감. -->
                	<form id="salesFrm" name="salesFrm" action="salesSelect.do" method="post">
 					<input type="hidden" id="sNo" name="sNo">
+					<input type="hidden" id="sHit" name="sHit">
 				</form>
 		</div>
 	</div>
@@ -83,16 +84,16 @@
 	 <!-- 스타일 수정완료했습니다. 어떤 이유인지 css에서 충돌이 있는지 클래스가 적용되지 않았어요... -->
 	<!-- write btn-->
     <a style="position: fixed;
-  right: 1rem;
-  bottom: 4rem;
-  display: inline;
-  width: 2.75rem;
-  height: 2.75rem;
-  text-align: center;
-  color: #fff;
-  background: rgb(252, 221, 33);
-  line-height: 46px;
-  border-radius: 0.35rem" href="salesInsertForm.do">
+	  right: 1rem;
+	  bottom: 4rem;
+	  display: inline;
+	  width: 2.75rem;
+	  height: 2.75rem;
+	  text-align: center;
+	  color: #fff;
+	  background: rgb(252, 221, 33);
+	  line-height: 46px;
+	  border-radius: 0.35rem" href="salesInsertForm.do">
         <i class="fas fa-edit"></i>
     </a>
     <!-- Scroll to Top Button-->
@@ -123,9 +124,11 @@
 	</section>
 	
 	<script>
-	function getSalesDetail(n) {
+	function getSalesDetail(n,h) {
 		console.log(n);
+		console.log(h);
 		salesFrm.sNo.value = n;
+		salesFrm.sHit.value = h;
 		salesFrm.submit();
 	}
 </script>

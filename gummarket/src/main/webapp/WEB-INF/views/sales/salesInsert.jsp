@@ -18,10 +18,18 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
+<script>
 
+	//사진 추가 폼 나오게 만들자! 안되네 뀨....
+	function morePic(){
+		let div = $('<div>');
+		$('<div>').append('<input>').attr('type',file);
+		$('#show').append(div);
+	}
+</script>
  <body>
 
      <div class="container">
@@ -86,22 +94,35 @@
                                      <textarea class="form-control" rows="13" id="scondition"
                                          name="scondition" placeholder="제품 상태에 대해 상세히 기술해주세요!"></textarea>
                                  </div>
-                                 
-                               
-
-                                 <button type="submit" class="btn btn-warning btn-user btn-block">
-                                     상품 등록하기
-                                 </button>
-						<br>
-						
-						  <div class="row">
-                                     <div class="col-lg-6 col-sm-12 mb-3 mb-sm-0 ">
-                                     <button type="button" class="btn btn-danger btn-user btn-block" onclick="location.href='home.do'">메인으로~</button></div>
-                                     <div class="col-lg-6 col-sm-12 mb-3 mb-sm-0 ">
-                                         <input type="reset" class="btn btn-danger btn-user btn-block"
-                                             value="취소">
-                                     </div>
+                                
+                                 <!-- 썸네일용 사진은 sales테이블에 -->
+                                 <div class="form-group">
+                                    <i class="fas fa-image"></i>  썸네일용 사진 업로드: <input type="file" name="thumbNailFile" multiple="multiple" class="btn"/>
                                  </div>
+                                 <!-- 상세사진은 image 테이블에 -->
+                                 <div class="form-group">
+                                    <i class="fas fa-camera"></i>  상세 사진 업로드: <input type="file" name="uploadFile1" multiple="multiple" class="btn"/>
+                                 </div>
+                                    
+                                    <!--사진 더 넣기 버튼 ㅜ.ㅜ어떻게 만들면 좋을까아? 
+	                                    <div>
+	                                    <button id="morePic" onclick="morePic()">사진 추가하기<i class="far fa-plus-square"></i></button>
+	                                    <div id="show"></div>
+	                                    </div>
+                                    -->
+
+								<br>
+						
+								 <div class="pb-3 mx-auto"  style="align-items: center;">
+						
+									<!-- To do style again -->
+									<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
+									<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
+									<a class="btn btn-danger btn-md" href="home.do" data-toggle="modal"
+										data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
+								
+								</div>
+								
                              
                              </form>
                              <!-- form end -->

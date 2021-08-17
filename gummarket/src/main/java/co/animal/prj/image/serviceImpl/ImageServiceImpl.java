@@ -10,7 +10,7 @@ import co.animal.prj.image.service.ImageServiceMapper;
 import co.animal.prj.image.vo.ImageVO;
 
 public class ImageServiceImpl implements ImageService {
-	private SqlSession sqlSession =DataSource.getInstance().openSession();
+	private SqlSession sqlSession =DataSource.getInstance().openSession(true);
 	private ImageServiceMapper map = sqlSession.getMapper(ImageServiceMapper.class);
 	@Override
 	public List<ImageVO> imageSelectList() {
