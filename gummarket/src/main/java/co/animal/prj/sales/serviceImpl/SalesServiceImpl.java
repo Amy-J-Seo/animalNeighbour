@@ -39,8 +39,8 @@ public class SalesServiceImpl implements SalesService {
 
 	@Override
 	public int salesInsert(SalesVO vo) {
-		// TODO Auto-generated method stub
-		return map.salesInsert(vo);
+		map.salesInsert(vo);
+		return vo.getsNo();
 	}
 
 	@Override

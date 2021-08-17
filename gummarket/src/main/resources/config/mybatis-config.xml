@@ -31,8 +31,8 @@
 		<mapper resource="co/animal/prj/board/serviceImpl/Board-map.xml" />
 		
 		<mapper resource="co/animal/prj/comments/serviceImpl/Comments-map.xml" />
-<!-- 		
 		<mapper resource="co/animal/prj/image/serviceImpl/Image-map.xml" />
+<!-- 		
 		<mapper resource="co/animal/prj/csc/serviceImpl/Csc-map.xml" />
 		<mapper resource="co/animal/prj/lost/serviceImpl/Lost-map.xml" />
 		<mapper resource="co/animal/prj/payment/serviceImpl/Payment-map.xml" />

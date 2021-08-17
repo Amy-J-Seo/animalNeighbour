@@ -147,7 +147,7 @@
 	
 	
 	
-	//업데이트 폼나오게 테스트!
+	//업데이트 폼나오게 테스트! -> 성공!
 	function updateTest(e){
 		
 		let modForm = $("#showComUpdate");
@@ -161,11 +161,10 @@
 		$(modForm).find('#cNo').val(cNo);
 	}
 	
-	//업데이트 테스트
+	//업데이트 -> 성공! 이름 
 	function updateCom(){
 		event.preventDefault(); //디폴트값은 못들어가게
 		let s = $('#updateRep').serialize();
-		console.log(s);
 
 		//폼 전송처리
 		$.ajax({
@@ -198,27 +197,6 @@
 		})
 	}
 	
-	//댓글 수정하기
-	function update(){
-		
-		/* $("#your-comment").removeAttr("readonly");
-		$(this).attr("id","review-update-submit");
-		$(this).attr("value","수정하기"); */
-		
-		$.ajax({
-			url: 'UpdateCommentServ',
-			data: {
-				cNo: $(this).parent().attr('id')
-			},
-			success: function () {
-				//e.target.parentNode.parentNode.hide();
-				$(this).parent().parent().hide();
-			},
-			error: function () {
-				alert("수정에서 에러발생!!")
-			}
-		})
-	}
 	
 </script>
 
