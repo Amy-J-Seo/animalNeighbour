@@ -46,13 +46,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardSelectListEvent() {
 		// TODO Auto-generated method stub
-		return null;
+		return map.boardSelectListEvent();
 	}
 
 	@Override
 	public List<BoardVO> boardSelectListNotice() {
 		// TODO Auto-generated method stub
-		return null;
+		return map.boardSelectListNotice();
+	}
+
+	@Override
+	public int bUpdateLike(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return map.bUpdateLike(vo);
 	}
 
 

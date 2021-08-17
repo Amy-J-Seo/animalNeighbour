@@ -25,20 +25,25 @@ public class Login implements Command {
 		String state ="OFF";
 		
 		if (vo.getNickname() !=null){
-			System.out.println(vo.getNickname()+vo.getmId()+vo.getRole());
+			System.out.println(vo.getNickname()+vo.getmId()+vo.getRole() +"  Login.java");
 			
 			if(vo.getState() !=state) {
-				System.out.println(vo.getState()+state);
+				System.out.println(vo.getState()+state +"  Login.java");
 			session.setAttribute("nickname", vo.getNickname());
 			session.setAttribute("mId", vo.getmId());
 			session.setAttribute("role", vo.getRole());
 			session.setAttribute("state", vo.getState());
 			session.setAttribute("session", vo);
 			
-			page = "home.do";
+				if(session.getAttribute("role").equals("ADMIN")) {
+					page = "admin/adminMain";
+				}else {
+					page = "home.do";					
+				}
+			
 			}else {
 				String message1 ="현재 휴면계정입니다. 관리자에게 문의하세요";
-				System.out.println(message1);
+				System.out.println(message1 +"  Login.java");
 				request.setAttribute("message", message1);
 				page="login/loginFail";
 			}

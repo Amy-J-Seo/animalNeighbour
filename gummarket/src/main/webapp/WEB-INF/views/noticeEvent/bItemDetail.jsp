@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도움찾아요 상세보기</title>
+<title>이벤트공지메인</title>
 
 <script type="text/javascript">
 
@@ -18,7 +18,6 @@ $(document).ready(function () {
     		$.ajax({
 	            url: $('#likeFrm').attr('action'), //'../AddItemServlet.do'
 	            method: 'post',
-	            //data: $('#likeFrm').serialize(),
 	            data: {mainNo: $('#likeFrm #mainNo').val()},
 	            success: function(response){
 	            	alert("게시글 좋아요 눌렀어요 :) ");
@@ -26,11 +25,12 @@ $(document).ready(function () {
     				$('#likeText').html(" Liked It!");
     				$('#likeBTNicon').css("color", "#F7CAC9");
 	            	let a = parseInt($('#likeNum').text())+1;
+	            	
 	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
 	            	
 	            },
 	            error: function (reject) {
-	                console.log(reject);
+	                console.error(reject);
 	            }
 	    }); 
     });
@@ -74,7 +74,7 @@ function bItemDelete(n) {
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.bTitle }
 				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
 				 </h3>
-				 <c:if test="${session.role == 'admin' }">
+				 <c:if test="${session.role == 'ADMIN' }">
 				<button class="btn btn-sm"  onclick="bItemDelete(${item.bNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
 				<i class="far fa-trash-alt"></i> 글 삭제</button>
 				 <button class="btn btn-sm mr-3"  onclick="bItemUpdate(${item.bNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
@@ -83,16 +83,16 @@ function bItemDelete(n) {
 			</div>
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">
-				<!-- img class card-img 하고 싶은데 그러면 풀 화면일때 이미지가 너무 커서 줄이려고 해 봤지만 ㅠㅠ 안되네요... -->
+				
 					<img class="card" src="img/event/개껌장터.jpg" width="350px" height="600px">
 				</div>
 				<br>
 				<br />
 				<hr>				
 				<div class="card-header py-3">${item.bCategory } : ${item.bTitle }
-					<c:if test="${item.bLike > 0 }">
+					
 						<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.bLike}</span>
-					</c:if>
+					
 				</div>
 				
 				<div class="card-body">
@@ -108,7 +108,7 @@ function bItemDelete(n) {
 				
 				
 				<!-- Like btn form -->
-				<form id="likeFrm" name="likeFrm" action="UpdateLikeServlet" method="post">
+				<form id="likeFrm" name="likeFrm" action="BUpdateLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${item.bNo }">
 					
 				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">

@@ -10,8 +10,8 @@
 
 <script>
 function getDetails(num) {
-	getbNo.bNo.value = num;
-	getbNo.submit();
+	$('#frm #bNo').val(num);
+	$('#frm').submit();
 }
 </script>
 
@@ -69,8 +69,9 @@ function getDetails(num) {
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.bNo})">Read more</button></div>
 	                    </div>
-	                    <form id="getbNo" name="getbNo" action="bDetail.doBB" method="post">
-	                    	<input type="hidden" id="bNo" name="bNo">
+	                    <form id="frm" name="frm" action="bDetail.doBB" method="post">
+	                    	<input type="hidden" id="bNo" name="bNo" >
+	             
 	                    </form>
 	                </div>
 	            </div>       
@@ -88,7 +89,7 @@ function getDetails(num) {
     
     <!-- 스타일 수정완료했습니다. 어떤 이유인지 css에서 충돌이 있는지 클래스가 적용되지 않았어요... -->
 	<!-- write btn-->
-	<c:if test="${session.role == 'admin' }">
+	<c:if test="${session.role == 'ADMIN' }">
     <a style="position: fixed;
   right: 1rem;
   bottom: 4rem;

@@ -12,7 +12,7 @@ public class NoticeMain implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		BoardServiceImpl bDao = new BoardServiceImpl();
-		request.setAttribute("list", bDao.boardSelectListNotice());
+		request.setAttribute("list", bDao.boardSelectList());
 		
 		return "noticeEvent/noticeMain";
 	}
