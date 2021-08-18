@@ -198,6 +198,67 @@
 	}
 	
 	
+//--------------- 신고하기 & 좋아요------------------
+	$(document).ready(function () {
+	//set up function on submit the form for report
+    $("#itemReportBtn").click(function () {
+   
+    	 //set up a function for onSubmit
+        $('#fhReport').on('submit', function (e) {
+            e.preventDefault();
+            
+            //let s = $('#fhReport').serialize();
+            
+            //processing form submit;
+            $.ajax({
+                url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
+                method: 'post',
+                //data: $('#fhReport').serialize(),
+                data: {category: $('#itemCategory').text(),
+                		rWhy: $('#fhReport input[name="reason"]').val(),
+                		mainNo: $('#fhReport #fhNo').val()
+                },
+                dataType: 'json',
+                success: function(response){
+                	alert("신고가 접수 되었습니다. 감사합니다 :) ");
+            		$('#closeRModal').click();
+                },
+                error: function (reject) {
+                    console.log(reject);
+                }
+
+            });
+        });
+        
+    });
+    
+    
+		$('#likeFrm').on('submit', function (e) {
+    		
+    		e.preventDefault();
+	        
+    		$.ajax({
+	            url: $('#likeFrm').attr('action'), //'../AddItemServlet.do'
+	            method: 'post',
+	            //data: $('#likeFrm').serialize(),
+	            data: {mainNo: $('#likeFrm #mainNo').val()},
+	            success: function(response){
+	            	alert("게시글 좋아요 눌렀어요 :) ");
+    				$('#likeBtn').css("background-color", "RGB(146, 168, 209)");
+    				$('#likeText').html(" Liked It!");
+    				$('#likeBTNicon').css("color", "#F7CAC9");
+	            	let a = parseInt($('#likeNum').text())+1;
+	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
+	            	
+	            },
+	            error: function (reject) {
+	                console.log(reject);
+	            }
+	    }); 
+    });
+});
+
+	
 </script>
 
 <body id="page-top">
@@ -209,12 +270,11 @@
 			<div class="card-header py-3">
 				
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
-				 <%-- <c:if test="${session.mId == item.mId}">  --%>
-				 <%-- <input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
-					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" /> --%>
+				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
+				  <c:if test="${session.mId == item.mId}">
 					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
 					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
-				 <%-- </c:if> --%>
+				  </c:if> 
 				 </h3>	
 			</div>
 			<div class="card-body">
@@ -295,10 +355,17 @@
 			<br>
 			<div class="pb-3 mx-auto"  style="align-items: center;">
 				<!-- To do style again -->
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fab fa-gratipay"></i> 좋아요!</button>
+				<!-- Like btn form -->
+				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
+					<input type="hidden" id="mainNo" name="mainNo" value="${list[0].sNo }">
+					
+				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
 				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-					data-target="#logoutModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+			
+				</form>	
 			</div>
 			
 		
@@ -362,7 +429,43 @@
         </div>
     </div>
 	
-
+ <!-- report moral -->
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 이 게시글을 신고하시겠습니까?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                	<form id="fhReport" name="fhReport" action="FhItemReportServlet" method="post">
+                <div class="modal-body">
+						  <input type="radio" id="bannedItem" name="reason" value="banItem">
+						  <label for="bannedItem">판매금지 품목이에요</label><br>
+						  <input type="radio" id="notSecondHand" name="reason" value="notForSecondhand">
+						  <label for="notSecondHand">중고거래 게시글이 아니에요</label><br>
+						  <input type="radio" id="repeated" name="reason" value="repeated">
+						  <label for="repeated">중복 게시글이에요</label><br>
+						  <input type="radio" id="profSeller" name="reason" value="profSeller">
+						  <label for="profSeller">전문 판매업자 같아요</label><br>
+						  <input type="radio" id="scam" name="reason" value="scam">
+						  <label for="scam">사기 글이에요</label><br>
+						  <input type="radio" id="notSecondHand" name="reason" value="notForSecondhand">
+						  <label for="notSecondHand">기타 이유</label><br>
+						  <input type="hidden" id="fhNo" name="fhNo" value="${item.fhNo }">
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
+                    <button class="btn btn-danger" type="submit" id="itemReportBtn"><i class="far fa-angry"></i> 신고</button>
+                </div>
+					</form>
+            </div>
+        </div>
+    </div>
+	<!-- End of report modal -->
 	
 </body>
 </html>

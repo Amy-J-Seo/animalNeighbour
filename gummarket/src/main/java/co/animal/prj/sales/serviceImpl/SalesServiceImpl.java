@@ -62,4 +62,10 @@ public class SalesServiceImpl implements SalesService {
 		return map.hitUpdate(vo);
 	}
 
+	@Override
+	public int updateLike(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.findHelpLike(vo);
+	}
+
 }
