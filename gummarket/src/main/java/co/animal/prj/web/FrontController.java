@@ -21,6 +21,12 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
+import co.animal.prj.lost.command.LostDetail;
+import co.animal.prj.lost.command.LostInsert;
+import co.animal.prj.lost.command.LostItemDelete;
+import co.animal.prj.lost.command.LostItemUpdate;
+import co.animal.prj.lost.command.LostItemUpdateForm;
+import co.animal.prj.lost.command.LostMain;
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberUpdate;
@@ -86,7 +92,7 @@ public class FrontController extends HttpServlet {
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
 
 
-		//제은 맵
+		//제은 맵 offerhelp
 		map.put("/offerHelpMain.do", new OfferHelpMain());
 		map.put("/ohDetail.do", new OhDetail());
 		map.put("/writeOHForm.do", new WriteOHForm());
@@ -96,6 +102,16 @@ public class FrontController extends HttpServlet {
 		map.put("/ohItemDelete.do", new OhItemDelete());
 		map.put("/ohItemDetail.do", new OhDetail());
 
+		//제은 맵 lost
+		map.put("lostMain.do", new LostMain());
+		map.put("/lostDetail.do", new LostDetail());
+		map.put("/lostInsert.do", new LostInsert());
+		map.put("/lostItemUpdate", new LostItemUpdate());
+		map.put("/lostItemUpdateForm.do", new LostItemUpdateForm());
+		map.put("/lostItemDelete.do", new LostItemDelete());
+		
+		
+		
 		
 	}
 

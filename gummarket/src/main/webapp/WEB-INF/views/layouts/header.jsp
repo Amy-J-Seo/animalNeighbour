@@ -60,6 +60,10 @@
 						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a></li>
 						&nbsp;|&nbsp; <a href="offerHelpMain.do"
 						style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요&nbsp;</a></li>
+						&nbsp;|&nbsp; <a href="lostMain.do"
+						style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기&nbsp;</a></li>
+						
+						
 				</ul>
 
 				<ul class="navbar-nav ml-auto">
