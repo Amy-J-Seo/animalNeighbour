@@ -32,11 +32,15 @@
 	
 	
 	
-	//메시지 보내기
+	//글 수정
 	function updateSales(n) {
 		frm1.ohNo.value=n;
 		frm1.submit();
 		//location.href='updateSales.do';
+	}
+	
+	function ohItemUpdate(no){
+		location.href = '...do?ohNo='+no;
 	}
 	
 </script>
@@ -44,13 +48,18 @@
 <body>
 
 <!-- Begin Page Content -->
-	<div class="container-fluid">
+	<div class="container-fluid" >
 		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
+		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
 				
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >멍냥케어 상세페이지</h3>
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.ohTitle }
+				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
 				
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${item.ohNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="ohItemUpdate(${item.ohNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+				 
+				 </h3>	
 			</div>
 			<div class="card-body">
 				
@@ -66,21 +75,31 @@
 				
 				</div>
 				</div>
+						<!-- 댓글조회 -->
+				<div class="card shadow mb-4">
+				<div class="card-header py-3">댓글</div>
+				<div class="card-body">
+				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
+					<div id="show"></div>
+				
+					<%-- <c:forEach var="list" items="${list }">
+						${list.cmId }:
+						${list.cContents }<br>
+					</c:forEach> --%>
+				</div>
+				</div> 
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
-					        <i class="fa fa-comment fa"></i> REPLY
+					     <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
-						<form action="commentInsert.do" method="post">
+						<form id="reply" action="CommentInsertServ" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-								<div class="form-inline mb-2">
-									<i class="fas fa-cat"></i>&nbsp;&nbsp;
-									
-								</div>
-								<input type="hidden" id="cMainNum" name="cMainNum" value="${item.ohNo }">
-								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+							 
+								<input type="hidden" id="ohNo" name="ohNo" value="${item.ohNo }">
+								<textarea class="form-control" id="ohContents" name="ohContents" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
 							    </li>
 							</ul>
@@ -89,31 +108,37 @@
 				</div>
 			</div>
 			
-			<div>
 			
-				
-			<!-- To do style again -->
-				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='home.do'">To Main</button> &nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="float: right;" onclick="location.href='salesListAll.do'">To List</button>&nbsp;&nbsp;&nbsp;
-			</div>
+			
+			
+			
 			<br>
-			<div align="center">
-				<!-- 게시글 삭제, 수정 버튼 -->
-				<!-- 삭제, 수정은 게시글 작성자만 볼 수 있게 c:if써야합니다~ -->
-				<%-- <c:if test="${list[0].mId eq '로그인된mid' }"> --%>
-					<input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${item.ohNo})" />
-					<input type="button" id="updateBtn" class="btn btn-warning" value="메시지 보내기" onclick="updateSales(${item.ohNo})" />
-				<%-- </c:if> --%>
+			<div class="pb-3 mx-auto"  style="align-items: center;">
+				<!-- To do style again -->
+				<!-- Like btn form -->
+				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
+					<input type="hidden" id="mainNo" name="mainNo" value="${item.ohNo }">
+					
+				
+				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 메세지 보내기</button>
+				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
+					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+			
+				</form>	
 			</div>
+			
+		
+			
+		</div>
 		
 			
 		</div>
 		
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
-			<input type= "hidden" id="sNo" name="sNo">
+			<input type= "hidden" id="ohNo" name="ohNo">
 		</form>
 		<form id="frm1" name="frm1" action="updateSales.do" method="post">
-			<input type= "hidden" id="sNo" name="sNo">
+			<input type= "hidden" id="ohNo" name="ohNo">
 		</form>
 		
 	</div>
