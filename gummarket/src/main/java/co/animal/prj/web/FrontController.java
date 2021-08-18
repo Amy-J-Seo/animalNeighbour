@@ -27,6 +27,7 @@ import co.animal.prj.lost.command.LostItemDelete;
 import co.animal.prj.lost.command.LostItemUpdate;
 import co.animal.prj.lost.command.LostItemUpdateForm;
 import co.animal.prj.lost.command.LostMain;
+import co.animal.prj.lost.command.WritelostForm;
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberUpdate;
@@ -105,6 +106,7 @@ public class FrontController extends HttpServlet {
 		//제은 맵 lost
 		map.put("lostMain.do", new LostMain());
 		map.put("/lostDetail.do", new LostDetail());
+		map.put("/writelostForm.do", new WritelostForm());	
 		map.put("/lostInsert.do", new LostInsert());
 		map.put("/lostItemUpdate", new LostItemUpdate());
 		map.put("/lostItemUpdateForm.do", new LostItemUpdateForm());
