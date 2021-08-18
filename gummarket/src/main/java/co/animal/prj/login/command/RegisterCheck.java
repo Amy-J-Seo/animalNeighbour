@@ -22,7 +22,9 @@ public class RegisterCheck implements Command {
 		vo.setPhone(request.getParameter("phone"));
 		vo.setEmail(request.getParameter("email"));
 		vo.setPetInfo(request.getParameter("petInfo"));
-		vo.setAddress(request.getParameter("address"));
+		vo.setAddress(request.getParameter("address1"));
+		vo.setAddress(request.getParameter("address2"));
+		vo.setAddress(request.getParameter("address3"));
 		System.out.println(vo.getNickname() + "스팟1");
 		int result = dao.memberInsert(vo);
 		System.out.println(vo);
