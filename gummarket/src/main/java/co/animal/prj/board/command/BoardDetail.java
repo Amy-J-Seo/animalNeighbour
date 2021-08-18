@@ -16,6 +16,7 @@ public class BoardDetail implements Command {
 		BoardVO vo = new BoardVO();
 		
 		String selectedNo =request.getParameter("bNo");
+		
 		int bNo=Integer.parseInt(selectedNo);
 		vo.setbNo(bNo);
 		
