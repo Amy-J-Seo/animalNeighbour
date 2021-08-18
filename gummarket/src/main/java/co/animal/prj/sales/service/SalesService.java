@@ -15,4 +15,5 @@ public interface SalesService {
 	public int salesInsert(SalesVO vo);
 	
 	public int hitUpdate(SalesVO vo);//조회수 증가
+	public int updateLike(SalesVO vo); //like 증가
 }

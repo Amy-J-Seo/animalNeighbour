@@ -15,4 +15,5 @@ public interface SalesServiceMapper {
 	
 	
 	public int hitUpdate(SalesVO vo);
+	public int updateLike(SalesVO vo);
 }

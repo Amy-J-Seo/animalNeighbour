@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
 import co.animal.prj.comments.vo.CommentsVO;
 
@@ -22,8 +25,7 @@ public class UpdateCommentServ extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 
@@ -36,13 +38,12 @@ public class UpdateCommentServ extends HttpServlet {
 		CommentsVO vo  = new CommentsVO();
 		
 		vo.setcNo(Integer.valueOf(request.getParameter("cNo")));
+		vo.setcContents(request.getParameter("cContents"));
 		
 		comDao.commentsUpdate(vo);
-//		
-//		String page ="";
-//		if(r !=0) {
-//			page="";
-//		}
+		
+		Gson gson = new GsonBuilder().create();
+		response.getWriter().print(gson.toJson(vo)); 
 		
 	}
 
