@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
+import co.animal.prj.findhelp.command.TotalCareTableView;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -33,6 +34,7 @@ import co.animal.prj.offerhelp.command.OhDetail;
 import co.animal.prj.offerhelp.command.OhItemDelete;
 import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
+import co.animal.prj.offerhelp.command.TotalCareTableViewW;
 import co.animal.prj.offerhelp.command.WriteOHForm;
 
 import co.animal.prj.sales.command.DeleteSales;
@@ -95,6 +97,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ohItemUpdateForm.do", new OhItemUpdateForm());
 		map.put("/ohItemDelete.do", new OhItemDelete());
 		map.put("/ohItemDetail.do", new OhDetail());
+		map.put("/totalCareTableViewW.do", new TotalCareTableViewW()); //전체 도움주고받기 테이블 뷰 ..
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
