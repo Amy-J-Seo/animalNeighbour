@@ -35,6 +35,7 @@
 	<!-- 수정위한 개별상품 조회 (댓글 없이) -->
 	<select id="salesOne" resultType="co.animal.prj.sales.vo.SalesVO">
 		select * from sales where sno=#{sNo}
+		
 	</select>
 	
 	<!-- 상품 삭제 : 진짜 삭제 하지 말고 hide y해서 숨기기~-->
@@ -42,12 +43,17 @@
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
 	
+	
+	
 	<!-- 상품등록 -->
 	<insert id="salesInsert" parameterType="co.animal.prj.sales.vo.SalesVO">
 		
-		insert into sales(sno, mid, scategory, stitle, spurchaseddate,susedays,sreason,scondition,sprice,snetprice) 
-		values(s_seq.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sPurchasedDate}, #{sUseDays}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice})
+		insert into sales(sno, mid, scategory, stitle, spurchaseddate,susedays,sreason,scondition,sprice,snetprice,simg) 
+		values(s_seq.nextval, #{mId}, #{sCategory}, #{sTitle}, #{sPurchasedDate}, #{sUseDays}, #{sReason}, #{sCondition}, #{sPrice}, #{sNetPrice},#{sImg})
 		
+		<selectKey resultType="int" keyProperty="sNo" order="AFTER">
+        	SELECT s_seq.currval from dual
+    	</selectKey> 
 	</insert>
 	
 	

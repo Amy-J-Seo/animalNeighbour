@@ -47,7 +47,7 @@
                              <p></p>
                              <br>
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="salesInsert.do" method="post">
+                             <form class="user" id="frm" name="frm" action="salesInsert.do" method="post" enctype="multipart/form-data">
                                  <div class="form-group">
                                      <input type="text" class="form-control form-control-user" id="stitle" name="stitle"
                                          placeholder="상품명 입력">
@@ -128,6 +128,11 @@
                              
                              </form>
                              <!-- form end -->
+                             
+                             <form style="display: none;" action="imageUploadServlet" id="imageUpload" name="imageUpload" method="post" enctype="multipart/form-data">
+                             	<input type="file" id="thumbNailFile" name="thumbNailFile">
+                             	<input type="file" id="uploadFile1" name="uploadFile1">
+                             </form>
                               <hr>
              
                          </div>
@@ -137,6 +142,12 @@
          </div>
 
      </div>
+     
+     <script type="text/javascript">
+		// 1. submit button의 type을 button
+		// 2. submit button onclick=func 을 해준다
+		// 3. #imageUpload #uploadFile1와 #imageUpload #thumbNailFile의 value를 
+     </script>
 
 
 <!-- Bootstrap core JavaScript-->
