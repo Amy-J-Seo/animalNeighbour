@@ -16,10 +16,8 @@
 	//삭제버튼 누르면 alert
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
-	   console.log(n);
 	   if(confirm("삭제되었습니다.")){
 	    frm.sNo.value= n;
-	    console.log(n);
 		frm.submit();
 	  
 	   }else{
@@ -216,17 +214,22 @@
 	<div class="container-fluid" >
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
+			<!-- card title + btns  -->
 			<div class="card-header py-3">
-				
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
-				 <%-- <c:if test="${session.mId == item.mId}">  --%>
+				<!-- To show btns to only the writer -->
+				 <c:if test="${session.mId == list[0].mId}">
 				 <%-- <input type="button" id="deleteBtn" class="btn btn-danger" value="글 삭제하기" onclick="confirmDel(${list[0].sNo})" />
 					<input type="button" id="updateBtn" class="btn btn-warning" value="글 수정하기" onclick="updateSales(${list[0].sNo})" /> --%>
-					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
-					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
-				 <%-- </c:if> --%>
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
+					<i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+					<i class="far fa-edit"></i> 글 수정</button>
+				 </c:if>
 				 </h3>	
 			</div>
+			<!-- End of card title + btns  -->
+			
 			<div class="card-body">
 				<!-- 여기에 이미지도 넣기 -->
 				<div>

@@ -116,8 +116,10 @@
 								 <div class="pb-3 mx-auto"  style="align-items: center;">
 						
 									<!-- To do style again -->
-									<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
-									<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
+									<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+									<i class="far fa-check-circle"></i> 글 등 록</button>
+									<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+									<i class="fas fa-eraser"></i> 내용삭제</button>
 									<a class="btn btn-danger btn-md" href="home.do" data-toggle="modal"
 										data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
 								

@@ -8,9 +8,9 @@
 <title>도움찾아요 상세보기</title>
 
 <script type="text/javascript">
-
+//ajax
 $(document).ready(function () {
-	//set up function on submit the form for report
+	//set up function on submit the form for report()
     $("#itemReportBtn").click(function () {
    
     	 //set up a function for onSubmit
@@ -41,8 +41,9 @@ $(document).ready(function () {
         });
         
     });
-    
-    
+  //End ofset up function on submit the form for report(신고접수 모달)
+  
+  //좋아요 버튼 기능
 		$('#likeFrm').on('submit', function (e) {
     		
     		e.preventDefault();
@@ -66,7 +67,11 @@ $(document).ready(function () {
 	            }
 	    }); 
     });
+    //end of 좋아요 버튼 기능
+    
+    
 });
+//end of ajax
 
 
 function fhItemUpdate(n) {
@@ -83,6 +88,11 @@ function fhItemDelete(n) {
 		  fhDelete.submit();
 	 	 }
 	}
+	
+	
+	
+
+	
 </script>
 
 </head>
