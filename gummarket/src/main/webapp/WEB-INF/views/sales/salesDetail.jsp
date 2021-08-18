@@ -315,7 +315,7 @@
 			<div class="card-body">
 				<!-- 여기에 이미지도 넣기 -->
 				<div>
-					<img src="" alt="제품 상세 이미지" width="100px" height="200px">
+					<img class="card-img-top" src="img/salesImg/${list[0].sImg }" alt="상품이미지" width="80%" height="80%"/>
 				</div>
 				<br>
 				<p>
