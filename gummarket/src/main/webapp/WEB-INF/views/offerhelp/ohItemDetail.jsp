@@ -21,7 +21,7 @@
 	   alert("글을 삭제할까요?");
 	   console.log(n);
 	   if(confirm("삭제되었습니다.")){
-	    frm.ohNo.value= n;
+	    frm.ohDelNo.value= n;
 	    console.log(n);
 		frm.submit();
 	  
@@ -40,7 +40,7 @@
 	}
 	
 	function ohItemUpdate(no){
-		location.href = '...do?ohNo='+no;
+		location.href = 'ohItemUpdateForm.do?ohNo='+no;
 	}
 	
 </script>
@@ -56,8 +56,8 @@
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.ohTitle }
 				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
 				
-					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${item.ohNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
-					<button class="btn btn-sm mr-3" id="updateBtn" onclick="ohItemUpdate(${item.ohNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel('${item.ohNo}')" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="ohItemUpdate('${item.ohNo}')" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
 				 
 				 </h3>	
 			</div>
@@ -135,7 +135,7 @@
 		</div>
 		
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
-			<input type= "hidden" id="ohNo" name="ohNo">
+			<input type= "hidden" id="ohDelNo" name="ohDelNo">
 		</form>
 		<form id="frm1" name="frm1" action="updateSales.do" method="post">
 			<input type= "hidden" id="ohNo" name="ohNo">

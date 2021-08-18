@@ -23,7 +23,7 @@
 </head>
 
  <body>
-${itemToUpdate }
+
      <div class="container">
 <div class="continer my-auto pb-3">
 			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">도움 드려요!</p>
@@ -85,7 +85,7 @@ ${itemToUpdate }
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                     <span><i class="fas fa-baby-carriage"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohHistory" name="ohHistory" value="${itemToUpdate.ohHistory }" readonly>
+                                     id="ohAddress" name="ohAddress" value="${itemToUpdate.ohAddress }" readonly>
                                  </div>
                               </div>
                                 
