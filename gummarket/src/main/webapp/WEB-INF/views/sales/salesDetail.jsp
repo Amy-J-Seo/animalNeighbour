@@ -263,6 +263,21 @@
 
 <!-- Begin Page Content -->
 	<div class="container-fluid" >
+	<div class="continer my-auto pl-4 pb-3">
+	<!-- 카테고리마다 타이틀 변경 -주윤 -->
+			<c:if test="${list[0].sCategory == 'clothing' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  의류/하네스</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'food' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  사료/간식</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'other' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  그 외 용품</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'giveaway' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  나눔</p>
+			</c:if>
+	</div>
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
 			<!-- card title + btns  -->
@@ -354,19 +369,23 @@
 			
 			
 			<br>
-			<div class="pb-3 mx-auto"  style="align-items: center;">
+			<div class="pb-3 mx-auto d-flex"  style="align-items: center;">
 				<!-- To do style again -->
 				<!-- Like btn form -->
 				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${list[0].sNo }">
-					
+				</form>		
 				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
 				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
+				<form id="payFrm" name="payFrm" method="post" action="makePayment.doBB">
+				<input type="hidden" id="saleNo" name="saleNo" value="${list[0].sNo }">
+				<button class="btn btn-md mr-5" type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+				<i class="far fa-credit-card"></i> 결제하기</button>
+				</form>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 			
-				</form>	
+				
 			</div>
 			
 		

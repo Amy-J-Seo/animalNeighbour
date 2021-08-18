@@ -312,7 +312,7 @@ function fhItemDelete(n) {
 					
 					</div>
 				</div>
-				<p><hr></p>
+				
 				<div class="card-body">		    
 				    <div class="card-header">
 				        <h3>Comments</h3> 

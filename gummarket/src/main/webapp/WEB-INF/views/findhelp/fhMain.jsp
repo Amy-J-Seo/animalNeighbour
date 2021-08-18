@@ -23,8 +23,9 @@ function getDetails(num) {
 
 	<!-- Main page search Form -->
 	<div id="content-wrapper" class="d-flex flex-column">
-		<div class="continer my-auto pb-3">
-			<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">I need your help!</p>
+		<div class="continer my-auto pt-4 pb-3 ">
+			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;" href="findHelpMain.doBB">I need your help!</a>
+			<a class="h3 mr-5" style="color: rgb(255, 190, 83); font-weight: 900; float: right;" href="offerHelpMain.do">I can offer my help!</a>
 		</div>
 		<div class="continer my-auto">
 		<!-- Main Content -->
@@ -57,7 +58,7 @@ function getDetails(num) {
 	                <div class="card h-100">
 	                  
 	                    <!-- find help image-->
-	                    <img class="card-img-top" src="img/fourDogs.jpg" alt="" />
+	                    <img class="card-img-top" src="img/dog1.jpg" alt="" />
 	                    <!-- find help details-->
 	                    <div class="card-body pt-4 pr-4 pl-4 pb-0">
 	                        <div class="text-center">
