@@ -10,7 +10,7 @@
 		SELECT * FROM image
 	</select>
 	<!-- 판매테이블용 java에서 iMainNum = sNo주기-->
-	<insert id="insertImg" parameterType="co.animal.prj.image.vo.ImageVO">
+	<insert id="imageInsert" parameterType="co.animal.prj.image.vo.ImageVO">
 		insert into image values(img_seq.nextval,#{imgPath},'sales',#{iMainNum})
 	</insert>
 <!--  	<select id="" resultType="">

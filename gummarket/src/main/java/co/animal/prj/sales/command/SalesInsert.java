@@ -1,18 +1,23 @@
 package co.animal.prj.sales.command;
 
 
-import java.io.File;
 import java.sql.Date;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
+
 import co.animal.prj.common.Command;
+import co.animal.prj.image.service.ImageService;
+import co.animal.prj.image.serviceImpl.ImageServiceImpl;
+import co.animal.prj.image.vo.ImageVO;
 import co.animal.prj.sales.service.SalesService;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
@@ -28,11 +33,49 @@ public class SalesInsert implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 상품 입력하기~
+		MultipartRequest multi= new MultipartRequest() {
+			
+			@Override
+			public String getMultipartContentType(String paramOrFileName) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public MultiValueMap<String, MultipartFile> getMultiFileMap() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public List<MultipartFile> getFiles(String name) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Iterator<String> getFileNames() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Map<String, MultipartFile> getFileMap() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public MultipartFile getFile(String name) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
 		SalesService salesDao = new SalesServiceImpl();
 		SalesVO vo = new SalesVO();
 		
-		//ImageService imgDao = new ImageServiceImpl();
-		//ImageVO iVo = new ImageVO();
+		ImageService imgDao = new ImageServiceImpl();
+		ImageVO iVo = new ImageVO();
 		
 		HttpSession session = request.getSession();
 		
@@ -49,28 +92,21 @@ public class SalesInsert implements Command {
 		vo.setsImg(request.getParameter("thumbNailFile")); //썸네일 이미지 넣기~?
 		
 		
-		
-		//썸네일 이미지만 넣어보기!
-			
-	Map<String, String> formMap = new HashMap<String, String>();
-	
-	
+		int n = salesDao.salesInsert(vo); //insert return값이 sNo이당!
 		
 		
-		//iVo.setImgPath(request.getParameter("uploadFile1"));
-		//iMainNum = sNo 근데 sNo어떻게 불러오지?
-		//iVo.setiMainNum();
-		//imgDao.imageInsert(iVo);
+		iVo.setImgPath(request.getParameter("uploadFile1"));
+		iVo.setiMainNum(n);
+		imgDao.imageInsert(iVo);
 		
 		String page ="";
 		
-		int n = salesDao.salesInsert(vo);
 		
 		if( n !=0) {
 //			request.setAttribute("rptitle", vo.getsTitle());
 //			request.setAttribute("message", "글이 등록 되었습니다. 사진을 입력하시겠습니까?");
 //			page="sales/salesPhotoInsertForm";
-			page ="";
+			page ="salesListAll.do";
 		}else {
 			page="Test/ErrorPage";
 		}
