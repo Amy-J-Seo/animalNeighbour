@@ -46,6 +46,7 @@
 		//전체 데이터 출력.
 		$.ajax({
 			url: 'SelectCommentServ',
+			method:'post',
 			dataType: 'json',
 			data: {
 				sNo:$('#cMainNum').val()
@@ -61,34 +62,7 @@
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
 		console.log(data);	
-		/* let table = $('<table />').attr('border', '0');
-		$(table).append(
-			//$('<tr />').append('<th>닉네임</th><th></th><th>댓글</th>')
-		); 
-		for (let i = 0; i < data.length; i++) {
-			let tr = $('<tr />').attr('id',data[i]['cNo']);//tr에다가 id값으로 cNo줌.
-			for (let field of fields) {
-				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
-				let td2 = $('<td />')
-				$(tr).append(td)
-				$(tr).append(td2)
-			}
-			
-			//댓글의 cmid 어떻게 가져오지...?!?
-			if(${session.mId eq data[i][cmId]}){
-				
-			let delBtn = $('<td><button type="button" class="btn btn-danger">삭제</button></td>')
-			let updBtn =$('<td><button type="button" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">수정</button></td>') //수정버튼 추가
-			
-			delBtn.click(kill);
-			updBtn.click(updateTest);
-			
-			$(tr).append(delBtn);
-			$(tr).append(updBtn);
-			}
-			$(table).append(tr);
-		}
-		*/
+	
 		for (let i = 0; i < data.length; i++) {  
 			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
 	         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
@@ -96,23 +70,42 @@
 	               "width": "2rem",
 	               "height": "2rem"
 	             });
-	         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']);
+	         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']).addClass("pl-2");
 	         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['cContents']);
 	         divMain.append(img ,userName, comment);
 	         
-	         var mId = '<%=(String)session.getAttribute("mId")%>';
 	         console.log(data[i]['cmId']);
 	         $(divCase).append(divMain);
-	         if(mId == data[i]['cmId']){
 	        	 
 		         const btnDiv =$('<div />');
 		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+		         
+		         //신고하기(신고하기 어디로???)
+		         const reportForm = $('<form/>').attr('action', '#');
+		         const reportBtn 
+		         	= $('<a />').addClass("btn btn-danger btn-md")
+		         				.attr({
+		         					'href':"#",
+		         					"data-toggle":"modal",
+		         					"data-target":"#reportModal"
+		         					})
+		         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
+		         
+		         reportForm.append(reportBtn);
+		         
+		         reportBtn.click();
+		         
 		         delBtn.click(kill);
-				 updBtn.click(updateTest);
+				 updBtn.click(update);
 		         btnDiv.append(delBtn, updBtn);
 		         
+	         var mId = '<%=(String)session.getAttribute("mId")%>';
+	         if(mId == data[i]['cmId']){
 		         $(divCase).append(btnDiv);
+	         }
+	         if(mId != data[i]['cmId']){
+		         $(divCase).append(reportForm);
 	         }
 	         
 	         
@@ -189,7 +182,7 @@
 	
 	
 	//업데이트 폼나오게 테스트! -> 성공!
-	function updateTest(e){
+	function update(e){
 		
 		let modForm = $("#showComUpdate");
 		$(this).parent().append(modForm);
@@ -370,7 +363,7 @@
 				
 				
 				    <div class="card-header">
-				        <h3>Comments</h3> 
+				        <h3>Comments</h3>
 				    </div>
 				
 					<div class="card-body" >
@@ -398,11 +391,11 @@
 				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${list[0].sNo }">
 					
-				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
-				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
-				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
+					<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+					<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
+					<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
+					<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
+						data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
 			
 				</form>	
 			</div>
@@ -452,7 +445,7 @@
 	  color: #fff;
 	  background: rgb(252, 221, 33);
 	  line-height: 46px;
-	  border-radius: 0.35rem" href="writeFHForm.doBB">
+	  border-radius: 0.35rem" href="salesInsertForm.do">
 	        <i class="fas fa-edit"></i>
     </a>
 

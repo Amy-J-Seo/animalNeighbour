@@ -49,7 +49,7 @@
 		                    </div>
 	                    </c:if>
 	                    <!-- 상품 썸네일-->
-	                    <img class="card-img-top" src="img/${list.sImg }" alt="상품이미지" />
+	                    <img class="card-img-top" src="img/salesImg/${list.sImg }" alt="상품이미지" />
 	                    <!-- 상품 details-->
 	                    <div class="card-body p-4">
 	                        <div class="text-center">
