@@ -21,10 +21,16 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
+import co.animal.prj.member.command.MemberCheck;
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
+import co.animal.prj.member.command.MemberSelect;
 import co.animal.prj.member.command.MemberUpdate;
+import co.animal.prj.member.command.SearchId;
 import co.animal.prj.member.command.Test;
+import co.animal.prj.member.command.UserUpdate;
+import co.animal.prj.member.command.Withdrawal;
+import co.animal.prj.member.command.WithdrawalForm;
 import co.animal.prj.offerhelp.command.OfferHelpInsert;
 import co.animal.prj.offerhelp.command.OfferHelpMain;
 import co.animal.prj.offerhelp.command.OhDetail;
@@ -60,11 +66,17 @@ public class FrontController extends HttpServlet {
 		map.put("/registerForm.do", new RegisterForm());//회원가입
 		map.put("/idCheckForm.do", new IdCheckForm());//아이디 중복 조회 폼
 		map.put("/idCheckPro.do", new IdCheckPro());//아이디 중복 조회
+		map.put("/searchId.do", new SearchId()); //아이디 비밀번호 찾기
 		map.put("/registerCheck.do", new RegisterCheck());//회원가입완료
+		map.put("/withdrawalForm.do", new WithdrawalForm());//회원탈퇴폼
+		map.put("/withdrawal.do", new Withdrawal());//회원탈퇴완료
 		
 		map.put("/memberList.do",new MemberList()); //관리자 맴버리스트
 		map.put("/memberDetail.do",new MemberDetail()); //관리자 맴버 상세보기
-		map.put("/memberUpdate.do", new MemberUpdate()); //관리자 및 회원 정보수정
+		map.put("/memberUpdate.do", new MemberUpdate()); //관리자 회원 정보수정
+		map.put("/userUpdate.do",new UserUpdate());		//회원 수정페이지
+		map.put("/memberCheck.do", new MemberCheck());	//회원 수정 비밀번호
+		map.put("/memberSelect.do", new MemberSelect()); //유저 마이페이지
 		
 		
 		

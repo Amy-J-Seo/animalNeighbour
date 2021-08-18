@@ -29,11 +29,16 @@
    			}
    		}
    	})
+   	
+   <!-- function click() {
+	 var con = confirm("수정하시겠습니까?");                 
+	 if(con==true){
+		 frm.submit();
+	 }else if(conn==false){
+		 
+	 }
+                    };-->
 	</script>
-<head>
-<meta charset="UTF-8">
-<title>멤버상세보기</title>
-</head>
 <body>
 	<div class="container">
 
@@ -50,7 +55,7 @@
 									style="color: rgb(255, 190, 83); font-weight: 900;">${list.mName }회원님
 									회원정보</p>
 								<br>
-								<form id="frm" name="frm" action="memberUpdate.do" method="post">
+								<form id="frm" name="frm" action="userUpdate.do" method="post">
 
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">아이디</div>
@@ -71,14 +76,14 @@
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">닉네임</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<input type="text" id="nickname" name="nickname"
-												value="${list.nickname }" readonly
+												value="${list.nickname }"
 												class="form-control form-control-user">
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">휴대폰번호</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
-											<input type="text" id="phone" name="phone" readonly
+											<input type="text" id="phone" name="phone"
 												value="${list.phone }"
 												class="form-control form-control-user">
 										</div>
@@ -86,7 +91,7 @@
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">이메일</div>
 										<div class="col-lg-6 col-sm- mb-3 mb-sm-0 ">
-											<input type="email" id="email" name="email" readonly
+											<input type="email" id="email" name="email"
 												value="${list.email }"
 												class="form-control form-control-user">
 										</div>
@@ -95,18 +100,18 @@
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">멍냥이 정보</div>
 										<div class="col-lg-10 col-sm- mb-3 mb-sm-0 ">
 											<textarea id="petInfo" name="petInfo"
-												class="form-control form-control-user" readonly>${list.email }</textarea>
+												class="form-control form-control-user">${list.email }</textarea>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">주소</div>
 										<div class="col-lg-6 col-sm- mb-3 mb-sm-0 ">
-											<input type="text" id="address" name="address" readonly
+											<input type="text" id="address" name="address"
 												value="${list.address }"
 												class="form-control form-control-user">
 										</div>
 									</div>
-									<div class="form-group row">
+									<div class="form-group row" style="display: none">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">권한</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<select class="form-control" id="role" name="role">
@@ -117,7 +122,7 @@
 										</div>
 									</div>
 
-									<div class="form-group row">
+									<div class="form-group row" style="display: none">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">휴면상태</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<select class="form-control" id="state" name="state">
@@ -132,7 +137,7 @@
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">리뷰포인트</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<input type="text" id="reviewPoint" name="reviewPoint"
-												value="${list.reviewPoint }"
+												value="${list.reviewPoint }" readonly
 												class="form-control form-control-user">
 										</div>
 										<!-- off가 휴면상태 입니다 -->
@@ -140,25 +145,28 @@
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<select class="form-control" id="buyPoint" name="buyPoint">
 												<option selected>${list.buyPoint }</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
+												<option value="1" disabled>1</option>
+												<option value="2" disabled>2</option>
 											</select>
 										</div>
 									</div>
 									<input type="hidden" id="password" name="password"
 										value="${list.password }">
-									<button type="submit" onclick=""
+									<button type="submit" onclick="click()"
 										class="btn btn-danger btn-md btn-user btn-block"
 										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
 										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정
 									</button>
 
 									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
-										type="button" onclick="location.href='memberList.do'"
+										type="button" onclick="location.href='home.do'"
 										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-list"></i>&nbsp; 맴버리스트 보기
+										<i class="fas fa-user-cog fa-2x"></i>&nbsp; 홈으로가기
 									</button>
 								</form>
+								<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
+									<a href="withdrawalForm.do?mId=${list.mId }">회원탈퇴하기</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -186,3 +194,4 @@
 		</div>
 	</div>
 </body>
+</html>

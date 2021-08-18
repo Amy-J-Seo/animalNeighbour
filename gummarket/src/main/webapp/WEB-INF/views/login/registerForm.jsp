@@ -13,10 +13,10 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
 	<!-- 필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수 -->
-		
+
 	function checkValue(){
 			if(!document.frm.mId.value){
 				alert("아이디를 입력하세요.");
@@ -46,8 +46,6 @@
 			frm.submit();
 		}
 		
-		 var IMP = window.IMP; // 생략 가능
-		  IMP.init("{imp97896174}"); // 예: imp00000000
 	</script>
 
 </head>
@@ -115,7 +113,7 @@
 												required="required" class="form-control form-control-user">
 										</div>
 										<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
-											<button type="submit" onclick=""
+											<button onclick="phone()"
 												class="btn btn-warning btn-user btn-block">인증하기</button>
 										</div>
 									</div>
@@ -141,20 +139,21 @@
 												class="form-control form-control-user">
 										</div>
 									</div>
-									<p
-									style="color: rgb(255, 190, 83); font-weight: 900;">
-									<label> <input type="checkbox" id="admit" name="admit">이용약관동의(필수)
-									</label><br> <label> <input type="checkbox" id="admit"
-										name="admit" required="required"class="custom-control-input">이용약관동의(필수)
-									</label><br> <label> <input type="checkbox" id="admit"
-										name="admit"required="required" class="custom-control-input">개인정보 수집 이용동의(필수)
-									</label><br> <label> <input type="checkbox" id="admit"
-										name="admit" required="required"
-										class="btn btn-warning btn-user"class="custom-control-input">본인은 만 14세 이상입니다.
-									</label> <br></p>
-		
-									<button type="submit" onclick="winopen1()" 
-									class="btn btn-warning btn-user btn-block">회원 가입</button>
+									<div class="custom-control custom-checkbox">
+										<p style="color: rgb(255, 190, 83); font-weight: 900;">
+											<label> <input type="checkbox" id="admit"
+												name="admit" required="required">이용약관동의(필수)
+											</label><br> <label> <input type="checkbox" id="admit"
+												name="admit" required="required">이용약관동의(필수)
+											</label><br> <label> <input type="checkbox" id="admit"
+												name="admit" required="required">개인정보 수집 이용동의(필수)
+											</label><br> <label> <input type="checkbox" id="admit"
+												name="admit" required="required">본인은 만 14세 이상입니다.
+											</label> <br>
+										</p>
+									</div>
+									<button type="submit" onclick="winopen1()"
+										class="btn btn-warning btn-user btn-block">회원 가입</button>
 								</form>
 							</div>
 						</div>

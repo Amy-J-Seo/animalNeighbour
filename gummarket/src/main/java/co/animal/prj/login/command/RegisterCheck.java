@@ -28,8 +28,13 @@ public class RegisterCheck implements Command {
 		System.out.println(vo);
 		String page= "";
 		if(result !=0) {
-			page="login/registerCheck";
-			request.setAttribute("member", vo.getNickname());
+			String message= vo.getNickname()+"님 개껌장터에 가입하신걸 환영합니다!";
+			request.setAttribute("message", message);
+			page="login/loginForm";
+		}else {
+			String message="오류가 발생했습니다. 잠시 후에 시도해주세요.";
+			request.setAttribute("message", message);
+			page="login/loginForm";
 		}
 		return page;
 	}
