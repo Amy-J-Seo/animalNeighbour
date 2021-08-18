@@ -61,10 +61,10 @@
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
 		console.log(data);	
-		let table = $('<table />').attr('border', '0');
+		/* let table = $('<table />').attr('border', '0');
 		$(table).append(
 			//$('<tr />').append('<th>닉네임</th><th></th><th>댓글</th>')
-		);
+		); 
 		for (let i = 0; i < data.length; i++) {
 			let tr = $('<tr />').attr('id',data[i]['cNo']);//tr에다가 id값으로 cNo줌.
 			for (let field of fields) {
@@ -75,7 +75,7 @@
 			}
 			
 			//댓글의 cmid 어떻게 가져오지...?!?
-			//if(${session.mId == list[0].cmId}){
+			if(${session.mId eq data[i][cmId]}){
 				
 			let delBtn = $('<td><button type="button" class="btn btn-danger">삭제</button></td>')
 			let updBtn =$('<td><button type="button" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">수정</button></td>') //수정버튼 추가
@@ -85,12 +85,40 @@
 			
 			$(tr).append(delBtn);
 			$(tr).append(updBtn);
-			//}
-		
+			}
 			$(table).append(tr);
-			
 		}
-		$('#show').append(table);
+		*/
+		for (let i = 0; i < data.length; i++) {  
+			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
+	         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+	         let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+	               "width": "2rem",
+	               "height": "2rem"
+	             });
+	         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']);
+	         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['cContents']);
+	         divMain.append(img ,userName, comment);
+	         
+	         var mId = '<%=(String)session.getAttribute("mId")%>';
+	         console.log(data[i]['cmId']);
+	         $(divCase).append(divMain);
+	         if(mId == data[i]['cmId']){
+	        	 
+		         const btnDiv =$('<div />');
+		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+		         delBtn.click(kill);
+				 updBtn.click(updateTest);
+		         btnDiv.append(delBtn, updBtn);
+		         
+		         $(divCase).append(btnDiv);
+	         }
+	         
+	         
+		$('#commentsBody').append(divCase);
+	      
+	}
 	}
 	
 	//댓글 입력 ajax
@@ -116,23 +144,30 @@
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
-		console.log('aaa')
 		console.log(data)
-		let tr = $('<tr />').attr('id',data.cNo) ;
-		for (let field of fields) {
-			let td = $('<td />').text(data[field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
-			$(tr).append(td)
-		}
-		console.log($('table'))
-		let delBtn = $('<td><button type="button" class="btn btn-danger">삭제</button></td>')
-		let updBtn =$('<td><button type="button" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">수정</button></td>')
-			delBtn.click(kill);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data.cNo);
+	    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+		
+	        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+	              "width": "2rem",
+	              "height": "2rem"
+	            });
+	        let userName = $('<span />').css("font-size","1.5rem").text(data['cmId']);
+	        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['cContents']);
+	        divMain.append(img, userName, comment);
+	        
+	        const btnDiv =$('<div />');
+	        const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+	        const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+	        btnDiv.append(delBtn, updBtn);
+	        delBtn.click(kill);
 			updBtn.click(updateTest);
-			$(tr).append(delBtn);
-			$(tr).append(updBtn);
-		$('table').append(tr);
+	        $(divCase).append(divMain, btnDiv)
+		$('#commentsBody').append(divCase);
+	     
 	}
-	
+		
+
 	//댓글 삭제하기
 	function kill(e) {
 		console.log(e.target.parentNode.parentNode);
@@ -140,7 +175,7 @@
 		$.ajax({
 			url: 'DeleteCommentServ',
 			data: {
-				cNo: $(this).parent().attr('id')
+				cNo: $(this).parent().parent().attr('id')
 			},
 			success: function () {
 				e.target.parentNode.parentNode.remove();
@@ -158,8 +193,9 @@
 		
 		let modForm = $("#showComUpdate");
 		$(this).parent().append(modForm);
-		let content = $(this).parent().children().eq(1).text();
-		let cNo = $(this).parent().attr('id');// tr의 id값 가져옴~
+		console.log($(this).parent().parent().children().eq(0).children().eq(2).text());
+		let content = $(this).parent().parent().children().eq(0).children().eq(2).text();
+		let cNo = $(this).parent().parent().attr('id');// tr의 id값 가져옴~
 		/* $(this).children().eq(0).hide(); */
 		modForm.show();
 		
@@ -193,7 +229,7 @@
 				cNo: $(this).parent().attr('id')
 			},
 			success: function () {
-				$('#'+data.cNo).children().eq(1).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
+				$('#'+data.cNo).children().eq(0).children().eq(2).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
 				$('#showComUpdate').hide();
 			},
 			error: function (e) {
@@ -254,7 +290,7 @@
     				$('#likeText').html(" Liked It!");
     				$('#likeBTNicon').css("color", "#F7CAC9");
 	            	let a = parseInt($('#likeNum').text())+1;
-	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
+	            	$('#likeNum').html(a);
 	            	
 	            },
 	            error: function (reject) {
@@ -292,40 +328,23 @@
 				<p>
 				<h6 class="m-0 font-weight-bold text-primary">
 					<span>조회 수 : ${list[0].sHit }</span> |
-					<span>찜 수 : ${list[0].sLike }</span>
+					<span><i class="far fa-thumbs-up"></i> <span id="likeNum">${list[0].sLike }</span></span>
 					</h6>
 				<p></p>
 				<br />
 				<p></p>
 				<div class="card shadow mb-4">
-				<div class="card-header py-3">${list[0].sTitle }</div>
-				<div class="card-body">
-				판매자 : ${list[0].mId }<br>
-				언제 샀어요? : ${list[0].sPurchasedDate }<br>
-				얼마나 썼어요? : ${list[0].sUseDays }<br>
-				왜 팔아요?: ${list[0].sReason }<br>
-				제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br>
-				
-				
-				</div>
+					<div class="card-header py-3">${list[0].sTitle }</div>
+						<div class="card-body">
+							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br>
+							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br>
+							<i class="far fa-clock"></i>얼마나 썼어요? : ${list[0].sUseDays }<br>
+							<i class="fas fa-question"></i>왜 팔아요?: ${list[0].sReason }<br>
+							<i class="fas fa-paw"></i>제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br>
+						</div>
 				</div>
 				<p></p>
-				<!-- 좋아요버튼 -->
-				
-				
-				<!-- 댓글조회 -->
-				<div class="card shadow mb-4">
-				<div class="card-header py-3">댓글</div>
-				<div class="card-body">
-				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
-					<div id="show"></div>
-				
-					<%-- <c:forEach var="list" items="${list }">
-						${list.cmId }:
-						${list.cContents }<br>
-					</c:forEach> --%>
-				</div>
-				</div> 
+			
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
@@ -336,7 +355,7 @@
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
-								
+							<p></p>
 								<input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
 								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
@@ -345,17 +364,31 @@
 						</form>
 					</div>
 				</div>
-			</div>
 			
-			<!-- 댓글 수정하면 보이게 (테스트)-->
+				<!-- 댓글조회 -->
+			<div class="card shadow mb-4">
+				
+				
+				    <div class="card-header">
+				        <h3>Comments</h3> 
+				    </div>
+				
+					<div class="card-body" >
+				       <div id="commentsBody">
+					</div>
+				</div>
+				</div>
+				 
+				 <hr>
+					<!-- 댓글 수정하면 보이게 -->
 			<div id="showComUpdate">
 				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
 					<input type="hidden" id="cNo" name="cNo">
 					<input type="text" id="cUpdated" name="cContents">
-					<button type="submit" id="updated" name="updated" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); onclick="updateCom()">수정하기!</button>
+					<button type="submit" id="updated" name="updated" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);" onclick="updateCom()">수정하기!</button>
 				</form>
 			</div>
-			
+			</div>
 			
 			
 			<br>
@@ -373,6 +406,14 @@
 			
 				</form>	
 			</div>
+				
+				
+	</div><!--  End of DataTales Example -->
+				 
+				  
+				
+			
+		
 			
 		
 			
@@ -393,7 +434,7 @@
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		
-	</div>
+	
 	<!-- /.container-fluid -->
 	
 	<!-- Scroll to Top Button-->
