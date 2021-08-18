@@ -11,14 +11,16 @@
 	</select>
 	
 	<select id="boardSelectListEvent" resultType="co.animal.prj.board.vo.BoardVO">
-		SELECT * FROM board where bcategory='event'
+		<![CDATA[select * from board where bcategory = 'event' and bison <> 'd']]>
 	</select>
 	
 	<select id="boardSelectListNotice"
 		resultType="co.animal.prj.board.vo.BoardVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd'
+			<![CDATA[select * from board where bcategory = 'notice' and bison <> 'd']]>
+ 
+		<!-- SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd' -->
 	</select>
 	
 	<select id="boardSelect" resultType="co.animal.prj.board.vo.BoardVO">
@@ -42,7 +44,9 @@
 	update board set bCategory=#{bCategory}, bTitle=#{bTitle}, bContents=#{bContents} where bno = #{bNo}
 	</update>
 	
-	
+	<update id="bUpdateLike" parameterType="co.animal.prj.board.vo.BoardVO">
+		update board set blike = blike + 1 where bNo=#{bNo}
+	</update>
 	
 	
 

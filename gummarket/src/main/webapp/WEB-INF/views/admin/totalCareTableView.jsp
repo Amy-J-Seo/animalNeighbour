@@ -19,9 +19,11 @@
             <!-- Custom styles for this page -->
             <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-            <script type="text/javascript">
+			<script type="text/javascript">
+			
+			/* 여기 생각해봐야할듯.... 줄 선택하면 그 디테일 페이지 가는건데... */
                 function getRecord(n) {
-                        frm.mId.value = n;
+                        frm.fhNo.value = n;
                         frm.submit();
                     };
             </script>
@@ -34,7 +36,7 @@
                 <!-- Page Heading -->
                 <div class="continer my-auto pl-4 pb-3">
                     <p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">
-                        전 체 멤 버 리 스 트</p>
+                        전 체 케 어 리 스 트</p>
                 </div>
                 <!--table with all recipe-->
                 <div class="card shadow mb-4 mr-4 ml-4 pl-3 pr-3">
@@ -44,48 +46,46 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>아이디</th>
-                                        <th>이메일</th>
-                                        <th>닉네임</th>
-                                        <th>이름</th>
-                                        <th>주소</th>
-                                        <th>휴대번호</th>
-                                        <th>상태</th>
-                                        <th>권한</th>
-                                        <th>리뷰포인트</th>
-                                        <th>구매포인트</th>
-                                        <th>펫정보</th>
+                                        <th>찾기 번호</th>
+                                        <th>작성자</th>
+                                        <th>찾기 카테고리</th>
+                                        <th>찾기 제목</th>
+                                        <th>찾기 글 상태</th>
+                                        <th>좋아요 수</th>
+                                        <th>주기 번호</th>
+                                        <th>주기 카테고리</th>
+                                        <th>주기 제목</th>
+                                        <th>주기 글 상태</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="member" items="${list }">
+                                    <c:forEach var="item" items="${list }">
                                         <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                             onmouseout="this.style.background='white'"
-                                            onclick="getNotice(${member.mId})">
-                                                <td>${member.mId }</td>
-                                                <td>${member.email }</td>
-                                                <td>${member.nickname }</td>
-                                                <td>${member.mName }</td>
-                                                <td>${member.address }</td>
-                                                <td>${member.phone }</td>
-                                                <td>${member.state }</td>
-                                                <td>${member.role }</td>
-                                                <td>${member.reviewPoint }</td>
-                                                <td>${member.buyPoint }</td>
-                                                <td>${member.petInfo }</td>
+                                            onclick="getNotice(${item.sNo})">
+                                                <td>${item.fhNo }</td>
+                                                <td>${item.fhCategory }</td>
+                                                <td>${item.mId }</td>
+                                                <td>${item.fhTitle }</td>
+                                                <td>${item.fhHide }</td>
+                                                <td>${item.fhLike }</td>
+                                                <td>${item.ohNo }</td>
+                                                <td>${item.ohCategory }</td>
+                                                <td>${item.ohTitle }</td>
+                                                <td>${item.ohHide }</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
-                            <form id="frm" name="frm" action="memberDetail.do" method="post">
-                                <input type="hidden" id="mId" name="mId">
+                            <!-- 여기 잘 생각해보기...아님 아예 빼던지.... -->
+                            <form id="frm" name="frm" action="rSelectList.doBB" method="post">
+                                <input type="hidden" id="rNo" name="rNo">
                             </form>
                         </div>
                     </div>
 
                     <!-- return to menu btn...  and to the list btn -->
                     <div class="pb-3 mx-auto" style="align-items: center;">
-                        <!-- To do style again -->
                         <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"
                             style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
                             <i class="fas fa-user-cog fa-2x"></i>&nbsp;  관리자 메인으로</button>
@@ -95,7 +95,6 @@
 
             </div>
             <!-- /.container-fluid -->
-
 
             <!-- Table bootstrap -->
             <!-- Bootstrap core JavaScript-->

@@ -10,7 +10,7 @@ import co.animal.prj.report.service.ReportServiceMapper;
 import co.animal.prj.report.vo.ReportVO;
 
 public class ReportServiceImpl implements ReportService {
-	private SqlSession sqlSession = DataSource.getInstance().openSession(true)	;
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private ReportServiceMapper map = sqlSession.getMapper(ReportServiceMapper.class);
 	@Override
 	public List<ReportVO> reportSelectList() {

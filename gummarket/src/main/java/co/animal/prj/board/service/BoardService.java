@@ -12,4 +12,5 @@ public interface BoardService {
 	public int boardUpdate(BoardVO vo);
 	public int boardDelete(BoardVO vo);
 	public int boardInsert(BoardVO vo);
+	public int bUpdateLike(BoardVO vo);
 }
