@@ -63,24 +63,30 @@
 		console.log(data);	
 		let table = $('<table />').attr('border', '0');
 		$(table).append(
-			$('<tr />').append('<th>닉네임</th><th>댓글</th>')
+			//$('<tr />').append('<th>닉네임</th><th></th><th>댓글</th>')
 		);
 		for (let i = 0; i < data.length; i++) {
 			let tr = $('<tr />').attr('id',data[i]['cNo']);//tr에다가 id값으로 cNo줌.
 			for (let field of fields) {
 				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
+				let td2 = $('<td />')
 				$(tr).append(td)
+				$(tr).append(td2)
 			}
-		
-			let delBtn = $('<td><button type="button">삭제</button></td>')
-			let updBtn =$('<td><button type="button">수정</button></td>') //수정버튼 추가
+			
+			//댓글의 cmid 어떻게 가져오지...?!?
+			//if(${session.mId == list[0].cmId}){
+				
+			let delBtn = $('<td><button type="button" class="btn btn-danger">삭제</button></td>')
+			let updBtn =$('<td><button type="button" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">수정</button></td>') //수정버튼 추가
 			
 			delBtn.click(kill);
 			updBtn.click(updateTest);
 			
 			$(tr).append(delBtn);
 			$(tr).append(updBtn);
-
+			//}
+		
 			$(table).append(tr);
 			
 		}
@@ -118,8 +124,8 @@
 			$(tr).append(td)
 		}
 		console.log($('table'))
-		let delBtn = $('<td><button type="button">삭제</button></td>')
-		let updBtn =$('<td><button type="button">수정</button></td>')
+		let delBtn = $('<td><button type="button" class="btn btn-danger">삭제</button></td>')
+		let updBtn =$('<td><button type="button" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">수정</button></td>')
 			delBtn.click(kill);
 			updBtn.click(updateTest);
 			$(tr).append(delBtn);
@@ -271,7 +277,7 @@
 				
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
 				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
-				  <c:if test="${session.mId == item.mId}">
+				  <c:if test="${session.mId == list[0].mId}">
 					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
 					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
 				  </c:if> 
@@ -346,7 +352,7 @@
 				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
 					<input type="hidden" id="cNo" name="cNo">
 					<input type="text" id="cUpdated" name="cContents">
-					<button type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
+					<button type="submit" id="updated" name="updated" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); onclick="updateCom()">수정하기!</button>
 				</form>
 			</div>
 			

@@ -42,10 +42,12 @@
 		   		<div class="col mb-5">
 	                <div class="card h-100">
 	                
-	                <!-- 인기상품만 인기상품 badge달려면???? -->
+	                <!-- 전체조회에서는 좋아요가 10개 이상이면 인기상품벳지 -->
 	                    <!-- 인기상품 badge-->
-	                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">인기상품
-	                    </div>
+	                    <c:if test="${list.sHit gt 10}">
+		                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">인기상품
+		                    </div>
+	                    </c:if>
 	                    <!-- 상품 썸네일-->
 	                    <img class="card-img-top" src="img/${list.sImg }" alt="상품이미지" />
 	                    <!-- 상품 details-->

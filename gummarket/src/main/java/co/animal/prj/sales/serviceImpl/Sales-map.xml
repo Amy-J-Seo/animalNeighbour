@@ -69,6 +69,12 @@
 		update sales set shit = #{sHit} + 1 where sno = #{sNo}
 	</update>
 	
+	<!-- 좋아요 증가 -->
+	<update id="updateLike" parameterType="co.animal.prj.sales.vo.SalesVO">
+		update sales set slike = slike+1 where sno = #{sNo}
+	</update>
+	
+	
 <!--  	
 	
 	<insert id="" parameterType="">
