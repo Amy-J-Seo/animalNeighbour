@@ -45,6 +45,210 @@
 				location.href = 'ohItemUpdateForm.do?ohNo=' + no;
 			}
 
+			
+			
+			
+			//------------------------------댓글용-------------------------------//
+
+			//댓글 불러오기 ajax
+			$(document).ready(function(){
+				// 수정 폼 숨기기
+				$('#showComUpdate').hide();
+				
+				console.log($('#cMainNum'));
+				//전체 데이터 출력.
+				$.ajax({
+					url: 'SelectCommentServ',
+					method:'post',
+					dataType: 'json',
+					data: {
+						sNo:$('#cMainNum').val()
+					},
+					success: itemListFnc,
+					error: function () {
+						console.log("으악")
+					}
+			});
+				
+
+			let fields = ['cmId', 'cContents'];
+			//댓글 조회 콜백함수
+			function itemListFnc(data) {
+				console.log(data);	
+			
+				for (let i = 0; i < data.length; i++) {  
+					const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
+			         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+			         let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+			               "width": "2rem",
+			               "height": "2rem"
+			             });
+			         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']).addClass("pl-2");
+			         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['cContents']);
+			         divMain.append(img ,userName, comment);
+			         
+			         console.log(data[i]['cmId']);
+			         $(divCase).append(divMain);
+			        	 
+				         const btnDiv =$('<div />');
+				         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+				         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+				         
+					         //신고하기(신고하기 어디로???)
+					         const reportForm = $('<form/>').attr('action', '#');
+					         const reportBtn 
+					         	= $('<a />').addClass("btn btn-danger btn-md")
+					         				.attr({
+					         					'href':"#",
+					         					"data-toggle":"modal",
+					         					"data-target":"#reportModal"
+					         					})
+					         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
+				         
+				         reportForm.append(reportBtn);
+				         
+				         reportBtn.click();
+				         
+				         delBtn.click(kill);
+						 updBtn.click(update);
+				         btnDiv.append(delBtn, updBtn);
+				         
+			         var mId = "<%=(String)session.getAttribute("mId")%>";
+			         console.log(mId);
+			         if(mId == data[i]['cmId']){
+			        	 
+				         $(divCase).append(btnDiv);
+			         }
+			         if(mId != data[i]['cmId']){
+				         $(divCase).append(reportForm);
+			         }
+			         
+			         
+				$('#commentsBody').append(divCase);
+			      
+			}
+			}
+			
+			//댓글 입력 ajax
+			$('#reply').on('submit', function (event) {
+				event.preventDefault(); //디폴트값은 못들어가게
+				let s = $('#reply').serialize();
+				console.log(s);
+
+				//폼 전송처리
+				$.ajax({
+					url: $('#reply').attr('action'), //='../AddItemServ.do'
+					method: 'post',
+					data: $('#reply').serialize(), //파라미터로 넘김
+					dataType: 'json', //받아오는 값
+					success: addItemFunc,
+					error: function (reject) {
+						console.error(reject);
+					}
+				})
+			})
+		});
+
+			let fields = ['cmId', 'cContents'];
+			//입력처리 후 콜백함수
+			function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
+				console.log(data)
+				const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data.cNo);
+			    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+				
+			        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+			              "width": "2rem",
+			              "height": "2rem"
+			            });
+			        let userName = $('<span />').css("font-size","1.5rem").text(data['cmId']);
+			        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['cContents']);
+			        divMain.append(img, userName, comment);
+			        
+			        const btnDiv =$('<div />');
+			        const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+			        const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+			        btnDiv.append(delBtn, updBtn);
+			        delBtn.click(kill);
+					updBtn.click(update);
+			        $(divCase).append(divMain, btnDiv)
+				$('#commentsBody').append(divCase);
+			     
+			}
+				
+
+			//댓글 삭제하기
+			function kill(e) {
+				console.log(e.target.parentNode.parentNode);
+				//location.href='../DeleteServ.do?itemNo='+$(this).parent().children().eq(0).text();
+				$.ajax({
+					url: 'DeleteCommentServ',
+					data: {
+						cNo: $(this).parent().parent().attr('id')
+					},
+					success: function () {
+						e.target.parentNode.parentNode.remove();
+					},
+					error: function () {
+						alert("삭제에서 에러발생!!")
+					}
+				})
+			}
+			
+			
+			
+			//업데이트 폼나오게 테스트! -> 성공!
+			function update(e){
+				
+				let modForm = $("#showComUpdate");
+				$(this).parent().append(modForm);
+				console.log($(this).parent().parent().children().eq(0).children().eq(2).text());
+				let content = $(this).parent().parent().children().eq(0).children().eq(2).text();
+				let cNo = $(this).parent().parent().attr('id');// tr의 id값 가져옴~
+				/* $(this).children().eq(0).hide(); */
+				modForm.show();
+				
+				$(modForm).find("#cUpdated").val(content);
+				$(modForm).find('#cNo').val(cNo);
+			}
+			
+			//업데이트 -> 성공! 이름 
+			function updateCom(){
+				event.preventDefault(); //디폴트값은 못들어가게
+				let s = $('#updateRep').serialize();
+
+				//폼 전송처리
+				$.ajax({
+					url: $('#updateRep').attr('action'), 
+					method: 'post',
+					data: $('#updateRep').serialize(), //파라미터로 넘김
+					dataType: 'json', //받아오는 값
+					success: updateItemFunc,
+					error: function (reject) {
+						console.error(reject);
+					}
+				})
+			}
+			
+			function updateItemFunc(data){
+				
+				$.ajax({
+					url: 'UpdateCommentServ',
+					data: {
+						cNo: $(this).parent().attr('id')
+					},
+					success: function () {
+						$('#'+data.cNo).children().eq(0).children().eq(2).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
+						$('#showComUpdate').hide();
+					},
+					error: function (e) {
+						alert("수정에서 에러발생!!")
+						console.error(e);
+					}
+				})
+			}
+			
+		
+			
 		</script>
 
 		<body>
