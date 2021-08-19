@@ -14,10 +14,17 @@ public class UserUpdate implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
+		String address="";
+		address= request.getParameter("address1");
+		address+=" ";
+		address+=request.getParameter("address2");
+		address+=" ";
+		address+=request.getParameter("address3");
+		
 		vo.setmId(request.getParameter("mId"));
 		vo.setmName(request.getParameter("mName"));
 		vo.setNickname(request.getParameter("nickname"));
-		vo.setAddress(request.getParameter("address"));
+		vo.setAddress(address);
 		vo.setPhone(request.getParameter("phone"));
 		vo.setPetInfo(request.getParameter("petInfo"));
 		vo.setReviewPoint(Integer.valueOf(request.getParameter("reviewPoint")));

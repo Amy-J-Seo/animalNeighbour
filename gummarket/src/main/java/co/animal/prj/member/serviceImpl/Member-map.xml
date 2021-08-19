@@ -17,7 +17,9 @@
 	<select id="checkId" resultType="Integer">
 	select count(mId) from member where mId=#{mId}
 	</select>
-	
+	<select id="emailDupleCheck" resultType="String">
+	SELECT email FROM member WHERE email=#{email}
+	</select>
 	<insert id="memberInsert" parameterType="co.animal.prj.member.vo.MemberVO">
 	INSERT INTO member(mId,password,mName,nickname,phone,email,petInfo,address)
 	VALUES(#{mId},#{password},#{mName},#{nickname},#{phone},#{email},#{petInfo},#{address})

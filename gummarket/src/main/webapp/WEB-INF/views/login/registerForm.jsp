@@ -12,8 +12,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -98,6 +97,33 @@
 		        }
 		    }).open();   
 		}
+		const form = document.frm;
+
+		function emailValCheck(){
+			var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			var email = form.email.value;
+			if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
+				return false;
+			}
+		    return true;
+		}
+		function check(pattern, taget, message) {
+			if(pattern.test(taget)) {
+		    	return true;
+		    }
+		    alert(message);
+		    taget.focus();
+		    return false;
+		}
+		
+		function emailAuthentication(){
+			if (!emailValCheck()){
+		    	return false;
+		    }
+			var url = "confirmEmail.do?email=" + form.email.value;
+			open(url, "confirm",
+					"toolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+		}
 		
 	</script>
 
@@ -165,18 +191,37 @@
 											<input type="text" id="phone" name="phone" placeholder="휴대번호"
 												required="required" class="form-control form-control-user">
 										</div>
-										<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
-											<button onclick="phone()"
-												class="btn btn-warning btn-user btn-block">인증하기</button>
-										</div>
+										
 									</div>
+									
+									
+									
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">이 메 일</div>
 										<div class="col-lg-5 col-sm- mb-3 mb-sm-0 ">
 											<input type="email" id="email" name="email" placeholder="이메일"
 												required="required" class="form-control form-control-user">
 										</div>
+										<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
+											<button onclick="emailAuthentication()" id="eamilAuthBtn"
+												class="btn btn-warning btn-user btn-block">인증메일보내기</button>
+										</div>
 									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">이메일인증</div>
+										<div class="col-lg-3 col-sm-3 mb-3 mb-sm-0 ">
+											<input type="text" id="inputAuthCode" name="authCode" placeholder="인증번호입력"
+												 disabled="disabled" class="form-control form-control-user">
+										</div>
+										<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
+											<button onclick="authCodeCheck()" id="authCodeCheckBtn"
+												class="btn btn-warning btn-user btn-block"disabled="disabled">인증하기</button>
+										</div>
+									</div>
+									<input type="hidden" name="authPass" id="authPass" value="false">
+									
+									
+									
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">멍냥이 정보</div>
 										<div class="col-lg-10 col-sm- mb-3 mb-sm-0 ">

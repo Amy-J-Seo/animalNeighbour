@@ -31,7 +31,7 @@ import co.animal.prj.lost.command.LostItemUpdate;
 import co.animal.prj.lost.command.LostItemUpdateForm;
 import co.animal.prj.lost.command.LostMain;
 import co.animal.prj.lost.command.WritelostForm;
-
+import co.animal.prj.member.command.ConfirmEmail;
 import co.animal.prj.member.command.MemberCheck;
 
 import co.animal.prj.member.command.MemberDetail;
@@ -83,12 +83,14 @@ public class FrontController extends HttpServlet {
 		map.put("/withdrawalForm.do", new WithdrawalForm());//회원탈퇴폼
 		map.put("/withdrawal.do", new Withdrawal());//회원탈퇴완료
 		
+		
 		map.put("/memberList.do",new MemberList()); //관리자 맴버리스트
 		map.put("/memberDetail.do",new MemberDetail()); //관리자 맴버 상세보기
 		map.put("/memberUpdate.do", new MemberUpdate()); //관리자 회원 정보수정
 		map.put("/userUpdate.do",new UserUpdate());		//회원 수정페이지
 		map.put("/memberCheck.do", new MemberCheck());	//회원 수정 비밀번호
 		map.put("/memberSelect.do", new MemberSelect()); //유저 마이페이지
+		map.put("/confirmEmail.do",new ConfirmEmail());
 		
 		
 		

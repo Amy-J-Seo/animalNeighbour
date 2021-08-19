@@ -11,7 +11,10 @@
 <link rel="stylesheet" href="fonts/icomoon/style.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/login.css">
-
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">	
  $(() => {
    		var result = '<c:out value="${message}" />';
@@ -25,19 +28,60 @@
    				// 모달창에 들어갈 메세지
    				$(".modal-body").html(result);
    				// 모달창 띄워주기
-   				$("#confirm").modal("show");
+   				$("#member").modal("show");
    			}
    		}
    	})
    	
-   <!-- function click() {
-	 var con = confirm("수정하시겠습니까?");                 
-	 if(con==true){
-		 frm.submit();
-	 }else if(conn==false){
+   	function execution_daum_address(){
+			new daum.Postcode({
+		        oncomplete: function(data) {
+		            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+		        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	 
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	 
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    addr += extraAddr;
+	                } else {
+	                	 addr += ' ';
+	                }
+	 
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                 $("#address1").val(data.zonecode);
+            //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+            $("#address2").val(addr);
+            //$("[name=memberAddr2]").val(addr);            // 대체가능
+	                // 커서를 상세주소 필드로 이동한다.
+            $("#address3").attr("readonly",false);
+            $("#address3").focus();            
 		 
-	 }
-                    };-->
+		        }
+		    }).open();   
+		}
 	</script>
 <body>
 	<div class="container">
@@ -99,16 +143,35 @@
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">멍냥이 정보</div>
 										<div class="col-lg-10 col-sm- mb-3 mb-sm-0 ">
-											<textarea id="petInfo" name="petInfo"
+											<textarea id="petInfo" name="petInfo" style="resize: none;" rows="5"
 												class="form-control form-control-user">${list.email }</textarea>
 										</div>
 									</div>
 									<div class="form-group row">
-										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">주소</div>
-										<div class="col-lg-6 col-sm- mb-3 mb-sm-0 ">
-											<input type="text" id="address" name="address"
-												value="${list.address }"
-												class="form-control form-control-user">
+										<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0 ">주 소</div>
+										<div class="col-lg-10 col-sm-6 mb-3 mb-sm-0 " align="left">${list.address}</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0 "></div>
+										<div class="col-lg-5 col-sm-3 mb-3 mb-sm-0 ">
+											<input type="text" id="address1" name="address1"readonly="readonly"
+												class="form-control form-control-user"placeholder="우편번호">
+										</div>
+										<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
+										 onclick="execution_daum_address()">
+											<span>우편번호수정하기</span>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0 "></div>
+
+										<div class="col-lg-5 col-sm-6 mb-3 mb-sm-0 ">
+											<input type="text" id="address2" name="address2"readonly="readonly"
+												class="form-control form-control-user"placeholder="주소">
+										</div>
+										<div class="col-lg-4 col-sm-6 mb-3 mb-sm-0 ">
+											<input type="text" id="address3" name="address3"readonly="readonly"
+												class="form-control form-control-user"placeholder="상세주소">
 										</div>
 									</div>
 									<div class="form-group row" style="display: none">
@@ -140,7 +203,9 @@
 												value="${list.reviewPoint }" readonly
 												class="form-control form-control-user">
 										</div>
+									</div>
 										<!-- off가 휴면상태 입니다 -->
+										<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">회원등급</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 											<select class="form-control" id="buyPoint" name="buyPoint">
@@ -150,12 +215,13 @@
 											</select>
 										</div>
 									</div>
+									<br>
 									<input type="hidden" id="password" name="password"
 										value="${list.password }">
-									<button type="submit" onclick="click()"
+									<button type="submit" onclick=""
 										class="btn btn-danger btn-md btn-user btn-block"
-										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정
+										style="background-color: red; color: rgb(255, 255, 255);">
+										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정하기
 									</button>
 
 									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
@@ -164,6 +230,7 @@
 										<i class="fas fa-user-cog fa-2x"></i>&nbsp; 홈으로가기
 									</button>
 								</form>
+								<br>
 								<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 									<a href="withdrawalForm.do?mId=${list.mId }">회원탈퇴하기</a>
 								</div>
@@ -175,7 +242,7 @@
 		</div>
 	</div>
 	<!-- 수정 실패 모달 -->
-	<div class="modal fade" id="confirm" role="dialog"
+	<div class="modal fade" id="member" role="dialog"
 		style="z-index: 100000">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -194,4 +261,3 @@
 		</div>
 	</div>
 </body>
-</html>

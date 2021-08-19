@@ -12,6 +12,7 @@ public interface MemberServiceMapper {
 	public int memberInsert(MemberVO vo);
 	public MemberVO Login(MemberVO vo);
 	public int checkId(String mId);
+	public String emailDupleCheck(String inputEmail);
 }
 	
 

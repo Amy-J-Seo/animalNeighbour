@@ -30,10 +30,6 @@
    		}
    	})
 	</script>
-<head>
-<meta charset="UTF-8">
-<title>멤버상세보기</title>
-</head>
 <body>
 	<div class="container">
 
@@ -100,7 +96,7 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">주소</div>
-										<div class="col-lg-6 col-sm- mb-3 mb-sm-0 ">
+										<div class="col-lg-10 col-sm- mb-3 mb-sm-0 ">
 											<input type="text" id="address" name="address" readonly
 												value="${list.address }"
 												class="form-control form-control-user">
@@ -144,13 +140,13 @@
 												<option value="2">2</option>
 											</select>
 										</div>
-									</div>
+									</div><br>
 									<input type="hidden" id="password" name="password"
 										value="${list.password }">
 									<button type="submit" onclick=""
 										class="btn btn-danger btn-md btn-user btn-block"
-										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정
+										style="background-color: red; color: rgb(255, 255, 255);">
+										<i class="fas fa-user-cog"></i>&nbsp;수정
 									</button>
 
 									<button class="btn btn-md mr-5 btn-md btn-user btn-block"

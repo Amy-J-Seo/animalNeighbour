@@ -57,9 +57,9 @@
 					<li style="margin: auto;"><a href="salesListAll.do"
 						style="text-decoration: none; color: rgb(94, 94, 94)">&nbsp;중고장터</a>&nbsp;
 						|&nbsp; <a href="findHelpMain.doBB"
-						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a></li>
+						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a>
 						&nbsp;|&nbsp; <a href="offerHelpMain.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요&nbsp;</a></li>
+						style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요&nbsp;</a>
 						&nbsp;|&nbsp; <a href="lostMain.do"
 						style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기&nbsp;</a></li>
 						
@@ -82,10 +82,10 @@
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 								<!-- 유저 로그인 시 -->
 								<c:if test="${session.role eq 'USER' }">
-								<a class="dropdown-item" href="test.do">
+								<a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 								</a>
-								<a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
+								<a class="dropdown-item" href="">
 									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
 								</a>
 								<a class="dropdown-item" href="#"> 
