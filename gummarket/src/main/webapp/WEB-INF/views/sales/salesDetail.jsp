@@ -79,16 +79,16 @@
 		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 		         
-		         //신고하기(신고하기 어디로???)
-		         const reportForm = $('<form/>').attr('action', '#');
-		         const reportBtn 
-		         	= $('<a />').addClass("btn btn-danger btn-md")
-		         				.attr({
-		         					'href':"#",
-		         					"data-toggle":"modal",
-		         					"data-target":"#reportModal"
-		         					})
-		         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
+			         //신고하기(신고하기 어디로???)
+			         const reportForm = $('<form/>').attr('action', '#');
+			         const reportBtn 
+			         	= $('<a />').addClass("btn btn-danger btn-md")
+			         				.attr({
+			         					'href':"#",
+			         					"data-toggle":"modal",
+			         					"data-target":"#reportModal"
+			         					})
+			         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
 		         
 		         reportForm.append(reportBtn);
 		         
@@ -98,8 +98,10 @@
 				 updBtn.click(update);
 		         btnDiv.append(delBtn, updBtn);
 		         
-	         var mId = '<%=(String)session.getAttribute("mId")%>';
+	         var mId = "<%=(String)session.getAttribute("mId")%>";
+	         console.log(mId);
 	         if(mId == data[i]['cmId']){
+	        	 
 		         $(divCase).append(btnDiv);
 	         }
 	         if(mId != data[i]['cmId']){
@@ -152,7 +154,7 @@
 	        const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 	        btnDiv.append(delBtn, updBtn);
 	        delBtn.click(kill);
-			updBtn.click(updateTest);
+			updBtn.click(update);
 	        $(divCase).append(divMain, btnDiv)
 		$('#commentsBody').append(divCase);
 	     
@@ -353,6 +355,19 @@
 						</div>
 				</div>
 				<p></p>
+						<!-- 댓글조회 -->
+			<div class="card shadow mb-4">
+				
+				
+				    <div class="card-header">
+				        <h3>Comments</h3>
+				    </div>
+				
+					<div class="card-body" >
+				       <div id="commentsBody">
+					</div>
+				</div>
+			</div>
 			
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
@@ -374,19 +389,7 @@
 					</div>
 				</div>
 			
-				<!-- 댓글조회 -->
-			<div class="card shadow mb-4">
-				
-				
-				    <div class="card-header">
-				        <h3>Comments</h3>
-				    </div>
-				
-					<div class="card-body" >
-				       <div id="commentsBody">
-					</div>
-				</div>
-				</div>
+		
 				 
 				 <hr>
 					<!-- 댓글 수정하면 보이게 -->

@@ -30,8 +30,10 @@
 						<input type="text" id="csTitle" name="csTitle" placeholder="무엇에 관한 내용인가요">	<br><br>
 						<i class="far fa-edit">contents</i><br>
 						<textarea rows="5" cols="50" id="csContents" name="csContents" placeholder="내용을 입력해주세요">
-						</textarea>	    		
+						</textarea>	    
+							
 		    		</div>
+		    		<!-- csc에 넣을만한 예쁜 사진 필요...! -->
 		    		<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
 		    			<br>
 		    			<img class="card-img-top" src="img/rabbitWalk.webp" alt="csc" width="80%" height="80%"/>

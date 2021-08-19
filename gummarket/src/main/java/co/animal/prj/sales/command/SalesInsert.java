@@ -92,9 +92,6 @@ public class SalesInsert implements Command {
 		iVo.setiMainNum(n);
 		imgDao.imageInsert(iVo);
 		
-
-		String page ="";
-
 		int nn = salesDao.salesInsert(vo);
 		
 		if( nn !=0) {
