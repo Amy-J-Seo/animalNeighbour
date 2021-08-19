@@ -14,15 +14,17 @@
          rel="stylesheet">
 
      <!-- Custom styles for this template -->
-     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     <link href="css/sb-admin-2.css" rel="stylesheet">
 
      <!-- Custom styles for this page -->
          <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 	<script type="text/javascript">
-         function getRecord(n) {
+         function getRecord(n, h) {
         	 console.log($('#frm #sNo').val(n))
+        	 console.log($('#frm #sHit'))
           	$('#frm #sNo').val(n);
+        	 $('#frm #sHit').val(h);
           	$('#frm').submit();
              };
      </script>
@@ -56,11 +58,12 @@
                              <c:forEach var="item" items="${list }">
                                  <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                      onmouseout="this.style.background='white'"
-                                     onclick="getRecord(${item.sNo})">
+                                     onclick="getRecord(${item.sNo}, ${item.sHit })">
                                          <td>${item.sNo }</td>
                                          <td>${item.mId }</td>
                                          <td>${item.sCategory }</td>
                                          <td>${item.sTitle }</td>
+                                         <td>${item.sHit }</td>
                                          <td>${item.sStatus }</td>
                                          <td>${item.sHide }</td>
                                  </tr>
@@ -69,6 +72,7 @@
                      </table>
                      <form id="frm" name="frm" action="salesSelect.do" method="post">
                          <input type="hidden" id="sNo" name="sNo">
+                         <input type="hidden" id="sHit" name="sHit">
                      </form>
                  </div>
              </div>

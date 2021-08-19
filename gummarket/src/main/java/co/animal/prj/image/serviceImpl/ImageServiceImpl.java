@@ -42,4 +42,10 @@ public class ImageServiceImpl implements ImageService {
 		return map.imageInsert(vo);
 	}
 
+	@Override
+	public int fhImageInsert(ImageVO iVo) {
+		// TODO Auto-generated method stub
+		return map.fhImageInsert(iVo);
+	}
+
 }

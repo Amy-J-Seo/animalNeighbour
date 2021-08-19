@@ -86,10 +86,10 @@
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 								</a>
 								<a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
-									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
+									<i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
 								</a>
 								<a class="dropdown-item" href="#"> 
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내 문의내역
+									<i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i> 내 문의내역
 								</a>
 								
 								<div class="dropdown-divider"></div>
@@ -105,13 +105,13 @@
 										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 관리자 메인
 									</a>
 								 <a class="dropdown-item" href="memberSelect.do">
-										<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
+										<i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 									</a>
 								<a class="dropdown-item" href="#"> 
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 회원 문의
+									<i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i> 회원 문의
 								</a>
 									<a class="dropdown-item" href="memberList.do"> <i
-										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 회원 관리
+										class="fas fa-user-cog fa-sm fa-fw mr-2 text-gray-400"></i> 회원 관리
 									</a>
 								
 								<div class="dropdown-divider"></div>

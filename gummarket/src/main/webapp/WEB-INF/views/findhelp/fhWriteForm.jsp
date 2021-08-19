@@ -97,8 +97,13 @@
                                          name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
                                  </div>
                                  <hr>
+                                  <!-- 썸네일용 사진은 sales테이블에 -->
                                  <div class="form-group">
-                               	    사진 업로드: <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
+                                    <i class="fas fa-image"></i>  썸네일용 사진 업로드: <input type="file" name="thumbNailFile" multiple="multiple" class="btn"/>
+                                 </div>
+                                 <!-- 상세사진은 image 테이블에 -->
+                                 <div class="form-group">
+                                    <i class="fas fa-camera"></i>  상세 사진 업로드: <input type="file" name="uploadFile1" multiple="multiple" class="btn"/>
                                  </div>
                               
 					<hr>
@@ -117,7 +122,12 @@
                              </form>
                              <!-- form end -->
            
-             
+            				<!-- img upload form -->
+                             <form style="display: none;" action="imageUploadServlet" id="imageUpload" name="imageUpload" method="post" enctype="multipart/form-data">
+                                <input type="file" id="thumbNailFile" name="thumbNailFile">
+                                <input type="file" id="uploadFile1" name="uploadFile1">
+                             </form>
+             				<!--end of img upload form -->
                          </div>
                      </div>
                  </div>

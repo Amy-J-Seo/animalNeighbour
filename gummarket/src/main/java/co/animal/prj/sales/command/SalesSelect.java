@@ -28,7 +28,7 @@ public class SalesSelect implements Command {
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);
-	
+		
 
 		request.setAttribute("list", list);
 		
