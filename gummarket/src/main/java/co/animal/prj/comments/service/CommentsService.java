@@ -7,6 +7,8 @@ import co.animal.prj.comments.vo.CommentsVO;
 public interface CommentsService {
 	public List<CommentsVO> commentsSelectList();
 	public List<CommentsVO> fhCommentsSelectList(CommentsVO vo);
+	public List<CommentsVO> nCommentsSelectList(CommentsVO vo);
+	public List<CommentsVO> eCommentsSelectList(CommentsVO vo);
 	public CommentsVO commentsSelect(CommentsVO vo);
 	public int commentsUpdate(CommentsVO vo);
 	public int commentsDelete(CommentsVO vo);

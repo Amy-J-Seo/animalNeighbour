@@ -346,7 +346,7 @@ function fhItemDelete(n) {
 				    <!-- css 다시 -->
 					<div id="showComUpdate">
 						<form id="updateRep" name="updateRep" action="UpdateFhCommentServlet" method="post">
-							<input type="hidden" id="cNo" name="cNo"><input type="hidden" id="fhNo" name="fhNo" value="${item.fhNo }">
+							<input type="hidden" id="cNo" name="cNo"><input type="hidden" id="fhNo" name="fhNo" value="${item.neNo }">
 							<input type="text" id="cContents" name="cContents">
 							<button class="btn btn-warning" type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
 						</form>

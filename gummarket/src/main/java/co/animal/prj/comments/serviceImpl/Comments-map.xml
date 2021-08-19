@@ -15,6 +15,16 @@
 		SELECT * FROM comments where ctype='findhelp' and cmainnum=#{cMainNum}
 	</select>
 	
+	  <select id="nCommentsSelectList" parameterType="co.animal.prj.comments.vo.CommentsVO"
+		resultType="co.animal.prj.comments.vo.CommentsVO">
+		SELECT * FROM comments where ctype='notice' and cmainnum=#{cMainNum}
+	</select>
+	
+	<select id="eCommentsSelectList" parameterType="co.animal.prj.comments.vo.CommentsVO"
+		resultType="co.animal.prj.comments.vo.CommentsVO">
+		SELECT * FROM comments where ctype='event' and cmainnum=#{cMainNum}
+	</select>
+	
 
 	<insert id="commentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		insert into comments values(c_seq.nextval,#{cmId},'sales',#{cMainNum},#{cContents})
