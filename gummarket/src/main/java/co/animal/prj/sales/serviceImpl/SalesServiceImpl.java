@@ -65,7 +65,8 @@ public class SalesServiceImpl implements SalesService {
 	@Override
 	public int updateLike(SalesVO vo) {
 		// TODO Auto-generated method stub
-		return map.updateLike(vo);
+  return map.updateLike(vo);
+
 	}
 
 }

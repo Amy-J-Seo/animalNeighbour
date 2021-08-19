@@ -21,7 +21,7 @@
 	   alert("글을 삭제할까요?");
 	   console.log(n);
 	   if(confirm("삭제되었습니다.")){
-	    frm.ohDelNo.value= n;
+	    frm.lNo.value= n;
 	    console.log(n);
 		frm.submit();
 	  
@@ -34,13 +34,13 @@
 	
 	//글 수정
 	function updateSales(n) {
-		frm1.ohNo.value=n;
+		frm1.lNo.value=n;
 		frm1.submit();
 		//location.href='updateSales.do';
 	}
 	
 	function ohItemUpdate(no){
-		location.href = 'ohItemUpdateForm.do?ohNo='+no;
+		location.href = 'lostItemUpdateForm.do?ohNo='+no;
 	}
 	
 </script>
@@ -53,11 +53,11 @@
 		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
 				
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.ohTitle }
+				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.lTitle }
 				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
 				
-					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel('${item.ohNo}')" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
-					<button class="btn btn-sm mr-3" id="updateBtn" onclick="ohItemUpdate('${item.ohNo}')" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
+					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel('${item.lNo}')" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
+					<button class="btn btn-sm mr-3" id="updateBtn" onclick="ohItemUpdate('${item.lNo}')" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
 				 
 				 </h3>	
 			</div>
@@ -65,13 +65,13 @@
 				
 	
 				<div class="card shadow mb-4">
-				<div class="card-header py-3">${item.ohTitle }</div>
+				<div class="card-header py-3">${item.lTitle }</div>
 				<div class="card-body">
-				제목 : ${item.ohCategory  }<br>
-				닉네임? : ${item.mId }<br>
-				나의 특징? : ${item.ohHistory  }<br>
-				나의 동네?: ${item.ohAddress }<br>
-				무슨 도움? : ${item.ohDetails }<br>
+				이름? : ${item.lName  }<br>
+				성별? : ${item.lGender }<br>
+				나이? : ${item.lAge  }<br>
+				언제?: ${item.lWhen }<br>
+				어디서? : ${item.lWhere }<br>
 				
 				</div>
 				</div>
@@ -98,8 +98,8 @@
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							 
-								<input type="hidden" id="ohNo" name="ohNo" value="${item.ohNo }">
-								<textarea class="form-control" id="ohContents" name="ohContents" rows="3"></textarea>
+								<input type="hidden" id="ohNo" name="lNo" value="${item.lNo }">
+								<textarea class="form-control" id="lTitle" name="lTitle" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
 							    </li>
 							</ul>
@@ -117,7 +117,7 @@
 				<!-- To do style again -->
 				<!-- Like btn form -->
 				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
-					<input type="hidden" id="mainNo" name="mainNo" value="${item.ohNo }">
+					<input type="hidden" id="mainNo" name="mainNo" value="${item.lNo }">
 					
 				
 				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 메세지 보내기</button>
@@ -135,10 +135,10 @@
 		</div>
 		
 		<form id="frm" name="frm" action="deleteSales.do" method="post">
-			<input type= "hidden" id="ohDelNo" name="ohDelNo">
+			<input type= "hidden" id="lNo" name="lNo">
 		</form>
 		<form id="frm1" name="frm1" action="updateSales.do" method="post">
-			<input type= "hidden" id="ohNo" name="ohNo">
+			<input type= "hidden" id="lNo" name="lNo">
 		</form>
 		
 	</div>

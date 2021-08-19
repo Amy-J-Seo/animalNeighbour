@@ -6,7 +6,7 @@
 
 <script>
    function getRecord(n){
-      frm.ohNo.value = n;
+      frm.lNo.value = n;
       frm.submit();
    }
 </script>
@@ -49,35 +49,31 @@
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div class="continer my-auto pb-3">
 					<p class="h3 mb-0 mt-5 ml-5"
-						style="color: rgb(255, 190, 83); font-weight: 900;">I am your
-						helper!</p>
+						style="color: rgb(255, 190, 83); font-weight: 900;">호두를 찾아요!</p>
 				</div>
 				<div class="table-responsive">
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-
-							<button type="button" class="btn btn-warning float-right">글등록</button>
-
 								<th>No.</th>
 								<th>글제목</th>
-								<th>작성자</th>
+								<th>이름</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="help" items="${list }">
-								<tr onclick="getRecord(${help.ohNo })">
-									<td>${help.ohNo }</td>
-									<td>${help.ohTitle }</td>
-									<td>${help.mName }</td>
+							<c:forEach var="item" items="${list }">
+								<tr onclick="getRecord(${item.lNo })">
+									<td>${item.lNo }</td>
+									<td>${item.lTitle }</td>
+									<td>${item.lName }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div>
-					<form id="frm" name="frm" action="ohItemDetail.do" method="post">
-						<input type="hidden" id="ohNo" name="ohNo">
+					<form id="frm" name="frm" action="lostDetail.do" method="post">
+						<input type="hidden" id="lNo" name="lNo">
 					</form>
 				</div>
 				<!-- /.container-fluid -->
@@ -91,7 +87,7 @@
 			<!-- write btn-->
 			<a
 				style="position: fixed; right: 1rem; bottom: 4rem; display: inline; width: 2.75rem; height: 2.75rem; text-align: center; color: #fff; background: rgb(252, 221, 33); line-height: 46px; border-radius: 0.35rem"
-				href="writeOHForm.do"> <i class="fas fa-edit"></i>
+				href="writelostForm.do"> <i class="fas fa-edit"></i>
 			</a>
 
 
