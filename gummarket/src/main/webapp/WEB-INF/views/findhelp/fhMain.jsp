@@ -58,7 +58,7 @@ function getDetails(num) {
 	                <div class="card h-100">
 	                  
 	                    <!-- find help image-->
-	                    <img class="card-img-top" src="img/dog1.jpg" alt="" />
+	                    <img class="card-img-top" src="img/fhImg/${item.fhImg }" alt="" />
 	                    <!-- find help details-->
 	                    <div class="card-body pt-4 pr-4 pl-4 pb-0">
 	                        <div class="text-center">

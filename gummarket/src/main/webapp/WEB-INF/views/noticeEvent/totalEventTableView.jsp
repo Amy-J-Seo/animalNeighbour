@@ -57,7 +57,7 @@
                                     <c:forEach var="item" items="${list }">
                                         <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                             onmouseout="this.style.background='white'"
-                                            onclick="getNotice(${item.bNo})">
+                                            onclick="getDetails(${item.bNo})">
                                                 <td>${item.bNo }</td>
                                                 <td>${item.bCategory }</td>
                                                 <td>${item.mId }</td>
