@@ -34,9 +34,10 @@ public class UpdSalesLikeServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int sNo = Integer.valueOf(request.getParameter("mainNo"));
-
+		//int sLike = Integer.valueOf(request.getParameter("sLike"));
 		SalesVO vo = new SalesVO();
 		vo.setsNo(sNo);
+		//vo.setsLike(sLike);
 		
 		SalesServiceImpl saDao = new SalesServiceImpl();
 		

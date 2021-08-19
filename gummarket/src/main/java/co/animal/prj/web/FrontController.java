@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
+import co.animal.prj.csc.command.CscForm;
+import co.animal.prj.csc.command.CscInsert;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -93,6 +95,9 @@ public class FrontController extends HttpServlet {
 		map.put("/salesInsert.do", new SalesInsert());//글 입력
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
+		
+		map.put("/cscForm.do", new CscForm()); // csc입력폼
+		map.put("/cscInsert.do", new CscInsert());//csc 입력
 
 
 		//제은 맵
