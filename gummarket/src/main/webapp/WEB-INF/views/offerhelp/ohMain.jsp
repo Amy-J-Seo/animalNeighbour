@@ -56,6 +56,9 @@
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
+
+							<button type="button" class="btn btn-warning float-right">글등록</button>
+
 								<th>No.</th>
 								<th>글제목</th>
 								<th>작성자</th>

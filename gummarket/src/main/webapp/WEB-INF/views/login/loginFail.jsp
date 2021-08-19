@@ -5,8 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	//첫번째 방법
+    $(document).ready(function() {
+		$('#loginError').modal();
+    });
+    </script>
 </head>
 <body>
-	${message }
+<div align="center"><h2>${message}</h2></div>
+	
+	
+	
+	
 </body>
 </html>

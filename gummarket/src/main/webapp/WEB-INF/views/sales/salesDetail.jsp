@@ -16,10 +16,8 @@
 	//삭제버튼 누르면 alert
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
-	   console.log(n);
 	   if(confirm("삭제되었습니다.")){
 	    frm.sNo.value= n;
-	    console.log(n);
 		frm.submit();
 	  
 	   }else{
@@ -46,6 +44,7 @@
 		//전체 데이터 출력.
 		$.ajax({
 			url: 'SelectCommentServ',
+			method:'post',
 			dataType: 'json',
 			data: {
 				sNo:$('#cMainNum').val()
@@ -61,30 +60,56 @@
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
 		console.log(data);	
-		let table = $('<table />').attr('border', '0');
-		$(table).append(
-			$('<tr />').append('<th>닉네임</th><th>댓글</th>')
-		);
-		for (let i = 0; i < data.length; i++) {
-			let tr = $('<tr />').attr('id',data[i]['cNo']);//tr에다가 id값으로 cNo줌.
-			for (let field of fields) {
-				let td = $('<td />').text(data[i][field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
-				$(tr).append(td)
-			}
-		
-			let delBtn = $('<td><button type="button">삭제</button></td>')
-			let updBtn =$('<td><button type="button">수정</button></td>') //수정버튼 추가
-			
-			delBtn.click(kill);
-			updBtn.click(updateTest);
-			
-			$(tr).append(delBtn);
-			$(tr).append(updBtn);
-
-			$(table).append(tr);
-			
-		}
-		$('#show').append(table);
+	
+		for (let i = 0; i < data.length; i++) {  
+			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
+	         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+	         let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+	               "width": "2rem",
+	               "height": "2rem"
+	             });
+	         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']).addClass("pl-2");
+	         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['cContents']);
+	         divMain.append(img ,userName, comment);
+	         
+	         console.log(data[i]['cmId']);
+	         $(divCase).append(divMain);
+	        	 
+		         const btnDiv =$('<div />');
+		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+		         
+		         //신고하기(신고하기 어디로???)
+		         const reportForm = $('<form/>').attr('action', '#');
+		         const reportBtn 
+		         	= $('<a />').addClass("btn btn-danger btn-md")
+		         				.attr({
+		         					'href':"#",
+		         					"data-toggle":"modal",
+		         					"data-target":"#reportModal"
+		         					})
+		         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
+		         
+		         reportForm.append(reportBtn);
+		         
+		         reportBtn.click();
+		         
+		         delBtn.click(kill);
+				 updBtn.click(update);
+		         btnDiv.append(delBtn, updBtn);
+		         
+	         var mId = '<%=(String)session.getAttribute("mId")%>';
+	         if(mId == data[i]['cmId']){
+		         $(divCase).append(btnDiv);
+	         }
+	         if(mId != data[i]['cmId']){
+		         $(divCase).append(reportForm);
+	         }
+	         
+	         
+		$('#commentsBody').append(divCase);
+	      
+	}
 	}
 	
 	//댓글 입력 ajax
@@ -110,23 +135,30 @@
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
-		console.log('aaa')
 		console.log(data)
-		let tr = $('<tr />').attr('id',data.cNo) ;
-		for (let field of fields) {
-			let td = $('<td />').text(data[field]); //<td>C003</td><td>coffe</td> 오브젝트 key값
-			$(tr).append(td)
-		}
-		console.log($('table'))
-		let delBtn = $('<td><button type="button">삭제</button></td>')
-		let updBtn =$('<td><button type="button">수정</button></td>')
-			delBtn.click(kill);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data.cNo);
+	    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+		
+	        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
+	              "width": "2rem",
+	              "height": "2rem"
+	            });
+	        let userName = $('<span />').css("font-size","1.5rem").text(data['cmId']);
+	        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['cContents']);
+	        divMain.append(img, userName, comment);
+	        
+	        const btnDiv =$('<div />');
+	        const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+	        const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+	        btnDiv.append(delBtn, updBtn);
+	        delBtn.click(kill);
 			updBtn.click(updateTest);
-			$(tr).append(delBtn);
-			$(tr).append(updBtn);
-		$('table').append(tr);
+	        $(divCase).append(divMain, btnDiv)
+		$('#commentsBody').append(divCase);
+	     
 	}
-	
+		
+
 	//댓글 삭제하기
 	function kill(e) {
 		console.log(e.target.parentNode.parentNode);
@@ -134,7 +166,7 @@
 		$.ajax({
 			url: 'DeleteCommentServ',
 			data: {
-				cNo: $(this).parent().attr('id')
+				cNo: $(this).parent().parent().attr('id')
 			},
 			success: function () {
 				e.target.parentNode.parentNode.remove();
@@ -148,12 +180,13 @@
 	
 	
 	//업데이트 폼나오게 테스트! -> 성공!
-	function updateTest(e){
+	function update(e){
 		
 		let modForm = $("#showComUpdate");
 		$(this).parent().append(modForm);
-		let content = $(this).parent().children().eq(1).text();
-		let cNo = $(this).parent().attr('id');// tr의 id값 가져옴~
+		console.log($(this).parent().parent().children().eq(0).children().eq(2).text());
+		let content = $(this).parent().parent().children().eq(0).children().eq(2).text();
+		let cNo = $(this).parent().parent().attr('id');// tr의 id값 가져옴~
 		/* $(this).children().eq(0).hide(); */
 		modForm.show();
 		
@@ -187,7 +220,7 @@
 				cNo: $(this).parent().attr('id')
 			},
 			success: function () {
-				$('#'+data.cNo).children().eq(1).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
+				$('#'+data.cNo).children().eq(0).children().eq(2).text(data.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
 				$('#showComUpdate').hide();
 			},
 			error: function (e) {
@@ -248,7 +281,7 @@
     				$('#likeText').html(" Liked It!");
     				$('#likeBTNicon').css("color", "#F7CAC9");
 	            	let a = parseInt($('#likeNum').text())+1;
-	            	$('#likeNum').html('<i class="far fa-thumbs-up"></i> '+ a);
+	            	$('#likeNum').html(a);
 	            	
 	            },
 	            error: function (reject) {
@@ -265,61 +298,62 @@
 
 <!-- Begin Page Content -->
 	<div class="container-fluid" >
+	<div class="continer my-auto pl-4 pb-3">
+	<!-- 카테고리마다 타이틀 변경 -주윤 -->
+			<c:if test="${list[0].sCategory == 'clothing' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  의류/하네스</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'food' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  사료/간식</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'other' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  그 외 용품</p>
+			</c:if>
+			<c:if test="${list[0].sCategory == 'giveaway' }">
+			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  나눔</p>
+			</c:if>
+	</div>
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4"  style="margin-left: 4rem; margin-right: 4rem">
+			<!-- card title + btns  -->
 			<div class="card-header py-3">
-				
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${list[0].sTitle }
 				 <!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
-				  <c:if test="${session.mId == item.mId}">
+				  <c:if test="${session.mId == list[0].mId}">
 					<button class="btn btn-sm" id="deleteBtn" onclick="confirmDel(${list[0].sNo})" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;"><i class="far fa-trash-alt"></i> 글 삭제</button>
 					<button class="btn btn-sm mr-3" id="updateBtn" onclick="updateSales(${list[0].sNo})" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;"><i class="far fa-edit"></i> 글 수정</button>
 				  </c:if> 
+
 				 </h3>	
 			</div>
+			<!-- End of card title + btns  -->
+			
 			<div class="card-body">
 				<!-- 여기에 이미지도 넣기 -->
 				<div>
-					<img src="" alt="제품 상세 이미지" width="100px" height="200px">
+					<img class="card-img-top" src="img/salesImg/${list[0].sImg }" alt="상품이미지" width="80%" height="80%"/>
 				</div>
 				<br>
 				<p>
 				<h6 class="m-0 font-weight-bold text-primary">
 					<span>조회 수 : ${list[0].sHit }</span> |
-					<span>찜 수 : ${list[0].sLike }</span>
+					<span><i class="far fa-thumbs-up"></i> <span id="likeNum">${list[0].sLike }</span></span>
 					</h6>
 				<p></p>
 				<br />
 				<p></p>
 				<div class="card shadow mb-4">
-				<div class="card-header py-3">${list[0].sTitle }</div>
-				<div class="card-body">
-				판매자 : ${list[0].mId }<br>
-				언제 샀어요? : ${list[0].sPurchasedDate }<br>
-				얼마나 썼어요? : ${list[0].sUseDays }<br>
-				왜 팔아요?: ${list[0].sReason }<br>
-				제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br>
-				
-				
-				</div>
+					<div class="card-header py-3">${list[0].sTitle }</div>
+						<div class="card-body">
+							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br>
+							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br>
+							<i class="far fa-clock"></i>얼마나 썼어요? : ${list[0].sUseDays }<br>
+							<i class="fas fa-question"></i>왜 팔아요?: ${list[0].sReason }<br>
+							<i class="fas fa-paw"></i>제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br>
+						</div>
 				</div>
 				<p></p>
-				<!-- 좋아요버튼 -->
-				
-				
-				<!-- 댓글조회 -->
-				<div class="card shadow mb-4">
-				<div class="card-header py-3">댓글</div>
-				<div class="card-body">
-				<!-- 댓글 보기+ 수정 , 삭제 버튼 -->
-					<div id="show"></div>
-				
-					<%-- <c:forEach var="list" items="${list }">
-						${list.cmId }:
-						${list.cContents }<br>
-					</c:forEach> --%>
-				</div>
-				</div> 
+			
 				<!-- 댓글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
@@ -330,7 +364,7 @@
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
-								
+							<p></p>
 								<input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
 								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
@@ -339,34 +373,61 @@
 						</form>
 					</div>
 				</div>
-			</div>
 			
-			<!-- 댓글 수정하면 보이게 (테스트)-->
+				<!-- 댓글조회 -->
+			<div class="card shadow mb-4">
+				
+				
+				    <div class="card-header">
+				        <h3>Comments</h3>
+				    </div>
+				
+					<div class="card-body" >
+				       <div id="commentsBody">
+					</div>
+				</div>
+				</div>
+				 
+				 <hr>
+					<!-- 댓글 수정하면 보이게 -->
 			<div id="showComUpdate">
 				<form id="updateRep" name="updateRep" action="UpdateCommentServ" method="post">
 					<input type="hidden" id="cNo" name="cNo">
 					<input type="text" id="cUpdated" name="cContents">
-					<button type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
+					<button type="submit" id="updated" name="updated" class="btn btn-md mr-5" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);" onclick="updateCom()">수정하기!</button>
 				</form>
+			</div>
 			</div>
 			
 			
-			
 			<br>
-			<div class="pb-3 mx-auto"  style="align-items: center;">
+			<div class="pb-3 mx-auto d-flex"  style="align-items: center;">
 				<!-- To do style again -->
 				<!-- Like btn form -->
 				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${list[0].sNo }">
-					
+
+        </form>		
 				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
 				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
-				<button class="btn btn-md mr-5"  onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-credit-card"></i> 결제하기</button>
+				<form id="payFrm" name="payFrm" method="post" action="makePayment.doBB">
+				<input type="hidden" id="saleNo" name="saleNo" value="${list[0].sNo }">
+				<button class="btn btn-md mr-5" type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+				<i class="far fa-credit-card"></i> 결제하기</button>
+				</form>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#reportModal"><i class="fas fa-bullhorn"></i> 신고하기</a>
-			
-				</form>	
+
+				
 			</div>
+				
+				
+	</div><!--  End of DataTales Example -->
+				 
+				  
+				
+			
+		
 			
 		
 			
@@ -387,7 +448,7 @@
 			<input type= "hidden" id="sNo" name="sNo">
 		</form>
 		
-	</div>
+	
 	<!-- /.container-fluid -->
 	
 	<!-- Scroll to Top Button-->
@@ -405,7 +466,7 @@
 	  color: #fff;
 	  background: rgb(252, 221, 33);
 	  line-height: 46px;
-	  border-radius: 0.35rem" href="writeFHForm.doBB">
+	  border-radius: 0.35rem" href="salesInsertForm.do">
 	        <i class="fas fa-edit"></i>
     </a>
 

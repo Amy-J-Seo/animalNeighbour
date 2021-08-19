@@ -32,6 +32,7 @@ import co.animal.prj.findhelp.command.FindHelpInsert;
 import co.animal.prj.findhelp.command.FindHelpMain;
 import co.animal.prj.findhelp.command.TotalCareTableView;
 import co.animal.prj.findhelp.command.WriteFHForm;
+import co.animal.prj.payment.command.MakePayment;
 import co.animal.prj.report.command.RSelectList;
 
 
@@ -76,7 +77,8 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/rSelectList.doBB", new RSelectList()); //전체 신고리스트
 		map.put("/totalCareTableView.doBB", new TotalCareTableView()); //전체 도움주고받기 테이블 뷰 ..
 		
-		
+		//주윤 거래아이템 결제 페이지
+		map.put("/makePayment.doBB", new MakePayment());
 		
 	}
 

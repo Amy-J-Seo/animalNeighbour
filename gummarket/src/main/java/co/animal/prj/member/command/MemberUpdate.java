@@ -26,13 +26,17 @@ public class MemberUpdate implements Command {
 		vo.setPassword(request.getParameter("password"));
 		vo.setBuyPoint(Integer.valueOf(request.getParameter("buyPoint")));
 		vo.setEmail(request.getParameter("email"));
-		int n =dao.memberUpdate(vo);
-		
-		String page="";
-		if(n !=0) {
-			page="memberList.do";
-		}else {
-			page="Test/ErrorPage";
+		int n = dao.memberUpdate(vo);
+		String page = "";
+		if (n != 0) {
+			String message = vo.getmName() + "님의 정보를 성공적으로 수정완료했습니다.";
+			request.setAttribute("message", message);
+			page = "memberDetail.do";
+		}
+		else {
+			String message ="예기치 못한 오류가 발생했습니다. 빨리 고치싶쇼";
+			request.setAttribute("message", message);
+			page = "memberDetail.do";
 		}
 		return page;
 	}

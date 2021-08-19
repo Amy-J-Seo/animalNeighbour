@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
 <title>LoginForm</title>
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/login.css">
 <!-- Custom fonts for this template from register.html-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
@@ -21,10 +27,10 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-
-
+<!-- 카카오 API -->
 <script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>	
+
+<script type="text/javascript">	
 	window.Kakao.init("b170e6c8bb0d86b449f0f677f1ae873f");
 	
 	 function kakaoLogin(){
@@ -44,6 +50,25 @@
 	            
 	        });
 	    }
+	 
+	 $(() => {
+   		var result = '<c:out value="${message}" />';
+   		checkModal(result);
+   		history.replaceState({}, null, null);
+   		
+   		function checkModal(result) {
+   			if(result === '' || history.state){
+   				return;
+   			}else{
+   				// 모달창에 들어갈 메세지
+   				$(".modal-body").html(result);
+   				// 모달창 띄워주기
+   				$("#loginError").modal("show");
+   			}
+   		}
+   	})
+	 
+	 
 	</script>
 </head>
 <body>
@@ -57,7 +82,7 @@
 						<div class="p-5" align="center">
 							<div class="col-lg-4 col-sm-4 mb-3 mb-sm-0">
 								<div class="continer my-auto pb-3">
-									
+
 									<img src="img/1market.png" style="width: 70px; height: 70px;">
 									<p class="h3"
 										style="color: rgb(255, 190, 83); font-weight: 900;">환영합니다!</p>
@@ -80,8 +105,8 @@
 								</form>
 							</div>
 							<div class="form-group">
-								<a href="registerForm.do">아이디/비밀번호 찾기</a><br>
-								회원이 아니신가요?&nbsp;&nbsp;<a href="registerForm.do">회원가입</a>
+								<a href="searchId.do">아이디/비밀번호 찾기</a><br> 회원이
+								아니신가요?&nbsp;&nbsp;<a href="registerForm.do">회원가입</a>
 							</div>
 						</div>
 					</div>
@@ -89,5 +114,24 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 로그인 실패 모달 -->
+	<div class="modal fade" id="loginError" role="dialog"
+		style="z-index: 100000">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h4 class="modal-title" >개껌장터 사용자알림</h4>
+					<button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+				<div class="modal-body">
+					<p>message</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+		</div>
 </body>
 </html>
