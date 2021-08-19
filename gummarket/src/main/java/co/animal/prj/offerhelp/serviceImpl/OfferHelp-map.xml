@@ -11,6 +11,8 @@
 		from offerhelp o 
 		inner join member m 
 		on o.mid = m.mid
+		where o.ohhide = 'n'
+		order by o.ohno
 	</select>
     <select id="offerHelpSelect" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
       select * from offerhelp where ohNo=#{ohNo}
@@ -18,11 +20,11 @@
    
     <insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
     <!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
-      insert into offerhelp values(oh_seq.nextval,#{mId},#{ohCategory},#{ohTitle},#{ohContents},#{ohHistory},#{ohAddress},#{ohCharacter},#{ohDetails},#{ohImg},#{ofHide})
+      insert into offerhelp values(oh_seq.nextval,#{mId},#{ohCategory},#{ohTitle},#{ohContents},#{ohHistory},#{ohAddress},#{ohCharacter},#{ohDetails},null,default)
     </insert>
    
     <delete id="offerHelpDelete" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-      update offerhelp set ofhide=#{ofHide} where ohno = #{ohNo}
+      update offerhelp set ohhide=#{ohHide} where ohno = #{ohNo}
     </delete>
 	
 	 <update id="offerHelpUpdate" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
