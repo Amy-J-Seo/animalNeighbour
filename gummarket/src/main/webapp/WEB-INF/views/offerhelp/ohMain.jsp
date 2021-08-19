@@ -12,6 +12,15 @@
 </script>
 <head>
 
+<style>
+	tr {
+		background: white;
+	}
+	tr:hover {
+		background: rgb(255, 190, 83);;
+	}
+</style>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -49,20 +58,19 @@
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div class="continer my-auto pb-3">
 					<p class="h3 mb-0 mt-5 ml-5"
-						style="color: rgb(255, 190, 83); font-weight: 900;">I am your
-						helper!</p>
+						style="color: rgb(255, 190, 83); font-weight: 900;">I can
+						offer my help!</p>
 				</div>
 				<div class="table-responsive">
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 
-							<button type="button" class="btn btn-warning float-right">글등록</button>
-
 								<th>No.</th>
 								<th>글제목</th>
 								<th>작성자</th>
 							</tr>
+
 						</thead>
 						<tbody>
 							<c:forEach var="help" items="${list }">
