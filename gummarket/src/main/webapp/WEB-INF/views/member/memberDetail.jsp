@@ -1,11 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/login.css">
+
+<script type="text/javascript">	
+ $(() => {
+   		var result = '<c:out value="${message}" />';
+   		checkModal(result);
+   		history.replaceState({}, null, null);
+   		
+   		function checkModal(result) {
+   			if(result === '' || history.state){
+   				return;
+   			}else{
+   				// 모달창에 들어갈 메세지
+   				$(".modal-body").html(result);
+   				// 모달창 띄워주기
+   				$("#confirm").modal("show");
+   			}
+   		}
+   	})
+	</script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>멤버상세보기</title>
 </head>
 <body>
 	<div class="container">
@@ -118,9 +145,19 @@
 											</select>
 										</div>
 									</div>
-									<input type="hidden" id="password" name="password" value="${list.password }">
+									<input type="hidden" id="password" name="password"
+										value="${list.password }">
 									<button type="submit" onclick=""
-										class="btn btn-warning btn-user btn-block">수정</button>
+										class="btn btn-danger btn-md btn-user btn-block"
+										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
+										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정
+									</button>
+
+									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
+										type="button" onclick="location.href='memberList.do'"
+										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
+										<i class="fas fa-list"></i>&nbsp; 맴버리스트 보기
+									</button>
 								</form>
 							</div>
 						</div>
@@ -129,5 +166,23 @@
 			</div>
 		</div>
 	</div>
+	<!-- 수정 실패 모달 -->
+	<div class="modal fade" id="confirm" role="dialog"
+		style="z-index: 100000">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">개껌장터 사용자알림</h4>
+					<button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+				<div class="modal-body">
+					<p>message</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning btn-user btn-block"
+						data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-</html>

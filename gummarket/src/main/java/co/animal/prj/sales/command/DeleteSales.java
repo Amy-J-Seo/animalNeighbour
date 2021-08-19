@@ -17,7 +17,7 @@ public class DeleteSales implements Command {
 		SalesService salesDao = new SalesServiceImpl();
 		SalesVO vo = new SalesVO();
 		
-		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
+		vo.setsNo(Integer.valueOf(request.getParameter("ohDelNo")));
 		
 		int n = salesDao.salesDelete(vo);
 	

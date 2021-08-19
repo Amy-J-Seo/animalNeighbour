@@ -43,4 +43,27 @@ public class CommentsServiceImpl implements CommentsService {
 		return map.commentsInsert(vo);
 	}
 
+	@Override
+	public List<CommentsVO> fhCommentsSelectList(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.fhCommentsSelectList(vo);
+	}
+
+	@Override
+	public int fhCommentsInsert(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.fhCommentsInsert(vo);
+	}
+
+	@Override
+	public int fhCommentsUpdate(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.fhCommentsUpdate(vo);
+	}
+
+	@Override
+	public int fhCommentsDelete(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.fhCommentsDelete(vo);
+	}
 }

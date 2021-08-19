@@ -7,15 +7,35 @@
 		resultType="co.animal.prj.comments.vo.CommentsVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM comments
+		SELECT * FROM comments 
 	</select>
 	
+  <select id="fhCommentsSelectList" parameterType="co.animal.prj.comments.vo.CommentsVO"
+		resultType="co.animal.prj.comments.vo.CommentsVO">
+		SELECT * FROM comments where ctype='findhelp' and cmainnum=#{cMainNum}
+	</select>
+	
+
 	<insert id="commentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		insert into comments values(c_seq.nextval,#{cmId},'sales',#{cMainNum},#{cContents})
 		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
 			SELECT c_seq.currval from dual
 		</selectKey>
 	</insert>
+	
+		<insert id="fhCommentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		insert into comments values(c_seq.nextval,#{cmId},'findhelp',#{cMainNum},#{cContents})
+		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
+			SELECT c_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<update id="fhCommentsUpdate" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		update comments set ccontents=#{cContents} where cno=#{cNo}
+	</update>
+	<delete id="fhCommentsDelete" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		delete from comments where cno=#{cNo}
+	</delete>
 	
 	<delete id="commentsDelete" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		delete from comments where cno=#{cNo}
@@ -24,12 +44,5 @@
 	<update id="commentsUpdate" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		update comments set ccontents=#{cContents} where cno=#{cNo}
 	</update>
-	
-<!--  	
-	<select id="commentsInsertSelect" resultType="">
 
-	</select>
-	<insert id="" parameterType="">
-
-	</insert>-->
 </mapper>

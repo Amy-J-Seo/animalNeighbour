@@ -56,8 +56,9 @@
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<button type="button" class="btn btn-warning float-right">글
-									등록</button>
+
+							<button type="button" class="btn btn-warning float-right">글등록</button>
+
 								<th>No.</th>
 								<th>글제목</th>
 								<th>작성자</th>
@@ -75,14 +76,28 @@
 					</table>
 				</div>
 				<div>
-         <form id="frm" name="frm" action="ohItemDetail.do" method="post">
-            <input type="hidden" id="ohNo" name="ohNo">
-         </form>
-      </div>
+					<form id="frm" name="frm" action="ohItemDetail.do" method="post">
+						<input type="hidden" id="ohNo" name="ohNo">
+					</form>
+				</div>
 				<!-- /.container-fluid -->
 
 			</div>
 			<!-- End of Main Content -->
+
+
+
+			<!-- 스타일 수정완료했습니다. 어떤 이유인지 css에서 충돌이 있는지 클래스가 적용되지 않았어요... -->
+			<!-- write btn-->
+			<a
+				style="position: fixed; right: 1rem; bottom: 4rem; display: inline; width: 2.75rem; height: 2.75rem; text-align: center; color: #fff; background: rgb(252, 221, 33); line-height: 46px; border-radius: 0.35rem"
+				href="writeOHForm.do"> <i class="fas fa-edit"></i>
+			</a>
+
+
+
+
+
 
 			<!-- Table bootstrap -->
 			<!-- Bootstrap core JavaScript-->
@@ -91,9 +106,6 @@
 
 			<!-- Core plugin JavaScript-->
 			<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-			
-
 </body>
 
 </html>
