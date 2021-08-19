@@ -53,17 +53,15 @@
 				<a href="home.do"><img src="img/1market.png"
 					style="width: 85px; height: 85px;"></a>
 				<ul class="navbar-nav ml-auto">
-					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
-					<li style="margin: auto;"><a href="salesListAll.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">&nbsp;중고장터</a>&nbsp;
-						|&nbsp; <a href="findHelpMain.doBB"
-						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a></li>
-						&nbsp;|&nbsp; <a href="offerHelpMain.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요&nbsp;</a></li>
-						&nbsp;|&nbsp; <a href="lostMain.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기&nbsp;</a></li>
-						
-						
+					<li class="ml-3"></li>
+					<c:if test="${not empty session.mId }">
+					<li style="margin: auto;">
+						<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>&nbsp;|&nbsp; 
+						<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어</a>&nbsp;|&nbsp; 
+						<!-- <a href="offerHelpMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요</a>&nbsp;|&nbsp; 
+						<a href="lostMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기</a> -->
+						</li>
+					</c:if>
 				</ul>
 
 				<ul class="navbar-nav ml-auto">

@@ -31,7 +31,6 @@ public class FindHelpInsert implements Command {
 
       String page ="";
       try {
-         
          MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
                request, 
                uploadPath, // 파일을 저장할 디렉토리 지정
@@ -39,7 +38,6 @@ public class FindHelpInsert implements Command {
                "utf-8", // 인코딩 방식 지정
                new DefaultFileRenamePolicy() // 중복 파일 처리(동일한 파일명이 업로드되면 뒤에 숫자 등을 붙여 중복 회피)
          );
-
          //id = multi.getParameter("stitle"); // form의 name="id"인 값을 구함
       
 
@@ -58,20 +56,18 @@ public class FindHelpInsert implements Command {
 		ImageVO iVo = new ImageVO();
       
 		HttpSession session = request.getSession();
-		
-		String writerId =request.getParameter("mId");
+		String writerId =String.valueOf(session.getAttribute("mId"));
 		
 		vo.setmId(writerId);
-		vo.setFhCategory(request.getParameter("fhCategory"));
-		vo.setFhTitle(request.getParameter("fhTitle"));
-		vo.setFhAnimal(request.getParameter("fhAnimal"));
-		vo.setFhSize(request.getParameter("fhSize"));
-		vo.setFhAge(Integer.valueOf(request.getParameter("fhAge")));
-		vo.setFhCharacter(request.getParameter("fhCharacter"));
-		vo.setFhNeed(request.getParameter("fhNeed"));
-		vo.setFhHow(request.getParameter("fhHow"));
+		vo.setFhCategory(multi.getParameter("fhCategory"));
+		vo.setFhTitle(multi.getParameter("fhTitle"));
+		vo.setFhAnimal(multi.getParameter("fhAnimal"));
+		vo.setFhSize(multi.getParameter("fhSize"));
+		vo.setFhAge(Integer.valueOf(multi.getParameter("fhAge")));
+		vo.setFhCharacter(multi.getParameter("fhCharacter"));
+		vo.setFhNeed(multi.getParameter("fhNeed"));
+		vo.setFhHow(multi.getParameter("fhHow"));
 		vo.setFhImg(fileName1);
-		System.out.println(vo.toString() +"FindHelpInsert Java vo print");
 			
 		int n = dao.findHelpInsert(vo);
 		System.out.println(n + "item added successfully + FindHelpInsert.java");

@@ -51,7 +51,6 @@ public class SalesInsert implements Command {
                new DefaultFileRenamePolicy() // 중복 파일 처리(동일한 파일명이 업로드되면 뒤에 숫자 등을 붙여 중복 회피)
          );
 
-         //id = multi.getParameter("stitle"); // form의 name="id"인 값을 구함
       
 
          fileName1 = multi.getFilesystemName("thumbNailFile"); // name=thumbNailFile의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
@@ -59,8 +58,6 @@ public class SalesInsert implements Command {
 
          fileName2 = multi.getFilesystemName("uploadFile1");
          orgfileName2 = multi.getOriginalFileName("uploadFile1");
-         
-      
 
       
       SalesService salesDao = new SalesServiceImpl();
@@ -70,7 +67,6 @@ public class SalesInsert implements Command {
       ImageVO iVo = new ImageVO();
       
       HttpSession session = request.getSession();
-      
       
       
       vo.setsTitle(multi.getParameter("stitle"));

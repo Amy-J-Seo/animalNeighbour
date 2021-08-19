@@ -32,7 +32,7 @@
                              <p></p>
                              <br>
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post">
+                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post" enctype="multipart/form-data">
                              
                              <input type="hidden" id="mId" name="mId" value="bb123">
                              <!-- 나중에 세션정보 가져와서 집어넣기!  -->
@@ -122,12 +122,7 @@
                              </form>
                              <!-- form end -->
            
-            				<!-- img upload form -->
-                             <form style="display: none;" action="imageUploadServlet" id="imageUpload" name="imageUpload" method="post" enctype="multipart/form-data">
-                                <input type="file" id="thumbNailFile" name="thumbNailFile">
-                                <input type="file" id="uploadFile1" name="uploadFile1">
-                             </form>
-             				<!--end of img upload form -->
+            			
                          </div>
                      </div>
                  </div>

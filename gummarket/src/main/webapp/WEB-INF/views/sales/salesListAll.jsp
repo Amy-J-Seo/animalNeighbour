@@ -8,7 +8,7 @@
 <title>장터 전체 상품 조회</title>
 
 </head>
-<body>
+<body id="top-page">
 	<section>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div class="continer my-auto pb-3">

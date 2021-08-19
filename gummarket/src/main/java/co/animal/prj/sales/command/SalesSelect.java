@@ -21,14 +21,16 @@ public class SalesSelect implements Command {
 		SalesVO vo = new SalesVO();
 		
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		
 		int sHit = Integer.valueOf(request.getParameter("sHit"));
+		
 		vo.setsHit(sHit);
 		salesDao.hitUpdate(vo);
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);
 		
+		
+		System.out.println(list +"salesSelectjava");
 
 		request.setAttribute("list", list);
 		

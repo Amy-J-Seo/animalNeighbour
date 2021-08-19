@@ -21,10 +21,10 @@
 
 	<script type="text/javascript">
          function getRecord(n, h) {
-        	 console.log($('#frm #sNo').val(n))
-        	 console.log($('#frm #sHit'))
           	$('#frm #sNo').val(n);
         	 $('#frm #sHit').val(h);
+        	 console.log($('#frm #sNo').val())
+        	 console.log($('#frm #sHit').val())
           	$('#frm').submit();
              };
      </script>

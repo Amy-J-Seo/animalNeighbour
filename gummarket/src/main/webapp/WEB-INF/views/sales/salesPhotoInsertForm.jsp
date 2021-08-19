@@ -18,7 +18,7 @@
 
 
 </head>
-<body>
+<body  id="top-page">
 	${message }
 	<div class="row">
 		<!-- file upload form -->

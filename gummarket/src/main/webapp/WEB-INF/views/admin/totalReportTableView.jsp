@@ -58,8 +58,9 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                        <form id="frm" name="frm" action="rSelectList.doBB" method="post">
-                            <input type="hidden" id="rNo" name="rNo">
+                        <form id="frm" name="frm" action="" method="post">
+                            <input type="hidden" id="mainNo" name="mainNo">
+                             <input type="hidden" id="category" name="category">
                         </form>
                     </div>
                 </div>
