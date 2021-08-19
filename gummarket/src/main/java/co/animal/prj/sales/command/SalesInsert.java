@@ -93,7 +93,6 @@ public class SalesInsert implements Command {
 		imgDao.imageInsert(iVo);
 		
 
-		
 		int nn = salesDao.salesInsert(vo);
 		
 		if( nn !=0) {
