@@ -22,18 +22,21 @@ public class Login implements Command {
 		vo = dao.Login(vo);
 		
 		String page = "";
-		String state ="OFF";
+		String state ="ON";
 		
-		if (vo.getNickname() !=null){
+		if (vo.getmId() !=null){
+			
 			System.out.println(vo.getNickname()+vo.getmId()+vo.getRole() +"  Login.java");
 			
-			if(vo.getState() !=state) {
-				System.out.println(vo.getState()+state +"  Login.java");
 			session.setAttribute("nickname", vo.getNickname());
 			session.setAttribute("mId", vo.getmId());
 			session.setAttribute("role", vo.getRole());
 			session.setAttribute("state", vo.getState());
 			session.setAttribute("session", vo);
+			
+			if(session.getAttribute("state").equals(state)) {
+				
+				System.out.println(state +"Login.java");
 			
 				if(session.getAttribute("role").equals("ADMIN")) {
 					page = "admin/adminMain";
@@ -42,17 +45,19 @@ public class Login implements Command {
 				}
 			
 			}else {
-				String message1 ="현재 휴면계정입니다. 관리자에게 문의하세요";
-				System.out.println(message1 +"  Login.java");
-				request.setAttribute("message", message1);
-				page="login/loginFail";
+				String message ="현재 휴면계정입니다. 관리자에게 문의하세요";
+				System.out.println(message +"  Login.java");
+				session.invalidate(); // 세션 삭제
+				request.setAttribute("message", message);
+				page="login/loginForm";
 			}
 		}
+		
 		else{
-			String message2 = "존재하지 않는 아이디 혹은 비밀번호가 틀렸습니다.";
-			System.out.println(message2);
-			request.setAttribute("message", message2);
-			page = "login/loginFail";
+			String message = "존재하지 않는 아이디 혹은 비밀번호가 틀렸습니다.";
+			System.out.println(message);
+			request.setAttribute("message", message);
+			page = "login/loginForm";
 		}
 		return page;
 	}

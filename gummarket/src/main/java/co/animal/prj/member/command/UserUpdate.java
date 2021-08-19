@@ -8,7 +8,7 @@ import co.animal.prj.member.service.MemberService;
 import co.animal.prj.member.serviceImpl.MemberServiceImpl;
 import co.animal.prj.member.vo.MemberVO;
 
-public class MemberUpdate implements Command {
+public class UserUpdate implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -31,14 +31,12 @@ public class MemberUpdate implements Command {
 		if (n != 0) {
 			String message = vo.getmName() + "님의 정보를 성공적으로 수정완료했습니다.";
 			request.setAttribute("message", message);
-			page = "memberDetail.do";
-		}
-		else {
-			String message ="예기치 못한 오류가 발생했습니다. 빨리 고치싶쇼";
+			page = "memberSelect.do";
+		} else {
+			String message ="예기치 못한 오류가 발생했습니다. 잠시후 시도해주세요.";
 			request.setAttribute("message", message);
-			page = "memberDetail.do";
+			page="memberSelect.do";
 		}
 		return page;
 	}
-
 }

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <!DOCTYPE html>
-        <html>
+       
 
         <head>
             <meta charset="UTF-8">
@@ -61,7 +60,7 @@
                                     <c:forEach var="member" items="${list }">
                                         <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                             onmouseout="this.style.background='white'"
-                                            onclick="getNotice(${member.mId})">
+                                            onclick="getRecord('${member.mId}')">
                                                 <td>${member.mId }</td>
                                                 <td>${member.email }</td>
                                                 <td>${member.nickname }</td>
@@ -116,4 +115,4 @@
             <script src="js/demo/datatables-demo.js"></script>
         </body>
 
-        </html>
+      
