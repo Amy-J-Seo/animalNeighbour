@@ -30,7 +30,7 @@
 				}
 			}
 			function OhItemDelete(no) {
-				location.href = 'ohItemDelete.do?ohDelNo=' + no;
+				location.href = 'ohItemDelete.do?ohdelNo=' + no;
 			}
 
 
