@@ -5,12 +5,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.common.Command;
 
-public class RegisterForm implements Command {
+public class SearchId implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "login/registerForm";
+		
+		
+		
+		return null;
 	}
 
 }
