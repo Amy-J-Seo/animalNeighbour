@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import co.animal.prj.common.Command;
 import co.animal.prj.member.serviceImpl.MemberServiceImpl;
 import co.animal.prj.member.vo.MemberVO;
-import co.animal.prj.payment.serviceImpl.PaymentServiceImpl;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
 
@@ -18,7 +17,7 @@ public class MakePayment implements Command {
 		
 		MemberServiceImpl mDao = new MemberServiceImpl();
 		SalesServiceImpl sDao = new SalesServiceImpl();
-		PaymentServiceImpl pDao = new PaymentServiceImpl();
+		
 		MemberVO mVo = new MemberVO();
 		SalesVO sVo = new SalesVO();
 		

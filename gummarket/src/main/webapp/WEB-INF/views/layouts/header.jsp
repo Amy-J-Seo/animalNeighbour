@@ -50,8 +50,17 @@
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar static-top"
 				style="background-color: rgb(244, 244, 244);">
+				
+				<!-- 로그인 세션 없을 시 로그인 페이지로 -->
+				<c:if test="${not empty session.mId }">
 				<a href="home.do"><img src="img/1market.png"
 					style="width: 85px; height: 85px;"></a>
+				</c:if>
+				<c:if test="${empty session.mId }">
+				<a href="loginForm.do"><img src="img/1market.png"
+					style="width: 85px; height: 85px;"></a>
+				</c:if>
+				
 				<ul class="navbar-nav ml-auto">
 					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
 					<li style="margin: auto;"><a href="salesListAll.do"

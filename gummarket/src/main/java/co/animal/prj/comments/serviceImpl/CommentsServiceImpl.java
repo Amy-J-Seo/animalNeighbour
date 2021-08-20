@@ -66,4 +66,22 @@ public class CommentsServiceImpl implements CommentsService {
 		// TODO Auto-generated method stub
 		return map.fhCommentsDelete(vo);
 	}
+
+	@Override
+	public List<CommentsVO> nCommentsSelectList(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.nCommentsSelectList(vo);
+	}
+
+	@Override
+	public List<CommentsVO> eCommentsSelectList(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.eCommentsSelectList(vo);
+	}
+
+	@Override
+	public int neCommentsInsert(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.neCommentsInsert(vo);
+	}
 }

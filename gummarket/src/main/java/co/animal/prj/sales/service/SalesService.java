@@ -16,4 +16,10 @@ public interface SalesService {
 	
 	public int hitUpdate(SalesVO vo);//조회수 증가
 	public int updateLike(SalesVO vo); //like 증가
+	
+	//카테고리별로 찾아오기
+	public List<SalesVO> findClothing();
+	public List<SalesVO> findFood();
+	public List<SalesVO> findEtc();
+	public List<SalesVO> findShare();
 }

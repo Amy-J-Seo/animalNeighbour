@@ -22,10 +22,10 @@
 	<!--End of Links for Table  -->
 	
 <script type="text/javascript">
-	function getNotice(n) {
-		frm.bNo.value = n;
-		frm.submit();
-	}
+function getDetails(num) {
+	$('#frm #bNo').val(num);
+	$('#frm').submit();
+}
 </script>
 
 </head>
@@ -56,7 +56,7 @@
 		                            <tbody>
 		                            <c:forEach var="notice" items="${list }">
 		                                <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'" 
-		                                onmouseout="this.style.background='white'" onclick="getNotice(${notice.bNo})">
+		                                onmouseout="this.style.background='white'" onclick="getDetails(${notice.bNo})">
 		                                    <td>${notice.bNo }</td>
                                             <td>${notice.bCategory }</td>
                                             <td>${notice.mId }</td>
@@ -67,13 +67,14 @@
 		                                </tr>
 		                            </c:forEach>
 		                            </tbody>
-				                        </table>
-				                        <form id="frm" name="frm" action="searchNoticeItem.doBB" method="post">
-								<input type="hidden" id="bNo" name="bNo">
-							</form>
+	                        </table>
+				                         <form id="frm" name="frm" action="bDetail.doBB" method="post">
+	                    	<input type="hidden" id="bNo" name="bNo" >
+	             
+	                    </form>
 						 </div>
 				       </div>
-		                
+		               
 		                <!-- return to menu btn...  and to the list btn -->
 		                <div class="pb-3 mx-auto"  style="align-items: center;">
 		                	<c:if test="${session.role == 'USER' }">

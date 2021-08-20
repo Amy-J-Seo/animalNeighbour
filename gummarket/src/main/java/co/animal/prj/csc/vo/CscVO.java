@@ -9,6 +9,7 @@ public class CscVO {
 	private Date csDate;
 	private String csContents;
 	private String csHide;
+	private String csStatus;
 	
 	public CscVO() {
 		super();
@@ -51,12 +52,21 @@ public class CscVO {
 	public void setCsHide(String csHide) {
 		this.csHide = csHide;
 	}
-	
+
+	public String getCsStatus() {
+		return csStatus;
+	}
+
+	public void setCsStatus(String csStatus) {
+		this.csStatus = csStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "CscVO [csNo=" + csNo + ", mId=" + mId + ", csTitle=" + csTitle + ", csDate=" + csDate + ", csContents="
-				+ csContents + ", csHide=" + csHide + "]";
+				+ csContents + ", csHide=" + csHide + ", csStatus=" + csStatus + "]";
 	}
+	
 	
 	
 	

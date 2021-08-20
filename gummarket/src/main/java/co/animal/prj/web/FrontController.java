@@ -14,8 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
+import co.animal.prj.csc.command.CsItemDelete;
+import co.animal.prj.csc.command.CsItemUpdateForm;
+import co.animal.prj.csc.command.CsUpdate;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.MyCscDetail;
+import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -54,6 +59,10 @@ import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
 import co.animal.prj.offerhelp.command.WriteOHForm;
 import co.animal.prj.sales.command.DeleteSales;
+import co.animal.prj.sales.command.FindClothing;
+import co.animal.prj.sales.command.FindEtc;
+import co.animal.prj.sales.command.FindFood;
+import co.animal.prj.sales.command.FindShare;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
 import co.animal.prj.sales.command.SalesListAll;
@@ -115,8 +124,20 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
 		
+		//카테고리별
+		map.put("/findClothing.do", new FindClothing());
+		map.put("/findFood.do", new FindFood());
+		map.put("/findEtc.do", new FindEtc());
+		map.put("/findShare.do", new FindShare());
+	
+		
+		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
+		map.put("/myCscDetail.do", new MyCscDetail());//csc조회하기
+		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
+		map.put("/csUpdate.do", new CsUpdate());
+		map.put("/csItemDelete.do", new CsItemDelete());
 
 
 		//제은 맵 offerhelp

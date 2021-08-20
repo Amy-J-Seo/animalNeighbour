@@ -16,6 +16,7 @@ public class FindHelpVO extends MemberVO{
 	private String fhHow;
 	private String fhHide;
 	private int fhLike;
+
 	
 	public FindHelpVO() {
 		super();
