@@ -29,7 +29,15 @@
             <!-- Footer -->
             <footer class="sticky-footer" style="background-color: rgb(244, 244, 244); padding-top:0; padding-bottom:0.5rem">
                 <div>
-                    <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+                <!-- when not login send user to loginForm.do -->
+                <c:if test="${not empty session.mId }">
+				 <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+				</c:if>
+                <c:if test="${empty session.mId }">
+				 <a href="loginForm.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+				</c:if>
+                
+                
                     <span><a href="cscForm.do" class="customer-service-link">고객센터</a></span>
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">

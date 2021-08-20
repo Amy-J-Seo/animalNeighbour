@@ -78,4 +78,10 @@ public class CommentsServiceImpl implements CommentsService {
 		// TODO Auto-generated method stub
 		return map.eCommentsSelectList(vo);
 	}
+
+	@Override
+	public int neCommentsInsert(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return map.neCommentsInsert(vo);
+	}
 }

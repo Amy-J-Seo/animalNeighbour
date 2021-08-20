@@ -37,14 +37,17 @@ $(document).ready(function () {
     
     
     //======comments===================
-     	console.log(${item.bCategory})
+     	console.log("${item.bCategory}")
+     	console.log($('#mainItemCat').text())
    		//hide comment update field
 		$('#showComUpdate').hide();
     	$.ajax({
-    		url:'FhCommentsListServlet',
+    		url:'NECommentsListServlet',
     		method:'post',
     		data:{
-    			fhNo:$('#cMainNum').val()
+    			bNo:$('#cMainNum').val(),
+    			category:$('#mainItemCat').text()
+    			
     		},
     		dataType:'json',
     		success: fhCommentsListFnc,
@@ -88,10 +91,10 @@ $(document).ready(function () {
     		$('#reply').on('submit', function (event) {
     			event.preventDefault();
     			let s = $('#reply').serialize();
-
+				
     			//폼 전송처리
     			$.ajax({
-    				url: 'FhCommentInsertServlet', //='../AddItemServ.do'
+    				url: $('#reply').attr('action'), //='../AddItemServ.do'
     				method: 'post',
     				data: $('#reply').serialize(), //파라미터로 넘김
     				dataType: 'json', //받아오는 값
@@ -111,7 +114,7 @@ $(document).ready(function () {
 let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) {
-	
+		console.log("reply submitted-add func called");
 		const divCase = $('<div />').addClass('d-flex justify-content-between mb-3').attr('id',data.cNo) ;
 		//for (let field of fields) {
 			const divMain = $('<div /> ').addClass('d-flex align-items-center');
@@ -252,7 +255,7 @@ function bItemDelete(n) {
 					<br>
 					<br />
 					<hr>				
-					<div class="card-header py-3">${item.bCategory } : ${item.bTitle }
+					<div class="card-header py-3"><span id="mainItemCat">${item.bCategory }</span> : ${item.bTitle }
 						
 							<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.bLike}</span>
 						
@@ -280,19 +283,35 @@ function bItemDelete(n) {
 					<div class="card-header bg-light">
 					     <i class="fa fa-comment fa"></i> Comments
 					</div>
-					<div class="card-body">
-						<form id="reply" action="FhCommentsInsertServlet" method="post">
-							<ul class="list-group list-group-flush">
-							    <li class="list-group-item">
-							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
-								
-								<input type="hidden" id="cMainNum" name="cMainNum" value="${item.bNo }">
-								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
-								<button type="submit" class="btn btn-warning mt-3" style="float:right;">댓글 등록</button>
-							    </li>
-							</ul>
-						</form>
-					</div>
+					<!-- 로그인 하지 않았을 시 보이지 않음 -->
+					<c:if test="${not empty session.mId }">
+						<div class="card-body">
+							<form id="reply" name ="reply" action="NECommentInsertServlet" method="post">
+								<ul class="list-group list-group-flush">
+								    <li class="list-group-item">
+								    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
+								    <span class="pl-3" style="font-size: 2rem;">${nickname }</span>
+									<input type="hidden" id="cMainNum" name="cMainNum" value="${item.bNo }">
+									<input type="hidden" id="cType" name="cType" value="${item.bCategory }">
+									<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+									<button type="submit" class="btn btn-warning mt-3" style="float:right;">댓글 등록</button>
+								    </li>
+								</ul>
+							</form>
+						</div>
+					</c:if>
+					<!-- todo css  -->
+					<c:if test="${empty session.mId }">
+						<div class="card-body d-flex">
+							<div class="justify-content-center">
+								<h3 class="justify-content-center">댓글을 달기 위해서 로그인을 해 주세요!</h3>
+								<button class="btn mt-3" onclick="location.href='loginForm.do'"
+								style="background-color: rgb(252, 221, 33);">로 그 인</button>
+							</div>
+						</div>
+					</c:if>
+					
+					
 				</div>
 				    </div>
 				    <hr>
@@ -300,7 +319,8 @@ function bItemDelete(n) {
 				    <!-- css 다시 -->
 					<div id="showComUpdate">
 						<form id="updateRep" name="updateRep" action="UpdateFhCommentServlet" method="post">
-							<input type="hidden" id="cNo" name="cNo"><input type="hidden" id="fhNo" name="fhNo" value="${item.fhNo }">
+							<input type="hidden" id="cNo" name="cNo">
+							<input type="hidden" id="bNo" name="bNo" value="${item.bNo }">
 							<input type="text" id="cContents" name="cContents">
 							<button class="btn btn-warning" type="submit" id="updated" name="updated" onclick="updateCom()">수정하기!</button>
 						</form>

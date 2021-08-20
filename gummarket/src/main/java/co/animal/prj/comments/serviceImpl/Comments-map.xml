@@ -22,7 +22,7 @@
 	
 	<select id="eCommentsSelectList" parameterType="co.animal.prj.comments.vo.CommentsVO"
 		resultType="co.animal.prj.comments.vo.CommentsVO">
-		SELECT * FROM comments where ctype='event' and cmainnum=#{cMainNum}
+		SELECT * FROM comments where ctype=#{cType} and cmainnum=#{cMainNum}
 	</select>
 	
 
@@ -35,6 +35,13 @@
 	
 		<insert id="fhCommentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
 		insert into comments values(c_seq.nextval,#{cmId},'findhelp',#{cMainNum},#{cContents})
+		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
+			SELECT c_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<insert id="neCommentsInsert" parameterType="co.animal.prj.comments.vo.CommentsVO">
+		insert into comments values(c_seq.nextval,#{cmId},#{cType},#{cMainNum},#{cContents})
 		<selectKey keyProperty="cNo" resultType="int" order="AFTER">
 			SELECT c_seq.currval from dual
 		</selectKey>

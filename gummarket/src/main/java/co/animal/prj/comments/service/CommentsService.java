@@ -13,6 +13,7 @@ public interface CommentsService {
 	public int commentsUpdate(CommentsVO vo);
 	public int commentsDelete(CommentsVO vo);
 	public int commentsInsert(CommentsVO vo);
+	public int neCommentsInsert(CommentsVO vo);
 	public int fhCommentsInsert(CommentsVO vo);
 	public int fhCommentsUpdate(CommentsVO vo);
 	public int fhCommentsDelete(CommentsVO vo); 
