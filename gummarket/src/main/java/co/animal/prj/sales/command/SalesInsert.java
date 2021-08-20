@@ -2,6 +2,8 @@ package co.animal.prj.sales.command;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -84,7 +86,7 @@ public class SalesInsert implements Command {
       
       int n = salesDao.salesInsert(vo); //insert return값이 sNo이당!
       
-      //System.out.println(n+"Sno번호");
+      System.out.println(n+"Sno번호");
       
       iVo.setImgPath(fileName2);
       iVo.setiMainNum(n);
@@ -93,9 +95,12 @@ public class SalesInsert implements Command {
     //  System.out.println(iVo.toString());
       int nn = imgDao.imageInsert(iVo);
       
-      System.out.println(nn);
+      request.setAttribute("afterInsert", true);
+      request.setAttribute("sNo", n);
+      request.setAttribute("sHit", 0);
+      //System.out.println(nn);
       if( nn !=0) {
-         page ="salesListAll.do";
+         page ="salesSelect.do";
       }else {
          page="Test/ErrorPage";
       }

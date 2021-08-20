@@ -16,6 +16,7 @@ import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
 import co.animal.prj.csc.command.CsItemDelete;
 import co.animal.prj.csc.command.CsItemUpdateForm;
+import co.animal.prj.csc.command.CsUpdate;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
 import co.animal.prj.csc.command.MyCscDetail;
@@ -128,6 +129,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
 		map.put("/myCscDetail.do", new MyCscDetail());//csc조회하기
 		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
+		map.put("/csUpdate.do", new CsUpdate());
 		map.put("/csItemDelete.do", new CsItemDelete());
 
 

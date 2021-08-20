@@ -24,9 +24,19 @@ public class SalesSelect implements Command {
 		SalesVO vo = new SalesVO();
 		ImageVO iVo = new ImageVO();
 		
-		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		int sHit = Integer.valueOf(request.getParameter("sHit"));
-		iVo.setiMainNum(Integer.valueOf(request.getParameter("sNo")));
+		int sHit;
+		
+		if(request.getAttribute("afterInsert") != null) {
+			vo.setsNo((Integer) request.getAttribute("sNo"));
+			iVo.setiMainNum((Integer) request.getAttribute("sNo"));
+			sHit = (Integer) request.getAttribute("sHit");
+		} else {
+			vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
+			sHit = Integer.valueOf(request.getParameter("sHit"));
+			iVo.setiMainNum(Integer.valueOf(request.getParameter("sNo")));
+		}
+
+		
 		
 		vo.setsHit(sHit);
 		salesDao.hitUpdate(vo);
