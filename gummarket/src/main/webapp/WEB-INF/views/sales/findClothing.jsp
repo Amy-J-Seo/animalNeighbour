@@ -12,7 +12,7 @@
 	<section>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div class="continer my-auto pb-3">
-				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">On sale items!</p>
+				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 600;">On sale items!</p>
 			</div>
 			<div class="continer my-auto">
 				<div class="row">
@@ -22,7 +22,7 @@
 							<li class="ml-3"></li>
 						
 							<li style="margin: auto;">
-								<a href="findClothing.do" style="text-decoration: none; color: rgb(94, 94, 94)">의류/하네스</a>&nbsp;|&nbsp; 
+								<a href="findClothing.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 900;">의류/하네스</a>&nbsp;|&nbsp; 
 								<a href="findFood.do" style="text-decoration: none; color: rgb(94, 94, 94)">음식</a>&nbsp;|&nbsp; 
 								<a href="findEtc.do" style="text-decoration: none; color: rgb(94, 94, 94)">기타</a>&nbsp;|&nbsp; 
 								<a href="findShare.do" style="text-decoration: none; color: rgb(94, 94, 94)">나눔</a>&nbsp;|&nbsp; 

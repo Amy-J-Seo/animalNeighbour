@@ -20,6 +20,7 @@ public class SalesVO extends CommentsVO{
 	private int sNetPrice;
 	private String sStatus;
 	private String sHide;
+	private String sDate;
 	
 	public SalesVO() {
 		super();
@@ -145,14 +146,23 @@ public class SalesVO extends CommentsVO{
 		this.sHide = sHide;
 	}
 
+	public String getsDate() {
+		return sDate;
+	}
+
+	public void setsDate(String sDate) {
+		this.sDate = sDate;
+	}
+
 	@Override
 	public String toString() {
 		return "SalesVO [sNo=" + sNo + ", mId=" + mId + ", sCategory=" + sCategory + ", sTitle=" + sTitle + ", sHit="
 				+ sHit + ", sLike=" + sLike + ", sImg=" + sImg + ", sPurchasedDate=" + sPurchasedDate + ", sUseDays="
 				+ sUseDays + ", sReason=" + sReason + ", sCondition=" + sCondition + ", sPrice=" + sPrice
-				+ ", sNetPrice=" + sNetPrice + ", sStatus=" + sStatus + ", sHide=" + sHide + "]";
+				+ ", sNetPrice=" + sNetPrice + ", sStatus=" + sStatus + ", sHide=" + sHide + ", sDate=" + sDate + "]";
 	}
 
+	
 	
 
 }

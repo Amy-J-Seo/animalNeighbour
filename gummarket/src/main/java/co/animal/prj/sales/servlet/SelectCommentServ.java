@@ -35,9 +35,13 @@ public class SelectCommentServ extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
+		System.out.println(request.getParameter("sNo"));
+		
 		SalesService salesDao = new SalesServiceImpl();
 		SalesVO vo = new SalesVO();
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
+		
+		
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);

@@ -56,15 +56,15 @@
                                      <div class="form-group row">
                                          <div class="col-lg-12 col-sm-6 mb-3 mb-sm-0">
                                            <div class="form-group">
-                                    <label for="sel1">상품 카테고리:</label>
-                                    <select class="form-control" id="scategory" name="scategory">
-                                      <option value="clothing">의류/하네스</option>
-                                      <option value="food">간식/사료</option>
-                                      <option value="etc">그 외 용품</option>
-                                      <option value="free">나눔</option>
-                                    </select>
-                                         </div>
-                              </div>
+			                                    <label for="sel1">상품 카테고리:</label>
+				                                    <select class="form-control" id="scategory" name="scategory">
+				                                      <option value="clothing">의류/하네스</option>
+				                                      <option value="food">간식/사료</option>
+				                                      <option value="etc">그 외 용품</option>
+				                                      <option value="free">나눔</option>
+				                                    </select>
+                                         		</div>
+                              				</div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="date" class="form-control form-control-user"
                                                  id="spurchasedate" name="spurchasedate">
@@ -128,7 +128,7 @@
                              
                              </form>
                              <!-- form end -->
-                             
+                             <!-- 얜 아마 필요 없을걸? -->
                              <form style="display: none;" action="imageUploadServlet" id="imageUpload" name="imageUpload" method="post" enctype="multipart/form-data">
                                 <input type="file" id="thumbNailFile" name="thumbNailFile">
                                 <input type="file" id="uploadFile1" name="uploadFile1">

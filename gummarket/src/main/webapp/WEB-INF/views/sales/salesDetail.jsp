@@ -17,6 +17,7 @@
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
 	   if(confirm("삭제되었습니다.")){
+	
 	    frm.sNo.value= n;
 		frm.submit();
 	  
@@ -60,7 +61,9 @@
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
 		console.log(data);	
-	
+	if(data[0]['cNo']!=0){
+		
+	}
 		for (let i = 0; i < data.length; i++) {  
 			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
 	         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
@@ -138,7 +141,7 @@
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 		console.log(data)
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data.cNo);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data[cNo]);
 	    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
 		
 	        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
@@ -347,11 +350,14 @@
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">${list[0].sTitle }</div>
 						<div class="card-body">
-							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br>
-							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br>
-							<i class="far fa-clock"></i>얼마나 썼어요? : ${list[0].sUseDays }<br>
-							<i class="fas fa-question"></i>왜 팔아요?: ${list[0].sReason }<br>
-							<i class="fas fa-paw"></i>제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br>
+							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br><br>
+							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br><br>
+							<i class="far fa-clock"></i>얼마나 썼어요? : ${list[0].sUseDays }<br><br>
+							<i class="fas fa-question"></i>왜 팔아요?: ${list[0].sReason }<br><br>
+							<i class="fas fa-paw"></i>제품 상태는요? 상세하게 기술해주세요~ : ${list[0].sCondition }<br><br>
+							<i class="fas fa-tags"></i>얼마에 구매하셨나요?(새 상품 판매가격) : ${list[0].sPrice }<br><br>
+							<i class="fas fa-dollar-sign"></i>얼마에 판매하시나요? : ${list[0].sNetPrice }<br><br>
+							<i class="far fa-calendar-check"></i>업로드일자 ${list[0].sDate }
 						</div>
 				</div>
 				<p></p>
@@ -407,12 +413,11 @@
 			<div class="pb-3 mx-auto d-flex"  style="align-items: center;">
 				<!-- To do style again -->
 				<!-- Like btn form -->
-				<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
+			<form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
 					<input type="hidden" id="mainNo" name="mainNo" value="${list[0].sNo }">
-
-        </form>		
-				<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
-				<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
+					<button class="btn btn-md mr-5" type="submit" id="likeBtn" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+					<i class="fab fa-gratipay" id="likeBTNicon"></i><span id="likeText"> 좋아요!</span></button>
+       		</form>		
 				<form id="payFrm" name="payFrm" method="post" action="makePayment.doBB">
 				<input type="hidden" id="saleNo" name="saleNo" value="${list[0].sNo }">
 				<button class="btn btn-md mr-5" type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">

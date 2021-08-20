@@ -51,6 +51,10 @@ import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
 import co.animal.prj.offerhelp.command.WriteOHForm;
 import co.animal.prj.sales.command.DeleteSales;
+import co.animal.prj.sales.command.FindClothing;
+import co.animal.prj.sales.command.FindEtc;
+import co.animal.prj.sales.command.FindFood;
+import co.animal.prj.sales.command.FindShare;
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
 import co.animal.prj.sales.command.SalesListAll;
@@ -105,6 +109,12 @@ public class FrontController extends HttpServlet {
 		map.put("/salesInsert.do", new SalesInsert());//글 입력
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
+		
+		//카테고리별
+		map.put("/findClothing.do", new FindClothing());
+		map.put("/findFood.do", new FindFood());
+		map.put("/findEtc.do", new FindEtc());
+		map.put("/findShare.do", new FindShare());
 		
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
