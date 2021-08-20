@@ -52,7 +52,7 @@
                                         <th>상태</th>
                                         <th>권한</th>
                                         <th>리뷰포인트</th>
-                                        <th>구매포인트</th>
+                                        <th>등급</th>
                                         <th>펫정보</th>
                                     </tr>
                                 </thead>
@@ -70,7 +70,7 @@
                                                 <td>${member.state }</td>
                                                 <td>${member.role }</td>
                                                 <td>${member.reviewPoint }</td>
-                                                <td>${member.buyPoint }</td>
+                                                <td>${member.grade }</td>
                                                 <td>${member.petInfo }</td>
                                         </tr>
                                     </c:forEach>

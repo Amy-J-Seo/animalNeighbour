@@ -3,12 +3,13 @@ package co.animal.prj.member.serviceImpl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import co.animal.prj.common.DataSource;
 import co.animal.prj.member.service.MemberService;
 import co.animal.prj.member.service.MemberServiceMapper;
 import co.animal.prj.member.vo.MemberVO;
-
+@Service
 public class MemberServiceImpl implements MemberService{
 	private SqlSession sqlSession =DataSource.getInstance().openSession(true);
 	
@@ -36,5 +37,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int checkId(String mId) {
 		return map.checkId(mId);
+	}
+	@Override
+	public MemberVO emailDupleCheck(MemberVO vo) {
+		return map.emailDupleCheck(vo);
 	}
 }

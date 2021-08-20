@@ -11,9 +11,8 @@ public class MemberVO {
 	private String role;
 	private String state;
 	private String password;
-	private int buyPoint;
 	private String email;
-	
+	private String grade;
 	public MemberVO() {
 		super();
 	}
@@ -98,13 +97,6 @@ public class MemberVO {
 		this.password = password;
 	}
 
-	public int getBuyPoint() {
-		return buyPoint;
-	}
-
-	public void setBuyPoint(int buyPoint) {
-		this.buyPoint = buyPoint;
-	}
 
 	public String getEmail() {
 		return email;
@@ -114,12 +106,22 @@ public class MemberVO {
 		this.email = email;
 	}
 
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [mId=" + mId + ", mName=" + mName + ", nickname=" + nickname + ", address=" + address
 				+ ", phone=" + phone + ", petInfo=" + petInfo + ", reviewPoint=" + reviewPoint + ", role=" + role
-				+ ", state=" + state + ", password=" + password + ", buyPoint=" + buyPoint + ", email=" + email + "]";
+				+ ", state=" + state + ", password=" + password + ", email=" + email + ", grade=" + grade + "]";
 	}
+
+	
 	
 	
 	
