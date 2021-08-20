@@ -17,7 +17,7 @@
 	<select id="checkId" resultType="Integer">
 	select count(mId) from member where mId=#{mId}
 	</select>
-	<select id="emailDupleCheck" resultType="String">
+	<select id="emailDupleCheck" resultType="co.animal.prj.member.vo.MemberVO">
 	SELECT email FROM member WHERE email=#{email}
 	</select>
 	<insert id="memberInsert" parameterType="co.animal.prj.member.vo.MemberVO">

@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService{
 		return map.checkId(mId);
 	}
 	@Override
-	public String emailDupleCheck(String inputEmail) {
-		return map.emailDupleCheck(inputEmail);
+	public MemberVO emailDupleCheck(MemberVO vo) {
+		return map.emailDupleCheck(vo);
 	}
 }

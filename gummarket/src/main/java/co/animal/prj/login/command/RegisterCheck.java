@@ -14,6 +14,16 @@ public class RegisterCheck implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberService dao =new MemberServiceImpl();
 		MemberVO vo =new MemberVO();
+		String auth= request.getParameter("authPass");
+		System.out.println(auth);
+		if(auth == null) {
+			
+			String message="인증에 실패했습니다. 다시시도해주세요";
+			request.setAttribute("message", message);
+			return "login/loginForm";
+					}else {
+		
+			
 		String address ="";
 		address= request.getParameter("address1");
 		address+=" ";
@@ -45,5 +55,5 @@ public class RegisterCheck implements Command {
 		}
 		return page;
 	}
-
+	}
 }

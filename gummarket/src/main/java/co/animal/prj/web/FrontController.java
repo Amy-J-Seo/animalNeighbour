@@ -31,13 +31,13 @@ import co.animal.prj.lost.command.LostItemUpdate;
 import co.animal.prj.lost.command.LostItemUpdateForm;
 import co.animal.prj.lost.command.LostMain;
 import co.animal.prj.lost.command.WritelostForm;
-import co.animal.prj.member.command.ConfirmEmail;
 import co.animal.prj.member.command.MemberCheck;
 
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberSelect;
 import co.animal.prj.member.command.MemberUpdate;
+import co.animal.prj.member.command.RequestAuthEmail;
 import co.animal.prj.member.command.SearchId;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.member.command.UserUpdate;
@@ -90,7 +90,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userUpdate.do",new UserUpdate());		//회원 수정페이지
 		map.put("/memberCheck.do", new MemberCheck());	//회원 수정 비밀번호
 		map.put("/memberSelect.do", new MemberSelect()); //유저 마이페이지
-		map.put("/confirmEmail.do",new ConfirmEmail());
+		map.put("/requestAuthEmail.do",new RequestAuthEmail());
 		
 		
 		
@@ -148,6 +148,9 @@ public class FrontController extends HttpServlet {
 		System.out.println(command);
 		
 		String viewPage = command.execute(request, response);
+		
+		if(viewPage.equals("json"))
+			return;
 
 		// making view resolve..
 		if (!viewPage.endsWith(".do")) { // home.do
