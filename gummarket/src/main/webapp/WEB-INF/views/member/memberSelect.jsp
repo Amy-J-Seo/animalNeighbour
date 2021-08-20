@@ -208,11 +208,8 @@
 										<div class="form-group row">
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">회원등급</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
-											<select class="form-control" id="buyPoint" name="buyPoint">
-												<option selected>${list.buyPoint }</option>
-												<option value="1" disabled>1</option>
-												<option value="2" disabled>2</option>
-											</select>
+											<select class="form-control" id="grade" name="grade">
+												<option selected>${list.grade }</option></select>
 										</div>
 									</div>
 									<br>

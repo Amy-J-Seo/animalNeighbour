@@ -37,7 +37,7 @@
 									
 									<input type="hidden" id="state" name="state" value="OFF">
 									<input type="hidden" id="reviewPoint" name="reviewPoint"value="0"> 
-									<input type="hidden" id="buyPoint"name="buyPoint" value="0">
+									<input type="hidden" id="grade"name="grade" value="병아리">
 									<!-- 회원상태 휴면으로 변경 -->
 									<!-- 리뷰포인트 , buypoint 전부 초기화 -->
 									

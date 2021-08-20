@@ -134,10 +134,12 @@
 										<!-- off가 휴면상태 입니다 -->
 										<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">회원등급</div>
 										<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
-											<select class="form-control" id="buyPoint" name="buyPoint">
-												<option selected>${list.buyPoint }</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
+											<select class="form-control" id="grade" name="grade">
+												<option selected>${list.grade }</option>
+												<option value="병아리">병아리</option>
+												<option value="강아지">강아지</option>
+												<option value="소">소</option>
+												<option value="호랑이">호랑이</option>
 											</select>
 										</div>
 									</div><br>

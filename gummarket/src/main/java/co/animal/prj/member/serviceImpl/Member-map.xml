@@ -30,7 +30,7 @@
 	<update id="memberUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
 	UPDATE member SET mId=#{mId},mName=#{mName},nickname=#{nickname},address=#{address},phone=#{phone}
 	,petInfo=#{petInfo},reviewPoint=#{reviewPoint},role=#{role},state=#{state},password=#{password}
-	,buyPoint=#{buyPoint},email=#{email} WHERE mId=#{mId}
+	,grade=#{grade},email=#{email} WHERE mId=#{mId}
 	</update>
 <!--	
 	<delete id="" parameterType="">
