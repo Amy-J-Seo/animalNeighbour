@@ -253,7 +253,7 @@ function bItemDelete(n) {
 			<div class="card-body">
 					<div style="width:100%" class="d-flex justify-content-center">
 				
-					<img class="card" src="img/event/개껌장터.jpg" width="350px" height="600px">
+					<img class="card" src="img/noticeEvent/${item.bImg }" width="350px" height="600px">
 					</div>
 					<br>
 					<br />

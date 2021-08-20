@@ -27,7 +27,7 @@
 	</select>
 	
 	<insert id="boardInsert" parameterType="co.animal.prj.board.vo.BoardVO">
-		insert into board values(b_seq.nextval, #{bCategory}, #{bTitle}, #{bDate}, #{bContents}, default, default, #{mId}, default)
+		insert into board values(b_seq.nextval, #{bCategory}, #{bTitle}, #{bDate}, #{bContents}, default, default, #{mId}, default, #{bImg})
 		<selectKey keyProperty="bNo" resultType="Integer" order="AFTER">
                 select b_seq.CURRVAL FROM DUAL
         </selectKey>
