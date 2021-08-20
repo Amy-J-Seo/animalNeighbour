@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
+import co.animal.prj.csc.command.CsItemDelete;
+import co.animal.prj.csc.command.CsItemUpdateForm;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.MyCscDetail;
 import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
@@ -121,6 +124,9 @@ public class FrontController extends HttpServlet {
 		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
+		map.put("/myCscDetail.do", new MyCscDetail());//csc조회하기
+		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
+		map.put("/csItemDelete.do", new CsItemDelete());
 
 
 		//제은 맵 offerhelp

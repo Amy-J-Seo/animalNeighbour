@@ -22,8 +22,8 @@
 	<!--End of Links for Table  -->
 	
 <script type="text/javascript">
-	function getNotice(n) {
-		frm.bNo.value = n;
+	function getMyCsc(n) {
+		frm.csNo.value = n;
 		frm.submit();
 	}
 </script>
@@ -52,7 +52,7 @@
 		                            <tbody>
 		                            <c:forEach var="csc" items="${list }">
 		                                <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'" 
-		                                onmouseout="this.style.background='white'" onclick="getNotice(${csc.csNo})">
+		                                onmouseout="this.style.background='white'" onclick="getMyCsc(${csc.csNo})">
 		                           
                                             <td>${csc.csTitle }</td>
                                             <td>${csc.csDate }</td>
@@ -61,8 +61,8 @@
 		                            </c:forEach>
 		                            </tbody>
 				                 </table>
-				                 	<form id="frm" name="frm" action="searchNoticeItem.doBB" method="post">
-										<input type="hidden" id="bNo" name="bNo">
+				                 	<form id="frm" name="frm" action="myCscDetail.do" method="post">
+										<input type="hidden" id="csNo" name="csNo">
 									</form>
 							 </div>
 				       </div>

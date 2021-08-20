@@ -13,14 +13,17 @@
 	<select id="cscMyList" resultType="co.animal.prj.csc.vo.CscVO">
 		select * from csc where mid=#{mId}
 	</select>
-	
-	
-<!--  	<select id="" resultType="">
-
+	<select id="cscSelect" resultType="co.animal.prj.csc.vo.CscVO">
+		select * from csc where csno=#{csNo}
 	</select>
-	<insert id="" parameterType="">
-
+	
+	<insert id="cscInsert" parameterType="co.animal.prj.csc.vo.CscVO">
+		insert into csc values(cs_seq.nextval, #{mId},#{csTitle},#{csContents},sysdate,'n','y')
+		<selectKey>
+			SELECT cs_seq.currval from dual 
+		</selectKey>
 	</insert>
+<!--  	
 	<delete id="" parameterType="">
 
 	</delete>
