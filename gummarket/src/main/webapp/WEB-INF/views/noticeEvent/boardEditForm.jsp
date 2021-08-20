@@ -12,7 +12,7 @@
 
 </head>
 
- <body>
+ <body  id="top-page">
 
      <div class="container">
 	<div class="continer my-auto pb-2">
@@ -118,7 +118,7 @@
                 <div class="modal-body">다른 글들을 살펴보세요!</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal"> 취 소 </button>
-                    <a class="btn btn-primary" href="boardMain.doBB">메인으로</a>
+                    <a class="btn btn-primary" href="noticeMain.doBB">메인으로</a>
                 </div>
             </div>
         </div>

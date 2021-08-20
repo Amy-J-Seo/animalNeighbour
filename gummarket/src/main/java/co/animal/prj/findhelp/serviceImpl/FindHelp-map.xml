@@ -24,7 +24,7 @@
 
 	<insert id="findHelpInsert" parameterType="co.animal.prj.findhelp.vo.FindHelpVO">
 	<!-- #{} 안에는 내가 가지고 있는 보 객체 이름을 그대로 써야함!! -->
-		insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhCharacter},#{fhNeed},#{fhHow},null,default)
+		insert into findhelp values(fh_seq.nextval,#{mId},#{fhCategory},#{fhTitle},#{fhAnimal},#{fhSize},#{fhAge},#{fhCharacter},#{fhNeed},#{fhHow},#{fhImg},default,default)
 		
 		<selectKey keyProperty="fhNo" resultType="Integer" order="AFTER">
                 select fh_seq.CURRVAL FROM DUAL

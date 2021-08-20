@@ -10,4 +10,5 @@ public interface ImageServiceMapper {
 	public int imageUpdate(ImageVO vo);
 	public int imageDelete(ImageVO vo);
 	public int imageInsert(ImageVO vo);
+	public int fhImageInsert(ImageVO iVo);
 }

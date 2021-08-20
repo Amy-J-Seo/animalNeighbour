@@ -145,7 +145,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                신고 게시글 수</div>
+                                이벤트 글 수</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                         </div>
                         <div class="col-auto">
@@ -170,7 +170,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                총 거래 게시글</div>
+                                공지 글 수</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
                         </div>
                         <div class="col-auto">

@@ -32,7 +32,7 @@
                              <p></p>
                              <br>
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post">
+                             <form class="user" id="frm" name="frm" action="findHelpInsert.doBB" method="post" enctype="multipart/form-data">
                              
                              <input type="hidden" id="mId" name="mId" value="bb123">
                              <!-- 나중에 세션정보 가져와서 집어넣기!  -->
@@ -97,8 +97,13 @@
                                          name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
                                  </div>
                                  <hr>
+                                  <!-- 썸네일용 사진은 sales테이블에 -->
                                  <div class="form-group">
-                               	    사진 업로드: <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
+                                    <i class="fas fa-image"></i>  썸네일용 사진 업로드: <input type="file" name="thumbNailFile" multiple="multiple" class="btn"/>
+                                 </div>
+                                 <!-- 상세사진은 image 테이블에 -->
+                                 <div class="form-group">
+                                    <i class="fas fa-camera"></i>  상세 사진 업로드: <input type="file" name="uploadFile1" multiple="multiple" class="btn"/>
                                  </div>
                               
 					<hr>
@@ -117,7 +122,7 @@
                              </form>
                              <!-- form end -->
            
-             
+            			
                          </div>
                      </div>
                  </div>

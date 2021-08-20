@@ -13,6 +13,9 @@
 	<insert id="imageInsert" parameterType="co.animal.prj.image.vo.ImageVO">
 		insert into image values(img_seq.nextval,#{imgPath},'sales',#{iMainNum})
 	</insert>
+	<insert id="fhImageInsert" parameterType="co.animal.prj.image.vo.ImageVO">
+		insert into image values(img_seq.nextval,#{imgPath},'findhelp',#{iMainNum})
+	</insert>
 <!--  	<select id="" resultType="">
 
 	</select>

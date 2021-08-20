@@ -271,7 +271,7 @@ function fhItemDelete(n) {
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">
 				<!-- img class card-img 하고 싶은데 그러면 풀 화면일때 이미지가 너무 커서 줄이려고 해 봤지만 ㅠㅠ 안되네요... -->
-					<img class="card" src="img/rabbitWalk.webp">
+					<img class="card" src="img/fhImg/${item.fhImg }">
 				</div>
 				<br>
 				<div>

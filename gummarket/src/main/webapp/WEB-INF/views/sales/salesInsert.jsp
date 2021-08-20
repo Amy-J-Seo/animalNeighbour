@@ -23,14 +23,14 @@
 </head>
 <script>
 
-	//사진 추가 폼 나오게 만들자! 안되네 뀨....
-	function morePic(){
-		let div = $('<div>');
-		$('<div>').append('<input>').attr('type',file);
-		$('#show').append(div);
-	}
+   //사진 추가 폼 나오게 만들자! 안되네 뀨....
+   function morePic(){
+      let div = $('<div>');
+      $('<div>').append('<input>').attr('type',file);
+      $('#show').append(div);
+   }
 </script>
- <body>
+ <body  id="top-page">
 
      <div class="container">
 
@@ -56,15 +56,15 @@
                                      <div class="form-group row">
                                          <div class="col-lg-12 col-sm-6 mb-3 mb-sm-0">
                                            <div class="form-group">
-										      <label for="sel1">상품 카테고리:</label>
-										      <select class="form-control" id="scategory" name="scategory">
-										        <option value="clothing">의류/하네스</option>
-										        <option value="food">간식/사료</option>
-										        <option value="etc">그 외 용품</option>
-										        <option value="free">나눔</option>
-										      </select>
+                                    <label for="sel1">상품 카테고리:</label>
+                                    <select class="form-control" id="scategory" name="scategory">
+                                      <option value="clothing">의류/하네스</option>
+                                      <option value="food">간식/사료</option>
+                                      <option value="etc">그 외 용품</option>
+                                      <option value="free">나눔</option>
+                                    </select>
                                          </div>
-										</div>
+                              </div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="date" class="form-control form-control-user"
                                                  id="spurchasedate" name="spurchasedate">
@@ -84,7 +84,7 @@
                                              <input type="text" class="form-control form-control-user"
                                                  id="snetprice" name="snetprice" placeholder="희망하는 판매 가격을 적어주세요">
                                          </div>
-                              		</div>
+                                    </div>
                                  <div class="form-group">
                                      <input type="text" class="form-control form-control-user" id="sreason" name="sreason"
                                          placeholder="판매 이유에 대해 말해주세요!">
@@ -105,33 +105,33 @@
                                  </div>
                                     
                                     <!--사진 더 넣기 버튼 ㅜ.ㅜ어떻게 만들면 좋을까아? 
-	                                    <div>
-	                                    <button id="morePic" onclick="morePic()">사진 추가하기<i class="far fa-plus-square"></i></button>
-	                                    <div id="show"></div>
-	                                    </div>
+                                       <div>
+                                       <button id="morePic" onclick="morePic()">사진 추가하기<i class="far fa-plus-square"></i></button>
+                                       <div id="show"></div>
+                                       </div>
                                     -->
 
-								<br>
-						
-								 <div class="pb-3 mx-auto"  style="align-items: center;">
-						
-									<!-- To do style again -->
-									<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-									<i class="far fa-check-circle"></i> 글 등 록</button>
-									<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
-									<i class="fas fa-eraser"></i> 내용삭제</button>
-									<a class="btn btn-danger btn-md" href="home.do" data-toggle="modal"
-										data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
-								
-								</div>
-								
+                        <br>
+                  
+                         <div class="pb-3 mx-auto"  style="align-items: center;">
+                  
+                           <!-- To do style again -->
+                           <button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+                           <i class="far fa-check-circle"></i> 글 등 록</button>
+                           <button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+                           <i class="fas fa-eraser"></i> 내용삭제</button>
+                           <a class="btn btn-danger btn-md" href="home.do" data-toggle="modal"
+                              data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
+                        
+                        </div>
+                        
                              
                              </form>
                              <!-- form end -->
                              
                              <form style="display: none;" action="imageUploadServlet" id="imageUpload" name="imageUpload" method="post" enctype="multipart/form-data">
-                             	<input type="file" id="thumbNailFile" name="thumbNailFile">
-                             	<input type="file" id="uploadFile1" name="uploadFile1">
+                                <input type="file" id="thumbNailFile" name="thumbNailFile">
+                                <input type="file" id="uploadFile1" name="uploadFile1">
                              </form>
                               <hr>
              
@@ -144,9 +144,9 @@
      </div>
      
      <script type="text/javascript">
-		// 1. submit button의 type을 button
-		// 2. submit button onclick=func 을 해준다
-		// 3. #imageUpload #uploadFile1와 #imageUpload #thumbNailFile의 value를 
+      // 1. submit button의 type을 button
+      // 2. submit button onclick=func 을 해준다
+      // 3. #imageUpload #uploadFile1와 #imageUpload #thumbNailFile의 value를 
      </script>
 
 
