@@ -42,4 +42,9 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO emailDupleCheck(MemberVO vo) {
 		return map.emailDupleCheck(vo);
 	}
+	@Override
+	public int usedPointUpdate(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.usedPointUpdate(vo);
+	}
 }

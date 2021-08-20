@@ -16,4 +16,7 @@ public interface SalesService {
 	
 	public int hitUpdate(SalesVO vo);//조회수 증가
 	public int updateLike(SalesVO vo); //like 증가
+	
+	//주윤 멤버정보모달 탑3 아이템 조회
+	public List<SalesVO> salesListTop3(SalesVO vo);
 }

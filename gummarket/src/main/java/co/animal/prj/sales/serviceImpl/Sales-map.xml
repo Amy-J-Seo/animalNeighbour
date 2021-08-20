@@ -24,6 +24,17 @@
  
 	</select>
 	
+	<!-- top3 인기상품 조회하기 -->
+	<select id="salesListTop3" resultType="co.animal.prj.sales.vo.SalesVO">
+		
+		<![CDATA[
+		select * from (
+    	select * from sales order by slike desc)
+    	where rownum <= 3 and shide='n' and mid=#{mId} order by shit desc
+    	]]>
+ 
+	</select>
+	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
 		select s.*, i.imgpath, c.ccontents, c.cmid

@@ -24,14 +24,30 @@ $(document).ready(function(){
 		/* 할인하기 */
 	$('#applyDiscountBtn').click(
 			function applyDiscount(){
-				let origP = ${sale.sPrice}
-				let discP=$('#pointToUse').val()
-				alert(discP);
-				alert(origP);
+				let origP = ${sale.sPrice};
+				let discP=$('#pointToUse').val();
 				$('#discountFee').text(discP);
-				let netP = origP-discP
-				$('#totalAmount').text(netP)	
-				alert(netP)
+				let netP = origP-discP;
+				$('#totalAmount').text(netP);	
+				let buyerId='${member.mId}';
+				
+				/* 적용버튼 누르면 디비업데이트 */
+				$.ajax({
+		         	   url:'updatePointServlet', //'../AddItemServlet.do'
+			   	            method: 'post',
+			   	            data: {
+			   	            	usedPoinst: discP,
+		            			mId:buyerId
+			   	            },
+			   	            success: function(){
+			   	            	alert('fff');
+			   	            },
+			   	            error: function (reject) {
+			   	                console.error(reject);
+			   	            } 
+		            	});
+				
+				
 				}
 		);
 		

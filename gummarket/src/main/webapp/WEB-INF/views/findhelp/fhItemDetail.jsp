@@ -95,7 +95,13 @@ $(document).ready(function () {
     		        
     		            const divMain = $('<div /> ').addClass('d-flex align-items-center');
     		            let img = $('<img />').attr("src","img/undraw_profile_1.svg").css('width', "2rem").css('height','2rem');
-    		            let userName = $('<span />').css("font-size", "1.5rem").addClass("pl-2").text(data[i]['cmId']);
+    		            let userName = $('<span />').css("font-size", "1.5rem").addClass("pl-2");
+    		            let nameModal= $('<a />').attr({
+                            "id":"memberInfoModal",
+                            "data-toggle":"modal",
+                            "data-target":"memberInfo"
+                        }).text(data[i]['cmId']);
+    		            $(userName).append(nameModal);
     		            const blankSpace = $('<span />').css("margin-left", "30px").text("   ");
     		            let comment = $('<span />').attr('id', data[i]['cNo']+"selectedComment").css("font-size", "1.5rem").text(data[i]['cContents']);
     		            $(divMain).append(img, userName, blankSpace, comment);
@@ -134,11 +140,51 @@ $(document).ready(function () {
     					console.error(reject);
     				}
     			})
-    		})
+    		});
     		
+    		//멤버인포모달 판매물품 가져오기
+    		$('#memberInfoModal').on('click', function(e){
+    			e.preventDefault();
+    			console.log($('#memberInfoModal').text());
+    			
+    			//멤버의 판매물품 hit순으로 세개 가져오기
+    			$.ajax({
+    				url: 'GetMemberTopThreeSItemServlet', //='../AddItemServ.do'
+    				method: 'post',
+    				data: {
+    					mId: '${item.mId}'
+    				},
+    				dataType: 'json', //받아오는 값
+    				success: addToModal,
+    				error: function (reject) {
+    					console.error(reject);
+    				}
+    			})
+    			
+    			
+    		});
     		
 });
 //end of ajax
+let itemFields = ['sImg','sCategory', 'sTitle'];
+	function addToModal(data){
+	console.log(data);
+	 $('#toAddSalesListDiv').empty();
+	for (let i = 0; i < data.length; i++) {
+			
+			const divCol = $('<div />').addClass('col-lg-4 text-center align-items-center');
+            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.5rem");
+            const catP = $('<p/>').text(data[i]['sCategory']);
+            const titleP = $('<p/>').text(data[i]['sTitle']);
+            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
+           
+            $(divCol).append(img, catP, titleP, btn);
+                       
+            $('#toAddSalesListDiv').append(divCol);
+			
+		};
+	};
+
 
 //comment insert
 let fields = ['cmId', 'cContents'];
@@ -299,15 +345,19 @@ function fhItemDelete(n) {
 				</div>
 				
 					<div class="card-body">
+					<!-- user info -->
 						<div class="pb-1 d-flex align-items-center">
 							<div>
 								<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
-								<span class="pl-3" style="font-size: 2rem;">${item.nickname }</span>
+								<span class="pl-3" style="font-size: 2rem;">
+								<a id="memberInfoModal" data-toggle="modal" data-target="#memberInfo" >${item.mId }</a></span>
 							</div>				
 						</div>
+					<!-- end of user info -->
 					<hr>
 						<div>
-							${item.fhNeed }<br>${item.fhHow }
+							<p>${item.fhNeed }</p>
+							<p>${item.fhHow }</p>
 						</div>
 					
 					</div>
@@ -447,6 +497,51 @@ function fhItemDelete(n) {
     </div>
 	<!-- End of report modal -->
 
-	
+	<!-- memberInfo modal -->
+    <div class="modal fade" id="memberInfo" tabindex="-1" role="dialog" aria-labelledby="memberIfoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document" >
+            <div class="modal-content">
+               	<!-- 메인 카드 for payment -->	
+				<div class="card-body">
+					<div class="card mb-4">
+						<div class="card mb-2" style="border:none;  border-radius:0; ">
+						<div class="card-header py-3">
+							회 원 정 보
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	                        	<span aria-hidden="true">×</span>
+		                    </button>
+	                    </div>
+						
+						<div class="card-body row">
+							<!-- 사용자 프로필 사진+이름 -->
+							<div class=" col-lg-4 text-center align-items-center">
+								<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
+								<p>${member.mId }</p>
+								<p>${member.nickname } 님</p>
+							</div>
+							
+							<div class=" col-lg-8 text-center align-items-center">
+								<h5>${member.mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
+								<p>판매 물품 확인하기</p>
+								<!-- ajax로 불러온 정보 붙이는 div -->
+								<div>
+								<!-- 판매물품...리스트 카드형식 -->
+									<div id="toAddSalesListDiv" class="card-body row"></div>
+									<!-- end of 판매물품...리스트 카드형식 -->						
+								</div>
+							</div>
+							
+						</div>
+							
+						</div>
+						
+					
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+	<!-- End of memberInfo modal -->
 </body>
 </html>

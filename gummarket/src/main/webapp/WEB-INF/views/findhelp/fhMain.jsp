@@ -11,6 +11,7 @@
 <script>
 function getDetails(num) {
 	getFhNo.fhNo.value = num;
+	
 	getFhNo.submit();
 }
 </script>
@@ -70,10 +71,13 @@ function getDetails(num) {
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.fhNo})">Read more</button></div>
+	                        <div class="text-center">
+	                        <button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.fhNo})">Read more</button>
+	                        </div>
 	                    </div>
 	                    <form id="getFhNo" name="getFhNo" action="fhDetail.doBB" method="post">
 	                    	<input type="hidden" id="fhNo" name="fhNo">
+	                    	<input type="hidden" id="mId" name="mId" value="${item.mId }">
 	                    </form>
 	                </div>
 	            </div>       

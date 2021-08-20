@@ -32,11 +32,8 @@
 	,petInfo=#{petInfo},reviewPoint=#{reviewPoint},role=#{role},state=#{state},password=#{password}
 	,grade=#{grade},email=#{email} WHERE mId=#{mId}
 	</update>
-<!--	
-	<delete id="" parameterType="">
 
-	</delete>
-	<insert id="" parameterType="">
-
-	</insert>-->
+	<update id="usedPointUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
+		update member set reviewPoint = reviewPoint - #{reviewPoint} where mid=#{mId}
+	</update>
 </mapper>

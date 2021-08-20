@@ -13,4 +13,5 @@ public interface BoardServiceMapper {
 	public int boardDelete(BoardVO vo);
 	public int boardInsert(BoardVO vo);
 	public int bUpdateLike(BoardVO vo);
+	public int bUpdateHit(BoardVO vo); //hit 증가
 }

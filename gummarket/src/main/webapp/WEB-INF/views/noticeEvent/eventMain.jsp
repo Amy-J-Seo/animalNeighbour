@@ -9,8 +9,10 @@
 
 
 <script>
-function getDetails(num) {
-	$('#frm #bNo').val(num);
+function getDetails(n, h) {
+	$('#frm #bNo').val(n);
+	$('#frm #bHit').val(h);
+	
 	$('#frm').submit();
 }
 </script>
@@ -62,16 +64,16 @@ function getDetails(num) {
 	                        <div class="text-center">
 	                            <!-- find help title-->
 	                            <h5 class="fw-bolder">${item.bTitle}</h5>
-	                            <h6>${item.bCategory }</h6>
+	                            <h6>${item.bCategory } : ${item.bHit }</h6>
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.bNo})">Read more</button></div>
+	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.bNo},${item.bHit })">Read more</button></div>
 	                    </div>
 	                    <form id="frm" name="frm" action="bDetail.doBB" method="post">
 	                    	<input type="hidden" id="bNo" name="bNo" >
-	             
+	             			<input type="hidden" id="bHit" name="bHit">
 	                    </form>
 	                </div>
 	            </div>       

@@ -69,4 +69,10 @@ public class SalesServiceImpl implements SalesService {
 
 	}
 
+	@Override
+	public List<SalesVO> salesListTop3(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.salesListTop3(vo);
+	}
+
 }

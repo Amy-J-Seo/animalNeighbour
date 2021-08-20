@@ -16,10 +16,15 @@ public class BoardDetail implements Command {
 		BoardVO vo = new BoardVO();
 		
 		String selectedNo =request.getParameter("bNo");
-		
 		int bNo=Integer.parseInt(selectedNo);
-		vo.setbNo(bNo);
+
+		int bHit = Integer.valueOf(request.getParameter("bHit"));
+		System.out.println(bHit);
 		
+		vo.setbNo(bNo);
+		vo.setbHit(bHit);
+		dao.bUpdateLike(vo);
+				
 		request.setAttribute("item", dao.boardSelect(vo));
 		
 		return "noticeEvent/bItemDetail";

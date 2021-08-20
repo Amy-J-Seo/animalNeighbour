@@ -46,6 +46,8 @@
 		update board set blike = blike + 1 where bNo=#{bNo}
 	</update>
 	
-	
+	<update id="bUpdateView" parameterType="co.animal.prj.board.vo.BoardVO">
+		update board set bhit = bhit + 1 where bNo=#{bNo}
+	</update>
 
 </mapper>

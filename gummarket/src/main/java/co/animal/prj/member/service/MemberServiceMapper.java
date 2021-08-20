@@ -13,6 +13,8 @@ public interface MemberServiceMapper {
 	public MemberVO Login(MemberVO vo);
 	public int checkId(String mId);
 	public MemberVO emailDupleCheck(MemberVO vo);
+	//주윤 결제과정 포인트사용
+	public int usedPointUpdate(MemberVO vo);
 }
 	
 

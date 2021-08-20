@@ -61,6 +61,11 @@ public class BoardServiceImpl implements BoardService {
 		return map.bUpdateLike(vo);
 	}
 
+	@Override
+	public int bUpdateHit(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return map.bUpdateHit(vo);
+	}
 
 
 }

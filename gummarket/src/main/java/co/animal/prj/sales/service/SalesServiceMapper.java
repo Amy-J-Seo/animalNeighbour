@@ -16,4 +16,7 @@ public interface SalesServiceMapper {
 	
 	public int hitUpdate(SalesVO vo);
 	public int updateLike(SalesVO vo);
+	
+	//주윤 멤버정보모달 탑3 아이템 조회
+	public List<SalesVO> salesListTop3(SalesVO vo);
 }

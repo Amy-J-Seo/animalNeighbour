@@ -38,7 +38,7 @@ $(document).ready(function () {
     
     //======comments===================
      	console.log("${item.bCategory}")
-     	console.log($('#mainItemCat').text())
+		
    		//hide comment update field
 		$('#showComUpdate').hide();
     	$.ajax({
@@ -258,8 +258,8 @@ function bItemDelete(n) {
 					<br>
 					<br />
 					<hr>				
-					<div class="card-header py-3"><span id="mainItemCat">${item.bCategory }</span> : ${item.bTitle }
-						
+					<div class="card-header py-3"><span id="mainItemCat">${item.bCategory }</span> ${item.bTitle }
+							<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.bHit}</span>
 							<span class="pr-3" style="float:right;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.bLike}</span>
 						
 					</div>
