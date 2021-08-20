@@ -9,12 +9,13 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM payment
 	</select>
+	<insert id="paymentInsert" parameterType="co.animal.prj.payment.vo.PaymentVO">
+		insert into payment values(p_seq.nextval, #{mId}, #{sNo}, #{productId}, default, #{paymentAmount}, #{payConfirmNum})
+	</insert>
 <!--  	<select id="" resultType="">
 
 	</select>
-	<insert id="" parameterType="">
-
-	</insert>
+	
 	<delete id="" parameterType="">
 
 	</delete>

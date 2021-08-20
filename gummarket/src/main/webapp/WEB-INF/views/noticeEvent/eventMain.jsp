@@ -56,7 +56,7 @@ function getDetails(num) {
 	                <div class="card h-100">
 	                  
 	                    <!-- find help image-->
-	                    <img class="card-img-top" src="img/event/개껌장터-거래.jpg" alt="" />
+	                    <img class="card-img-top" src="img/noticeEvent/${item.bImg }" alt="" />
 	                    <!-- find help details-->
 	                    <div class="card-body pt-4 pr-4 pl-4 pb-0">
 	                        <div class="text-center">

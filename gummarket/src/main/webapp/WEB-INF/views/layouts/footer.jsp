@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +29,16 @@
             <!-- Footer -->
             <footer class="sticky-footer" style="background-color: rgb(244, 244, 244); padding-top:0; padding-bottom:0.5rem">
                 <div>
-                    <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
-                    <span><a href="myCscList.do" class="customer-service-link">고객센터</a></span>
+
+                <!-- when not login send user to loginForm.do -->
+                <c:if test="${not empty session.mId }">
+                  <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+                </c:if>
+                <c:if test="${empty session.mId }">
+                  <a href="loginForm.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+                </c:if>
+          <span><a href="myCscList.do" class="customer-service-link">고객센터</a></span>
+
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; 개껌장터 2021</span>
@@ -44,7 +53,10 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
+<c:if test="${session.role eq 'USER' }">
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6111cf4888a42eb6"></script>
+</c:if>
 
 </body>
 
