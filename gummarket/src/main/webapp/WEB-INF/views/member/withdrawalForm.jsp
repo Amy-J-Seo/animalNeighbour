@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+
 <body>
 	<div class="container">
 		<div class="card o-hidden border-0 shadow-lg my-5">
@@ -39,16 +34,15 @@
 									<input type="hidden" id="address" name="address"value="${list.address }">
 									<input type="hidden" id="role" name="role" value="${list.role }">
 									 <input type="hidden" id="petInfo" name="petInfo"value="${list.petInfo }">
-									<!-- 회원상태 휴면으로 변경 -->
+									
 									<input type="hidden" id="state" name="state" value="OFF">
 									<input type="hidden" id="reviewPoint" name="reviewPoint"value="0"> 
-									<input type="hidden" id="buyPoint"name="buyPoint" value="0">
-									
+									<input type="hidden" id="grade"name="grade" value="병아리">
+									<!-- 회원상태 휴면으로 변경 -->
+									<!-- 리뷰포인트 , buypoint 전부 초기화 -->
 									
 									<input type="submit" value="탈퇴하기"class="btn btn-warning btn-user btn-block">
 								</form>
-									
-
 							</div>
 						</div>
 					</div>
@@ -57,4 +51,3 @@
 		</div>
 	</div>
 </body>
-</html>
