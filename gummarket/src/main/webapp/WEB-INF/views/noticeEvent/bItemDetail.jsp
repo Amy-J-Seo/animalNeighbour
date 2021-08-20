@@ -114,7 +114,7 @@ $(document).ready(function () {
 let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) {
-		console.log("reply submitted-add func called");
+		
 		const divCase = $('<div />').addClass('d-flex justify-content-between mb-3').attr('id',data.cNo) ;
 		//for (let field of fields) {
 			const divMain = $('<div /> ').addClass('d-flex align-items-center');
@@ -139,6 +139,9 @@ let fields = ['cmId', 'cContents'];
 	           	}   
         
         $('#commentsBody').append(divCase);
+        $('#reply #cContent').val("");
+        
+    	
 	}
 	//End of comment insert
 	
