@@ -84,7 +84,7 @@ public class SalesInsert implements Command {
       
       int n = salesDao.salesInsert(vo); //insert return값이 sNo이당!
       
-      //System.out.println(n);
+      //System.out.println(n+"Sno번호");
       
       iVo.setImgPath(fileName2);
       iVo.setiMainNum(n);

@@ -9,6 +9,13 @@
    <meta name="author" content="">
 
    <title>상품 등록하기</title>
+   
+   <!-- date에 placeholder 넣기! -->
+   <style type="text/css">
+   	input[type="date"]::before {content:attr(data-placeholder);width:100%}
+	input[type="date"]:focus::before,
+	input[type="date"]:valid::before {display:none}
+   </style>
 
 <!-- Custom fonts for this template from register.html-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -67,7 +74,7 @@
                               				</div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="date" class="form-control form-control-user"
-                                                 id="spurchasedate" name="spurchasedate">
+                                                 id="spurchasedate" name="spurchasedate" data-placeholder="언제 구매하셨나요?" required aria-required="true">
                                          </div>
                                          <div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                              <input type="text" class="form-control form-control-user"

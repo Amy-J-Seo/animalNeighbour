@@ -16,6 +16,7 @@ import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -115,7 +116,9 @@ public class FrontController extends HttpServlet {
 		map.put("/findFood.do", new FindFood());
 		map.put("/findEtc.do", new FindEtc());
 		map.put("/findShare.do", new FindShare());
+	
 		
+		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
 

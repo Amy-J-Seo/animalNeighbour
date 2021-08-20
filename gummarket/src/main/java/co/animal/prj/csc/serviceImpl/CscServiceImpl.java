@@ -42,4 +42,9 @@ public class CscServiceImpl implements CscService {
 		return map.cscInsert(vo);
 	}
 
+	public List cscMyList(CscVO vo) {
+		// TODO Auto-generated method stub
+		return map.cscMyList(vo);
+	}
+
 }

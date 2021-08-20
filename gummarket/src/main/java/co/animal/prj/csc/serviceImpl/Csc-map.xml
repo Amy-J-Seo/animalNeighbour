@@ -7,8 +7,14 @@
 		resultType="co.animal.prj.csc.vo.CscVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM csc
+		SELECT * FROM csc where cshide='n'
 	</select>
+	
+	<select id="cscMyList" resultType="co.animal.prj.csc.vo.CscVO">
+		select * from csc where mid=#{mId}
+	</select>
+	
+	
 <!--  	<select id="" resultType="">
 
 	</select>
