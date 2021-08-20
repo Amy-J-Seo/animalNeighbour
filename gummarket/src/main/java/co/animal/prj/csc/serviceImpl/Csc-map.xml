@@ -7,17 +7,30 @@
 		resultType="co.animal.prj.csc.vo.CscVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM csc
+		SELECT * FROM csc where cshide='n'
 	</select>
-<!--  	<select id="" resultType="">
-
+	
+	<select id="cscMyList" resultType="co.animal.prj.csc.vo.CscVO">
+		select * from csc where mid=#{mId}
 	</select>
-	<insert id="" parameterType="">
-
+	<select id="cscSelect" resultType="co.animal.prj.csc.vo.CscVO">
+		select * from csc where csno=#{csNo}
+	</select>
+	
+	<insert id="cscInsert" parameterType="co.animal.prj.csc.vo.CscVO">
+		insert into csc values(cs_seq.nextval, #{mId},#{csTitle},#{csContents},sysdate,'n','y')
+		<selectKey keyProperty="csNo" order="AFTER"  resultType="int" >
+			SELECT cs_seq.currval from dual 
+		</selectKey>
 	</insert>
-	<delete id="" parameterType="">
-
+	<delete id="cscDelete" parameterType="co.animal.prj.csc.vo.CscVO">
+		delete from csc where csno = #{csNo}
 	</delete>
+	
+	<update id="cscUpdate" parameterType="co.animal.prj.csc.vo.CscVO">
+		update csc set cstitle=#{csTitle}, cscontents =#{csContents} where csno =#{csNo} 
+	</update>
+<!--  	
 	<insert id="" parameterType="">
 
 	</insert>-->

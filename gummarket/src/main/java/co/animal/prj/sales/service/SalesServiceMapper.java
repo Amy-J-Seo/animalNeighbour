@@ -16,4 +16,10 @@ public interface SalesServiceMapper {
 	
 	public int hitUpdate(SalesVO vo);
 	public int updateLike(SalesVO vo);
+	
+	//카테고리별로 찾아오기
+	public List<SalesVO> findClothing();
+	public List<SalesVO> findFood();
+	public List<SalesVO> findEtc();
+	public List<SalesVO> findShare();
 }

@@ -69,4 +69,28 @@ public class SalesServiceImpl implements SalesService {
 
 	}
 
+	@Override
+	public List<SalesVO> findClothing() {
+		// TODO Auto-generated method stub
+		return map.findClothing();
+	}
+
+	@Override
+	public List<SalesVO> findFood() {
+		// TODO Auto-generated method stub
+		return map.findFood();
+	}
+
+	@Override
+	public List<SalesVO> findEtc() {
+		// TODO Auto-generated method stub
+		return map.findEtc();
+	}
+
+	@Override
+	public List<SalesVO> findShare() {
+		// TODO Auto-generated method stub
+		return map.findShare();
+	}
+
 }
