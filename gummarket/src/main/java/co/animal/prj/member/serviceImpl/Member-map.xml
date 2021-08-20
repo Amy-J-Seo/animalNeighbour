@@ -32,10 +32,14 @@
 	,petInfo=#{petInfo},reviewPoint=#{reviewPoint},role=#{role},state=#{state},password=#{password}
 	,grade=#{grade},email=#{email} WHERE mId=#{mId}
 	</update>
-<!--	
-	<delete id="" parameterType="">
-
-	</delete>
+	<select id="loginSearch" resultType="co.animal.prj.member.vo.MemberVO">
+	SELECT mId,mName FROM member WHERE mName=#{mName} and email=#{email}
+	</select>
+	<update id="updatePassword" parameterType="co.animal.prj.member.vo.MemberVO">
+	UPDATE member SET password=#{password} WHERE mName=#{mName} and email=#{email}
+	</update>
+	
+	<!--	
 	<insert id="" parameterType="">
 
 	</insert>-->
