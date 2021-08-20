@@ -22,26 +22,21 @@
 		<div class="card mb-4">
 		
 			<div class="card mb-2" style="border:none;  border-radius:0; ">
-			<!--배송지 확인+업데이트+신규  -->
-			<div class="card-header py-3">배송지 확인</div>
-			<div class="card-body row">
-				<div class="col-lg-9">
-					<p id="buyer">구매자 : ${member.mName }</p>
-					<p id="bAddress">주소 : ${member.address }</p>
-					<p id="bEmail">이메일 : ${member.email }</p>
-					<p id="bPhone">전화번호 : ${member.phone }</p>
-					<p id="bRequest">배송요청 : <input type="text" id="request" name = "request">
-					<button class="btn btn-warning">저장</button></p>
+			
+			<div class="card-header py-3">결제가 완료되었습니다.</div>
+				<div class="card-body">
+					<div class="text-center align-items-center">
+						<h3>구매해 주셔서 감사합니다.</h3>
+					<p>판매자가 확인 후 상품을 보낼 예정입니다.</p>
+					<p>결제 정보는 마이페이지에서 확인 가능합니다.</p>
+						<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+					<i class="fas fa-undo-alt"></i> 마이페이지로</button>
+					<button class="btn btn-md mr-5" type="button" onclick="location.href='salesListAll.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+					<i class="fas fa-undo-alt"></i> 장터메인으로</button>
+					</div>
+					
 				</div>
-				<div class="col-lg-3">
-					<div style="float:right;">
-					<!-- modal ? -->
-						<button class="btn btn-warning">배송지 변경</button>
-						<button class="btn btn-warning">신규 배송지</button>
-					</div> 
-				</div>
-			</div>
-			<!--끝 배송지 확인+업데이트+신규  -->
+				
 			</div>
 			
 		
