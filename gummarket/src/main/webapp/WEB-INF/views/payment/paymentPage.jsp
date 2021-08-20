@@ -23,43 +23,74 @@ $(document).ready(function(){
 
 let itemPrice = $('#itemPrice').text();
 itemPrice =parseInt(itemPrice);
-console.log($('#bEmail').text())
+console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
 	$("#payment_process").click(
         function requestPay() {
            var IMP = window.IMP; // 생략가능
            IMP.init("imp25885979");
-           // IMP.request_pay(param, callback) 결제창 호출
-           IMP.request_pay({ // param
-               pg: "html5_inicis",
-               pay_method: "card",
-               merchant_uid: "ORD20180131-0000012",
-               name: $('#itenName').text()+"를 구매",
-               amount: itemPrice,
-               buyer_email: $('#bEmail').text(),
-               buyer_name: $('#buyer').text(),
-               buyer_tel: $('#bPhone').text(),
-               buyer_addr: $('#bAddress').text(),
-               buyer_postcode: "우편번호",
-               m_redirect_url: 'localhost/gummarket/payresult.doBB'
-           }, function (rsp) { // callback
-               console.log(rsp);
-               if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-                   // jQuery로 HTTP 요청
-                   var msg = "결제가 완료되었습니다.";
-                   msg += '고유ID : ' + rsp.imp_uid;
-                   msg += '상점 거래ID : ' + rsp.merchant_uid;
-                   msg += '결제 금액 : ' + rsp.paid_amount;
-                   msg += '카드 승인번호 : ' + rsp.apply_num;
-                   
-               } else {
-                   alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
-               }
-               alert(msg);
-           });
+           let buyerName= $('#buyer').text();
+           let buyerId='${member.mId}';
+           let sNo = "${sale.sNo}";
+           let productId ="";
+    	   let payMount ="";
+       	   let payConfirmNum="";
+       	   
+       	IMP.request_pay({ // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: "${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime(),
+            name: "${sale.sTitle }",
+            amount: itemPrice,
+            buyer_email: $('#bEmail').text(),
+            buyer_name: $('#buyer').text(),
+            buyer_tel: $('#bPhone').text(),
+            buyer_addr: $('#bAddress').text(),
+            buyer_postcode: "우편번호",
+            m_redirect_url: 'http://localhost/gummarket/payresult.doBB'
+        }, function (rsp) { // callback
+            console.log(rsp);
+     	   	var msg="";
+            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+			 
+            alert("결제 성공");
+            
+            
+            $.ajax({
+         	   url:'payresult.doBB', //'../AddItemServlet.do'
+	   	            method: 'post',
+	   	            data: {
+	   	            	buyerId: buyerId,
+            			sNo: sNo,
+            			productId: rsp.merchant_uid,
+            			paymentAmount: rsp.paid_amount,
+            			payConfirmNum:rsp.apply_num
+	   	            },
+	   	            success: function(response){
+	   	            	console.log(response);
+	   	            	$('#toPayResult').submit();
+	   	            	
+	   	            },
+	   	            error: function (reject) {
+	   	                console.error(reject);
+	   	            } 
+            	});
+            
+            	$('#toPayResult').submit();
+            } else {	
+	               alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+            }
+        	
+        });
+                      
        }
    );
-
+      
 });
+
+
+
+
+
 
 </script>
 
@@ -175,6 +206,13 @@ console.log($('#bEmail').text())
 	<!-- /.container-fluid -->
 	</div>
 	</div>
+	
+	
+	<!-- 페이지이동 폼 -->
+	<form id="toPayResult" name="toPayResult" action="toPayResult.doBB"></form>
+	
+	
+	
 	<!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -200,9 +238,7 @@ console.log($('#bEmail').text())
             </div>
         </div>
     </div>
-	
- 
- 
-	
+    
+
 </body>
 </html>
