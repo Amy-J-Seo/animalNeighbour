@@ -18,12 +18,23 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
 <script>
 $(document).ready(function(){
-
-let itemPrice = $('#itemPrice').text();
-itemPrice =parseInt(itemPrice);
-console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
+		/* 할인하기 */
+	$('#applyDiscountBtn').click(
+			function applyDiscount(){
+				let origP = ${sale.sPrice}
+				let discP=$('#pointToUse').val()
+				alert(discP);
+				alert(origP);
+				$('#discountFee').text(discP);
+				let netP = origP-discP
+				$('#totalAmount').text(netP)	
+				alert(netP)
+				}
+		);
+		
 	$("#payment_process").click(
         function requestPay() {
            var IMP = window.IMP; // 생략가능
@@ -40,7 +51,7 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
             pay_method: "card",
             merchant_uid: "${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime(),
             name: "${sale.sTitle }",
-            amount: itemPrice,
+            amount: $('#totalAmount').text(),
             buyer_email: $('#bEmail').text(),
             buyer_name: $('#buyer').text(),
             buyer_tel: $('#bPhone').text(),
@@ -54,7 +65,7 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
 			 
             alert("결제 성공");
             
-            
+            /* 결제 성공 시 결과 저장 */
             $.ajax({
          	   url:'payresult.doBB', //'../AddItemServlet.do'
 	   	            method: 'post',
@@ -77,16 +88,15 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
             
             	$('#toPayResult').submit();
             } else {	
-	               alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+	               alert("결제에 실패하였습니다. :" + rsp.error_msg);
             }
         	
         });
                       
        }
    );
-      
+            
 });
-
 
 
 
@@ -162,11 +172,12 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
 			<!-- 적립금 사용 -->
 			<div class="card-header py-3" style="float:right;">적립금 사용하기</div>
 			<div class="card-body mb-2"style="float:right;" >
-				<div class="">
-					<p>보유한 포인트 : <span id="usablePoint">${member.buyPoint }</span>원</p>
+				<div class="discountArea">
+					<p>보유한 포인트 : <span id="usablePoint">${member.reviewPoint }</span>원</p>
 					<p>사용할 포인트 : 
-					<input type="text" id="toUsePoint" name = "pointUse" placeholder="얼마를 사용하시겠습니까?">
-                        <button class="btn btn-warning">사용</button></p>
+					
+					<input type="text" id="pointToUse" name = "pointToUse" placeholder="얼마를 사용하시겠습니까?">
+                        <button id="applyDiscountBtn" class="btn btn-warning">사용</button></p>
 				</div>
 				
 			</div>
@@ -180,9 +191,9 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
 					<div class="col-lg-9">
 						<p>상품금액 : <span>${sale.sPrice }</span></p>
 						<!-- 배송비 칼럼? -->
-						<p>배송비 : <span id="shippingFee">${sale.sPrice }</span></p>
+						<p>배송비 : <span id="shippingFee">0</span></p>
 						<!-- ?? -->
-						<p>할인금액 : <span id="discountFee">${sale.sPrice }</span></p>
+						<p>할인금액 : <span id="discountFee">0</span></p>
 						<hr>
 						<p>총액 : <span id="totalAmount">${sale.sPrice }</span></p>
 					</div>
@@ -239,6 +250,9 @@ console.log("${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime())
         </div>
     </div>
     
+<script>
 
+
+</script>
 </body>
 </html>
