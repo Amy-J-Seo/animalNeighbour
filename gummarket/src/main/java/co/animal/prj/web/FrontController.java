@@ -23,7 +23,11 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
-
+import co.animal.prj.login.command.SearchId;
+import co.animal.prj.login.command.SearchIdForm;
+import co.animal.prj.login.command.SearchPass;
+import co.animal.prj.login.command.SearchPassForm;
+import co.animal.prj.login.command.SearchPassUp;
 import co.animal.prj.lost.command.LostDetail;
 import co.animal.prj.lost.command.LostInsert;
 import co.animal.prj.lost.command.LostItemDelete;
@@ -38,7 +42,6 @@ import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberSelect;
 import co.animal.prj.member.command.MemberUpdate;
 import co.animal.prj.member.command.RequestAuthEmail;
-import co.animal.prj.member.command.SearchId;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.member.command.UserUpdate;
 import co.animal.prj.member.command.Withdrawal;
@@ -78,7 +81,11 @@ public class FrontController extends HttpServlet {
 		map.put("/registerForm.do", new RegisterForm());//회원가입
 		map.put("/idCheckForm.do", new IdCheckForm());//아이디 중복 조회 폼
 		map.put("/idCheckPro.do", new IdCheckPro());//아이디 중복 조회
-		map.put("/searchId.do", new SearchId()); //아이디 비밀번호 찾기
+		map.put("/searchIdForm.do", new SearchIdForm());
+		map.put("/searchId.do", new SearchId()); //아이디 찾기
+		map.put("/searchPassForm.do",new SearchPassForm()); //비밀번호찾기 폼
+		map.put("/searchPassUp.do", new SearchPassUp()); // 새 비밀번호 설정
+		map.put("/searchPass.do", new SearchPass()); //비밀번호찾기
 		map.put("/registerCheck.do", new RegisterCheck());//회원가입완료
 		map.put("/withdrawalForm.do", new WithdrawalForm());//회원탈퇴폼
 		map.put("/withdrawal.do", new Withdrawal());//회원탈퇴완료
