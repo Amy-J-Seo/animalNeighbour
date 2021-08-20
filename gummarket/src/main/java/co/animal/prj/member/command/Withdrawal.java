@@ -15,7 +15,13 @@ public class Withdrawal implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
+		String after = request.getParameter("password");
 		vo.setmId(request.getParameter("mId"));
+		vo= dao.memberSelect(vo);
+		
+		String page = "";
+		if (vo.getPassword().equals(after)) {
+		
 		vo.setmName(request.getParameter("mName"));
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setAddress(request.getParameter("address"));
@@ -25,17 +31,15 @@ public class Withdrawal implements Command {
 		vo.setRole(request.getParameter("role"));
 		vo.setState(request.getParameter("state"));
 		vo.setPassword(request.getParameter("password"));
-		vo.setBuyPoint(Integer.valueOf(request.getParameter("buyPoint")));
+		vo.setGrade(request.getParameter("grade"));
 		vo.setEmail(request.getParameter("email"));
+		System.out.println(vo);
 		
-		String after = request.getParameter("password");
-		vo= dao.memberSelect(vo);
-		String page = "";
-		if (vo.getPassword().equals(after)) {
-
+		
 			int n = dao.memberUpdate(vo);
 
-			System.out.println(n);
+			System.out.println(vo.getState()+"회원탈퇴");
+			
 			if (n != 0) {
 				HttpSession session = request.getSession();
 				session.invalidate(); // 세션 삭제

@@ -17,7 +17,8 @@
 	</properties>
 
 
-	<dependencies>
+	
+<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -25,7 +26,7 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
 		<dependency>
 			<groupId>com.oracle.ojdbc</groupId>
@@ -61,16 +62,30 @@
 			<version>${tiles.version}</version>
 		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.20</version>
 			<scope>provided</scope>
 		</dependency>
-
+	
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/activation -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/activation -->
+ 
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		
 	</dependencies>
-
 
 	<build>
 		<resources>
