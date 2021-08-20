@@ -264,14 +264,32 @@ function updateItemFunc(data){
 					</div>
 				</div>
 			</div>
+			<p></p>
+			<c:if test="${session.role =='ADMIN' }">
+				<!-- 답글 입력 -->
+				<div class="card mb-2">
+					<div class="card-header bg-light">
+					     <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<form id="reply" action="CommentInsertServ" method="post">
+							<ul class="list-group list-group-flush">
+							    <li class="list-group-item">
+								<input type="hidden" id="csNo" name="csNo" value="${list[0].csNo }">
+								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+								<button type="submit" class="btn btn-dark mt-3">post reply</button>
+							    </li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</c:if>
+			
 				<p></p>
 				
 				<div class="pb-3 mx-auto"  style="align-items: center;">
-				
-				
-				<button class="btn btn-md mr-5" type="button" onclick="location.href='myCscList.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-				<i class="fas fa-undo-alt"></i>목록으로</button>
-				
+					<button class="btn btn-md mr-5" type="button" onclick="location.href='myCscList.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+					<i class="fas fa-undo-alt"></i>목록으로</button>
 				</div>
 				
 			</div>

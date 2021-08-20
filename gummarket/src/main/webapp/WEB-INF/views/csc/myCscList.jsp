@@ -34,7 +34,7 @@
 		        <div class="container-fluid">
 		            <!-- Page Heading -->
 					<div class="continer my-auto pl-4 pb-3">
-							<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;"> 전 체 공 지 사 항</p>
+							<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;"> 고 객 센 터</p>
 					</div>		          
 		            <!--table with all recipe-->
 		            <div class="card shadow mb-4 mr-4 ml-4 pl-3 pr-3">

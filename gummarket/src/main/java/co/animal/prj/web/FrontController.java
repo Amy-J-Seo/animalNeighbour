@@ -19,6 +19,7 @@ import co.animal.prj.csc.command.CsItemUpdateForm;
 import co.animal.prj.csc.command.CsUpdate;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.EveryCscList;
 import co.animal.prj.csc.command.MyCscDetail;
 import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
@@ -123,7 +124,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findEtc.do", new FindEtc());
 		map.put("/findShare.do", new FindShare());
 	
-		
+		//csc
 		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
@@ -131,6 +132,7 @@ public class FrontController extends HttpServlet {
 		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
 		map.put("/csUpdate.do", new CsUpdate());
 		map.put("/csItemDelete.do", new CsItemDelete());
+		map.put("/everyCscList.do", new EveryCscList());//관리자가 보는 전체 페이지
 
 
 		//제은 맵 offerhelp
