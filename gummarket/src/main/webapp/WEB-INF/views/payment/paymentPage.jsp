@@ -18,48 +18,89 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
 <script>
 $(document).ready(function(){
-
-let itemPrice = $('#itemPrice').text();
-itemPrice =parseInt(itemPrice);
-console.log($('#bEmail').text())
+		/* 할인하기 */
+	$('#applyDiscountBtn').click(
+			function applyDiscount(){
+				let origP = ${sale.sPrice}
+				let discP=$('#pointToUse').val()
+				alert(discP);
+				alert(origP);
+				$('#discountFee').text(discP);
+				let netP = origP-discP
+				$('#totalAmount').text(netP)	
+				alert(netP)
+				}
+		);
+		
 	$("#payment_process").click(
         function requestPay() {
            var IMP = window.IMP; // 생략가능
            IMP.init("imp25885979");
-           // IMP.request_pay(param, callback) 결제창 호출
-           IMP.request_pay({ // param
-               pg: "html5_inicis",
-               pay_method: "card",
-               merchant_uid: "ORD20180131-0000012",
-               name: $('#itenName').text()+"를 구매",
-               amount: itemPrice,
-               buyer_email: $('#bEmail').text(),
-               buyer_name: $('#buyer').text(),
-               buyer_tel: $('#bPhone').text(),
-               buyer_addr: $('#bAddress').text(),
-               buyer_postcode: "우편번호",
-               m_redirect_url: 'localhost/gummarket/payresult.doBB'
-           }, function (rsp) { // callback
-               console.log(rsp);
-               if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-                   // jQuery로 HTTP 요청
-                   var msg = "결제가 완료되었습니다.";
-                   msg += '고유ID : ' + rsp.imp_uid;
-                   msg += '상점 거래ID : ' + rsp.merchant_uid;
-                   msg += '결제 금액 : ' + rsp.paid_amount;
-                   msg += '카드 승인번호 : ' + rsp.apply_num;
-                   
-               } else {
-                   alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
-               }
-               alert(msg);
-           });
+           let buyerName= $('#buyer').text();
+           let buyerId='${member.mId}';
+           let sNo = "${sale.sNo}";
+           let productId ="";
+    	   let payMount ="";
+       	   let payConfirmNum="";
+       	   
+       	IMP.request_pay({ // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: "${sale.sNo }_${sale.sTitle }_${sale.mId }"+new Date().getTime(),
+            name: "${sale.sTitle }",
+            amount: $('#totalAmount').text(),
+            buyer_email: $('#bEmail').text(),
+            buyer_name: $('#buyer').text(),
+            buyer_tel: $('#bPhone').text(),
+            buyer_addr: $('#bAddress').text(),
+            buyer_postcode: "우편번호",
+            m_redirect_url: 'http://localhost/gummarket/payresult.doBB'
+        }, function (rsp) { // callback
+            console.log(rsp);
+     	   	var msg="";
+            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+			 
+            alert("결제 성공");
+            
+            /* 결제 성공 시 결과 저장 */
+            $.ajax({
+         	   url:'payresult.doBB', //'../AddItemServlet.do'
+	   	            method: 'post',
+	   	            data: {
+	   	            	buyerId: buyerId,
+            			sNo: sNo,
+            			productId: rsp.merchant_uid,
+            			paymentAmount: rsp.paid_amount,
+            			payConfirmNum:rsp.apply_num
+	   	            },
+	   	            success: function(response){
+	   	            	console.log(response);
+	   	            	$('#toPayResult').submit();
+	   	            	
+	   	            },
+	   	            error: function (reject) {
+	   	                console.error(reject);
+	   	            } 
+            	});
+            
+            	$('#toPayResult').submit();
+            } else {	
+	               alert("결제에 실패하였습니다. :" + rsp.error_msg);
+            }
+        	
+        });
+                      
        }
    );
-
+            
 });
+
+
+
+
 
 </script>
 
@@ -131,11 +172,12 @@ console.log($('#bEmail').text())
 			<!-- 적립금 사용 -->
 			<div class="card-header py-3" style="float:right;">적립금 사용하기</div>
 			<div class="card-body mb-2"style="float:right;" >
-				<div class="">
-					<p>보유한 포인트 : <span id="usablePoint">${member.buyPoint }</span>원</p>
+				<div class="discountArea">
+					<p>보유한 포인트 : <span id="usablePoint">${member.reviewPoint }</span>원</p>
 					<p>사용할 포인트 : 
-					<input type="text" id="toUsePoint" name = "pointUse" placeholder="얼마를 사용하시겠습니까?">
-                        <button class="btn btn-warning">사용</button></p>
+					
+					<input type="text" id="pointToUse" name = "pointToUse" placeholder="얼마를 사용하시겠습니까?">
+                        <button id="applyDiscountBtn" class="btn btn-warning">사용</button></p>
 				</div>
 				
 			</div>
@@ -149,9 +191,9 @@ console.log($('#bEmail').text())
 					<div class="col-lg-9">
 						<p>상품금액 : <span>${sale.sPrice }</span></p>
 						<!-- 배송비 칼럼? -->
-						<p>배송비 : <span id="shippingFee">${sale.sPrice }</span></p>
+						<p>배송비 : <span id="shippingFee">0</span></p>
 						<!-- ?? -->
-						<p>할인금액 : <span id="discountFee">${sale.sPrice }</span></p>
+						<p>할인금액 : <span id="discountFee">0</span></p>
 						<hr>
 						<p>총액 : <span id="totalAmount">${sale.sPrice }</span></p>
 					</div>
@@ -175,6 +217,13 @@ console.log($('#bEmail').text())
 	<!-- /.container-fluid -->
 	</div>
 	</div>
+	
+	
+	<!-- 페이지이동 폼 -->
+	<form id="toPayResult" name="toPayResult" action="toPayResult.doBB"></form>
+	
+	
+	
 	<!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -200,9 +249,10 @@ console.log($('#bEmail').text())
             </div>
         </div>
     </div>
-	
- 
- 
-	
+    
+<script>
+
+
+</script>
 </body>
 </html>
