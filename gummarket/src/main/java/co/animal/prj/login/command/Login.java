@@ -24,7 +24,7 @@ public class Login implements Command {
 		String page = "";
 		String state ="ON";
 		
-		if (vo.getmId() !=null){
+		if (vo !=null){
 			
 			System.out.println(vo.getNickname()+vo.getmId()+vo.getRole() +"  Login.java");
 			

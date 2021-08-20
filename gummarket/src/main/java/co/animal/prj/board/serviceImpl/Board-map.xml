@@ -16,8 +16,6 @@
 	
 	<select id="boardSelectListNotice"
 		resultType="co.animal.prj.board.vo.BoardVO">
-		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
-		<!-- resultType, parameterType => VO객체위치 -->
 			<![CDATA[select * from board where bcategory = 'notice' and bison <> 'd']]>
  
 		<!-- SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd' -->
@@ -29,7 +27,7 @@
 	</select>
 	
 	<insert id="boardInsert" parameterType="co.animal.prj.board.vo.BoardVO">
-		insert into board values(b_seq.nextval, #{bCategory}, #{bTitle}, #{bDate}, #{bContents}, default, default, #{mId}, default)
+		insert into board values(b_seq.nextval, #{bCategory}, #{bTitle}, #{bDate}, #{bContents}, default, default, #{mId}, default, #{bImg})
 		<selectKey keyProperty="bNo" resultType="Integer" order="AFTER">
                 select b_seq.CURRVAL FROM DUAL
         </selectKey>
