@@ -105,7 +105,7 @@
 								</form>
 							</div>
 							<div class="form-group">
-								<a href="searchId.do">아이디/비밀번호 찾기</a><br> 회원이
+								<a href="searchIdForm.do">아이디</a>/<a href ="searchPassForm.do">비밀번호 찾기</a><br> 회원이
 								아니신가요?&nbsp;&nbsp;<a href="registerForm.do">회원가입</a>
 							</div>
 						</div>

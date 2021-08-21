@@ -26,7 +26,7 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select s.*, i.imgpath, c.ccontents, c.cmid
+		select s.*, i.imgpath, c.ccontents, c.cmid, c.cNo
 		from sales s 
 		left outer join comments c
 		on s.sno = c.cmainnum
@@ -77,7 +77,18 @@
 		update sales set slike = slike+1 where sno = #{sNo}
 	</update>
 	
-	
+	<select id="findClothing" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where scategory='clothing' and shide='n'
+	</select>
+	<select id="findFood" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where scategory='food' and shide='n'
+	</select>
+	<select id="findEtc" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where scategory='etc' and shide='n'
+	</select>
+	<select id="findShare" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where scategory='free' and shide='n'
+	</select>
 <!--  	
 	
 	<insert id="" parameterType="">

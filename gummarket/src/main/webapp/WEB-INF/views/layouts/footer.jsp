@@ -31,14 +31,13 @@
                 <div>
                 <!-- when not login send user to loginForm.do -->
                 <c:if test="${not empty session.mId }">
-				 <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
-				</c:if>
+                  <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+                </c:if>
                 <c:if test="${empty session.mId }">
-				 <a href="loginForm.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
-				</c:if>
-                
-                
-                    <span><a href="cscForm.do" class="customer-service-link">고객센터</a></span>
+                  <a href="loginForm.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
+                </c:if>
+          <span><a href="myCscList.do" class="customer-service-link">고객센터</a></span>
+
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; 개껌장터 2021</span>
