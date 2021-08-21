@@ -15,6 +15,8 @@ public interface MemberServiceMapper {
 	public MemberVO emailDupleCheck(MemberVO vo);
 	//주윤 결제과정 포인트사용
 	public int usedPointUpdate(MemberVO vo);
+	//juyun payment -> shipping info update
+	public int shippingInfoUpdate(MemberVO vo);
 }
 	
 

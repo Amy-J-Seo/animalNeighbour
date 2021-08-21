@@ -9,24 +9,28 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM member
 	</select>
+  	
   	<select id="Login" resultType="co.animal.prj.member.vo.MemberVO">
 		select nickname, role, mId,state from member where mId=#{mId} and password=#{password}
-		
 	</select>
 	
 	<select id="checkId" resultType="Integer">
 	select count(mId) from member where mId=#{mId}
 	</select>
+	
 	<select id="emailDupleCheck" resultType="co.animal.prj.member.vo.MemberVO">
 	SELECT email FROM member WHERE email=#{email}
 	</select>
+	
 	<insert id="memberInsert" parameterType="co.animal.prj.member.vo.MemberVO">
 	INSERT INTO member(mId,password,mName,nickname,phone,email,petInfo,address)
 	VALUES(#{mId},#{password},#{mName},#{nickname},#{phone},#{email},#{petInfo},#{address})
 	</insert>
+	
 	<select id="memberSelect" resultType="co.animal.prj.member.vo.MemberVO">
 		SELECT* FROM member WHERE mId=#{mId}
 	</select>
+	
 	<update id="memberUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
 	UPDATE member SET mId=#{mId},mName=#{mName},nickname=#{nickname},address=#{address},phone=#{phone}
 	,petInfo=#{petInfo},reviewPoint=#{reviewPoint},role=#{role},state=#{state},password=#{password}
@@ -36,4 +40,10 @@
 	<update id="usedPointUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
 		update member set reviewPoint = reviewPoint - #{reviewPoint} where mid=#{mId}
 	</update>
+	
+	<update id="shippingInfoUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
+		update member set shippinginfo = #{shippingInfo} where mid=#{mId}
+	</update>
+	
+	
 </mapper>

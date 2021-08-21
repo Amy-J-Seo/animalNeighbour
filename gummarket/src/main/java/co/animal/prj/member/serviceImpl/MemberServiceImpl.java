@@ -47,4 +47,8 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return map.usedPointUpdate(vo);
 	}
+	@Override
+	public int shippingInfoUpdate(MemberVO vo) {
+		return map.shippingInfoUpdate(vo);
+	}
 }

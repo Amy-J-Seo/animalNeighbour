@@ -15,14 +15,6 @@ function getDetails(num) {
 	getFhNo.submit();
 }
 
-/* ajax start */
-$(document).ready(function () {
-
-})
-
-
-
-
 
 </script>
 

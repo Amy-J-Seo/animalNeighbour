@@ -110,7 +110,7 @@
 								<a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 								</a>
-								<a class="dropdown-item" href="">
+								<a class="dropdown-item" href="memberMyPage.doBB?mId=${session.mId }">
 									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
 								</a>
 								<a class="dropdown-item" href="#"> 

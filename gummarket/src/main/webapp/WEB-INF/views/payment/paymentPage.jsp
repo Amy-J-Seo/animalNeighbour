@@ -21,26 +21,53 @@
 
 <script>
 $(document).ready(function(){
+	
+	/* 배송요청사항 */
+	$('#shippingInfoSaveBtn').on('click', function(){
+		let shippingRequest = $('#bRequest').val()
+		alert(shippingRequest);
+		$('#bShippingInfo').text(shippingRequest);
+		
+		/* 적용버튼 누르면 디비업데이트 */
+		$.ajax({
+         	   url:'UpdateShippingInfoServlet', //'../AddItemServlet.do'
+	   	            method: 'post',
+	   	            data: {
+	   	            	usedPoint: discP,
+            			mId:buyerId
+	   	            },
+	   	            success: function(response){
+	   	            	console.log(response);
+	   	            },
+	   	            error: function (reject) {
+	   	                console.error(reject);
+	   	            } 
+            	});
+		
+		
+	})
+	
+	
 		/* 할인하기 */
 	$('#applyDiscountBtn').click(
 			function applyDiscount(){
 				let origP = ${sale.sPrice};
-				let discP=$('#pointToUse').val();
-				$('#discountFee').text(discP);
-				let netP = origP-discP;
+				let point=$('#pointToUse').val();
+				$('#discountFee').text(point);
+				let netP = origP-point;
 				$('#totalAmount').text(netP);	
 				let buyerId='${member.mId}';
 				
 				/* 적용버튼 누르면 디비업데이트 */
 				$.ajax({
-		         	   url:'updatePointServlet', //'../AddItemServlet.do'
+		         	   url:'UpdatePointServlet', //'../AddItemServlet.do'
 			   	            method: 'post',
 			   	            data: {
-			   	            	usedPoinst: discP,
+			   	            	usedPoint: $('#pointToUse').val(),
 		            			mId:buyerId
 			   	            },
-			   	            success: function(){
-			   	            	alert('fff');
+			   	            success: function(response){
+			   	            	console.log(response);
 			   	            },
 			   	            error: function (reject) {
 			   	                console.error(reject);
@@ -104,7 +131,7 @@ $(document).ready(function(){
             
             	$('#toPayResult').submit();
             } else {	
-	               alert("결제에 실패하였습니다. :" + rsp.error_msg);
+	               alert("결제에 실패하였습니다. " + rsp.error_msg);
             }
         	
         });
@@ -149,8 +176,9 @@ $(document).ready(function(){
 					<p>주소 : <span id="bAddress">${member.address }</span></p>
 					<p>이메일 : <span id="bEmail">${member.email }</span></p>
 					<p>전화번호 : <span id="bPhone">${member.phone }</span></p>
-					<p>배송요청 : <input type="text" id="bRequest" name = "request">
-					<button class="btn btn-warning">저장</button></p>
+					<p>배송요청사항 : <span id="bShippingInfo">${member.shippingInfo }</span></p>
+					<p>배송요청 업데이트 : <input type="text" id="bRequest" name = "request">
+					<button id="shippingInfoSaveBtn" class="btn btn-warning">저장</button></p>
 				</div>
 				<div class="col-lg-3">
 					<div style="float:right;">

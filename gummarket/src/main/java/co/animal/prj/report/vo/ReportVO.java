@@ -5,21 +5,22 @@ public class ReportVO {
 	private int mainNo;
 	private String rWhy;
 	private String category;
+	private String mId;
+	
 	
 	public ReportVO() {
 		super();
 	}
-	
 	public int getrNo() {
 		return rNo;
 	}
 	public void setrNo(int rNo) {
 		this.rNo = rNo;
 	}
-	public int getmainNo() {
+	public int getMainNo() {
 		return mainNo;
 	}
-	public void setmainNo(int mainNo) {
+	public void setMainNo(int mainNo) {
 		this.mainNo = mainNo;
 	}
 	public String getrWhy() {
@@ -31,15 +32,21 @@ public class ReportVO {
 	public String getCategory() {
 		return category;
 	}
-
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
+	public String getmId() {
+		return mId;
+	}
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
 	@Override
 	public String toString() {
-		return "ReportVO [rNo=" + rNo + ", mainNo=" + mainNo + ", rWhy=" + rWhy + ", category=" + category + "]";
+		return "ReportVO [rNo=" + rNo + ", mainNo=" + mainNo + ", rWhy=" + rWhy + ", category=" + category + ", mId="
+				+ mId + "]";
 	}
+	
 	
 
 }

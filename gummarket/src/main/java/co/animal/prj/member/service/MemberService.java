@@ -15,4 +15,6 @@ public interface MemberService {
 	public MemberVO emailDupleCheck(MemberVO vo);
 	//주윤 결제과정 포인트사용
 	public int usedPointUpdate(MemberVO vo);
+	//주윤 결제과정 배송요청 업데이트
+	public int shippingInfoUpdate(MemberVO vo);
 }

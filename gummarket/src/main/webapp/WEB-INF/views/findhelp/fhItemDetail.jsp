@@ -24,9 +24,11 @@ $(document).ready(function () {
                 url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
                 method: 'post',
                 //data: $('#fhReport').serialize(),
-                data: {category: $('#itemCategory').text(),
+                data: {
+                		category: $('#itemCategory').text(),
                 		rWhy: $('#fhReport input[name="reason"]').val(),
-                		mainNo: $('#fhReport #fhNo').val()
+                		mainNo: $('#fhReport #fhNo').val(),
+                		mId:'${session.mId}'
                 },
                 dataType: 'json',
                 success: function(response){

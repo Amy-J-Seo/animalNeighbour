@@ -290,7 +290,8 @@
                 //data: $('#fhReport').serialize(),
                 data: {category: $('#itemCategory').text(),
                 		rWhy: $('#fhReport input[name="reason"]').val(),
-                		mainNo: $('#fhReport #fhNo').val()
+                		mainNo: $('#fhReport #fhNo').val(),
+                		mIdL '${session.mId}'
                 },
                 dataType: 'json',
                 success: function(response){
