@@ -95,13 +95,7 @@ $(document).ready(function () {
     		        
     		            const divMain = $('<div /> ').addClass('d-flex align-items-center');
     		            let img = $('<img />').attr("src","img/undraw_profile_1.svg").css('width', "2rem").css('height','2rem');
-    		            let userName = $('<span />').css("font-size", "1.5rem").addClass("pl-2");
-    		            let nameModal= $('<a />').attr({
-                            "id":"memberInfoModal",
-                            "data-toggle":"modal",
-                            "data-target":"memberInfo"
-                        }).text(data[i]['cmId']);
-    		            $(userName).append(nameModal);
+    		            let userName = $('<span />').css("font-size", "1.5rem").addClass("pl-2").text(data[i]['cmId']);
     		            const blankSpace = $('<span />').css("margin-left", "30px").text("   ");
     		            let comment = $('<span />').attr('id', data[i]['cNo']+"selectedComment").css("font-size", "1.5rem").text(data[i]['cContents']);
     		            $(divMain).append(img, userName, blankSpace, comment);
@@ -127,11 +121,13 @@ $(document).ready(function () {
     		//댓글 입력 ajax
     		$('#reply').on('submit', function (event) {
     			event.preventDefault();
+    			
+    			console.log($('#reply').attr('action'))
     			let s = $('#reply').serialize();
 
     			//폼 전송처리
     			$.ajax({
-    				url: 'FhCommentInsertServlet', //='../AddItemServ.do'
+    				url: $('#reply').attr('action'),
     				method: 'post',
     				data: $('#reply').serialize(), //파라미터로 넘김
     				dataType: 'json', //받아오는 값
@@ -140,29 +136,8 @@ $(document).ready(function () {
     					console.error(reject);
     				}
     			})
-    		});
+    		})
     		
-    		//멤버인포모달 판매물품 가져오기
-    		$('#memberInfoModal').on('click', function(e){
-    			e.preventDefault();
-    			console.log($('#memberInfoModal').text());
-    			
-    			//멤버의 판매물품 hit순으로 세개 가져오기
-    			$.ajax({
-    				url: 'GetMemberTopThreeSItemServlet', //='../AddItemServ.do'
-    				method: 'post',
-    				data: {
-    					mId: '${item.mId}'
-    				},
-    				dataType: 'json', //받아오는 값
-    				success: addToModal,
-    				error: function (reject) {
-    					console.error(reject);
-    				}
-    			})
-    			
-    			
-    		});
     		
 });
 //end of ajax
@@ -215,6 +190,7 @@ let fields = ['cmId', 'cContents'];
 	           	}   
         
         $('#commentsBody').append(divCase);
+        $('#reply #cContent').val("");
 	}
 	//End of comment insert
 	
@@ -337,10 +313,8 @@ function fhItemDelete(n) {
 					 <a class="btn btn-danger btn-sm ml-3" style="float:right;" href="#" data-toggle="modal"
 					data-target="#reportModal" ><i class="fas fa-bullhorn"></i> 신고하기</a>
 					
-					<c:if test="${item.fhLike > 0 }">
 						<span class="pr-3" style="float:right; font-size: 20px;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}
 					</span>
-					</c:if>
 					
 				</div>
 				
@@ -377,7 +351,7 @@ function fhItemDelete(n) {
 					     <i class="fa fa-comment fa"></i> Comments
 					</div>
 					<div class="card-body">
-						<form id="reply" action="FhCommentsInsertServlet" method="post">
+						<form id="reply" action="FhCommentInsertServlet" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>

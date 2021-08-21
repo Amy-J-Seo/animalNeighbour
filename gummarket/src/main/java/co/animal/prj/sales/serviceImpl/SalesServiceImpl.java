@@ -75,4 +75,9 @@ public class SalesServiceImpl implements SalesService {
 		return map.salesListTop3(vo);
 	}
 
+	@Override
+	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo) {
+		return map.salesSelectListByKeyWord(vo);
+	}
+
 }

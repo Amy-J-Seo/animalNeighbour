@@ -23,7 +23,7 @@ public class BoardDetail implements Command {
 		
 		vo.setbNo(bNo);
 		vo.setbHit(bHit);
-		dao.bUpdateLike(vo);
+		dao.bUpdateHit(vo);
 				
 		request.setAttribute("item", dao.boardSelect(vo));
 		

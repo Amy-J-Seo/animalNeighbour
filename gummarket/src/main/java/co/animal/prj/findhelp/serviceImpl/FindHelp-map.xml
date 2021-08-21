@@ -11,6 +11,10 @@
 		select * from findhelp where fhhide='n'
 	</select>
 	
+	<select id="findHelpSelectListByKeyWord" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		SELECT * FROM findhelp WHERE fhtitle like '%'||#{fhTitle}||'%' and fhhide='n'
+	</select>
+	
 	<select id="findHelpLike" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
 	select * from findhelp where fhno=#{fhNo}
 	</select>

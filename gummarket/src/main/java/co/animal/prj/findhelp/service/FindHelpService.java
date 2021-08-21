@@ -7,6 +7,7 @@ import co.animal.prj.findhelp.vo.FindHelpVO;
 
 public interface FindHelpService {
 	public List<FindHelpVO> findHelpSelectList();
+	public List<FindHelpVO> findHelpSelectListByKeyWord(FindHelpVO vo);
 	public FindHelpVO findHelpSelect(FindHelpVO vo);
 	public FindHelpVO findHelpLike(FindHelpVO vo);
 	public int findHelpUpdate(FindHelpVO vo);

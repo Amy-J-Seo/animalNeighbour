@@ -23,6 +23,10 @@
     	]]>
  
 	</select>
+	<!-- keyword search -->
+		<select id="salesSelectListByKeyWord" resultType="co.animal.prj.sales.vo.SalesVO">
+		SELECT * FROM sales WHERE stitle like '%'||#{sTitle}||'%' and shide='n'
+	</select>
 	
 	<!-- top3 인기상품 조회하기 -->
 	<select id="salesListTop3" resultType="co.animal.prj.sales.vo.SalesVO">

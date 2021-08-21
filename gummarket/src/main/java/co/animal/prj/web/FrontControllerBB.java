@@ -30,8 +30,10 @@ import co.animal.prj.findhelp.command.FhItemUpdateForm;
 import co.animal.prj.findhelp.command.FhTest;
 import co.animal.prj.findhelp.command.FindHelpInsert;
 import co.animal.prj.findhelp.command.FindHelpMain;
+import co.animal.prj.findhelp.command.KeywordSearch;
 import co.animal.prj.findhelp.command.TotalCareTableView;
 import co.animal.prj.findhelp.command.WriteFHForm;
+import co.animal.prj.member.command.MemberMyPage;
 import co.animal.prj.payment.command.MakePayment;
 import co.animal.prj.payment.command.Payresult;
 import co.animal.prj.payment.command.ToPayResult;
@@ -61,6 +63,7 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/fhItemUpdate.doBB", new FhItemUpdate());
 		map.put("/fhItemUpdateForm.doBB", new FhItemUpdateForm());
 		map.put("/fhItemDelete.doBB", new FhItemDelete());
+		map.put("/keywordSearch.doBB", new KeywordSearch());
 		
 		//주윤 맵 이벤트+노티스
 		map.put("/eventMain.doBB", new EventMain());
@@ -78,6 +81,10 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/totalEventTable.doBB", new TotalEventTable()); //전체이벤트테이블
 		map.put("/rSelectList.doBB", new RSelectList()); //전체 신고리스트
 		map.put("/totalCareTableView.doBB", new TotalCareTableView()); //전체 도움주고받기 테이블 뷰 ..
+		
+		//주윤 유저 마이페이지
+		map.put("/memberMyPage.doBB", new MemberMyPage());
+		
 		
 		//주윤 거래아이템 결제 페이지
 		map.put("/makePayment.doBB", new MakePayment());

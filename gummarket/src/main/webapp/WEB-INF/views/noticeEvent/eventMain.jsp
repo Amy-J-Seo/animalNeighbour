@@ -63,8 +63,10 @@ function getDetails(n, h) {
 	                    <div class="card-body pt-4 pr-4 pl-4 pb-0">
 	                        <div class="text-center">
 	                            <!-- find help title-->
-	                            <h5 class="fw-bolder">${item.bTitle}</h5>
-	                            <h6>${item.bCategory } : ${item.bHit }</h6>
+	                            <h4 class="fw-bolder">${item.bTitle}</h4>
+	                            <h5>${item.bCategory }</h5>
+	                            
+	                            조회수: ${item.bHit }
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->

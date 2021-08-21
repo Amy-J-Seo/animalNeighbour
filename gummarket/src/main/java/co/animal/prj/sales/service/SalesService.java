@@ -19,4 +19,6 @@ public interface SalesService {
 	
 	//주윤 멤버정보모달 탑3 아이템 조회
 	public List<SalesVO> salesListTop3(SalesVO vo);
+	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo); //searchBar
+	
 }

@@ -18,14 +18,13 @@
 				<!-- Main Content -->
 				<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
 					<!-- 검색창 -->
-					<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
+					<form id="searchFrm" name="searchFrm" method="post" action="KeywordSearchSales.do" class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" style="background-color: rgb(244, 244, 244);"
-								placeholder="Search for..." aria-label="Search"
+							<input  id="keyWord" name="keyWord" type="text" class="form-control bg-light border-0 small" style="background-color: rgb(244, 244, 244);"
+								placeholder="Search title for..." aria-label="Search"
 								aria-describedby="basic-addon2">
 							<div class="input-group-append">
-							<!-- 서치버튼 색 바꾸고 싶으면 바꾸어도 됩니다. -->
-								<button class="btn btn-primary" type="button" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
+								<button id="searchBtn" class="btn btn-primary" type="submit" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
 									<i class="fas fa-search fa-sm"></i>
 								</button>
 							</div>

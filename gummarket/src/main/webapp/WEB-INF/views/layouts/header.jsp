@@ -18,9 +18,32 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.css" rel="stylesheet">
+<style type="text/css">
+
+	@font-face {
+	    font-family: 'SeoulNamsanM';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'Cafe24SsurroundAir';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	@font-face {
+	    font-family: 'Cafe24Ssurround';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+</style>
+
 </head>
 
-<body>
+<body  style="font-family: SeoulNamsanM;">
 	<!-- Page Wrapper -->
 	<div>
 
@@ -29,7 +52,7 @@
 
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
-				style="height: 2rem; background-color: rgb(252, 221, 33);">
+				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
 
 					<!-- 노란헤더 이벤트, 공지사항 링크 -->
@@ -61,16 +84,12 @@
 					style="width: 85px; height: 85px;"></a>
 				</c:if>
 				
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ml-auto" style="font-family: SeoulNamsanM; font-size:35px">
 					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
-					<li style="margin: auto;"><a href="salesListAll.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">&nbsp;중고장터</a>&nbsp;
-						|&nbsp; <a href="findHelpMain.doBB"
-						style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a>
-						&nbsp;|&nbsp; <a href="offerHelpMain.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요&nbsp;</a>
-						&nbsp;|&nbsp; <a href="lostMain.do"
-						style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기&nbsp;</a></li>
+					<li style="margin: auto;">
+						<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>
+						&nbsp;|&nbsp; <a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a>
+					</li>
 						
 						
 				</ul>
@@ -79,16 +98,13 @@
 					<!-- 사용자 세션 로그인 기록에 아이디가 있으면 이름과 사진 보여주기 -->
 					<c:if test="${not empty session.mId }">
 						<!-- Nav Item - User Information -->
-						<li class="nav-item dropdown no-arrow"><a
-							class="nav-link dropdown-toggle" href="#" id="userDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">
-									${session.nickname }님</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+						<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="mr-2 d-none d-lg-inline text-gray-600 large">${session.nickname }님</span>
+							<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 						</a> 
 						<!-- Dropdown - User Information -->
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown" style="font-size: 15px">
 								<!-- 유저 로그인 시 -->
 								<c:if test="${session.role eq 'USER' }">
 								<a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
