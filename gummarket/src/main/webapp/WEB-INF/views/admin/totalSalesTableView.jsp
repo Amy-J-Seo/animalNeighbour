@@ -50,6 +50,7 @@
                                  <th>작성자</th>
                                  <th>카테고리</th>
                                  <th>제목</th>
+                                 <th>조회수</th>
                                  <th>상태</th>
                                  <th>글 숨김유무</th>
                              </tr>
@@ -76,7 +77,10 @@
                      </form>
                  </div>
              </div>
-
+				
+				
+				
+			<c:if test="${session.role eq 'ADMIN' }">
              <!-- return to menu btn...  and to the list btn -->
              <div class="pb-3 mx-auto" style="align-items: center;">
                  <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"
@@ -84,6 +88,17 @@
                      <i class="fas fa-user-cog fa-2x"></i>&nbsp;  관리자 메인으로</button>
              </div>
              <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
+            
+             <c:if test="${session.role eq 'USER' }">
+             <!-- return to menu btn...  and to the list btn -->
+             <div class="pb-3 mx-auto" style="align-items: center;">
+                 <button class="btn btn-md mr-5" type="button" onclick="location.href='memberMyPage.doBB'"
+                     style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+                     <i class="fas fa-user fa-2x"></i>&nbsp;  유저 메인으로</button>
+             </div>
+             <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
          </div>
 
      </div>

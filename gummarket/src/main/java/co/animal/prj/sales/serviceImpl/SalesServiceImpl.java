@@ -80,4 +80,9 @@ public class SalesServiceImpl implements SalesService {
 		return map.salesSelectListByKeyWord(vo);
 	}
 
+	@Override
+	public List<SalesVO> salesListByMember(SalesVO vo) {
+		return map.salesListByMember(vo);
+	}
+
 }

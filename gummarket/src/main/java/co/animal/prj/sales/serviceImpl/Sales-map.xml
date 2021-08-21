@@ -3,7 +3,6 @@
 <mapper
 	namespace="co.animal.prj.sales.service.SalesServiceMapper">
 	<!-- ServiceMapper interface 위치 -->
-	
 	<!-- 주의! shide='n'인 애들만 데려오기! -->
 	
 	<!-- 상품 전체 조회 -->
@@ -23,8 +22,9 @@
     	]]>
  
 	</select>
+	
 	<!-- keyword search -->
-		<select id="salesSelectListByKeyWord" resultType="co.animal.prj.sales.vo.SalesVO">
+	<select id="salesSelectListByKeyWord" resultType="co.animal.prj.sales.vo.SalesVO">
 		SELECT * FROM sales WHERE stitle like '%'||#{sTitle}||'%' and shide='n'
 	</select>
 	
@@ -50,6 +50,11 @@
 		where (i.itype = 'sales' or c.ctype = 'sales') and s.sno= #{sNo}
 	</select>
 	
+	<!-- 사용자 판매상품 리스트 조회 -->
+	<select id="salesListByMember" resultType="co.animal.prj.sales.vo.SalesVO">
+		select * from sales where mId=#{mId} and shide='n'
+	</select>
+	
 	<!-- 수정위한 개별상품 조회 (댓글 없이) -->
 	<select id="salesOne" resultType="co.animal.prj.sales.vo.SalesVO">
 		select * from sales where sno=#{sNo}
@@ -60,7 +65,6 @@
 	<delete id="salesDelete" parameterType="co.animal.prj.sales.vo.SalesVO">
 		update sales set shide ='y' where sno=#{sNo}
 	</delete>
-	
 	
 	
 	<!-- 상품등록 -->
@@ -93,9 +97,6 @@
 	</update>
 	
 	
-<!--  	
-	
-	<insert id="" parameterType="">
 
-	</insert>-->
+
 </mapper>

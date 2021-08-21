@@ -9,9 +9,9 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM report
 	</select>
-	<!-- <select id="" resultType="">
-
-	</select> -->
+	<select id="reportSelectListByMember" resultType="co.animal.prj.report.vo.ReportVO">
+		SELECT * FROM report where mId=#{mId}
+	</select>
 	<insert id="reportInsert" parameterType="co.animal.prj.report.vo.ReportVO">
 		insert into report values(r_seq.nextval,#{rWhy},#{category},#{mainNo}, #{mId})
 	</insert>

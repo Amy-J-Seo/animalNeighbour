@@ -33,6 +33,10 @@
             <div class="card shadow mb-4 mr-4 ml-4 pl-3 pr-3">
 
                 <div class="card-body">
+                <c:if test="${not empty message }">
+                <div class="text-center" style="font-size: 50px">${message }</div>
+                </c:if>
+             	 <c:if test="${not empty list }">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -63,15 +67,28 @@
                              <input type="hidden" id="category" name="category">
                         </form>
                     </div>
+                     </c:if>
                 </div>
 
-                <!-- return to menu btn...  and to the list btn -->
-                <div class="pb-3 mx-auto" style="align-items: center;">
-                    <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"
-                        style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-                        <i class="fas fa-user-cog fa-2x"></i>&nbsp;  관리자 메인으로</button>
-                </div>
-                <!-- end of return to menu btn...  and to the list btn -->
+               <c:if test="${session.role eq 'ADMIN' }">
+             <!-- return to menu btn...  and to the list btn -->
+             <div class="pb-3 mx-auto" style="align-items: center;">
+                 <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"
+                     style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+                     <i class="fas fa-user-cog fa-2x"></i>&nbsp;  관리자 메인으로</button>
+             </div>
+             <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
+            
+             <c:if test="${session.role eq 'USER' }">
+             <!-- return to menu btn...  and to the list btn -->
+             <div class="pb-3 mx-auto" style="align-items: center;">
+                 <button class="btn btn-md mr-5" type="button" onclick="location.href='memberMyPage.doBB?mId=${session.mId}'"
+                     style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+                     <i class="fas fa-user fa-2x"></i>&nbsp;  유저 메인으로</button>
+             </div>
+             <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
             </div>
 
         </div>

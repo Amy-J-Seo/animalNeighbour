@@ -37,6 +37,14 @@ $(document).ready(function () {
 });
 
 
+function getTotalSales(){
+	$('#frmForTotalS').submit();
+}
+function getTotalReports(){
+	$('#frmForTotalR').submit();
+}
+
+
 </script>
 </head>
 <body>
@@ -179,13 +187,16 @@ $(document).ready(function () {
 		            	<div class="card-header py-3">
 							<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 판매글
 							 </h3>
-							 <button class="btn btn-sm mr-1"  onclick="location.href='memberList.do'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+							 <form id="frmForTotalS" name="frmForTotalS" method="post" action="getTotalSales.doBB">
+							 <input id="mIdForTotalS" name="mIdForTotalS" type="hidden" value="${member.mId}">
+							 <button class="btn btn-sm mr-1"  onclick="getTotalSales()" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 							 <i class="fas fa-search-plus"></i> 더보기</button>
+							 </form>
 						</div>
 		                <div class="card-body">
 		                    <div class="row no-gutters align-items-center">
 		                        <div class="col mr-2">
-		                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+		                            <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
 		                                총 물품 수</div>
 		                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
 		                        </div>
@@ -202,14 +213,17 @@ $(document).ready(function () {
 	            	<div class="card-header py-3">
 						<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 신고글
 						 </h3>
+						 <form id="frmForTotalR" name="frmForTotalR" method="post" action="getTotalReports.doBB">
+						 <input id="mIdForTotalR" name="mIdForTotalR" type="hidden" value="${member.mId}">
 						 <!-- To add report table view page link BB-->
-						 <button class="btn btn-sm mr-1"  onclick="location.href='rSelectList.doBB'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+						 <button class="btn btn-sm mr-1"  onclick="getTotalReports()" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 						 <i class="fas fa-search-plus"></i> 더보기</button>
+						 </form>
 					</div>
 	                <div class="card-body">
 	                    <div class="row no-gutters align-items-center">
 	                        <div class="col mr-2">
-	                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+	                            <div class="text-md font-weight-bold text-warning text-uppercase mb-1">
 	                                총 신고 게시글 수</div>
 	                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
 	                        </div>
@@ -234,7 +248,7 @@ $(document).ready(function () {
 	                <div class="card-body">
 	                    <div class="row no-gutters align-items-center">
 	                        <div class="col mr-2">
-	                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+	                            <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
 	                                총 도움주기 수</div>
 	                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
 	                        </div>
@@ -258,7 +272,7 @@ $(document).ready(function () {
 	                <div class="card-body">
 	                    <div class="row no-gutters align-items-center">
 	                        <div class="col mr-2">
-	                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+	                            <div class="text-md font-weight-bold text-warning text-uppercase mb-1">
 	                                총 도움찾기 수</div>
 	                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
 	                        </div>
