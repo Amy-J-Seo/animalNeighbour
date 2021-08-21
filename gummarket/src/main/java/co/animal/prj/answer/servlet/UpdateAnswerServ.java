@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/SelectReplyServ")
-public class SelectReplyServ extends HttpServlet {
+@WebServlet("/UpdateAnswerServ")
+public class UpdateAnswerServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public SelectReplyServ() {
+
+    public UpdateAnswerServ() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -24,7 +24,7 @@ public class SelectReplyServ extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

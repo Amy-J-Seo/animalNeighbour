@@ -20,8 +20,7 @@ public class CsUpdate implements Command {
 		vo.setCsContents(request.getParameter("csContents"));
 		vo.setCsTitle(request.getParameter("csTitle"));
 		cscDao.cscUpdate(vo);
-		
-		
+ 		System.out.println(vo.getCsNo());
 		request.setAttribute("csc", cscDao.cscSelect(vo));
 		return "csc/myCscDetail";
 	}

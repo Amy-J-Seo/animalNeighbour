@@ -34,7 +34,7 @@ $(document).ready(function(){
 	console.log($('#cMainNum'));
 	//전체 데이터 출력.
 	$.ajax({
-		url: 'SelectReplyServ',
+		url: 'SelectAnswerServ',
 		method:'post',
 		dataType: 'json',
 		data: {
@@ -71,21 +71,7 @@ if(data[0]['cNo']!=0){ //글 있을 때만 보이게 하기 위해
 	         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 	         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 	         
-		         //신고하기(신고하기 어디로???)
-		         const reportForm = $('<form/>').attr('action', '#');
-		         const reportBtn 
-		         	= $('<a />').addClass("btn btn-danger btn-sm")
-		         				.attr({
-		         					'href':"#",
-		         					"data-toggle":"modal",
-		         					"data-target":"#reportModal"
-		         					})
-		         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
-	         
-	         reportForm.append(reportBtn);
-	         
-	         reportBtn.click();
-	         
+		        
 	         delBtn.click(kill);
 			 updBtn.click(update);
 	         btnDiv.append(delBtn, updBtn);
@@ -100,7 +86,7 @@ if(data[0]['cNo']!=0){ //글 있을 때만 보이게 하기 위해
 	         $(divCase).append(reportForm);
          }
          
-         
+    $('#commentsBody').html().hide(); // 답변중 h4테그 숨기기! 
 	$('#commentsBody').append(divCase);
 }
       
@@ -159,7 +145,7 @@ function kill(e) {
 	console.log(e.target.parentNode.parentNode);
 	//location.href='../DeleteServ.do?itemNo='+$(this).parent().children().eq(0).text();
 	$.ajax({
-		url: 'DeleteCommentServ',
+		url: 'DeleteAnswerServ',
 		data: {
 			cNo: $(this).parent().parent().attr('id')
 		},
@@ -210,7 +196,7 @@ function updateCom(){
 function updateItemFunc(data){
 	
 	$.ajax({
-		url: 'UpdateCommentServ',
+		url: 'UpdateAnswerServ',
 		data: {
 			cNo: $(this).parent().attr('id')
 		},
@@ -250,21 +236,46 @@ function updateItemFunc(data){
 			</div>
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">
-					<img class="card" src="img/cscPic2.png" width="350px" height="300px">
+					<img class="card" src="img/1market.png" width="350px" height="300px">
 				</div>
 				<br><br />
 				<hr>				   
 				<div class="card-header py-3">
-					${csc.mId } : ${csc.csTitle }
+					<i class="fas fa-paw"></i>작성자 : ${csc.mId }&nbsp;|&nbsp;
+					<i class="fas fa-paw"></i>글 제목 : ${csc.csTitle }&nbsp;|&nbsp;
+					<i class="fas fa-paw"></i>작성일 : ${csc.csDate } 
 				</div>
 				
 				<div class="card-body">
+					<!-- 관리자만 회원 등급, 이메일, 번호 볼 수 있게? -->
+					<c:if test="${session.role == 'ADMIN' }">
+						전화번호 : ${csc.phone }<br>
+						이메일 : ${csc.email} <br>
+						등급 : ${csc.grade }<br>
+						
+					</c:if>
+				
 					<div>
-					${csc.csContents }
+						문의하신 내용: <br>
+						${csc.csContents }
 					</div>
 				</div>
 			</div>
 			<p></p>
+			<!-- 답변 대기중 화면 => 답변 달리면 그 답변이 올라오게! -->
+			<div class="card mb-2">
+				<div class="card-header bg-light">
+				     <i class="fa fa-comment fa"></i> 답 변 
+				</div>
+				<div class="card-body">
+					<div id="commentsBody" align="center">
+						<br>
+						<h4>조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
+						<br>
+					</div>
+				</div>
+			</div>
+				<p></p>
 			<c:if test="${session.role =='ADMIN' }">
 				<!-- 답글 입력 -->
 				<div class="card mb-2">
@@ -272,11 +283,11 @@ function updateItemFunc(data){
 					     <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
-						<form id="reply" action="CommentInsertServ" method="post">
+						<form id="reply" action="AnswerInsertServ" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 								<input type="hidden" id="csNo" name="csNo" value="${list[0].csNo }">
-								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+									<textarea class="form-control" id="aContent" name="aContent" rows="3"></textarea>
 								<button type="submit" class="btn btn-dark mt-3">post reply</button>
 							    </li>
 							</ul>

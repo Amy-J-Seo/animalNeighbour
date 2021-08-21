@@ -14,11 +14,15 @@
 		select * from csc where mid=#{mId}
 	</select>
 	<select id="cscSelect" resultType="co.animal.prj.csc.vo.CscVO">
-		select * from csc where csno=#{csNo}
+		select c.*, m.*
+		from csc c
+		join member m
+		on c.mid=m.mid
+		where c.csno=#{csNo}
 	</select>
 	
 	<insert id="cscInsert" parameterType="co.animal.prj.csc.vo.CscVO">
-		insert into csc values(cs_seq.nextval, #{mId},#{csTitle},#{csContents},sysdate,'n','y')
+		insert into csc values(cs_seq.nextval, #{mId},#{csTitle},#{csContents},sysdate,'n','n')
 		<selectKey keyProperty="csNo" order="AFTER"  resultType="int" >
 			SELECT cs_seq.currval from dual 
 		</selectKey>
@@ -30,6 +34,12 @@
 	<update id="cscUpdate" parameterType="co.animal.prj.csc.vo.CscVO">
 		update csc set cstitle=#{csTitle}, cscontents =#{csContents} where csno =#{csNo} 
 	</update>
+	
+	<!-- 답변 달면 status n->y로 바꿔주기! -->
+	<update id="cscAnswer">
+		update csc set csstatus ='y' where csno=#{csNo}
+	</update>
+	
 <!--  	
 	<insert id="" parameterType="">
 

@@ -2,7 +2,9 @@ package co.animal.prj.csc.vo;
 
 import java.sql.Date;
 
-public class CscVO {
+import co.animal.prj.member.vo.MemberVO;
+
+public class CscVO extends MemberVO{
 	private int csNo;
 	private String mId;
 	private String csTitle;

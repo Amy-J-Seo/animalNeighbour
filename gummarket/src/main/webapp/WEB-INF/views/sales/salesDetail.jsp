@@ -9,6 +9,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
+<style>
+	table {
+		  border-collapse: separate;
+		  border-spacing: 2000px 100px; !important
+		}
+</style>
+
 <script>
 	
 	
@@ -350,6 +357,17 @@
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">${list[0].sTitle }</div>
 						<div class="card-body">
+							<table>
+								<tr>
+									<td ><i class="fas fa-user-check"></i>판매자 </td><td>&nbsp;&nbsp;</td> <td>${list[0].mId }</td>
+								</tr>
+								
+								<tr><td><i class="far fa-calendar"></i>언제 샀어요? </td><td>&nbsp;&nbsp;</td><td> ${list[0].sPurchasedDate }</td></tr>
+							</table>
+					
+						
+						
+						
 							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br><br>
 							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br><br>
 							<i class="far fa-clock"></i>얼마나 썼어요? : ${list[0].sUseDays }<br><br>
