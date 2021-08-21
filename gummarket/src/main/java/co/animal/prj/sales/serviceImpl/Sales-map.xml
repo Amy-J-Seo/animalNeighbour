@@ -96,7 +96,9 @@
 		update sales set slike = slike+1 where sno = #{sNo}
 	</update>
 	
-	
-
+	<!-- 세일즈 사용자 글 숫자(숨김/지움/유효 모두) -->
+	<select id="memberTotalS" resultType="Int">
+		select count(*) from sales where mId=#{mId}
+	</select>
 
 </mapper>

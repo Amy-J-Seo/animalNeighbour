@@ -11,4 +11,5 @@ public interface ReportServiceMapper {
 	public int reportUpdate(ReportVO vo);
 	public int reportDelete(ReportVO vo);
 	public int reportInsert(ReportVO vo);
+	public int memberTotalR(ReportVO vo); //사용자 report 숫자
 }

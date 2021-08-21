@@ -9,7 +9,25 @@
 <script>
 //ajax
 $(document).ready(function () {
-	$('#returnItemBtn').on('click', function(e){
+	//여기해야해...!!
+	 $.ajax({
+         url: "GetTotalNumbersServlet", //'../AddItemServlet'
+         method: 'post',
+         data: {
+        	 mId: '${session.mId}',
+         },
+         success: function(response){
+         	console.log(response)
+         },
+         error: function (reject) {
+             console.log(reject);
+         }
+
+     });
+	
+	
+	//구매확정 버튼 
+	$('#acceptItemBtn').on('click', function(e){
 		e.preventDefault();
 		
 		 $.ajax({
@@ -23,6 +41,8 @@ $(document).ready(function () {
              success: function(response){
              	alert("구매확정 되었습니다 :) ");
          		$('#closeRModal').click();
+         		$('#confirmPBtn').remove();
+         		$('#BtnReturnItemBtn').remove();
              },
              error: function (reject) {
                  console.log(reject);
@@ -89,7 +109,7 @@ function getTotalReports(){
 		                   		</div>
 		                   		<div class="col-4">
 		                   		<p></p>
-		                   		<button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
+		                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
 		                   		data-toggle="modal" data-target="#confirmP">구매확정</button>
 		                   		</div>
 		                   </div>
@@ -100,7 +120,7 @@ function getTotalReports(){
 		                   		</div>
 		                   		<div class="col-4 align-items-center">
 		                   		<p></p>
-			                   		<button id="BtnReturnItemPasspNo" class="btn"
+			                   		<button id="BtnReturnItemBtn" class="btn"
 			                   		 style="background-color:rgb(235, 76, 36);color:white;" type="submit">반품신청</button>
 		                   		</div>
 		                   </div>
@@ -123,7 +143,7 @@ function getTotalReports(){
 						                <div class="modal-footer">
 						                	<input type="hidden" id="pNo" name="pNo" value="${item.pNo }">
 						                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
-						                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="returnItemBtn"><i class="far fa-smile-wink"></i> 네!</button>
+						                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="acceptItemBtn"><i class="far fa-smile-wink"></i> 네!</button>
 						                </div>
 									</form>
 				            </div>

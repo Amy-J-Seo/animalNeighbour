@@ -85,4 +85,10 @@ public class SalesServiceImpl implements SalesService {
 		return map.salesListByMember(vo);
 	}
 
+	@Override
+	public int memberTotalS(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalS(vo);
+	}
+
 }

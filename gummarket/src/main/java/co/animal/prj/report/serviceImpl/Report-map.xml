@@ -15,10 +15,10 @@
 	<insert id="reportInsert" parameterType="co.animal.prj.report.vo.ReportVO">
 		insert into report values(r_seq.nextval,#{rWhy},#{category},#{mainNo}, #{mId})
 	</insert>
-	<!-- <delete id="" parameterType="">
-
-	</delete> -->
-	<!-- <insert id="" parameterType="">
-
-	</insert> -->
+	
+	<!-- report 사용자 글 숫자(숨김/지움/유효 모두) -->
+	<select id="memberTotalR" resultType="Int">
+		select count(*) from report where mId=#{mId}
+	</select>
+	
 </mapper>

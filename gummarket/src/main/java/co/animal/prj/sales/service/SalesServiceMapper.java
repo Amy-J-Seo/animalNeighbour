@@ -21,4 +21,5 @@ public interface SalesServiceMapper {
 	public List<SalesVO> salesListTop3(SalesVO vo);
 	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo);//searchbar
 	public List<SalesVO> salesListByMember(SalesVO vo);
+	public int memberTotalS(SalesVO vo); //사용자 글 숫자
 }

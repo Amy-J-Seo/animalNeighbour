@@ -21,5 +21,5 @@ public interface SalesService {
 	public List<SalesVO> salesListTop3(SalesVO vo);
 	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo); //searchBar
 	public List<SalesVO> salesListByMember(SalesVO vo); //사용자의 글 리스트 조회
-	
+	public int memberTotalS(SalesVO vo); //사용자 글 숫자
 }

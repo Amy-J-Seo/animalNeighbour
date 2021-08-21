@@ -42,4 +42,10 @@ public class ReportServiceImpl implements ReportService {
 		return map.reportSelectListByMember(vo);
 	}
 
+	@Override
+	public int memberTotalR(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalR(vo);
+	}
+
 }
