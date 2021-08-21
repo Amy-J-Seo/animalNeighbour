@@ -303,7 +303,7 @@
 							<div class="card-header bg-light">
 								<i class="fa fa-comment fa"></i> REPLY
 							</div>
-							<div class="card-body">
+	 						<div class="card-body">
 								<form id="reply" action="CommentInsertServ" method="post">
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">
@@ -311,7 +311,7 @@
 											<input type="hidden" id="ohNo" name="ohNo" value="${item.ohNo }">
 											<textarea class="form-control" id="ohContents" name="ohContents"
 												rows="3"></textarea>
-											<button type="submit" class="btn btn-dark mt-3">post reply</button>
+											<button type="submit" class="btn btn-dark mt-3" onclick="#reply">post reply</button>
 										</li>
 									</ul>
 								</form>
