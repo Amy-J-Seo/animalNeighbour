@@ -26,13 +26,13 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-		select s.*, i.imgpath, c.ccontents, c.cmid, c.cNo
-		from sales s 
-		left outer join comments c
-		on s.sno = c.cmainnum
-		left outer join image i
-		on s.sno = i.imainnum
-		where (i.itype = 'sales' or c.ctype = 'sales') and s.sno= #{sNo}
+		select c.*, m.*, a.acontents, a.atitle, a.adate
+		from csc c
+		join member m
+		on c.mid=m.mid
+		left outer join answer a 
+		on c.csno = a.csno
+		where c.csno= #{sNo}
 	</select>
 	
 	<!-- 수정위한 개별상품 조회 (댓글 없이) -->

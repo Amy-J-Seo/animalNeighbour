@@ -12,25 +12,11 @@
 	<section>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div class="continer my-auto pb-3">
-				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">Best 10 items!</p>
+				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">인기상품 top 10 !</p>
 			</div>
 			<div class="continer my-auto">
 				<!-- Main Content -->
 				<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
-					<!-- 검색창 -->
-					<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" style="background-color: rgb(244, 244, 244);"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-							<!-- 서치버튼 색 바꾸고 싶으면 바꾸어도 됩니다. -->
-								<button class="btn btn-primary" type="button" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -73,12 +59,18 @@
 	                  </div>
 	            	</div>
    				</c:forEach>
+   				
    				<!-- 버튼 누르면 salesSelect.do로가서 상세보기 페이지로 넘어감. -->
                	<form id="salesFrm" name="salesFrm" action="salesSelect.do" method="post">
 					<input type="hidden" id="sNo" name="sNo">
 					<input type="hidden" id="sHit" name="sHit">
 				</form>
 		</div>
+		<div align ="center">
+			<!-- 더보기 버튼 -->
+			<button type="button" class="btn btn-outline-warning mt-auto" onclick="location.href='salesListAll.do'" ><i class="fas fa-search-plus"></i>더 많은 상품 보기</button>
+		</div>
+   		<p></p>	
 	</div>
 	
 	 <!-- 스타일 수정완료했습니다. 어떤 이유인지 css에서 충돌이 있는지 클래스가 적용되지 않았어요... -->
@@ -94,7 +86,7 @@
 	  background: rgb(252, 221, 33);
 	  line-height: 46px;
 	  border-radius: 0.35rem" href="salesInsertForm.do">
-        <i class="fas fa-edit"></i>
+      <i class="fas fa-edit"></i>
     </a>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

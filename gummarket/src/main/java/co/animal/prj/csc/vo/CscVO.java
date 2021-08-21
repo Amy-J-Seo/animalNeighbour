@@ -6,7 +6,7 @@ import co.animal.prj.member.vo.MemberVO;
 
 public class CscVO extends MemberVO{
 	private int csNo;
-	private String mId;
+	//private String mId;
 	private String csTitle;
 	private Date csDate;
 	private String csContents;
@@ -23,12 +23,11 @@ public class CscVO extends MemberVO{
 	public void setCsNo(int csNo) {
 		this.csNo = csNo;
 	}
-	public String getmId() {
-		return mId;
-	}
-	public void setmId(String mId) {
-		this.mId = mId;
-	}
+
+	/*
+	 * public String getmId() { return mId; } public void setmId(String mId) {
+	 * this.mId = mId; }
+	 */
 	public String getCsTitle() {
 		return csTitle;
 	}
@@ -65,10 +64,11 @@ public class CscVO extends MemberVO{
 
 	@Override
 	public String toString() {
-		return "CscVO [csNo=" + csNo + ", mId=" + mId + ", csTitle=" + csTitle + ", csDate=" + csDate + ", csContents="
-				+ csContents + ", csHide=" + csHide + ", csStatus=" + csStatus + "]";
+		return "CscVO [csNo=" + csNo + ", csTitle=" + csTitle + ", csDate=" + csDate + ", csContents=" + csContents
+				+ ", csHide=" + csHide + ", csStatus=" + csStatus + "]";
 	}
-	
+
+
 	
 	
 	

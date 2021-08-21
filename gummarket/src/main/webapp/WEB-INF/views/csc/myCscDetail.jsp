@@ -31,37 +31,37 @@ $(document).ready(function(){
 	// 수정 폼 숨기기
 	$('#showComUpdate').hide();
 	
-	console.log($('#cMainNum'));
+	console.log($('#csNo').val());
 	//전체 데이터 출력.
 	$.ajax({
 		url: 'SelectAnswerServ',
 		method:'post',
 		dataType: 'json',
 		data: {
-			sNo:$('#cMainNum').val()
+			csNo:$('#csNo').val()
 		},
 		success: itemListFnc,
-		error: function () {
-			console.log("으악")
+		error: function (error) {
+			console.log(error);
 		}
 });
 	
 
-let fields = ['cmId', 'cContents'];
-//댓글 조회 콜백함수
+let fields = ['aTitle', 'aContents'];
+//답글 조회 콜백함수
 function itemListFnc(data) {
 	console.log(data);	
-if(data[0]['cNo']!=0){ //글 있을 때만 보이게 하기 위해 
+if(data[0]['csNo']!=0){ //글 있을 때만 보이게 하기 위해 
 	
 	for (let i = 0; i < data.length; i++) {  
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['csNo']);
          const divMain = $('<div />').attr('class', 'd-flex align-items-center');
          let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
                "width": "2rem",
                "height": "2rem"
              });
-         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['cmId']).addClass("pl-2");
-         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['cContents']);
+         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['mId']).addClass("pl-2");
+         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['aContents']);
          divMain.append(img ,userName, comment);
          
          console.log(data[i]['cmId']);
@@ -71,27 +71,19 @@ if(data[0]['cNo']!=0){ //글 있을 때만 보이게 하기 위해
 	         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 	         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 	         
-		        
 	         delBtn.click(kill);
 			 updBtn.click(update);
 	         btnDiv.append(delBtn, updBtn);
-	         
-         var mId = "<%=(String)session.getAttribute("mId")%>";
-         console.log(mId);
-         if(mId == data[i]['cmId']){
-        	 
+     
 	         $(divCase).append(btnDiv);
          }
-         if(mId != data[i]['cmId']){
-	         $(divCase).append(reportForm);
-         }
-         
-    $('#commentsBody').html().hide(); // 답변중 h4테그 숨기기! 
+    
+    $('#commentsBody #h4').remove(); // 답변중 h4테그 숨기기! 
 	$('#commentsBody').append(divCase);
 }
       
 }
-}
+
 
 //댓글 입력 ajax
 $('#reply').on('submit', function (event) {
@@ -113,19 +105,19 @@ $('#reply').on('submit', function (event) {
 })
 });
 
-let fields = ['cmId', 'cContents'];
+let fields = ['mId', 'aContents'];
 //입력처리 후 콜백함수
 function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 	console.log(data)
-	const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data[cNo]);
+	const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data[csNo]);
     const divMain = $('<div />').attr('class', 'd-flex align-items-center');
 	
         let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
               "width": "2rem",
               "height": "2rem"
             });
-        let userName = $('<span />').css("font-size","1.5rem").text(data['cmId']);
-        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['cContents']);
+        let userName = $('<span />').css("font-size","1.5rem").text(data['mId']);
+        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
         divMain.append(img, userName, comment);
         
         const btnDiv =$('<div />');
@@ -172,7 +164,7 @@ function update(e){
 	modForm.show();
 	
 	$(modForm).find("#cUpdated").val(content);
-	$(modForm).find('#cNo').val(cNo);
+	$(modForm).find('#csNo').val(csNo);
 }
 
 //업데이트 -> 성공! 이름 
@@ -270,7 +262,7 @@ function updateItemFunc(data){
 				<div class="card-body">
 					<div id="commentsBody" align="center">
 						<br>
-						<h4>조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
+							<h4>조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
 						<br>
 					</div>
 				</div>
@@ -286,9 +278,9 @@ function updateItemFunc(data){
 						<form id="reply" action="AnswerInsertServ" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-								<input type="hidden" id="csNo" name="csNo" value="${list[0].csNo }">
+								<input type="hidden" id="csNo" name="csNo" value="${csc.csNo }">
 									<textarea class="form-control" id="aContent" name="aContent" rows="3"></textarea>
-								<button type="submit" class="btn btn-dark mt-3">post reply</button>
+								<button type="submit" class="btn btn-dark mt-3">답변 등록</button>
 							    </li>
 							</ul>
 						</form>

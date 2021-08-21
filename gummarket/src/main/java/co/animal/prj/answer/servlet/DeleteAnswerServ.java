@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animal.prj.answer.serviceImpl.AnswerServiceImpl;
+import co.animal.prj.answer.vo.AnswerVO;
+import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
+import co.animal.prj.sales.vo.SalesVO;
+
 
 @WebServlet("/DeleteAnswerServ")
 public class DeleteAnswerServ extends HttpServlet {
@@ -20,8 +25,13 @@ public class DeleteAnswerServ extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int csNo = Integer.valueOf(request.getParameter("csNo"));
+		
+		AnswerServiceImpl answerDao = new AnswerServiceImpl();
+		AnswerVO vo = new AnswerVO();
+		
+		vo.setCsNo(csNo);
+		answerDao.answerDelete(vo);
 	}
 
 

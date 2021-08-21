@@ -58,8 +58,8 @@
 				sNo:$('#cMainNum').val()
 			},
 			success: itemListFnc,
-			error: function () {
-				console.log("으악")
+			error: function (error) {
+				console.log(error)
 			}
 	});
 		
@@ -119,6 +119,7 @@
 	         
 	         
 		$('#commentsBody').append(divCase);
+		
 	}
 	      
 	}
@@ -167,7 +168,7 @@
 			updBtn.click(update);
 	        $(divCase).append(divMain, btnDiv)
 		$('#commentsBody').append(divCase);
-	     
+	    $('#reply #cContent').val("")
 	}
 		
 
@@ -406,7 +407,7 @@
 							<p></p>
 								<input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
 								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
-								<button type="submit" class="btn btn-dark mt-3">post reply</button>
+								<button type="submit" class="btn btn-dark mt-3" style="float:right;">댓글 등록</button>
 							    </li>
 							</ul>
 						</form>

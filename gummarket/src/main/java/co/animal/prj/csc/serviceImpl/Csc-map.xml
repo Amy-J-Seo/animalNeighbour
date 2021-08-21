@@ -14,11 +14,13 @@
 		select * from csc where mid=#{mId}
 	</select>
 	<select id="cscSelect" resultType="co.animal.prj.csc.vo.CscVO">
-		select c.*, m.*
+		select c.*, m.*, a.acontents, a.atitle, a.adate
 		from csc c
 		join member m
 		on c.mid=m.mid
-		where c.csno=#{csNo}
+		left outer join answer a 
+		on c.csno = a.csno
+		where c.csno = #{csNo}
 	</select>
 	
 	<insert id="cscInsert" parameterType="co.animal.prj.csc.vo.CscVO">
