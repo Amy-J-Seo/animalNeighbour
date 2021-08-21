@@ -12,6 +12,12 @@ public class BoardVO {
 	private String bIsOn;
 	private int bHit;
 	private int bLike;
+	private String bImg;
+	
+	
+	public void setbImg(String bImg) {
+		this.bImg = bImg;
+	}
 	public BoardVO() {
 		super();
 	}
@@ -70,10 +76,13 @@ public class BoardVO {
 	public void setbLike(int bLike) {
 		this.bLike = bLike;
 	}
+	public String getbImg() {
+		return bImg;
+	}
 	@Override
 	public String toString() {
 		return "BoardVO [bNo=" + bNo + ", bCategory=" + bCategory + ", bTitle=" + bTitle + ", mId=" + mId + ", bDate="
-				+ bDate + ", bContents=" + bContents + ", bIsOn=" + bIsOn + ", bHit=" + bHit + ", bLike=" + bLike + "]";
+				+ bDate + ", bContents=" + bContents + ", bIsOn=" + bIsOn + ", bHit=" + bHit + ", bLike=" + bLike + ", bImg=" + bImg +"]";
 	}
 	
 	

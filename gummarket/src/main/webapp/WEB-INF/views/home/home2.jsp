@@ -45,7 +45,7 @@
 	                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">인기상품
 	                    </div>
 	                    <!-- 상품 썸네일-->
-	                    <img class="card-img-top" src="img/${list.sImg }" alt="상품 썸네일이미지" />
+	                    <img class="card-img-top" src="img/salesImg/${list.sImg }" alt="상품 썸네일이미지" />
 	                    <!-- 상품 details-->
 	                    <div class="card-body p-4">
 	                        <div class="text-center">
@@ -68,7 +68,7 @@
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
+	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
 	                    </div>
 	                  </div>
 	            	</div>

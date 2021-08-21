@@ -31,14 +31,11 @@
                              </div>
                              <p></p>
                              <br>
+                             session mid ${session.mId}
                              <!-- form start -->
-                             <form class="user" id="frm" name="frm" action="boardInsert.doBB" method="post">
-                             
+                             <form class="user" id="frm" name="frm" action="boardInsert.doBB" method="post" enctype="multipart/form-data">
                              <input type="hidden" id="mId" name="mId" value="${session.mId}">
-                             <!-- 나중에 세션정보 가져와서 집어넣기!  -->
-                           <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
                              <hr>
-                             
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
                              	어떤 글을 쓰시겠어요?
                              	</div>
@@ -56,7 +53,6 @@
                                      <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none;" class="col-lg-11"
                                      id="bTitle" name="bTitle" placeholder="제목을 입력해 주세요" required>
                                  </div>
-                                 
                                 
                                  <hr>
                                      <div class="form-group row">
@@ -73,23 +69,26 @@
                                      <textarea class="form-control" rows="13" id="bContents"
                                          name="bContents" placeholder="이벤트/공지사항 내용 입력" required></textarea>
                                  </div>
-                                 <hr>
+                                 <hr> 
+                                 
                                  <div class="form-group">
-                               	  <i class="fas fa-camera"></i>  사진 업로드: <input type="file" name="uploadFile" multiple="multiple" class="btn"/>
+                                    <i class="fas fa-image"></i> 사진 업로드: <input type="file" name="thumbNailFile" multiple="multiple" class="btn"/>
                                  </div>
                               
-					<hr>
-                  <br>
-                  
-                <div class="pb-3 mx-auto"  style="align-items: center;">
-				
-					<!-- To do style again -->
-					<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 글 등 록</button>
-					<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
-					<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
-						data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
-				
-				</div>
+									<hr>
+				                  <br>
+				                  
+				                <div class="pb-3 mx-auto"  style="align-items: center;">
+								
+									<!-- To do style again -->
+									<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+									<i class="far fa-check-circle"></i> 글 등 록</button>
+									<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+									<i class="fas fa-eraser"></i> 내용삭제</button>
+									<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
+										data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
+								
+								</div>
                        
                              </form>
                              <!-- form end -->

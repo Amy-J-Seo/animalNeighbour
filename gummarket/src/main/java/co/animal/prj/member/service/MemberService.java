@@ -12,4 +12,7 @@ public interface MemberService {
 	public int memberInsert(MemberVO vo);
 	public MemberVO Login(MemberVO vo);
 	public int checkId(String mId);
+	public MemberVO emailDupleCheck(MemberVO vo);
+	public int updatePassword(MemberVO vo);
+	public MemberVO loginSearch(MemberVO vo);
 }

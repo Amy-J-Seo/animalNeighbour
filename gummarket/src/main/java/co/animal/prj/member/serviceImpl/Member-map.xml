@@ -17,7 +17,9 @@
 	<select id="checkId" resultType="Integer">
 	select count(mId) from member where mId=#{mId}
 	</select>
-	
+	<select id="emailDupleCheck" resultType="co.animal.prj.member.vo.MemberVO">
+	SELECT email FROM member WHERE email=#{email}
+	</select>
 	<insert id="memberInsert" parameterType="co.animal.prj.member.vo.MemberVO">
 	INSERT INTO member(mId,password,mName,nickname,phone,email,petInfo,address)
 	VALUES(#{mId},#{password},#{mName},#{nickname},#{phone},#{email},#{petInfo},#{address})
@@ -28,12 +30,16 @@
 	<update id="memberUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
 	UPDATE member SET mId=#{mId},mName=#{mName},nickname=#{nickname},address=#{address},phone=#{phone}
 	,petInfo=#{petInfo},reviewPoint=#{reviewPoint},role=#{role},state=#{state},password=#{password}
-	,buyPoint=#{buyPoint},email=#{email} WHERE mId=#{mId}
+	,grade=#{grade},email=#{email} WHERE mId=#{mId}
 	</update>
-<!--	
-	<delete id="" parameterType="">
-
-	</delete>
+	<select id="loginSearch" resultType="co.animal.prj.member.vo.MemberVO">
+	SELECT mId,mName FROM member WHERE mName=#{mName} and email=#{email}
+	</select>
+	<update id="updatePassword" parameterType="co.animal.prj.member.vo.MemberVO">
+	UPDATE member SET password=#{password} WHERE mName=#{mName} and email=#{email}
+	</update>
+	
+	<!--	
 	<insert id="" parameterType="">
 
 	</insert>-->

@@ -24,7 +24,7 @@ public class MemberUpdate implements Command {
 		vo.setRole(request.getParameter("role"));
 		vo.setState(request.getParameter("state"));
 		vo.setPassword(request.getParameter("password"));
-		vo.setBuyPoint(Integer.valueOf(request.getParameter("buyPoint")));
+		vo.setGrade(request.getParameter("grade"));
 		vo.setEmail(request.getParameter("email"));
 		int n = dao.memberUpdate(vo);
 		String page = "";

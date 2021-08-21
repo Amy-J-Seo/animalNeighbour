@@ -26,7 +26,7 @@ public class FindHelpInsert implements Command {
       String orgfileName1 = "";
       String orgfileName2 = "";
       
-      String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
+      String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\fhImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
       //out.print(uploadPath);
 
       String page ="";
@@ -60,7 +60,7 @@ public class FindHelpInsert implements Command {
 		
 		vo.setmId(writerId);
 		vo.setFhCategory(multi.getParameter("fhCategory"));
-		vo.setFhTitle(multi.getParameter("fhTitle"));
+		vo.setFhTitle(multi.getParameter("fhTitle"));		
 		vo.setFhAnimal(multi.getParameter("fhAnimal"));
 		vo.setFhSize(multi.getParameter("fhSize"));
 		vo.setFhAge(Integer.valueOf(multi.getParameter("fhAge")));

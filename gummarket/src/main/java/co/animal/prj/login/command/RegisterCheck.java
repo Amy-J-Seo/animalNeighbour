@@ -7,7 +7,6 @@ import co.animal.prj.common.Command;
 import co.animal.prj.member.service.MemberService;
 import co.animal.prj.member.serviceImpl.MemberServiceImpl;
 import co.animal.prj.member.vo.MemberVO;
-import lombok.Setter;
 
 public class RegisterCheck implements Command {
 
@@ -15,6 +14,23 @@ public class RegisterCheck implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		MemberService dao =new MemberServiceImpl();
 		MemberVO vo =new MemberVO();
+		String auth= request.getParameter("authPass");
+		System.out.println(auth);
+		if(auth == null) {
+			
+			String message="인증에 실패했습니다. 다시시도해주세요";
+			request.setAttribute("message", message);
+			return "login/loginForm";
+					}else {
+		
+			
+		String address ="";
+		address= request.getParameter("address1");
+		address+=" ";
+		address+=request.getParameter("address2");
+		address+=" ";
+		address+=request.getParameter("address3");
+		
 		vo.setmId(request.getParameter("mId"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setmName(request.getParameter("mName"));
@@ -22,9 +38,8 @@ public class RegisterCheck implements Command {
 		vo.setPhone(request.getParameter("phone"));
 		vo.setEmail(request.getParameter("email"));
 		vo.setPetInfo(request.getParameter("petInfo"));
-		vo.setAddress(request.getParameter("address1"));
-		vo.setAddress(request.getParameter("address2"));
-		vo.setAddress(request.getParameter("address3"));
+		vo.setAddress(address);
+		
 		System.out.println(vo.getNickname() + "스팟1");
 		int result = dao.memberInsert(vo);
 		System.out.println(vo);
@@ -40,5 +55,5 @@ public class RegisterCheck implements Command {
 		}
 		return page;
 	}
-
+	}
 }
