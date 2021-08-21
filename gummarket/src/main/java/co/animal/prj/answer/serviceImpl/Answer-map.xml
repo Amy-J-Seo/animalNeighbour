@@ -19,7 +19,7 @@
 	</delete>
 	
 	<insert id="answerInsert" parameterType="co.animal.prj.answer.vo.AnswerVO">
-		insert into answer values(a_seq.nextval, #{csNo}, #{aTitle}, #{aContentes},sysdate)
+		insert into answer values(a_seq.nextval, #{csNo}, #{aTitle}, #{aContents},sysdate)
 	</insert>
 	
 	<update id="answerUpdate" parameterType="co.animal.prj.answer.vo.AnswerVO">

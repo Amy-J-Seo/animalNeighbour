@@ -14,6 +14,8 @@
 		  border-collapse: separate;
 		  border-spacing: 2000px 100px; !important
 		}
+		
+	
 </style>
 
 <script>
@@ -88,7 +90,7 @@
 		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 		         
-			         //신고하기(신고하기 어디로???)
+			       <!--  //신고하기(신고하기 어디로???)
 			         const reportForm = $('<form/>').attr('action', '#');
 			         const reportBtn 
 			         	= $('<a />').addClass("btn btn-danger btn-sm")
@@ -101,7 +103,7 @@
 		         
 		         reportForm.append(reportBtn);
 		         
-		         reportBtn.click();
+		         reportBtn.click(); -->
 		         
 		         delBtn.click(kill);
 				 updBtn.click(update);
@@ -120,7 +122,7 @@
 	         
 		$('#commentsBody').append(divCase);
 		
-	}
+		}
 	      
 	}
 	}
@@ -250,19 +252,19 @@
     $("#itemReportBtn").click(function () {
    
     	 //set up a function for onSubmit
-        $('#fhReport').on('submit', function (e) {
+        $('#sReport').on('submit', function (e) {
             e.preventDefault();
             
             //let s = $('#fhReport').serialize();
             
             //processing form submit;
             $.ajax({
-                url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
+                url: $('#sReport').attr('action'), //'../AddItemServlet.do'
                 method: 'post',
                 //data: $('#fhReport').serialize(),
                 data: {category: $('#itemCategory').text(),
                 		rWhy: $('#fhReport input[name="reason"]').val(),
-                		mainNo: $('#fhReport #fhNo').val()
+                		sNo: $('#sReport #sNo').val()
                 },
                 dataType: 'json',
                 success: function(response){
@@ -348,10 +350,13 @@
 				</div>
 				<br>
 				<p>
-				<h6 class="m-0 font-weight-bold text-primary">
-					<span>조회 수 : ${list[0].sHit }</span> |
-					<span><i class="far fa-thumbs-up"></i> <span id="likeNum">${list[0].sLike }</span></span>
+<!-- 글씨 크기 크게 주고 싶은데 잘 안됨 ㅠ -->				
+				<div style="color: rgb(255, 190, 83); font-size: 30px; !important">
+					<h6>
+						<span><i class="far fa-eye"></i> 조회 수 : ${list[0].sHit }</span>  &nbsp;| &nbsp;
+						<span><i class="far fa-thumbs-up"></i> 좋아요 : <span id="likeNum">${list[0].sLike }</span></span>
 					</h6>
+				</div>
 				<p></p>
 				<br />
 				<p></p>
@@ -359,15 +364,38 @@
 					<div class="card-header py-3">${list[0].sTitle }</div>
 						<div class="card-body">
 							<table>
-								<tr>
-									<td ><i class="fas fa-user-check"></i>판매자 </td><td>&nbsp;&nbsp;</td> <td>${list[0].mId }</td>
+								<tr height="50px">
+									<td width="400px" style="color:black;"><strong><i class="fas fa-user-check"></i> 판매자</strong> </td><td>&nbsp;&nbsp;</td> <td>${list[0].mId }</td>
 								</tr>
-								
-								<tr><td><i class="far fa-calendar"></i>언제 샀어요? </td><td>&nbsp;&nbsp;</td><td> ${list[0].sPurchasedDate }</td></tr>
+								<tr height="50px">
+									<td width="400px"><i class="far fa-calendar"></i> 언제 샀어요? </td><td>&nbsp;&nbsp;</td><td> ${list[0].sPurchasedDate }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="far fa-clock"></i> 얼마나 썼어요? </td><td>&nbsp;&nbsp;</td><td> ${list[0].sUseDays }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="fas fa-question"></i> 왜 팔아요? </td><td>&nbsp;&nbsp;</td><td>  ${list[0].sReason }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="fas fa-tags"></i> 얼마에 구매하셨나요?(새 상품 판매가격)  </td><td>&nbsp;&nbsp;</td><td>  ${list[0].sPrice }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px" style="color:black;"><strong><i class="fas fa-dollar-sign"></i> 얼마에 판매하시나요?</strong> </td><td>&nbsp;&nbsp;</td><td> ${list[0].sNetPrice }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="far fa-calendar-check"></i> 업로드일자</td><td>&nbsp;&nbsp;</td><td> ${list[0].sDate }</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="fas fa-paw"></i> 배송비  </td><td>&nbsp;&nbsp;</td><td> 택배이용시 일괄 2500원</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="fas fa-paw"></i> 제품 상태는요? 상세하게 기술해주세요~  </td><td>&nbsp;&nbsp;</td><td> ${list[0].sPurchasedDate }</td>
+								</tr>
 							</table>
 					
 						
 						
+						<!-- 
 						
 							<i class="fas fa-user-check"></i>판매자 : ${list[0].mId }<br><br>
 							<i class="far fa-calendar"></i>언제 샀어요? : ${list[0].sPurchasedDate }<br><br>
@@ -377,6 +405,7 @@
 							<i class="fas fa-tags"></i>얼마에 구매하셨나요?(새 상품 판매가격) : ${list[0].sPrice }<br><br>
 							<i class="fas fa-dollar-sign"></i>얼마에 판매하시나요? : ${list[0].sNetPrice }<br><br>
 							<i class="far fa-calendar-check"></i>업로드일자 ${list[0].sDate }
+						 -->
 						</div>
 				</div>
 				<p></p>
@@ -528,7 +557,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                	<form id="fhReport" name="fhReport" action="FhItemReportServlet" method="post">
+                	<form id="sReport" name="sReport" action="salesItemReportServlet" method="post">
                 <div class="modal-body">
 						  <input type="radio" id="bannedItem" name="reason" value="banItem">
 						  <label for="bannedItem">판매금지 품목이에요</label><br>
@@ -542,7 +571,7 @@
 						  <label for="scam">사기 글이에요</label><br>
 						  <input type="radio" id="notSecondHand" name="reason" value="notForSecondhand">
 						  <label for="notSecondHand">기타 이유</label><br>
-						  <input type="hidden" id="fhNo" name="fhNo" value="${item.fhNo }">
+						  <input type="hidden" id="sNo" name="sNo" value="${list[0].sNo }">
                 </div>
                 
                 <div class="modal-footer">

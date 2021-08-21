@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,7 @@ $(document).ready(function(){
 		dataType: 'json',
 		data: {
 			csNo:$('#csNo').val()
+			//	aNo : 
 		},
 		success: itemListFnc,
 		error: function (error) {
@@ -46,25 +47,26 @@ $(document).ready(function(){
 		}
 });
 	
+	console.log($('#commentsBody #wateForAnswer').text());
 
 let fields = ['aTitle', 'aContents'];
 //답글 조회 콜백함수
 function itemListFnc(data) {
-	console.log(data);	
-if(data[0]['csNo']!=0){ //글 있을 때만 보이게 하기 위해 
+	console.log($('#reply').val());
+if(data['aNo']!=0){ //글 있을 때만 보이게 하기 위해 
 	
-	for (let i = 0; i < data.length; i++) {  
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['csNo']);
-         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+	//for (let i = 0; i < data.length; i++) {  
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['aNo']);
+        const divMain = $('<div />').attr('class', 'd-flex align-items-center');
          let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
                "width": "2rem",
                "height": "2rem"
              });
-         let userName = $('<span />').css("font-size","1.5rem").text(data[i]['mId']).addClass("pl-2");
-         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data[i]['aContents']);
-         divMain.append(img ,userName, comment);
+         //let userName = $('<span />').css("font-size","1.5rem").text(data[i]['mId']).addClass("pl-2");
+         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
+         $(divMain).append(img , comment);
          
-         console.log(data[i]['cmId']);
+        //console.log(data[i]['cmId']);
          $(divCase).append(divMain);
         	 
 	         const btnDiv =$('<div />');
@@ -74,12 +76,14 @@ if(data[0]['csNo']!=0){ //글 있을 때만 보이게 하기 위해
 	         delBtn.click(kill);
 			 updBtn.click(update);
 	         btnDiv.append(delBtn, updBtn);
-     
+     		
+	         
 	         $(divCase).append(btnDiv);
-         }
+		  	console.log(divCase);
+			$('#commentsBody').append(divCase);
+			$('#commentsBody h4').remove(); // 답변중 h4테그 숨기기!
+        // }
     
-    $('#commentsBody #h4').remove(); // 답변중 h4테그 숨기기! 
-	$('#commentsBody').append(divCase);
 }
       
 }
@@ -93,7 +97,7 @@ $('#reply').on('submit', function (event) {
 
 	//폼 전송처리
 	$.ajax({
-		url: $('#reply').attr('action'), //='../AddItemServ.do'
+		url: $('#reply').attr('action'), 
 		method: 'post',
 		data: $('#reply').serialize(), //파라미터로 넘김
 		dataType: 'json', //받아오는 값
@@ -118,16 +122,17 @@ function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
             });
         let userName = $('<span />').css("font-size","1.5rem").text(data['mId']);
         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
-        divMain.append(img, userName, comment);
+        divMain.append(img, comment);
         
         const btnDiv =$('<div />');
         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
-        const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+        const updBtn=$('<button />').attr("class", "bx	tn btn-warning mr-2").css("float", "right").text("Edit");
         btnDiv.append(delBtn, updBtn);
         delBtn.click(kill);
 		updBtn.click(update);
         $(divCase).append(divMain, btnDiv)
-	$('#commentsBody').append(divCase);
+        $('#commentsBody h4').remove(); // 답변중 h4테그 숨기기! 
+		$('#commentsBody').append(divCase);
      
 }
 	
@@ -208,48 +213,53 @@ function updateItemFunc(data){
 
 </head>
 <body id="page-top">
-<!-- Begin Page Content -->
+	<!-- Begin Page Content -->
 	<div class="container">
-	<div class="continer my-auto pl-4 pb-3">
-			
-	</div>
+		<div class="continer my-auto pl-4 pb-3"></div>
 		<!-- DataTales Example -->
-		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
+		<div class="card shadow mt-4 mb-4"
+			style="margin-left: 4rem; margin-right: 4rem">
 			<div class="card-header py-3">
-				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.bTitle }
-				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
-				 </h3>
-				 <c:if test="${session.role != 'ADMIN' }">
-					<button class="btn btn-sm"  onclick="csItemDelete(${csc.csNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
-					<i class="far fa-trash-alt"></i> 글 삭제</button>
-				 	<button class="btn btn-sm mr-3"  onclick="csItemUpdate(${csc.csNo  })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
-					<i class="far fa-edit"></i> 글 수정</button>
-				</c:if>			
+				<h3 class="m-0 font-weight-bold text-dark"
+					style="text-align: center;">${item.bTitle }
+					<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
+				</h3>
+				<c:if test="${session.role != 'ADMIN' }">
+					<button class="btn btn-sm" onclick="csItemDelete(${csc.csNo })"
+						style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255); float: right;">
+						<i class="far fa-trash-alt"></i> 글 삭제
+					</button>
+					<button class="btn btn-sm mr-3"
+						onclick="csItemUpdate(${csc.csNo  })"
+						style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255); float: right;">
+						<i class="far fa-edit"></i> 글 수정
+					</button>
+				</c:if>
 			</div>
 			<div class="card-body">
-				<div style="width:100%" class="d-flex justify-content-center">
-					<img class="card" src="img/1market.png" width="350px" height="300px">
+				<div style="width: 100%" class="d-flex justify-content-center">
+					<img class="card" src="img/1market.png" width="350px"
+						height="300px">
 				</div>
-				<br><br />
-				<hr>				   
+				<br> <br />
+				<hr>
 				<div class="card-header py-3">
-					<i class="fas fa-paw"></i>작성자 : ${csc.mId }&nbsp;|&nbsp;
-					<i class="fas fa-paw"></i>글 제목 : ${csc.csTitle }&nbsp;|&nbsp;
-					<i class="fas fa-paw"></i>작성일 : ${csc.csDate } 
+					<i class="fas fa-paw"></i>작성자 : ${csc.mId }&nbsp;|&nbsp; <i
+						class="fas fa-paw"></i>글 제목 : ${csc.csTitle }&nbsp;|&nbsp; <i
+						class="fas fa-paw"></i>작성일 : ${csc.csDate }
 				</div>
-				
+
 				<div class="card-body">
 					<!-- 관리자만 회원 등급, 이메일, 번호 볼 수 있게? -->
 					<c:if test="${session.role == 'ADMIN' }">
 						전화번호 : ${csc.phone }<br>
 						이메일 : ${csc.email} <br>
 						등급 : ${csc.grade }<br>
-						
+
 					</c:if>
-				
+
 					<div>
-						문의하신 내용: <br>
-						${csc.csContents }
+						문의하신 내용: <br> ${csc.csContents }
 					</div>
 				</div>
 			</div>
@@ -257,69 +267,79 @@ function updateItemFunc(data){
 			<!-- 답변 대기중 화면 => 답변 달리면 그 답변이 올라오게! -->
 			<div class="card mb-2">
 				<div class="card-header bg-light">
-				     <i class="fa fa-comment fa"></i> 답 변 
+					<i class="fa fa-comment fa"></i> 답 변
 				</div>
 				<div class="card-body">
 					<div id="commentsBody" align="center">
 						<br>
-							<h4>조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
+						<h4 id="wateForAnswer">조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
 						<br>
 					</div>
 				</div>
 			</div>
-				<p></p>
+			<p></p>
 			<c:if test="${session.role =='ADMIN' }">
 				<!-- 답글 입력 -->
 				<div class="card mb-2">
 					<div class="card-header bg-light">
-					     <i class="fa fa-comment fa"></i> REPLY
+						<i class="fa fa-comment fa"></i> REPLY
 					</div>
-					<div class="card-body">
+					<div id ="answerInput"class="card-body">
 						<form id="reply" action="AnswerInsertServ" method="post">
 							<ul class="list-group list-group-flush">
-							    <li class="list-group-item">
-								<input type="hidden" id="csNo" name="csNo" value="${csc.csNo }">
-									<textarea class="form-control" id="aContent" name="aContent" rows="3"></textarea>
-								<button type="submit" class="btn btn-dark mt-3">답변 등록</button>
-							    </li>
+
+								<li class="list-group-item"><input class="form-control"
+									type="text" id="aTitle" name="aTitle" placeholder="글제목">
+									<br> <input type="hidden" id="csNo" name="csNo"
+									value="${csc.csNo }"> <textarea class="form-control"
+										id="aContents" name="aContents" rows="3"
+										placeholder="답변내용을 입력해주세요"></textarea>
+									<div align="right">
+										<button type="submit" class="btn btn-dark mt-3">답변 등록</button>
+									</div></li>
 							</ul>
 						</form>
 					</div>
 				</div>
 			</c:if>
-			
-				<p></p>
-				
-				<div class="pb-3 mx-auto"  style="align-items: center;">
-					<button class="btn btn-md mr-5" type="button" onclick="location.href='myCscList.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-					<i class="fas fa-undo-alt"></i>목록으로</button>
-				</div>
-				
+
+			<p></p>
+
+			<div class="pb-3 mx-auto" style="align-items: center;">
+				<button class="btn btn-md mr-5" type="button"
+					onclick="location.href='myCscList.do'"
+					style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
+					<i class="fas fa-undo-alt"></i>목록으로
+				</button>
 			</div>
-			
-			
+
 		</div>
+
+
+	</div>
 	<!-- /.container-fluid -->
-	
+
 
 	<!-- bItem 메인 글 수정, 삭제 폼 -->
-		<form id="csUpdate" name="csUpdate" action="csItemUpdateForm.do" method="post">
-			<input type="hidden" id="csNo" name="csNo">
-		</form>
+	<form id="csUpdate" name="csUpdate" action="csItemUpdateForm.do"
+		method="post">
+		<input type="hidden" id="csNo" name="csNo">
+	</form>
 
-		<form id="csDelete" name="csDelete" action="csItemDelete.do" method="post">
-			<input type="hidden" id="csNo" name="csNo">
-		</form>
+	<form id="csDelete" name="csDelete" action="csItemDelete.do"
+		method="post">
+		<input type="hidden" id="csNo" name="csNo">
+	</form>
 	<!--End of bItem 메인 글 수정, 삭제 폼 -->
-	
+
 	<!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-	 <!-- End of Scroll to Top Button-->
-	 
-	
-	
-	
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+	<!-- End of Scroll to Top Button-->
+
+
+
+
 </body>
 </html>

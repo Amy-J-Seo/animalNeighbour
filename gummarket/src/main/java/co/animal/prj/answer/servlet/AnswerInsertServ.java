@@ -45,6 +45,8 @@ public class AnswerInsertServ extends HttpServlet {
 		vo.setaTitle(request.getParameter("aTitle"));
 		vo.setaContents(request.getParameter("aContents"));
 		
+		System.out.println( vo.getaContents()+" acontents");
+		
 		ansDao.answerInsert(vo);
 		
 		//request.setAttribute("sNo", vo.getsNo());
