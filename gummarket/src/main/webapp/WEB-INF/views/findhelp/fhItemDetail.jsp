@@ -18,7 +18,6 @@ $(document).ready(function () {
             e.preventDefault();
             
             //let s = $('#fhReport').serialize();
-            
             //processing form submit;
             $.ajax({
                 url: $('#fhReport').attr('action'), //'../AddItemServlet.do'

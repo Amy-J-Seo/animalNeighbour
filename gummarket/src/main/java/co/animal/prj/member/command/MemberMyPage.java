@@ -1,5 +1,8 @@
 package co.animal.prj.member.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +26,12 @@ public class MemberMyPage implements Command {
 		PaymentVO pVo = new PaymentVO();
 		pVo.setmId(mId);
 		
+		List<PaymentVO> list = new ArrayList<PaymentVO>();
 		
 		request.setAttribute("member", mDao.memberSelect(mVo));
+		list = pDao.memberPaymentSelectList(pVo);
+		request.setAttribute("list", list );
+		System.out.println(list.toString());
 		
 		return "member/memberMyPage";
 	}

@@ -19,7 +19,7 @@ public class Payresult implements Command {
 		vo.setmId(request.getParameter("buyerId"));
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
 		vo.setProductId(request.getParameter("productId"));
-		vo.setPaymentAmount(Integer.valueOf(request.getParameter("paymentAmount")));
+		vo.setPayAmount(Integer.valueOf(request.getParameter("payAmount")));
 		vo.setPayConfirmNum(Integer.valueOf(request.getParameter("payConfirmNum")));
 		int n =pDao.paymentInsert(vo);
 		System.out.println(n +"건 입력 페이리저트 자바");

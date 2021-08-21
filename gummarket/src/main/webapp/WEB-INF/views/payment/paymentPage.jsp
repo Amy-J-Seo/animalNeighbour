@@ -33,8 +33,8 @@ $(document).ready(function(){
          	   url:'UpdateShippingInfoServlet', //'../AddItemServlet.do'
 	   	            method: 'post',
 	   	            data: {
-	   	            	usedPoint: discP,
-            			mId:buyerId
+	   	            	shippingInfo: shippingRequest,
+            			mId:'${member.mId}'
 	   	            },
 	   	            success: function(response){
 	   	            	console.log(response);
@@ -116,7 +116,7 @@ $(document).ready(function(){
 	   	            	buyerId: buyerId,
             			sNo: sNo,
             			productId: rsp.merchant_uid,
-            			paymentAmount: rsp.paid_amount,
+            			payAmount: rsp.paid_amount,
             			payConfirmNum:rsp.apply_num
 	   	            },
 	   	            success: function(response){
