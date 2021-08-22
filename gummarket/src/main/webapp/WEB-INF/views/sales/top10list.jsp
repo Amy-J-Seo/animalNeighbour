@@ -6,22 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 메인페이지 - 인기상품</title>
-    <!--Hover css-->
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
-    <style type="text/css">
-    	.card{
-			    border-radius: 4px;
-			    background: #fff;
-			    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-			    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-			  	cursor: pointer;
-			}
+  <!--Hover css-->
+  <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+  <style type="text/css">
+  	.card{
+	    border-radius: 4px;
+	    background: #fff;
+	    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+	    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+	  	cursor: pointer;
+	}
 
-		.card:hover{
-		     	transform: scale(1.05);
-		  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-		}
-    </style>
+	.card:hover{
+     	transform: scale(1.05);
+  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+	}
+  </style>
 </head>
 <body>
 	<section>

@@ -81,7 +81,7 @@
 							<img class="card-img-top" src="img/salesImg/${list.sImg }" alt="상품이미지" />
 							<!-- 상품 details-->
 							<div class="card-body p-4">
-								<div class="text-center">
+								<div class="text-left">
 									<!-- 상품 타이틀-->
 									<h5 class="fw-bolder">${list.sTitle}</h5>
 									<!-- 상품 별점?-->
@@ -93,10 +93,10 @@
 										<div class="bi-star-fill"></div>
 									</div>
 									<!-- 조회수-->
-									<p>조회수 :${list.sHit }</p>
-									<p>카테고리: ${list.sCategory }</p>
-									<p>가격: ${list.sPrice }</p>
-									<p>할인 된 가격: ${list.sNetPrice }</p>
+									<i class="fas fa-paw"></i>조회수 :${list.sHit }<br>
+		                            <i class="fas fa-paw"></i>카테고리: ${list.sCategory }<br>
+		                            <i class="fas fa-paw"></i>가격: ${list.sPrice }<br>
+		                           	<i class="fas fa-paw"></i> 할인 된 가격: ${list.sNetPrice }<br>
 								</div>
 							</div>
 							<!-- Product actions-->
