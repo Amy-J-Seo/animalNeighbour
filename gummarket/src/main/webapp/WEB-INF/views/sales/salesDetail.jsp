@@ -384,7 +384,6 @@
                 error: function (reject) {
                     console.log(reject);
                 }
->>>>>>> refs/heads/main
 
 			//set up a function for onSubmit
 			$('#sReport').on('submit', function (e) {
@@ -875,7 +874,7 @@
                         <!-- 댓글 입력 -->
                         <div class="card mb-2">
                             <div class="card-header bg-light">
-                                <i class="fa fa-comment fa"></i> Comments
+                                <i class="fa fa-comment fa"></i> 댓글
                             </div>
                             <div class="card-body">
                                 <form id="reply" action="CommentInsertServ" method="post">

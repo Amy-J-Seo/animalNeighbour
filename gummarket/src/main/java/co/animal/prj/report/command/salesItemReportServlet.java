@@ -42,7 +42,7 @@ public class salesItemReportServlet extends HttpServlet {
 		ReportVO vo = new ReportVO();
 		vo.setCategory(category);
 		vo.setrWhy(rWhy);
-		vo.setmainNo(sNo);
+		vo.setMainNo(sNo);
 		
 		System.out.println(vo.toString());
 		
