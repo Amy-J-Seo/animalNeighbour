@@ -2,15 +2,17 @@ package co.animal.prj.payment.vo;
 
 import java.sql.Date;
 
-public class PaymentVO {
+import co.animal.prj.sales.vo.SalesVO;
+
+public class PaymentVO extends SalesVO{
 	private int pNo;
 	private String mId;
 	private int sNo;
 	private String productId;
 	private Date pDate;
-	private int paymentAmount;
+	private int payAmount;
 	private int payConfirmNum;	
-	
+	private String confirmPurchase;
 	
 	public PaymentVO() {
 		super();
@@ -67,13 +69,13 @@ public class PaymentVO {
 	}
 
 
-	public int getPaymentAmount() {
-		return paymentAmount;
+	public int getPayAmount() {
+		return payAmount;
 	}
 
 
-	public void setPaymentAmount(int paymentAmount) {
-		this.paymentAmount = paymentAmount;
+	public void setPayAmount(int payAmount) {
+		this.payAmount = payAmount;
 	}
 
 
@@ -87,11 +89,33 @@ public class PaymentVO {
 	}
 
 
+	public String getConfirmPurchase() {
+		return confirmPurchase;
+	}
+
+
+	public void setConfirmPurchase(String confirmPurchase) {
+		this.confirmPurchase = confirmPurchase;
+	}
+
+
 	@Override
 	public String toString() {
 		return "PaymentVO [pNo=" + pNo + ", mId=" + mId + ", sNo=" + sNo + ", productId=" + productId + ", pDate="
-				+ pDate + ", paymentAmount=" + paymentAmount + ", payConfirmNum=" + payConfirmNum + "]";
+				+ pDate + ", payAmount=" + payAmount + ", payConfirmNum=" + payConfirmNum + ", confirmPurchase="
+				+ confirmPurchase + ", getsCategory()=" + getsCategory() + ", getsTitle()=" + getsTitle()
+				+ ", getsHit()=" + getsHit() + ", getsLike()=" + getsLike() + ", getsImg()=" + getsImg()
+				+ ", getsPurchasedDate()=" + getsPurchasedDate() + ", getsUseDays()=" + getsUseDays()
+				+ ", getsReason()=" + getsReason() + ", getsCondition()=" + getsCondition() + ", getsPrice()="
+				+ getsPrice() + ", getsNetPrice()=" + getsNetPrice() + ", getsStatus()=" + getsStatus()
+				+ ", getsHide()=" + getsHide() + ", toString()=" + super.toString() + ", getcNo()=" + getcNo()
+				+ ", getCmId()=" + getCmId() + ", getcType()=" + getcType() + ", getcContents()=" + getcContents()
+				+ ", getcMainNum()=" + getcMainNum() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
 	}
+
+
+	
 
 
 	

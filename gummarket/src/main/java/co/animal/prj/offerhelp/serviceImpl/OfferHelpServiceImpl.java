@@ -42,4 +42,16 @@ public class OfferHelpServiceImpl implements OfferHelpService {
 		return map.offerHelpInsert(vo);
 	}
 
+	@Override
+	public int memberTotalOh(OfferHelpVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalOh(vo);
+	}
+
+	@Override
+	public List<OfferHelpVO> offerHelpSelectListByMember(OfferHelpVO vo) {
+		// TODO Auto-generated method stub
+		return map.offerHelpSelectListByMember(vo);
+	}
+
 }

@@ -17,7 +17,13 @@ public interface SalesServiceMapper {
 	public int hitUpdate(SalesVO vo);
 	public int updateLike(SalesVO vo);
 	
-	//카테고리별로 찾아오기
+	//주윤 멤버정보모달 탑3 아이템 조회
+	public List<SalesVO> salesListTop3(SalesVO vo);
+	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo);//searchbar
+	public List<SalesVO> salesListByMember(SalesVO vo);
+	public int memberTotalS(SalesVO vo); //사용자 글 숫자
+
+  //카테고리별로 찾아오기
 	public List<SalesVO> findClothing();
 	public List<SalesVO> findFood();
 	public List<SalesVO> findEtc();
