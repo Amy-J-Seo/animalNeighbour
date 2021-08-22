@@ -1,28 +1,26 @@
 package co.animal.prj.csc.command;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.animal.prj.common.Command;
 import co.animal.prj.csc.serviceImpl.CscServiceImpl;
 import co.animal.prj.csc.vo.CscVO;
-import co.animal.prj.member.serviceImpl.MemberServiceImpl;
-import co.animal.prj.member.vo.MemberVO;
 
-public class MyCscDetail implements Command {
+public class EveryCscList implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO csc Detail Page
+		// TODO csc 전체보기!
 		CscServiceImpl cscDao = new CscServiceImpl();
-		CscVO vo = new CscVO();
 		
-		vo.setCsNo(Integer.valueOf(request.getParameter("csNo")));
+		List<CscVO> list= cscDao.cscSelectList();
 		
-		request.setAttribute("csc", cscDao.cscSelect(vo));
-	
-		return "csc/myCscDetail";
+		request.setAttribute("list", list);
+		
+		return "csc/myCscList";
 	}
 
 }

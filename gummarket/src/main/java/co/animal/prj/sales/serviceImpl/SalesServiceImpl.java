@@ -89,6 +89,7 @@ public class SalesServiceImpl implements SalesService {
 	public int memberTotalS(SalesVO vo) {
 		// TODO Auto-generated method stub
 		return map.memberTotalS(vo);
+	}
 
 	public List<SalesVO> findClothing() {
 		// TODO Auto-generated method stub
