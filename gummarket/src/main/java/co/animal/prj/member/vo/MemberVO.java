@@ -13,6 +13,9 @@ public class MemberVO {
 	private String password;
 	private String email;
 	private String grade;
+	private String shippingInfo;
+	
+
 	public MemberVO() {
 		super();
 	}
@@ -114,11 +117,18 @@ public class MemberVO {
 		this.grade = grade;
 	}
 
+	public String getShippingInfo() {
+		return shippingInfo;
+	}
+
+	public void setShippingInfo(String shippingInfo) {
+		this.shippingInfo = shippingInfo;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [mId=" + mId + ", mName=" + mName + ", nickname=" + nickname + ", address=" + address
 				+ ", phone=" + phone + ", petInfo=" + petInfo + ", reviewPoint=" + reviewPoint + ", role=" + role
-				+ ", state=" + state + ", password=" + password + ", email=" + email + ", grade=" + grade + "]";
+				+ ", state=" + state + ", password=" + password + ", email=" + email + ", grade=" + grade + ", shippingInfo=" + shippingInfo + "]";
 	}
 
 	

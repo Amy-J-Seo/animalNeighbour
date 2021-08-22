@@ -43,4 +43,15 @@ public class PaymentServiceImpl implements PaymentService {
 		return map.paymentInsert(vo);
 	}
 
+	@Override
+	public List<PaymentVO> memberPaymentSelectList(PaymentVO vo) {
+		return map.memberPaymentSelectList(vo);
+	}
+
+	@Override
+	public int confirmPurchase(PaymentVO vo) {
+		// TODO Auto-generated method stub
+		return map.confirmPurchase(vo);
+	}
+
 }

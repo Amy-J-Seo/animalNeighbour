@@ -60,10 +60,10 @@
 	                                <div class="bi-star-fill"></div>
 	                            </div>
 	                            <!-- 조회수-->
-	                            조회수 :${list.sHit }
-	                            카테고리: ${list.sCategory }
-	                            가격: ${list.sPrice }
-	                            할인 된 가격: ${list.sNetPrice }
+	                            조회수 :${list.sHit }<br/>
+	                            카테고리: ${list.sCategory }<br/>
+	                            가격: ${list.sPrice }<br/>
+	                            할인 된 가격: ${list.sNetPrice }<br/>
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->

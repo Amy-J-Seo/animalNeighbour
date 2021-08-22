@@ -10,7 +10,7 @@
 <script type="text/javascript">
 //ajax
 $(document).ready(function () {
-	//set up function on submit the form for report()
+	//set up function on submit 신고폼
     $("#itemReportBtn").click(function () {
    
     	 //set up a function for onSubmit
@@ -18,15 +18,15 @@ $(document).ready(function () {
             e.preventDefault();
             
             //let s = $('#fhReport').serialize();
-            
-            //processing form submit;
             $.ajax({
                 url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
                 method: 'post',
                 //data: $('#fhReport').serialize(),
-                data: {category: $('#itemCategory').text(),
+                data: {
+                		category: "findhelp",
                 		rWhy: $('#fhReport input[name="reason"]').val(),
-                		mainNo: $('#fhReport #fhNo').val()
+                		mainNo: "${item.fhNo}",
+                		mId:'${session.mId}'
                 },
                 dataType: 'json',
                 success: function(response){
@@ -121,11 +121,13 @@ $(document).ready(function () {
     		//댓글 입력 ajax
     		$('#reply').on('submit', function (event) {
     			event.preventDefault();
+    			
+    			console.log($('#reply').attr('action'))
     			let s = $('#reply').serialize();
 
     			//폼 전송처리
     			$.ajax({
-    				url: 'FhCommentInsertServlet', //='../AddItemServ.do'
+    				url: $('#reply').attr('action'),
     				method: 'post',
     				data: $('#reply').serialize(), //파라미터로 넘김
     				dataType: 'json', //받아오는 값
@@ -139,6 +141,25 @@ $(document).ready(function () {
     		
 });
 //end of ajax
+let itemFields = ['sImg','sCategory', 'sTitle'];
+	function addToModal(data){
+	console.log(data);
+	 $('#toAddSalesListDiv').empty();
+	for (let i = 0; i < data.length; i++) {
+			
+			const divCol = $('<div />').addClass('col-lg-4 text-center align-items-center');
+            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.5rem");
+            const catP = $('<p/>').text(data[i]['sCategory']);
+            const titleP = $('<p/>').text(data[i]['sTitle']);
+            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
+           
+            $(divCol).append(img, catP, titleP, btn);
+                       
+            $('#toAddSalesListDiv').append(divCol);
+			
+		};
+	};
+
 
 //comment insert
 let fields = ['cmId', 'cContents'];
@@ -169,6 +190,7 @@ let fields = ['cmId', 'cContents'];
 	           	}   
         
         $('#commentsBody').append(divCase);
+        $('#reply #cContent').val("");
 	}
 	//End of comment insert
 	
@@ -234,7 +256,6 @@ let fields = ['cmId', 'cContents'];
 	
 function fhItemUpdate(n) {
 	fhUpdate.fhNo.value=n;
-	
 	fhUpdate.submit();
 }
 
@@ -243,6 +264,7 @@ function fhItemDelete(n) {
 	  if(result) {
 		  fhDelete.fhNo.value=n;
 		  fhDelete.submit();
+		 
 	 	 }
 	}
 	
@@ -266,7 +288,11 @@ function fhItemDelete(n) {
 					<i class="far fa-trash-alt"></i> 글 삭제</button>
 					 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 					 <i class="far fa-edit"></i> 글 수정</button>
-				 </c:if>				
+				 </c:if>
+				  <c:if test="${session.role == 'ADMIN'}">
+				  	<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
+					<i class="far fa-trash-alt"></i> 글 삭제</button>
+				  </c:if>				
 			</div>
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">
@@ -291,23 +317,25 @@ function fhItemDelete(n) {
 					 <a class="btn btn-danger btn-sm ml-3" style="float:right;" href="#" data-toggle="modal"
 					data-target="#reportModal" ><i class="fas fa-bullhorn"></i> 신고하기</a>
 					
-					<c:if test="${item.fhLike > 0 }">
 						<span class="pr-3" style="float:right; font-size: 20px;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}
 					</span>
-					</c:if>
 					
 				</div>
 				
 					<div class="card-body">
+					<!-- user info -->
 						<div class="pb-1 d-flex align-items-center">
 							<div>
 								<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
-								<span class="pl-3" style="font-size: 2rem;">${item.nickname }</span>
+								<span class="pl-3" style="font-size: 2rem;">
+								<a id="memberInfoModal" data-toggle="modal" data-target="#memberInfo" >${item.mId }</a></span>
 							</div>				
 						</div>
+					<!-- end of user info -->
 					<hr>
 						<div>
-							${item.fhNeed }<br>${item.fhHow }
+							<p>${item.fhNeed }</p>
+							<p>${item.fhHow }</p>
 						</div>
 					
 					</div>
@@ -327,7 +355,7 @@ function fhItemDelete(n) {
 					     <i class="fa fa-comment fa"></i> Comments
 					</div>
 					<div class="card-body">
-						<form id="reply" action="FhCommentsInsertServlet" method="post">
+						<form id="reply" action="FhCommentInsertServlet" method="post">
 							<ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
@@ -447,6 +475,51 @@ function fhItemDelete(n) {
     </div>
 	<!-- End of report modal -->
 
-	
+	<!-- memberInfo modal -->
+    <div class="modal fade" id="memberInfo" tabindex="-1" role="dialog" aria-labelledby="memberIfoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document" >
+            <div class="modal-content">
+               	<!-- 메인 카드 for payment -->	
+				<div class="card-body">
+					<div class="card mb-4">
+						<div class="card mb-2" style="border:none;  border-radius:0; ">
+						<div class="card-header py-3">
+							회 원 정 보
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	                        	<span aria-hidden="true">×</span>
+		                    </button>
+	                    </div>
+						
+						<div class="card-body row">
+							<!-- 사용자 프로필 사진+이름 -->
+							<div class=" col-lg-4 text-center align-items-center">
+								<img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;">
+								<p>${member.mId }</p>
+								<p>${member.nickname } 님</p>
+							</div>
+							
+							<div class=" col-lg-8 text-center align-items-center">
+								<h5>${member.mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
+								<p>판매 물품 확인하기</p>
+								<!-- ajax로 불러온 정보 붙이는 div -->
+								<div>
+								<!-- 판매물품...리스트 카드형식 -->
+									<div id="toAddSalesListDiv" class="card-body row"></div>
+									<!-- end of 판매물품...리스트 카드형식 -->						
+								</div>
+							</div>
+							
+						</div>
+							
+						</div>
+						
+					
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+	<!-- End of memberInfo modal -->
 </body>
 </html>

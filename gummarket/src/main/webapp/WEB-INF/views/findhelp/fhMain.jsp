@@ -11,8 +11,11 @@
 <script>
 function getDetails(num) {
 	getFhNo.fhNo.value = num;
+	
 	getFhNo.submit();
 }
+
+
 </script>
 
 </head>
@@ -21,31 +24,31 @@ function getDetails(num) {
 	<!-- page wrapper -->
 	<div id="wrapper">
 
-	<!-- Main page search Form -->
+	<!-- Main page-->
 	<div id="content-wrapper" class="d-flex flex-column">
+		<!-- page title & link -->
 		<div class="continer my-auto pt-4 pb-3 ">
-			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;" href="findHelpMain.doBB">I need your help!</a>
-			<a class="h3 mr-5" style="color: rgb(255, 190, 83); font-weight: 900; float: right;" href="offerHelpMain.do">I can offer my help!</a>
+			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900; font-size:2.5rem" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>
+			<a class="h3 mr-5" style="color: rgb(255, 190, 83); font-weight: 500; font-size: 1.5rem; float: right;" href="offerHelpMain.do">내가 도와줄게요~</a>
 		</div>
-		<div class="continer my-auto">
-		<!-- Main Content -->
-		<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
+		<!--End of page title & link -->
 		
+		<div class="continer my-auto">
 			<!-- 메인화면 Search 폼-->
-			<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block;">
-				<div class="input-group">
-					<input type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
-						placeholder="Search for..." aria-label="Search"
-						aria-describedby="basic-addon2">
-					<div class="input-group-append">
-					<!-- 서치버튼 색 바꾸고 싶으면 바꾸어도 됩니다. -->
-						<button class="btn" type="button"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
-							<i class="fas fa-search fa-sm"></i>
-						</button>
+			<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
+				<form id="searchFrm" name="searchFrm" method="post" action="keywordSearch.doBB" class="d-none d-sm-inline-block form-inline navbar-search" style="display: block;">
+					<div class="input-group">
+						<input id="keyWord" name="keyWord" type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
+							placeholder="Search title for..." aria-label="Search" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn" type="submit" id="searchBtn"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+			<!-- End of 메인화면 Search 폼-->
 		</div>
 	
 
@@ -53,6 +56,11 @@ function getDetails(num) {
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<!-- 모든 도움찾기 글 카드로 보여주기!! -->	
+			 <c:if test="${not empty message }">
+			 	<div>${message }</div> ffff
+			 </c:if>
+			 
+			 <c:if test="${not empty list }">
 			 <c:forEach var="item" items="${list}"> 
 	            <div class="col mb-5">
 	                <div class="card h-100">
@@ -70,19 +78,23 @@ function getDetails(num) {
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.fhNo})">Read more</button></div>
+	                        <div class="text-center">
+	                        <button type="button" class="btn btn-outline-warning mt-auto" onclick="getDetails(${item.fhNo})">Read more</button>
+	                        </div>
 	                    </div>
 	                    <form id="getFhNo" name="getFhNo" action="fhDetail.doBB" method="post">
 	                    	<input type="hidden" id="fhNo" name="fhNo">
+	                    	<input type="hidden" id="mId" name="mId" value="${item.mId }">
 	                    </form>
 	                </div>
 	            </div>       
-			 </c:forEach> 
+			 </c:forEach>
+			 </c:if> 
         </div>
     </div>
     <!-- Main page card items area -->
     </div>
-	<!-- End of Main page search Form -->
+	<!-- End of Main page-->
     </div>
     <!-- End of page wrapper -->
     

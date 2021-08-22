@@ -14,8 +14,17 @@
 		where o.ohhide = 'n'
 		order by o.ohno
 	</select>
+	
+	<select id="memberTotalOh" resultType="Int">
+		select count(*) from offerhelp where mId=#{mId}
+	</select>
+	
     <select id="offerHelpSelect" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
       select * from offerhelp where ohNo=#{ohNo}
+    </select>
+    
+    <select id="offerHelpSelectListByMember" resultType="co.animal.prj.offerhelp.vo.OfferHelpVO">
+      select * from offerhelp where mId=#{mId}
     </select>
    
     <insert id="offerHelpInsert" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">

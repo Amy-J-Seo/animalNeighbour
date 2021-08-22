@@ -56,11 +56,12 @@
 
 			<!-- Main page search Form -->
 			<div id="content-wrapper" class="d-flex flex-column">
-				<div class="continer my-auto pb-3">
-					<p class="h3 mb-0 mt-5 ml-5"
-						style="color: rgb(255, 190, 83); font-weight: 900;">I can
-						offer my help!</p>
-				</div>
+
+				<div class="continer my-auto pt-4 pb-3 ">
+			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 500; font-size: 1.5rem;" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>
+			<a class="h3 mr-5" style="color: rgb(255, 190, 83); font-weight: 900; font-size:2.5rem; float: right;" href="offerHelpMain.do">내가 도와줄게요~</a>
+		</div>
+
 				<div class="table-responsive">
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
