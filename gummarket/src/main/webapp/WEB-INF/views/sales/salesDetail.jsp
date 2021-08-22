@@ -288,7 +288,7 @@
                 url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
                 method: 'post',
                 //data: $('#fhReport').serialize(),
-                data: {category: $('#itemCategory').text(),
+                data: {category: "sales",
                 		rWhy: $('#fhReport input[name="reason"]').val(),
                 		mainNo: $('#fhReport #fhNo').val(),
                 		mIdL '${session.mId}'

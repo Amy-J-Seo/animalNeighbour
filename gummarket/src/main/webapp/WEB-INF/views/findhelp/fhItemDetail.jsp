@@ -10,7 +10,7 @@
 <script type="text/javascript">
 //ajax
 $(document).ready(function () {
-	//set up function on submit the form for report()
+	//set up function on submit 신고폼
     $("#itemReportBtn").click(function () {
    
     	 //set up a function for onSubmit
@@ -18,15 +18,14 @@ $(document).ready(function () {
             e.preventDefault();
             
             //let s = $('#fhReport').serialize();
-            //processing form submit;
             $.ajax({
                 url: $('#fhReport').attr('action'), //'../AddItemServlet.do'
                 method: 'post',
                 //data: $('#fhReport').serialize(),
                 data: {
-                		category: $('#itemCategory').text(),
+                		category: "findhelp",
                 		rWhy: $('#fhReport input[name="reason"]').val(),
-                		mainNo: $('#fhReport #fhNo').val(),
+                		mainNo: "${item.fhNo}",
                 		mId:'${session.mId}'
                 },
                 dataType: 'json',
@@ -257,7 +256,6 @@ let fields = ['cmId', 'cContents'];
 	
 function fhItemUpdate(n) {
 	fhUpdate.fhNo.value=n;
-	
 	fhUpdate.submit();
 }
 
@@ -266,6 +264,7 @@ function fhItemDelete(n) {
 	  if(result) {
 		  fhDelete.fhNo.value=n;
 		  fhDelete.submit();
+		 
 	 	 }
 	}
 	
@@ -289,7 +288,11 @@ function fhItemDelete(n) {
 					<i class="far fa-trash-alt"></i> 글 삭제</button>
 					 <button class="btn btn-sm mr-3"  onclick="fhItemUpdate(${item.fhNo })" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 					 <i class="far fa-edit"></i> 글 수정</button>
-				 </c:if>				
+				 </c:if>
+				  <c:if test="${session.role == 'ADMIN'}">
+				  	<button class="btn btn-sm"  onclick="fhItemDelete(${item.fhNo })" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255); float:right;">
+					<i class="far fa-trash-alt"></i> 글 삭제</button>
+				  </c:if>				
 			</div>
 			<div class="card-body">
 				<div style="width:100%" class="d-flex justify-content-center">

@@ -21,18 +21,17 @@
 
 	<script type="text/javascript">
          function getRecord(n, h) {
-          	$('#frm #sNo').val(n);
-        	 $('#frm #sHit').val(h);
-        	 console.log($('#frm #sNo').val())
-        	 console.log($('#frm #sHit').val())
-          	$('#frm').submit();
-             };
+	          	$('#frm #ohNo').val(n);
+	          	$('#frm #mId').val(h);
+	          	$('#frm').submit();
+          	};
+         
+       	function backToUserMain(){
+        	 $('#toUserMainFrm #mId').val('${session.mId}');
+        	 $('#toUserMainFrm').submit();
+         }
              
-          	function backToUserMain(){
-           	 $('#toUserMainFrm #mId').val('${session.mId}');
-           	 $('#toUserMainFrm').submit();
-            }
-                
+             
      </script>
  </head>
 
@@ -42,26 +41,19 @@
          <!-- Page Heading -->
          <div class="continer my-auto pl-4 pb-3">
              <p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">
-                 판매 전체 글</p>
+                 도움주기 전체 글</p>
          </div>
          <!--table with all recipe-->
          <div class="card shadow mb-4 mr-4 ml-4 pl-3 pr-3">
-			   
+
              <div class="card-body">
-             	 <c:if test="${not empty message }">
-                <div class="text-center" style="font-size: 50px">${message }</div>
-                </c:if>
-                <c:if test="${not empty list }">
                  <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                          <thead>
                              <tr>
-                                 <th>판매번호</th>
-                                 <th>작성자</th>
+                                 <th>글번호</th>
                                  <th>카테고리</th>
                                  <th>제목</th>
-                                 <th>조회수</th>
-                                 <th>상태</th>
                                  <th>글 숨김유무</th>
                              </tr>
                          </thead>
@@ -69,29 +61,25 @@
                              <c:forEach var="item" items="${list }">
                                  <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                      onmouseout="this.style.background='white'"
-                                     onclick="getRecord(${item.sNo}, ${item.sHit })">
-                                         <td>${item.sNo }</td>
-                                         <td>${item.mId }</td>
-                                         <td>${item.sCategory }</td>
-                                         <td>${item.sTitle }</td>
-                                         <td>${item.sHit }</td>
-                                         <td>${item.sStatus }</td>
-                                         <td>${item.sHide }</td>
+                                     onclick="getRecord(${item.ohNo}, '${item.mId }')">
+                                         <td>${item.ohNo }</td>
+                                         <td>${item.ohCategory }</td>
+                                         <td>${item.ohTitle }</td>
+                                         <td>${item.ohHide }</td>
                                  </tr>
                              </c:forEach>
                          </tbody>
                      </table>
-                     <form id="frm" name="frm" action="salesSelect.do" method="post">
-                         <input type="hidden" id="sNo" name="sNo">
-                         <input type="hidden" id="sHit" name="sHit">
+                     <form id="frm" name="frm" action="ohDetail.do" method="post">
+                         <input type="hidden" id="ohNo" name="ohNo">
+                         <input type="hidden" id="mId" name="mId">
                      </form>
                  </div>
-                 </c:if>
              </div>
 				
 				
 				
-				<c:if test="${session.role eq 'ADMIN' }">
+			<c:if test="${session.role eq 'ADMIN' }">
              <!-- return to menu btn...  and to the list btn -->
              <div class="pb-3 mx-auto" style="align-items: center;">
                  <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"

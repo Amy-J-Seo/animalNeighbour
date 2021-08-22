@@ -15,8 +15,8 @@ public class FhDetail implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		FindHelpServiceImpl dao= new FindHelpServiceImpl();
-		MemberServiceImpl mDao = new MemberServiceImpl();
 		FindHelpVO vo = new FindHelpVO();
+		MemberServiceImpl mDao = new MemberServiceImpl();
 		MemberVO mVo = new MemberVO();
 		
 		String selectedNo =request.getParameter("fhNo");

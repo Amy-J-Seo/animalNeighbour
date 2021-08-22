@@ -63,10 +63,10 @@
 	                                <div class="bi-star-fill"></div>
 	                            </div>
 	                            <!-- 조회수-->
-	                            <div>조회수 :${list.sHit }</div>
-	                            <div>카테고리: ${list.sCategory }</div>
-	                            <div>가격: ${list.sPrice }</div>
-	                            <div>할인 된 가격: ${list.sNetPrice }</div>
+	                            <p>조회수 :${list.sHit }</p>
+	                            <p>카테고리: ${list.sCategory }</p>
+	                            <p>가격: ${list.sPrice }</p>
+	                            <p>할인 된 가격: ${list.sNetPrice }</p>
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->

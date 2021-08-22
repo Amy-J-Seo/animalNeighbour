@@ -6,6 +6,7 @@ public class ReportVO {
 	private String rWhy;
 	private String category;
 	private String mId;
+	private String rHide;
 	
 	
 	public ReportVO() {
@@ -41,10 +42,17 @@ public class ReportVO {
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
+	
+	public String getrHide() {
+		return rHide;
+	}
+	public void setrHide(String rHide) {
+		this.rHide = rHide;
+	}
 	@Override
 	public String toString() {
 		return "ReportVO [rNo=" + rNo + ", mainNo=" + mainNo + ", rWhy=" + rWhy + ", category=" + category + ", mId="
-				+ mId + "]";
+				+ mId + ", rHide=" + rHide + "]";
 	}
 	
 	

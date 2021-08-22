@@ -30,7 +30,7 @@ public class GetTotalReports implements Command {
 			request.setAttribute("list",list);
 			path="admin/totalReportTableView";
 		}else {
-			request.setAttribute("message", "신고 글이 없습니다~~");
+			request.setAttribute("message", "작성한 신고 글이 없습니다~~");
 			path="admin/totalReportTableView";
 		}
 			

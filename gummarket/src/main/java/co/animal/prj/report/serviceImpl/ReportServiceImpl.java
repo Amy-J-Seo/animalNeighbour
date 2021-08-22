@@ -48,4 +48,10 @@ public class ReportServiceImpl implements ReportService {
 		return map.memberTotalR(vo);
 	}
 
+	@Override
+	public int reportFinished(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return map.reportFinished(vo);
+	}
+
 }

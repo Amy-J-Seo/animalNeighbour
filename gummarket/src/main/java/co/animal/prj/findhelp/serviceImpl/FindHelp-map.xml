@@ -11,6 +11,14 @@
 		select * from findhelp where fhhide='n'
 	</select>
 	
+	<select id="memberTotalfh" resultType="Int">
+		select count(*) from findhelp where mId=#{mId}
+	</select>
+	
+	<select id="findHelpSelectListByMember" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select * from findhelp where mId=#{mId}
+	</select>
+	
 	<select id="findHelpSelectListByKeyWord" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
 		SELECT * FROM findhelp WHERE fhtitle like '%'||#{fhTitle}||'%' and fhhide='n'
 	</select>

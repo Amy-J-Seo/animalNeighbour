@@ -9,11 +9,20 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM report
 	</select>
+	
+	<select id="reportSelect" resultType="co.animal.prj.report.vo.ReportVO">
+		select * from categoty=#{category} where mainno=#{mainNo}
+	</select>
+	
+	<update id="reportFinished" parameterType="co.animal.prj.report.vo.ReportVO">
+		update report set rhide = 'f' where rno=#{rNo}
+	</update>
+	
 	<select id="reportSelectListByMember" resultType="co.animal.prj.report.vo.ReportVO">
 		SELECT * FROM report where mId=#{mId}
 	</select>
 	<insert id="reportInsert" parameterType="co.animal.prj.report.vo.ReportVO">
-		insert into report values(r_seq.nextval,#{rWhy},#{category},#{mainNo}, #{mId})
+		insert into report values(r_seq.nextval,#{rWhy},#{category},#{mainNo}, #{mId}, default)
 	</insert>
 	
 	<!-- report 사용자 글 숫자(숨김/지움/유효 모두) -->

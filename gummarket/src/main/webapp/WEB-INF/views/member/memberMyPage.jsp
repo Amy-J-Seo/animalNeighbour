@@ -16,8 +16,11 @@ $(document).ready(function () {
          data: {
         	 mId: '${session.mId}',
          },
-         success: function(response){
-         	console.log(response)
+         success: function(data){
+         	$('#totalOHNo').text(data['ohNo']);
+         	$('#totalFHNo').text(data['fhNo']);
+         	$('#totalSaleNo').text(data['salesNo']);
+         	$('#totalReportNo').text(data['reportNo']);
          },
          error: function (reject) {
              console.log(reject);
@@ -63,7 +66,12 @@ function getTotalSales(){
 function getTotalReports(){
 	$('#frmForTotalR').submit();
 }
-
+function getTotalFH(){
+	$('#frmForTotalFH').submit();
+}
+function getTotalOH(){
+	$('#frmForTotalOH').submit();
+}
 
 </script>
 </head>
@@ -218,7 +226,7 @@ function getTotalReports(){
 		                        <div class="col mr-2">
 		                            <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
 		                                총 물품 수</div>
-		                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+		                            <div id="totalSaleNo" class="h5 mb-0 font-weight-bold text-gray-800"><i class="far fa-meh-rolling-eyes"></i></div>
 		                        </div>
 		                        <div class="col-auto">
 		                            <i class="fas fa-users fa-4x text-gray-300"></i>
@@ -245,7 +253,7 @@ function getTotalReports(){
 	                        <div class="col mr-2">
 	                            <div class="text-md font-weight-bold text-warning text-uppercase mb-1">
 	                                총 신고 게시글 수</div>
-	                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+	                            <div id="totalReportNo" class="h5 mb-0 font-weight-bold text-gray-800"><i class="far fa-meh-rolling-eyes"></i></div>
 	                        </div>
 	                        <div class="col-auto">
 	                            <i class="fas fa-bell fa-4x text-gray-300"></i>
@@ -260,17 +268,20 @@ function getTotalReports(){
 				<div class="col-xl-6 col-md-6 mb-4">
 	            <div class="card border-left-primary shadow h-100 py-2">
 	            	<div class="card-header py-3">
-						<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 도움주기 글
+						<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 도움찾기 글
 						 </h3>
-						 <button class="btn btn-sm mr-1"  onclick="location.href='memberList.do'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+						 <form id="frmForTotalFH" name="frmForTotalFH" method="post" action="getTotalFindHelp.doBB">
+						 <input id="mIdForTotalFH" name="mIdForTotalFH" type="hidden" value="${member.mId}">
+						 <button class="btn btn-sm mr-1"  onclick="getTotalFH()" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 						 <i class="fas fa-search-plus"></i> 더보기</button>
+						 </form>
 					</div>
 	                <div class="card-body">
 	                    <div class="row no-gutters align-items-center">
 	                        <div class="col mr-2">
 	                            <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-	                                총 도움주기 수</div>
-	                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+	                                총 도움찾기 수</div>
+	                            <div id="totalFHNo" class="h5 mb-0 font-weight-bold text-gray-800"><i class="far fa-meh-rolling-eyes"></i></div>
 	                        </div>
 	                        <div class="col-auto">
 	                            <i class="fas fa-users fa-4x text-gray-300"></i>
@@ -283,18 +294,20 @@ function getTotalReports(){
 		        <div class="col-xl-6 col-md-6 mb-4">
 	            <div class="card border-left-warning shadow h-100 py-2">
 	            	<div class="card-header py-3">
-						<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 도움찾기 글
+						<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >나의 도움주기 글
 						 </h3>
-						 <!-- To add report table view page link BB-->
-						 <button class="btn btn-sm mr-1"  onclick="location.href='rSelectList.doBB'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+						 <form id="frmForTotalOH" name="frmForTotalOH" method="post" action="getTotalOfferHelp.doBB">
+						 <input id="mIdForTotalOH" name="mIdForTotalOH" type="hidden" value="${member.mId}">
+						 <button class="btn btn-sm mr-1"  onclick="getTotalOH()" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 						 <i class="fas fa-search-plus"></i> 더보기</button>
+						 </form>
 					</div>
 	                <div class="card-body">
 	                    <div class="row no-gutters align-items-center">
 	                        <div class="col mr-2">
 	                            <div class="text-md font-weight-bold text-warning text-uppercase mb-1">
-	                                총 도움찾기 수</div>
-	                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+	                                총 도움주기 수</div>
+	                            <div id="totalOHNo" class="h5 mb-0 font-weight-bold text-gray-800"><i class="far fa-meh-rolling-eyes"></i></div>
 	                        </div>
 	                        <div class="col-auto">
 	                            <i class="fas fa-bell fa-4x text-gray-300"></i>

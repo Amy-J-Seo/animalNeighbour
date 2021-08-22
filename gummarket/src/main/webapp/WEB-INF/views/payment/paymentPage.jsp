@@ -102,37 +102,39 @@ $(document).ready(function(){
             buyer_postcode: "우편번호",
             m_redirect_url: 'http://localhost/gummarket/payresult.doBB'
         }, function (rsp) { // callback
-            console.log(rsp);
-     	   	var msg="";
-            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-			 
-            alert("결제 성공");
-            
-            /* 결제 성공 시 결과 저장 */
-            $.ajax({
-         	   url:'payresult.doBB', //'../AddItemServlet.do'
-	   	            method: 'post',
-	   	            data: {
-	   	            	buyerId: buyerId,
-            			sNo: sNo,
-            			productId: rsp.merchant_uid,
-            			payAmount: rsp.paid_amount,
-            			payConfirmNum:rsp.apply_num
-	   	            },
-	   	            success: function(response){
-	   	            	console.log(response);
-	   	            	$('#toPayResult').submit();
-	   	            	
-	   	            },
-	   	            error: function (reject) {
-	   	                console.error(reject);
-	   	            } 
-            	});
-            
-            	$('#toPayResult').submit();
-            } else {	
-	               alert("결제에 실패하였습니다. " + rsp.error_msg);
-            }
+	            console.log(rsp);
+	     	   	var msg="";
+	            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+				 
+	            alert("결제 성공");
+	            
+	            /* 결제 성공 시 결과 저장 */
+	            $.ajax({
+	         	   url:'payresult.doBB', //'../AddItemServlet.do'
+		   	            method: 'post',
+		   	            data: {
+		   	            	buyerId: buyerId,
+	            			sNo: sNo,
+	            			productId: rsp.merchant_uid,
+	            			payAmount: rsp.paid_amount,
+	            			payConfirmNum:rsp.apply_num
+		   	            },
+		   	            success: function(response){
+		   	            	console.log(response);
+		   	            	$('#toPayResult').submit();
+		   	            	
+		   	            },
+		   	            error: function (reject) {
+		   	                console.error(reject);
+		   	            } 
+	            	});
+	            
+	            	$('#toPayResult').submit();
+	            	//리스트에서 아이템 지우기...
+	            	
+	            } else {	
+		               alert("결제에 실패하였습니다. " + rsp.error_msg);
+	            }
         	
         });
                       

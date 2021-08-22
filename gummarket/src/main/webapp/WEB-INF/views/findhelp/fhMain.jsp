@@ -56,6 +56,11 @@ function getDetails(num) {
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<!-- 모든 도움찾기 글 카드로 보여주기!! -->	
+			 <c:if test="${not empty message }">
+			 	<div>${message }</div> ffff
+			 </c:if>
+			 
+			 <c:if test="${not empty list }">
 			 <c:forEach var="item" items="${list}"> 
 	            <div class="col mb-5">
 	                <div class="card h-100">
@@ -83,7 +88,8 @@ function getDetails(num) {
 	                    </form>
 	                </div>
 	            </div>       
-			 </c:forEach> 
+			 </c:forEach>
+			 </c:if> 
         </div>
     </div>
     <!-- Main page card items area -->

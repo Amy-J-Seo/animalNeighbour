@@ -1,8 +1,7 @@
 package co.animal.prj.member.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import co.animal.prj.findhelp.serviceImpl.FindHelpServiceImpl;
+import co.animal.prj.findhelp.vo.FindHelpVO;
+import co.animal.prj.offerhelp.serviceImpl.OfferHelpServiceImpl;
+import co.animal.prj.offerhelp.vo.OfferHelpVO;
 import co.animal.prj.report.serviceImpl.ReportServiceImpl;
 import co.animal.prj.report.vo.ReportVO;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
@@ -39,19 +42,34 @@ public class GetTotalNumbersServlet extends HttpServlet {
 		SalesServiceImpl sDao = new SalesServiceImpl();
 		SalesVO sVo = new SalesVO();
 		sVo.setmId(mId);
-		
 		int salesNo = sDao.memberTotalS(sVo);
 		
 		ReportServiceImpl rDao = new ReportServiceImpl();
 		ReportVO rVo = new ReportVO();
 		rVo.setmId(mId);
-		
 		int reportNo = rDao.memberTotalR(rVo);
+
+		FindHelpServiceImpl fhDao = new FindHelpServiceImpl();
+		FindHelpVO fhVo = new FindHelpVO();
+		fhVo.setmId(mId);
+		int findhelpNo = fhDao.memberTotalfh(fhVo);
 		
-		Gson gson = new GsonBuilder().create();
-		response.getWriter().print(gson.toJson(salesNo));
-		response.getWriter().print(gson.toJson(reportNo));
+		OfferHelpServiceImpl ohDao = new OfferHelpServiceImpl();
+		OfferHelpVO ohVo = new OfferHelpVO();
+		ohVo.setmId(mId);
+		int offerhelpNo = ohDao.memberTotalOh(ohVo);
+				
 		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("salesNo", salesNo);
+		map.put("reportNo", reportNo);
+		map.put("fhNo", findhelpNo);
+		map.put("ohNo", offerhelpNo);
+		
+		
+		 Gson gson = new GsonBuilder().create();
+		 response.getWriter().print(gson.toJson(map));
+		 System.out.println(gson.toJson(map) +" getTotalNumbersServ...");
 		
 		
 	}
