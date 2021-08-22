@@ -19,7 +19,7 @@ public class SalesListAll implements Command {
 		String path="";
 		HttpSession session = request.getSession();
 		String role = String.valueOf(session.getAttribute("role"));
-		//세션정보 가져와서 어드민->총 거래 테이블 리스트로 보내기..
+		// 주윤 세션정보 가져와서 어드민->총 거래 테이블 리스트로 보내기..
 		if( role.equals("ADMIN")) {
 			request.setAttribute("list", serviceDao.salesSelectList());
 			path="admin/totalSalesTableView";

@@ -33,5 +33,11 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gson-2.8.6.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gson-2.8.7.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

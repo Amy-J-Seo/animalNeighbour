@@ -17,7 +17,7 @@
                         <img alt="" src="img/dog.png">
                         <p class="lead text-gray-800 mb-5">${message }</p>
                         <p class="text-gray-500 mb-0">So sorry~~~!!! Something went wrong...</p>
-                        <a href="index.html">&larr; Back to Main</a>
+                        <a href="home.do">&larr; Back to Main</a>
                     </div>
 
                 </div>

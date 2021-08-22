@@ -42,7 +42,8 @@ public class FhItemReportServlet extends HttpServlet {
 		ReportVO vo = new ReportVO();
 		vo.setCategory(category);
 		vo.setrWhy(rWhy);
-		vo.setmainNo(mainNo);
+		vo.setMainNo(mainNo);
+		vo.setmId(request.getParameter("mId"));
 		
 		System.out.println(vo.toString());
 		

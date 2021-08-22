@@ -20,9 +20,10 @@
             <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
             <script type="text/javascript">
-            function getDetails(num) {
-                $('#frm #bNo').val(num);
-                $('#frm').submit();
+            function getDetails(n, h) {
+				$('#frm #bNo').val(n);
+				$('#frm #bHit').val(h);
+            	$('#frm').submit();
             }
             </script>
 
@@ -57,7 +58,7 @@
                                     <c:forEach var="item" items="${list }">
                                         <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'"
                                             onmouseout="this.style.background='white'"
-                                            onclick="getDetails(${item.bNo})">
+                                            onclick="getDetails(${item.bNo},${item.bHit})">
                                                 <td>${item.bNo }</td>
                                                 <td>${item.bCategory }</td>
                                                 <td>${item.mId }</td>
@@ -71,6 +72,7 @@
                             </table>
                             <form id="frm" name="frm" action="bDetail.doBB" method="post">
                                 <input type="hidden" id="bNo" name="bNo">
+                                <input type="hidden" id="bHit" name="bHit">
                             </form>
                         </div>
                     </div>

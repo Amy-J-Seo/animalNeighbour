@@ -24,6 +24,7 @@
 <script type="text/javascript">
 function getDetails(num) {
 	$('#frm #bNo').val(num);
+	$('#frm #bHit').val(num);
 	$('#frm').submit();
 }
 </script>
@@ -56,7 +57,7 @@ function getDetails(num) {
 		                            <tbody>
 		                            <c:forEach var="notice" items="${list }">
 		                                <tr onmouseover="this.style.background='#ebebeb'; this.style.cursor='pointer'" 
-		                                onmouseout="this.style.background='white'" onclick="getDetails(${notice.bNo})">
+		                                onmouseout="this.style.background='white'" onclick="getDetails(${notice.bNo},${notice.bHit})">
 		                                    <td>${notice.bNo }</td>
                                             <td>${notice.bCategory }</td>
                                             <td>${notice.mId }</td>
@@ -70,6 +71,7 @@ function getDetails(num) {
 	                        </table>
 				                         <form id="frm" name="frm" action="bDetail.doBB" method="post">
 	                    	<input type="hidden" id="bNo" name="bNo" >
+	                    	<input type="hidden" id="bHit" name="bHit" >
 	             
 	                    </form>
 						 </div>
