@@ -34,16 +34,8 @@ import co.animal.prj.login.command.SearchIdForm;
 import co.animal.prj.login.command.SearchPass;
 import co.animal.prj.login.command.SearchPassForm;
 import co.animal.prj.login.command.SearchPassUp;
-import co.animal.prj.lost.command.LostDetail;
-import co.animal.prj.lost.command.LostInsert;
-import co.animal.prj.lost.command.LostItemDelete;
-import co.animal.prj.lost.command.LostItemUpdate;
-import co.animal.prj.lost.command.LostItemUpdateForm;
-import co.animal.prj.lost.command.LostMain;
-import co.animal.prj.lost.command.WritelostForm;
 
 import co.animal.prj.member.command.MemberCheck;
-
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberSelect;
@@ -156,7 +148,6 @@ public class FrontController extends HttpServlet {
 		map.put("/ohItemUpdateForm.do", new OhItemUpdateForm());
 		map.put("/ohItemDelete.do", new OhItemDelete());
 		map.put("/ohItemDetail.do", new OhDetail());
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -166,9 +157,9 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println(path);
+		System.out.println("PATH:: " + path);
 		Command command = map.get(path);
-		System.out.println(command);
+		System.out.println("COMMAND :::" + command);
 		
 		String viewPage = command.execute(request, response);
 		

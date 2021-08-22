@@ -29,7 +29,6 @@
             <!-- Footer -->
             <footer class="sticky-footer" style="background-color: rgb(244, 244, 244); padding-top:0; padding-bottom:0.5rem">
                 <div>
-
                 <!-- when not login send user to loginForm.do -->
                 <c:if test="${not empty session.mId }">
                   <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
