@@ -29,6 +29,7 @@
             <!-- Footer -->
             <footer class="sticky-footer" style="background-color: rgb(244, 244, 244); padding-top:0; padding-bottom:0.5rem">
                 <div>
+
                     <a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px;" src="img/1market.png"></a>
                     <c:if test="${session.role=='ADMIN' }">
 	                    <span><a href="everyCscList.do" class="customer-service-link">고객센터</a></span>
@@ -37,6 +38,7 @@
 	                    <span><a href="myCscList.do" class="customer-service-link">고객센터</a></span>
                     </c:if>
                     
+
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; 개껌장터 2021</span>
