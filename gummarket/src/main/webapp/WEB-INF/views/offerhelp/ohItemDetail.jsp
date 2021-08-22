@@ -66,7 +66,7 @@
 					},
 					success: itemListFnc,
 					error: function () {
-						console.log("으악")
+						console.log(e)
 					}
 			});
 				
@@ -304,7 +304,7 @@
 								<i class="fa fa-comment fa"></i> REPLY
 							</div>
 	 						<div class="card-body">
-								<form id="reply" action="CommentInsertServ" method="post">
+								<form id="reply" action="OhCommentInsertServlet" method="post">
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">
 
