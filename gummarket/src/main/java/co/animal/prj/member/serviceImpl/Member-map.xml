@@ -37,6 +37,14 @@
 	,grade=#{grade},email=#{email} WHERE mId=#{mId}
 	</update>
 
+  <select id="loginSearch" resultType="co.animal.prj.member.vo.MemberVO">
+	SELECT mId,mName FROM member WHERE mName=#{mName} and email=#{email}
+	</select>
+	<update id="updatePassword" parameterType="co.animal.prj.member.vo.MemberVO">
+	UPDATE member SET password=#{password} WHERE mName=#{mName} and email=#{email}
+	</update>
+
+
 	<update id="usedPointUpdate" parameterType="co.animal.prj.member.vo.MemberVO">
 		update member set reviewPoint = reviewPoint - #{reviewPoint} where mid=#{mId}
 	</update>

@@ -15,6 +15,7 @@
 	function confirmDel(n) {
 	   alert("글을 삭제할까요?");
 	   if(confirm("삭제되었습니다.")){
+	
 	    frm.sNo.value= n;
 		frm.submit();
 	  
@@ -57,7 +58,9 @@
 	let fields = ['cmId', 'cContents'];
 	//댓글 조회 콜백함수
 	function itemListFnc(data) {
-	
+		console.log(data);	
+	if(data[0]['cNo']!=0){ //글 있을 때만 보이게 하기 위해 
+
 		for (let i = 0; i < data.length; i++) {  
 			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data[i]['cNo']);
 	         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
@@ -78,7 +81,7 @@
 			         //신고하기(신고하기 어디로???)
 			         const reportForm = $('<form/>').attr('action', '#');
 			         const reportBtn 
-			         	= $('<a />').addClass("btn btn-danger btn-md")
+			         	= $('<a />').addClass("btn btn-danger btn-sm")
 			         				.attr({
 			         					'href':"#",
 			         					"data-toggle":"modal",
@@ -104,6 +107,7 @@
 	         
 	         
 		$('#commentsBody').append(divCase);
+	}
 	      
 	}
 	}
@@ -177,7 +181,7 @@
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 		console.log(data)
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data.cNo);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data[cNo]);
 	    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
 		
 	        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({

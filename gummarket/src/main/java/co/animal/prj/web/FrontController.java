@@ -14,8 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
+import co.animal.prj.csc.command.CsItemDelete;
+import co.animal.prj.csc.command.CsItemUpdateForm;
+import co.animal.prj.csc.command.CsUpdate;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.MyCscDetail;
+import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -24,6 +29,19 @@ import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
 
+import co.animal.prj.login.command.SearchId;
+import co.animal.prj.login.command.SearchIdForm;
+import co.animal.prj.login.command.SearchPass;
+import co.animal.prj.login.command.SearchPassForm;
+import co.animal.prj.login.command.SearchPassUp;
+import co.animal.prj.lost.command.LostDetail;
+import co.animal.prj.lost.command.LostInsert;
+import co.animal.prj.lost.command.LostItemDelete;
+import co.animal.prj.lost.command.LostItemUpdate;
+import co.animal.prj.lost.command.LostItemUpdateForm;
+import co.animal.prj.lost.command.LostMain;
+import co.animal.prj.lost.command.WritelostForm;
+
 import co.animal.prj.member.command.MemberCheck;
 
 import co.animal.prj.member.command.MemberDetail;
@@ -31,7 +49,6 @@ import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberSelect;
 import co.animal.prj.member.command.MemberUpdate;
 import co.animal.prj.member.command.RequestAuthEmail;
-import co.animal.prj.member.command.SearchId;
 import co.animal.prj.member.command.Test;
 import co.animal.prj.member.command.UserUpdate;
 import co.animal.prj.member.command.Withdrawal;
@@ -44,7 +61,14 @@ import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
 import co.animal.prj.offerhelp.command.WriteOHForm;
 import co.animal.prj.sales.command.DeleteSales;
+
 import co.animal.prj.sales.command.KeywordSearchSales;
+
+import co.animal.prj.sales.command.FindClothing;
+import co.animal.prj.sales.command.FindEtc;
+import co.animal.prj.sales.command.FindFood;
+import co.animal.prj.sales.command.FindShare;
+
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
 import co.animal.prj.sales.command.SalesListAll;
@@ -72,7 +96,11 @@ public class FrontController extends HttpServlet {
 		map.put("/registerForm.do", new RegisterForm());//회원가입
 		map.put("/idCheckForm.do", new IdCheckForm());//아이디 중복 조회 폼
 		map.put("/idCheckPro.do", new IdCheckPro());//아이디 중복 조회
-		map.put("/searchId.do", new SearchId()); //아이디 비밀번호 찾기
+		map.put("/searchIdForm.do", new SearchIdForm());
+		map.put("/searchId.do", new SearchId()); //아이디 찾기
+		map.put("/searchPassForm.do",new SearchPassForm()); //비밀번호찾기 폼
+		map.put("/searchPassUp.do", new SearchPassUp()); // 새 비밀번호 설정
+		map.put("/searchPass.do", new SearchPass()); //비밀번호찾기
 		map.put("/registerCheck.do", new RegisterCheck());//회원가입완료
 		map.put("/withdrawalForm.do", new WithdrawalForm());//회원탈퇴폼
 		map.put("/withdrawal.do", new Withdrawal());//회원탈퇴완료
@@ -101,8 +129,20 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/commentInsert.do", new CommentInsert());//댓글 입력
 		
+		//카테고리별
+		map.put("/findClothing.do", new FindClothing());
+		map.put("/findFood.do", new FindFood());
+		map.put("/findEtc.do", new FindEtc());
+		map.put("/findShare.do", new FindShare());
+	
+		
+		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
+		map.put("/myCscDetail.do", new MyCscDetail());//csc조회하기
+		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
+		map.put("/csUpdate.do", new CsUpdate());
+		map.put("/csItemDelete.do", new CsItemDelete());
 
 		//주윤 세일즈 서치버튼 추가
 		map.put("/KeywordSearchSales.do", new KeywordSearchSales());

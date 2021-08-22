@@ -1,18 +1,16 @@
-package co.animal.prj.member.command;
+package co.animal.prj.login.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animal.prj.common.Command;
 
-public class SearchId implements Command {
+public class SearchIdForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-		
-		return null;
+		// TODO Auto-generated method stub
+		return "login/searchIdForm";
 	}
 
 }

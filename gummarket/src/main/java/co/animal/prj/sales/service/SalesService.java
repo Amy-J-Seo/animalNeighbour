@@ -17,9 +17,16 @@ public interface SalesService {
 	public int hitUpdate(SalesVO vo);//조회수 증가
 	public int updateLike(SalesVO vo); //like 증가
 	
+
 	//주윤 멤버정보모달 탑3 아이템 조회
 	public List<SalesVO> salesListTop3(SalesVO vo);
 	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo); //searchBar
 	public List<SalesVO> salesListByMember(SalesVO vo); //사용자의 글 리스트 조회
 	public int memberTotalS(SalesVO vo); //사용자 글 숫자
+
+  //카테고리별로 찾아오기
+	public List<SalesVO> findClothing();
+	public List<SalesVO> findFood();
+	public List<SalesVO> findEtc();
+	public List<SalesVO> findShare();
 }
