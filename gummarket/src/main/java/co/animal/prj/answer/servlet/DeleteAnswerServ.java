@@ -31,7 +31,8 @@ public class DeleteAnswerServ extends HttpServlet {
 		AnswerVO vo = new AnswerVO();
 		
 		vo.setCsNo(csNo);
-		answerDao.answerDelete(vo);
+		System.out.println(vo.getCsNo());
+		System.out.println(answerDao.answerDelete(vo));
 	}
 
 

@@ -13,8 +13,8 @@
 	<select id="cscMyList" resultType="co.animal.prj.csc.vo.CscVO">
 		select * from csc where mid=#{mId}
 	</select>
-	<select id="cscSelect" resultType="co.animal.prj.csc.vo.CscVO">
-		select c.*, m.*, a.acontents, a.atitle, a.adate
+	<select id="cscSelect" resultType="co.animal.prj.answer.vo.AnswerVO">
+		select c.*, m.*, a.acontents, a.atitle, a.adate, a.ano
 		from csc c
 		join member m
 		on c.mid=m.mid

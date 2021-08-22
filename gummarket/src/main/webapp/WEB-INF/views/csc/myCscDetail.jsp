@@ -52,19 +52,17 @@ $(document).ready(function(){
 let fields = ['aTitle', 'aContents'];
 //답글 조회 콜백함수
 function itemListFnc(data) {
-	console.log($('#reply').val());
-if(data['aNo']!=0){ //글 있을 때만 보이게 하기 위해 
+	console.log(data);
+	if(data['aNo']!=0){ //글 있을 때만 보이게 하기 위해 
 	
 	//for (let i = 0; i < data.length; i++) {  
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['aNo']);
+		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['csNo']);
         const divMain = $('<div />').attr('class', 'd-flex align-items-center');
-         let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
-               "width": "2rem",
-               "height": "2rem"
-             });
-         //let userName = $('<span />').css("font-size","1.5rem").text(data[i]['mId']).addClass("pl-2");
+       
+         let title = $('<div />').css("font-size","1.5rem").text(data['aTitle']).addClass("pl-2");
+         let br =$('<br/>')
          let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
-         $(divMain).append(img , comment);
+         $(divMain).append(title,br,comment);
          
         //console.log(data[i]['cmId']);
          $(divCase).append(divMain);
@@ -113,26 +111,29 @@ let fields = ['mId', 'aContents'];
 //입력처리 후 콜백함수
 function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 	console.log(data)
-	const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id',data[csNo]);
-    const divMain = $('<div />').attr('class', 'd-flex align-items-center');
-	
-        let img =$('<img />').attr('class', 'rounded-circle').attr('src','img/undraw_profile_1.svg').css({
-              "width": "2rem",
-              "height": "2rem"
-            });
-        let userName = $('<span />').css("font-size","1.5rem").text(data['mId']);
-        let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
-        divMain.append(img, comment);
-        
-        const btnDiv =$('<div />');
-        const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
-        const updBtn=$('<button />').attr("class", "bx	tn btn-warning mr-2").css("float", "right").text("Edit");
-        btnDiv.append(delBtn, updBtn);
-        delBtn.click(kill);
-		updBtn.click(update);
-        $(divCase).append(divMain, btnDiv)
-        $('#commentsBody h4').remove(); // 답변중 h4테그 숨기기! 
-		$('#commentsBody').append(divCase);
+	const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['csNo']);
+        const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+       
+         let title = $('<div />').css("font-size","1.5rem").text(data['aTitle']).addClass("pl-2");
+         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
+         $(divMain).append(title, comment);
+         
+        //console.log(data[i]['cmId']);
+         $(divCase).append(divMain);
+        	 
+	         const btnDiv =$('<div />');
+	         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+	         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+	         
+	         delBtn.click(kill);
+			 updBtn.click(update);
+	         btnDiv.append(delBtn, updBtn);
+     		
+	         
+	         $(divCase).append(btnDiv);
+		  	console.log(divCase);
+			$('#commentsBody').append(divCase);
+			$('#commentsBody h4').remove();// 답변중 h4테그 숨기기! 
      
 }
 	
@@ -140,11 +141,12 @@ function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 //댓글 삭제하기
 function kill(e) {
 	console.log(e.target.parentNode.parentNode);
+	let csNo = $(this).parent().parent().attr('id')
 	//location.href='../DeleteServ.do?itemNo='+$(this).parent().children().eq(0).text();
 	$.ajax({
 		url: 'DeleteAnswerServ',
 		data: {
-			cNo: $(this).parent().parent().attr('id')
+			csNo: csNo
 		},
 		success: function () {
 			e.target.parentNode.parentNode.remove();
@@ -162,9 +164,9 @@ function update(e){
 	
 	let modForm = $("#showComUpdate");
 	$(this).parent().append(modForm);
-	console.log($(this).parent().parent().children().eq(0).children().eq(2).text());
+	let csNo = $(this).parent().parent().attr('id');
+	console.log($(this).parent().parent().children().eq(1));
 	let content = $(this).parent().parent().children().eq(0).children().eq(2).text();
-	let cNo = $(this).parent().parent().attr('id');// tr의 id값 가져옴~
 	/* $(this).children().eq(0).hide(); */
 	modForm.show();
 	
@@ -271,9 +273,7 @@ function updateItemFunc(data){
 				</div>
 				<div class="card-body">
 					<div id="commentsBody" align="center">
-						<br>
 						<h4 id="wateForAnswer">조금만 기다려주시면 곧 답을 드릴게요! (*'▽'*)</h4>
-						<br>
 					</div>
 				</div>
 			</div>
@@ -306,11 +306,20 @@ function updateItemFunc(data){
 			<p></p>
 
 			<div class="pb-3 mx-auto" style="align-items: center;">
-				<button class="btn btn-md mr-5" type="button"
-					onclick="location.href='myCscList.do'"
+				<c:if test="${session.role =='ADMIN' }">
+					<button class="btn btn-md mr-5" type="button"
+					onclick="location.href='everyCscList.do'"
 					style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
 					<i class="fas fa-undo-alt"></i>목록으로
-				</button>
+					</button>
+				</c:if>
+				<c:if test="${session.role !='ADMIN' }">
+					<button class="btn btn-md mr-5" type="button"
+						onclick="location.href='myCscList.do'"
+						style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
+						<i class="fas fa-undo-alt"></i>목록으로
+					</button>
+				</c:if>
 			</div>
 
 		</div>

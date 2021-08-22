@@ -37,6 +37,7 @@ public class AnswerInsertServ extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/json;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		
 		AnswerServiceImpl ansDao = new AnswerServiceImpl();
 		AnswerVO vo = new AnswerVO();
@@ -56,7 +57,6 @@ public class AnswerInsertServ extends HttpServlet {
 		try {
 			response.getWriter().print(gson.toJson(vo));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}

@@ -26,7 +26,7 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-	      select s.*, i.imgpath, c.ccontents, c.cmid
+	      select s.*, i.imgpath, c.ccontents, c.cmid, c.cno
 	      from sales s 
 	      left outer join comments c
 	      on s.sno = c.cmainnum
