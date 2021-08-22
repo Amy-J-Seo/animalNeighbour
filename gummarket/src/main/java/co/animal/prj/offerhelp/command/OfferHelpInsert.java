@@ -16,14 +16,14 @@ public class OfferHelpInsert implements Command {
 		OfferHelpVO vo = new OfferHelpVO();
 		
 		String writerId =request.getParameter("mId");
-		
+		System.out.println(writerId);
 		
 		vo.setmId(writerId);
 		vo.setOhCategory(request.getParameter("ohCategory"));
 		vo.setOhTitle(request.getParameter("ohTitle"));
 		vo.setOhContents(request.getParameter("ohContents"));
 		vo.setOhHistory(request.getParameter("ohHistory"));
-		vo.setOhHistory(request.getParameter("ohAddress"));
+		vo.setOhAddress(request.getParameter("ohAddress"));
 		vo.setOhCharacter(request.getParameter("ohCharacter"));
 		vo.setOhDetails(request.getParameter("ohDetails"));
 		System.out.println(vo +"OfferHelpInsert Java vo print");
