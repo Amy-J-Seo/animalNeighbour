@@ -128,7 +128,7 @@
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
-		console.log(data)
+		console.log(data['cNo']) //제대로 나옴
 		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr('id', data[cNo]);
 		const divMain = $('<div />').attr('class', 'd-flex align-items-center');
 
@@ -358,7 +358,7 @@
 						<div class="card-body">
 							<table>
 								<tr height="50px">
-									<td width="400px" style="color:black;"><strong><i class="fas fa-user-check"></i>
+									<td width="400px" ><strong><i class="fas fa-user-check"></i>
 											판매자</strong> </td>
 									<td>&nbsp;&nbsp;</td>
 									<td>${list[0].mId }</td>
@@ -371,7 +371,12 @@
 								<tr height="50px">
 									<td width="400px"><i class="far fa-clock"></i> 얼마나 썼어요? </td>
 									<td>&nbsp;&nbsp;</td>
-									<td> ${list[0].sUseDays }</td>
+									<td> ${list[0].sUseDays } 일</td>
+								</tr>
+								<tr height="50px">
+									<td width="400px"><i class="far fa-calendar-check"></i> 업로드일자</td>
+									<td>&nbsp;&nbsp;</td>
+									<td> ${list[0].sDate }</td>
 								</tr>
 								<tr height="50px">
 									<td width="400px"><i class="fas fa-question"></i> 왜 팔아요? </td>
@@ -379,7 +384,7 @@
 									<td> ${list[0].sReason }</td>
 								</tr>
 								<tr height="50px">
-									<td width="400px"><i class="fas fa-tags"></i> 얼마에 구매하셨나요?(새 상품 판매가격) </td>
+									<td width="400px"style="color:black;"><strong><i class="fas fa-tags"></i> 얼마에 구매하셨나요?(새 상품 판매가격)</strong></td>
 									<td>&nbsp;&nbsp;</td>
 									<td> ${list[0].sPrice }</td>
 								</tr>
@@ -390,12 +395,7 @@
 									<td> ${list[0].sNetPrice }</td>
 								</tr>
 								<tr height="50px">
-									<td width="400px"><i class="far fa-calendar-check"></i> 업로드일자</td>
-									<td>&nbsp;&nbsp;</td>
-									<td> ${list[0].sDate }</td>
-								</tr>
-								<tr height="50px">
-									<td width="400px"><i class="fas fa-paw"></i> 배송비 </td>
+									<td width="400px" style="color:black;"><strong><i class="fas fa-paw"></i> 배송비</strong>	 </td>
 									<td>&nbsp;&nbsp;</td>
 									<td> 택배이용시 일괄 2500원</td>
 								</tr>
