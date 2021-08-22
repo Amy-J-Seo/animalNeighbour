@@ -25,6 +25,7 @@ public class FindHelpInsert implements Command {
       String fileName2 = "";
       String orgfileName1 = "";
       String orgfileName2 = "";
+
       
       String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\fhImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
       //out.print(uploadPath);
