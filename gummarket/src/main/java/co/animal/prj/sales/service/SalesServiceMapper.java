@@ -22,10 +22,4 @@ public interface SalesServiceMapper {
 	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo);//searchbar
 	public List<SalesVO> salesListByMember(SalesVO vo);
 	public int memberTotalS(SalesVO vo); //사용자 글 숫자
-
-  //카테고리별로 찾아오기
-	public List<SalesVO> findClothing();
-	public List<SalesVO> findFood();
-	public List<SalesVO> findEtc();
-	public List<SalesVO> findShare();
 }

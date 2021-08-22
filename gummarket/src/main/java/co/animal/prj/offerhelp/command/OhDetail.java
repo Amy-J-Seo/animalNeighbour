@@ -16,10 +16,10 @@ public class OhDetail implements Command {
 		OfferHelpVO vo = new OfferHelpVO();
 		
 		String selectedNo = request.getParameter("ohNo");
-		System.out.println("ohno:: "+selectedNo);
+		System.out.println(selectedNo);
 		int ohNo=Integer.parseInt(selectedNo);
 		vo.setOhNo(ohNo);
-		System.out.println("get OhNo:: " + vo.getOhNo());
+		System.out.println(vo.getOhNo());
 		request.setAttribute("item", dao.offerHelpSelect(vo));
 		
 		return "offerhelp/ohItemDetail";

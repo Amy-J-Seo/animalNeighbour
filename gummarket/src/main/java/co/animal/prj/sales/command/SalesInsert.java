@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
+
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.animal.prj.common.Command;
@@ -36,8 +37,7 @@ public class SalesInsert implements Command {
       String orgfileName1 = "";
       String orgfileName2 = "";
       
-      //name 오류나면 path 확인 꼭!
-      String uploadPath = "C:\\Users\\User\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
+      String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
       //out.print(uploadPath);
 
       String page ="";
@@ -68,6 +68,7 @@ public class SalesInsert implements Command {
       
       HttpSession session = request.getSession();
       
+      
       vo.setsTitle(multi.getParameter("stitle"));
       vo.setmId(String.valueOf(session.getAttribute("mId"))); 
       vo.setsCategory(multi.getParameter("scategory"));
@@ -79,25 +80,22 @@ public class SalesInsert implements Command {
       vo.setsCondition(multi.getParameter("scondition"));
       vo.setsImg(fileName1); //썸네일 이미지 넣기~?
       
-     // System.out.println(vo.toString());
+      System.out.println(vo.toString());
       
       int n = salesDao.salesInsert(vo); //insert return값이 sNo이당!
       
-      System.out.println(n+"Sno번호");
+      System.out.println(n);
       
       iVo.setImgPath(fileName2);
       iVo.setiMainNum(n);
       
       
-    //  System.out.println(iVo.toString());
+      System.out.println(iVo.toString());
       int nn = imgDao.imageInsert(iVo);
       
-      request.setAttribute("afterInsert", true);
-      request.setAttribute("sNo", n);
-      request.setAttribute("sHit", 0);
-      //System.out.println(nn);
+      System.out.println(nn);
       if( nn !=0) {
-         page ="salesSelect.do";
+         page ="salesListAll.do";
       }else {
          page="Test/ErrorPage";
       }

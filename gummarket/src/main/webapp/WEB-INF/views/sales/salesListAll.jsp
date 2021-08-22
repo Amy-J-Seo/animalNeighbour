@@ -6,22 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 전체 상품 조회</title>
-    <!--Hover css-->
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
-    <style type="text/css">
-    	.card{
-			    border-radius: 4px;
-			    background: #fff;
-			    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-			    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-			  	cursor: pointer;
-			}
 
-		.card:hover{
-		     	transform: scale(1.05);
-		  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-		}
-    </style>
 </head>
 <body id="top-page">
 	<section>
@@ -30,24 +15,6 @@
 				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">On sale items!</p>
 			</div>
 			<div class="continer my-auto">
-
-				<div class="row">
-				<!-- 카테고리별 -->
-					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="center">
-						<ul class="navbar-nav ml-auto">
-							<li class="ml-3"></li>
-						
-							<li style="margin: auto;">
-								<a href="findClothing.do" style="text-decoration: none; color: rgb(94, 94, 94)">의류/하네스</a>&nbsp;|&nbsp; 
-								<a href="findFood.do" style="text-decoration: none; color: rgb(94, 94, 94)">음식</a>&nbsp;|&nbsp; 
-								<a href="findEtc.do" style="text-decoration: none; color: rgb(94, 94, 94)">기타</a>&nbsp;|&nbsp; 
-								<a href="findShare.do" style="text-decoration: none; color: rgb(94, 94, 94)">나눔</a>&nbsp;|&nbsp; 
-								<!-- <a href="offerHelpMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요</a>&nbsp;|&nbsp; 
-								<a href="lostMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기</a> -->
-							</li>
-						</ul>
-					</div>
-					
 				<!-- Main Content -->
 				<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
 					<!-- 검색창 -->
@@ -60,11 +27,9 @@
 								<button id="searchBtn" class="btn btn-primary" type="submit" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
 									<i class="fas fa-search fa-sm"></i>
 								</button>
-
 							</div>
-						</form>
-					</div>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -106,7 +71,7 @@
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
+	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
 	                    </div>
 	                  </div>
 	            	</div>

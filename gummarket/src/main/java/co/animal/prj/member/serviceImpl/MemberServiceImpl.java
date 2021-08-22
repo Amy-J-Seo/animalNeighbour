@@ -53,15 +53,5 @@ public class MemberServiceImpl implements MemberService{
 		int n = map.shippingInfoUpdate(vo);
 		sqlSession.commit();
 	    return n;
-    }
-    
-	public int updatePassword(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return map.updatePassword(vo);
-	}
-	@Override
-	public MemberVO loginSearch(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return map.loginSearch(vo);
 	}
 }

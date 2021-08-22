@@ -9,23 +9,9 @@
 		<!-- resultType, parameterType => VO객체위치 -->
 		SELECT * FROM answer
 	</select>
-	
-	<select id="answerSelect" resultType="co.animal.prj.answer.vo.AnswerVO">
-		select * from answer where csno = #{csNo}
+<!--  	<select id="" resultType="">
+
 	</select>
-	
-	<delete id="answerDelete" parameterType="co.animal.prj.answer.vo.AnswerVO">
-		delete from answer where csno = #{csNo}
-	</delete>
-	
-	<insert id="answerInsert" parameterType="co.animal.prj.answer.vo.AnswerVO">
-		insert into answer values(a_seq.nextval, #{csNo}, #{aTitle}, #{aContents},sysdate)
-	</insert>
-	
-	<update id="answerUpdate" parameterType="co.animal.prj.answer.vo.AnswerVO">
-		update answer set atitle=#{aTitle}, acontents=#{aContents} where aNo =#{aNo}
-	</update>
-<!--  	
 	<insert id="" parameterType="">
 
 	</insert>

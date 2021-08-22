@@ -2,11 +2,9 @@ package co.animal.prj.answer.vo;
 
 import java.sql.Date;
 
-import co.animal.prj.csc.vo.CscVO;
-
-public class AnswerVO extends CscVO{
+public class AnswerVO {
 	private int aNo;
-	
+	private int csNo;
 	private String aTitle;
 	private Date aDate;
 	private String aContents;
@@ -19,7 +17,12 @@ public class AnswerVO extends CscVO{
 	public void setaNo(int aNo) {
 		this.aNo = aNo;
 	}
-	
+	public int getCsNo() {
+		return csNo;
+	}
+	public void setCsNo(int csNo) {
+		this.csNo = csNo;
+	}
 	public String getaTitle() {
 		return aTitle;
 	}
@@ -40,7 +43,7 @@ public class AnswerVO extends CscVO{
 	}
 	@Override
 	public String toString() {
-		return "AnswerVO [aNo=" + aNo + ", aTitle=" + aTitle + ", aDate=" + aDate + ", aContents="
+		return "AnswerVO [aNo=" + aNo + ", csNo=" + csNo + ", aTitle=" + aTitle + ", aDate=" + aDate + ", aContents="
 				+ aContents + "]";
 	}
 	

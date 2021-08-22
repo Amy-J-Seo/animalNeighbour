@@ -75,11 +75,11 @@
                                  <div class="form-group row">
 	                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
 	                                     <span><i class="fas fa-calendar-day"></i></span><input type="date" style="border:none;" class="col-lg-10"
-	                                     id="sPurchasedDate" name="sPurchasedDate" value="${update.sPurchasedDate }" >
+	                                     id="sPurchasedDate" name="sPurchasedDate" value="${update.sPurchasedDate }" readonly>
 	                                 </div>
 	                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
 	                                     <span><i class="far fa-calendar-check"></i></span><input type="text" style="border:none;" class="col-lg-10"
-	                                     id="sUseDays" name="sUseDays" value="${update.sUseDays }" >
+	                                     id="sUseDays" name="sUseDays" value="${update.sUseDays }" readonly>
 	                                 </div>
                                    
                                  </div>
@@ -89,12 +89,12 @@
 	                               <div class="form-group row">
 	                                  <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
 	                                     <span><i class="fas fa-dollar-sign"></i></span><input type="text" style="border:none;" class="col-lg-10"
-	                                     id="sPrice" name="sPrice" value="${update.sPrice }" >
+	                                     id="sPrice" name="sPrice" value="${update.sPrice }" readonly>
 	                                 </div>
 	                                 
 	                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
 	                                    <span><i class="fas fa-hand-holding-usd"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-	                                     id="sNetPrice" name="sNetPrice" value="${update.sNetPrice }" >
+	                                     id="sNetPrice" name="sNetPrice" value="${update.sNetPrice }" readonly>
 	                                 </div>
 	                              </div>
 	                         

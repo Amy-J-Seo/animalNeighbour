@@ -11,6 +11,4 @@ public interface CscService {
 	public int cscUpdate(CscVO vo);
 	public int cscDelete(CscVO vo);
 	public int cscInsert(CscVO vo);
-	
-	public List<CscVO> cscMyList(CscVO vo);
 }

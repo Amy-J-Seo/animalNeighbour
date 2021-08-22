@@ -41,13 +41,13 @@
 	
 	<!-- sales 개별상품 조회-->
 	<select id="salesSelect" resultType="co.animal.prj.sales.vo.SalesVO">
-	      select s.*, i.imgpath, c.ccontents, c.cmid, c.cno
-	      from sales s 
-	      left outer join comments c
-	      on s.sno = c.cmainnum
-	      left outer join image i
-	      on s.sno = i.imainnum
-	      where (i.itype = 'sales' or c.ctype = 'sales') and s.sno= #{sNo}
+		select s.*, i.imgpath, c.ccontents, c.cmid
+		from sales s 
+		left outer join comments c
+		on s.sno = c.cmainnum
+		left outer join image i
+		on s.sno = i.imainnum
+		where (i.itype = 'sales' or c.ctype = 'sales') and s.sno= #{sNo}
 	</select>
 	
 	<!-- 사용자 판매상품 리스트 조회 -->
@@ -101,16 +101,4 @@
 		select count(*) from sales where mId=#{mId}
 	</select>
 
-	<select id="findClothing" resultType="co.animal.prj.sales.vo.SalesVO">
-		select * from sales where scategory='clothing' and shide='n'
-	</select>
-	<select id="findFood" resultType="co.animal.prj.sales.vo.SalesVO">
-		select * from sales where scategory='food' and shide='n'
-	</select>
-	<select id="findEtc" resultType="co.animal.prj.sales.vo.SalesVO">
-		select * from sales where scategory='etc' and shide='n'
-	</select>
-	<select id="findShare" resultType="co.animal.prj.sales.vo.SalesVO">
-		select * from sales where scategory='free' and shide='n'
-	</select>
 </mapper>

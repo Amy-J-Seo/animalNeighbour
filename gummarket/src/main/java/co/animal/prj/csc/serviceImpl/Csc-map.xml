@@ -7,42 +7,17 @@
 		resultType="co.animal.prj.csc.vo.CscVO">
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
-		SELECT * FROM csc where cshide='n'
+		SELECT * FROM csc
 	</select>
-	
-	<select id="cscMyList" resultType="co.animal.prj.csc.vo.CscVO">
-		select * from csc where mid=#{mId}
+<!--  	<select id="" resultType="">
+
 	</select>
-	<select id="cscSelect" resultType="co.animal.prj.answer.vo.AnswerVO">
-		select c.*, m.*, a.acontents, a.atitle, a.adate, a.ano
-		from csc c
-		join member m
-		on c.mid=m.mid
-		left outer join answer a 
-		on c.csno = a.csno
-		where c.csno = #{csNo}
-	</select>
-	
-	<insert id="cscInsert" parameterType="co.animal.prj.csc.vo.CscVO">
-		insert into csc values(cs_seq.nextval, #{mId},#{csTitle},#{csContents},sysdate,'n','n')
-		<selectKey keyProperty="csNo" order="AFTER"  resultType="int" >
-			SELECT cs_seq.currval from dual 
-		</selectKey>
+	<insert id="" parameterType="">
+
 	</insert>
-	<delete id="cscDelete" parameterType="co.animal.prj.csc.vo.CscVO">
-		delete from csc where csno = #{csNo}
+	<delete id="" parameterType="">
+
 	</delete>
-	
-	<update id="cscUpdate" parameterType="co.animal.prj.csc.vo.CscVO">
-		update csc set cstitle=#{csTitle}, cscontents =#{csContents} where csno =#{csNo} 
-	</update>
-	
-	<!-- 답변 달면 status n->y로 바꿔주기! -->
-	<update id="cscAnswer">
-		update csc set csstatus ='y' where csno=#{csNo}
-	</update>
-	
-<!--  	
 	<insert id="" parameterType="">
 
 	</insert>-->

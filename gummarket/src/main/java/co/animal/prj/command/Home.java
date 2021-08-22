@@ -16,7 +16,7 @@ public class Home implements Command {
 
 		request.setAttribute("list", serviceDao.salesListTOP10());
 		
-		return "sales/top10list";
+		return "home/home2";
 	}
 
 }

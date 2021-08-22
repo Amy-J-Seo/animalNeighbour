@@ -34,9 +34,9 @@
                              <!-- form start -->
                              <form class="user" id="frm" name="frm" action="offerHelpInsert.do" method="post">
                              
-                         
+                             <input type="hidden" id="mId" name="mId" value="bb123">
                              <!-- 나중에 세션정보 가져와서 집어넣기!  -->
-                           <input type="hidden" id="mId" name="mId" value="${session.mId }"> 
+                           <%--   <input type="hidden" id="mId" name="mId" value="${session.mId }"> --%>
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
@@ -52,50 +52,38 @@
                                     </select>
                                      </div>
                           	    </div>
-                              <hr>
-                                 <div class="form-group">
-                                     <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="mId" name="mId" placeholder="닉네임" required>
-                                 </div>
+                             
+                             
                                  <hr>
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                      <span><i class="fas fa-paw"></i></span><input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohCategory" name="ohCategory" placeholder="산책메이트입니다.">
+                                     id="ohCategory" name="ohCategory" placeholder="제목?">
                                  </div>
+                                 
                                  <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                     <span><i class="fas fa-weight"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohTitle" name="ohTitle" placeholder="제목을 입력해 주세요">
+                                     id="mId" name="mId" placeholder="닉네임?">
                                  </div>
                               </div>
                                      <hr>
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                     <span><i class="fas fa-baby-carriage"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohContents" name="ohContents" placeholder="체급: 대형/중형/소형/마이크로...">
+                                     id="ohHistory" name="ohHistory" placeholder="나의 특징? ">
                                  </div>
                                  
                                  <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
                                 <span><i class="fas fa-hand-holding-heart"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohHistory" name="ohHistory" placeholder="구체적으로 어떤 도움인가요? 예) 산책 30-60분">
+                                     id="ohAddress" name="ohAddress" placeholder="나의 동네? 서울/부산/대구...">
                                  </div>
                               </div>
                                 <hr>
-                                   <div class="form-group">
-                                     <span><i class="far fa-address-card"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="ohAddress" name="ohAddress" placeholder="산책할 곳을 알려주세요.">
+                                                        
+                                 <div class="form-group">
+                                     <textarea class="form-control" rows="13" id="fhHow"
+                                         name="fhHow" placeholder="조금 더 상세하게 알려 주세요~!" required></textarea>
                                  </div>
-                               <hr>
-                                     <div class="form-group row">
-                                  		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                    <span><i class="fas fa-baby-carriage"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohCharacter" name="ohCharacter" placeholder="본인의 성격, 특이점을 알려주세요.">
-                                 </div>
-                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                <span><i class="fas fa-hand-holding-heart"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohDetails" name="ohDetails" placeholder="조금 더 상세하게 알려 주세요~!">
-                                 </div>
-                              </div>
                               
 					<hr>
                   <br>
@@ -123,27 +111,6 @@
 
      </div>
 
-
-<!-- return to main Modal-->
-    <div class="modal fade" id="cancelWriteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cancelWriteModal">Do you want to go back to main?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">다른 글들을 살펴보세요!</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal"> 취 소 </button>
-                    <a class="btn btn-primary" href="offerHelpMain.do">메인으로</a>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- End of return to main Modal-->
 
 <!-- Bootstrap core JavaScript-->
  <script src="vendor/jquery/jquery.min.js"></script>

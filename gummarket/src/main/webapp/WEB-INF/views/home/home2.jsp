@@ -68,7 +68,7 @@
 	                    </div>
 	                    <!-- Product actions-->
 	                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                        <div class="text-center"><button type="button" class="btn btn-outline-warning mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
+	                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" onclick="getSalesDetail(${list.sNo},${list.sHit })">Read more</button></div>
 	                    </div>
 	                  </div>
 	            	</div>

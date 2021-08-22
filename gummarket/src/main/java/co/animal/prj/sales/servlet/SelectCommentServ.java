@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
 import co.animal.prj.sales.service.SalesService;
 import co.animal.prj.sales.serviceImpl.SalesServiceImpl;
 import co.animal.prj.sales.vo.SalesVO;
@@ -36,13 +35,9 @@ public class SelectCommentServ extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		System.out.println(request.getParameter("sNo"));
-		
 		SalesService salesDao = new SalesServiceImpl();
 		SalesVO vo = new SalesVO();
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
-		
-		
 		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = salesDao.salesSelect(vo);

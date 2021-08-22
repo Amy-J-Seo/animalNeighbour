@@ -36,7 +36,7 @@ public class CommentInsertServ extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/json;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
+		
 		CommentsService comDao = new CommentsServiceImpl();
 		SalesVO vo = new SalesVO();
 		

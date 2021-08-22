@@ -39,13 +39,7 @@ public class CscServiceImpl implements CscService {
 	@Override
 	public int cscInsert(CscVO vo) {
 		// TODO Auto-generated method stub
-		map.cscInsert(vo);
-		return vo.getCsNo();
-	}
-
-	public List<CscVO> cscMyList(CscVO vo) {
-		// TODO Auto-generated method stub
-		return map.cscMyList(vo);
+		return map.cscInsert(vo);
 	}
 
 }

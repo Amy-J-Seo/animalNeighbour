@@ -76,11 +76,11 @@
 				
 				<!-- 로그인 세션 없을 시 로그인 페이지로 -->
 				<c:if test="${not empty session.mId }">
-				<a href="home.do"><img src="img/logo1.png"
+				<a href="home.do"><img src="img/1market.png"
 					style="width: 85px; height: 85px;"></a>
 				</c:if>
 				<c:if test="${empty session.mId }">
-				<a href="loginForm.do"><img src="img/logo1.png"
+				<a href="loginForm.do"><img src="img/1market.png"
 					style="width: 85px; height: 85px;"></a>
 				</c:if>
 				
