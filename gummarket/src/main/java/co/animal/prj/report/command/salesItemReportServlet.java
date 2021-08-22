@@ -37,7 +37,7 @@ public class salesItemReportServlet extends HttpServlet {
 		
 		String category = request.getParameter("category");
 		String rWhy = request.getParameter("rWhy");
-		int sNo = Integer.valueOf(request.getParameter("mainNo"));
+		int sNo = Integer.valueOf(request.getParameter("sNo"));
 		
 		ReportVO vo = new ReportVO();
 		vo.setCategory(category);

@@ -56,12 +56,12 @@ function itemListFnc(data) {
 	if(data['aNo']!=0){ //글 있을 때만 보이게 하기 위해 
 	
 	//for (let i = 0; i < data.length; i++) {  
-		const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['csNo']);
-        const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+		const divCase = $('<div />').attr('class', ' justify-content-between').attr("id", data['csNo']);
+        const divMain = $('<div />').attr('class', 'align-items-left');
        
-         let title = $('<div />').css("font-size","1.5rem").text(data['aTitle']).addClass("pl-2");
+         let title = $('<div />').css("font-size","1.3rem").text(data['aTitle']).addClass("pl-2");
          let br =$('<br/>')
-         let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);
+         let comment = $('<div />').css({"font-size": "1rem",}).text(data['aContents']);
          $(divMain).append(title,br,comment);
          
         //console.log(data[i]['cmId']);
@@ -76,6 +76,7 @@ function itemListFnc(data) {
 	         btnDiv.append(delBtn, updBtn);
      		
 	         
+	         //$(divMain).append(btnDiv);
 	         $(divCase).append(btnDiv);
 		  	console.log(divCase);
 			$('#commentsBody').append(divCase);
@@ -112,7 +113,7 @@ let fields = ['mId', 'aContents'];
 function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 	console.log(data)
 	const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['csNo']);
-        const divMain = $('<div />').attr('class', 'd-flex align-items-center');
+    const divMain = $('<div />').attr('class', 'align-items-center');
        
          let title = $('<div />').css("font-size","1.5rem").text(data['aTitle']).addClass("pl-2");
          let comment = $('<span />').css({"font-size": "1.5rem","margin-left": "30px" }).text(data['aContents']);

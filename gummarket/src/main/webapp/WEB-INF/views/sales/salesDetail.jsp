@@ -246,7 +246,7 @@
 					//data: $('#fhReport').serialize(),
 					data: {
 						category: $('#itemCategory').text(),
-						rWhy: $('#fhReport input[name="reason"]').val(),
+						rWhy: $('#sReport input[name="reason"]').val(),
 						sNo: $('#sReport #sNo').val()
 					},
 					dataType: 'json',
@@ -399,14 +399,24 @@
 									<td>&nbsp;&nbsp;</td>
 									<td> 택배이용시 일괄 2500원</td>
 								</tr>
-								<tr height="50px">
+								<%-- <tr height="50px">
 									<td width="400px"><i class="fas fa-paw"></i> 제품 상태는요? 상세하게 기술해주세요~ </td>
 									<td>&nbsp;&nbsp;</td>
-									<td> ${list[0].sPurchasedDate }</td>
+									<td> ${list[0].sCondition }</td>
+								</tr> --%>
+							</table>
+						</div>
+					</div>
+					<p></p>
+					<div class="card shadow mb-4">
+						<div class="card-header py-3"><h5>제품 상세 설명</h5></div>
+						<div class="card-body">
+							<table>
+								<tr height="50px">
+									<td>&nbsp;&nbsp;</td>
+									<td><pre><c:out value="${list[0].sCondition }" /></pre></td>
 								</tr>
 							</table>
-
-
 
 							<!-- 
 						
