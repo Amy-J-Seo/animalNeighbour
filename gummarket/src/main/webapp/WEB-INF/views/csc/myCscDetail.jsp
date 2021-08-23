@@ -135,6 +135,7 @@ function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 		  	console.log(divCase);
 			$('#commentsBody').append(divCase);
 			$('#commentsBody h4').remove();// 답변중 h4테그 숨기기! 
+	
      
 }
 	
