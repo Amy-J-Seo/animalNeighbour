@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-//ajax
+//ajax 시작
 $(document).ready(function () {
 	// 총 작성 글 넘버들 불러오기
 	 $.ajax({
@@ -29,7 +29,7 @@ $(document).ready(function () {
      });
 	
 	
-	//구매확정 버튼 
+	//구매확정 버튼 작동+ 테이블 업데이트 주윤
 	$('#acceptItemBtn').on('click', function(e){
 		e.preventDefault();
 		
@@ -53,11 +53,11 @@ $(document).ready(function () {
 
          });
 		
-	})
+	})//끝 구매확정 버튼 작동+ 테이블 업데이트 주윤
 
 	
 	
-});
+});//ajax끝
 
 
 function getTotalSales(){
@@ -72,15 +72,36 @@ function getTotalFH(){
 function getTotalOH(){
 	$('#frmForTotalOH').submit();
 }
+
+//반품함수
 function returnItem(){
-	//반품하기 버튼 누르고
+	//반품하기 버튼 누르고 멤버페이지 버튼, 테이블 업데이트 주윤
 	
-	alert($('#returnItemForm #returnMsg').val())
-	$('#returnItemForm').submit();
+		//ajax사용해서 반품 버튼이 눌리면 페이먼트 테이블 confirmpurchase -> return으로 바꾸고
+		//버튼 삭제하고 -> 반품 진행중 넣어주기
+		$.ajax({
+	        url: 'ReturnItemRequestServlet', //'../AddItemServlet'
+	        method: 'post',
+	        //data: $('#fhReport').serialize(),
+	        data: {
+	       	 pNo: $('#returnItemPNo').val(),
+	       	 confirmPurchase: "return",
+	        },
+	        success: function(response){
+	        	let pNo = response+"confirm";
+	        	let div =$('#mainReturnBtn');
+	        	console.log(div)
+	        	
+	    		//이러니까 제일 위에꺼? 그게 바뀌던데... 디브에 아이디를 줘야할듯...
+	    		$('#closeRModal').click();
+	    		//$('#returnItemForm').submit(); //환불신청 폼 열어주기.
+	        },
+	        error: function (reject) {
+	            console.log(reject);
+	        }
 	
-	//ajax사용해서 반품 버튼이 눌리면 페이먼트 테이블 confirmpurchase -> return으로 바꾸고
-	//버튼 삭제하고 -> 반품 진행중 넣어주기
-}
+	    });
+}//끝 반품하기 버튼 누르고 멤버페이지 버튼, 테이블 업데이트 주윤
 
 
 
@@ -126,15 +147,17 @@ function returnItem(){
 		                   		<p>카테고리: ${item.sCategory }</p>
 		                   		<p>상품명: ${item.sTitle }</p>
 		                   		</div>
-		                   		<div class="col-4">
+		                   		<div class="col-4" id="${item.pNo }">
 		                   		<p></p>
-		                   		<c:if test="${item.confirmPurchase != 'yes'}">
+		                   		<c:if test="${item.confirmPurchase == 'n'}">
 		                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
 		                   		data-toggle="modal" data-target="#confirmP">구매확정</button>
 		                   		</c:if>
 		                   		<c:if test="${item.confirmPurchase == 'yes'}">
 		                   		<button id="" class="btn">구매확정 완료!</button>
 		                   		</c:if>
+		                   		
+		                   		<button id="mainReturnBtn" class="btn" style="display:none;">반품절차 시작!</button>
 		                   		</div>
 		                   </div>
 		                   <div class="row">
@@ -142,15 +165,11 @@ function returnItem(){
 		                   		<p>구매금액: ${item.payAmount }</p>
 		                   		<p>결제일자: ${item.pDate }</p>
 		                   		</div>
-		                   		<div class="col-4 align-items-center">
+		                   		<div class="col-4 align-items-center" id="${item.pNo }return">
 		                   		<p></p>
-		                   		<c:if test="${item.confirmPurchase != 'yes'}">
-		                   		<form id="returnItemForm" name="returnItemForm" method="post" action="returnItem.doBB">
-		                   		<input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
-		                   		<input type="hidden" id="returnMsg" name="returnMsg" value="상품 반품을 신청합니다.">
-			                   		<button id="BtnReturnItemBtn" class="btn"
-			                   		 style="background-color:rgb(235, 76, 36);color:white;" onclick="returnItem()">반품신청</button>
-		                   		 </form>
+		                   		<c:if test="${item.confirmPurchase =='n'}">
+			                   		<a id="BtnReturnItemBtn" class="btn"
+			                   		 style="background-color:rgb(235, 76, 36);color:white;" data-toggle="modal" data-target="#returnItemModal">반품신청</a>
 		                   		</c:if>
 		                   		
 		                   		</div>
@@ -159,7 +178,7 @@ function returnItem(){
 					</div>
 					
 					
-									 <!-- confirm purchase modal -->
+					<!-- confirm purchase modal 주윤-->
 				    <div class="modal fade" id="confirmP" tabindex="-1" role="dialog" aria-labelledby="confirmPModalLabel"
 				        aria-hidden="true">
 				        <div class="modal-dialog" role="document">
@@ -174,17 +193,18 @@ function returnItem(){
 						                <div class="modal-footer">
 						                	<input type="hidden" id="pNo" name="pNo" value="${item.pNo }">
 						                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
-						                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="acceptItemBtn"><i class="far fa-smile-wink"></i> 네!</button>
+						                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="acceptItemBtn">
+						                    	<i class="far fa-smile-wink"></i> 네!</button>
 						                </div>
 									</form>
 				            </div>
 				        </div>
 				    </div>
-					<!-- End of confirm purchase modal -->
+					<!-- End of confirm purchase modal 주윤-->
 					
 					
 					
-					<!-- return item modal -->
+					<!-- return item modal 주윤-->
 					    <div class="modal fade" id="returnItemModal" tabindex="-1" role="dialog" aria-labelledby="returnItemModalLabel"
 					        aria-hidden="true">
 					        <div class="modal-dialog" role="document">
@@ -195,34 +215,32 @@ function returnItem(){
 					                        <span aria-hidden="true">×</span>
 					                    </button>
 					                </div>
-					                	<form id="returnItemFrm" name="returnItemFrm" action="returnItemApply.doBB" method="post">
+					                	<form id="returnItemForm" name="returnItemForm" method="post" action="returnItemForm.doBB">
+					                   		<input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
 					               		 <div class="modal-body">
-											  <input type="radio" id="damagedItem" name="reason" value="banItem">
-											  <label for="bannedItem">부서진 상품이 왔어요</label><br>
-											  <input type="radio" id="differentShape" name="reason" value="notForSecondhand">
-											  <label for="notSecondHand">모양이 광고와 달라요</label><br>
-											  <input type="radio" id="differentColor" name="reason" value="repeated">
-											  <label for="repeated">색깔이 광고와 달라요</label><br>
-											  <input type="radio" id="wrongSize" name="reason" value="profSeller">
-											  <label for="profSeller">사이즈가 광고와 달라요</label><br>
-											  <input type="radio" id="unableToUse" name="reason" value="scam">
-											  <label for="scam">사용할 수 없어요</label><br>
-											  <input type="radio" id="changeOfMind" name="reason" value="notForSecondhand">
-											  <label for="">기타 이유</label><br>
-											  <input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
+											  <input type="radio" id="damagedItem" name="reason" value="damagedItem">
+											  <label for="damagedItem">부서진 상품이 왔어요</label><br>
+											  <input type="radio" id="differentShape" name="reason" value="differentShape">
+											  <label for="differentShape">모양이 광고와 달라요</label><br>
+											  <input type="radio" id="differentColor" name="reason" value="differentColor">
+											  <label for="differentColor">색깔이 광고와 달라요</label><br>
+											  <input type="radio" id="wrongSize" name="reason" value="wrongSize">
+											  <label for="wrongSize">사이즈가 광고와 달라요</label><br>
+											  <input type="radio" id="unableToUse" name="reason" value="unableToUse">
+											  <label for="unableToUse">사용할 수 없어요</label><br>
+											  <input type="radio" id="changeOfMind" name="reason" value="changeOfMind">
+											  <label for="changeOfMind">단순 변심</label><br>
 					                </div>
 					                
 					                <div class="modal-footer">
 					                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
-					                    <button class="btn btn-danger" type="button" id="returnItemBtn"><i class="far fa-angry"></i> 반품</button>
+					                    <button class="btn btn-danger" type="button" id="returnItemBtn" onclick="returnItem()"><i class="far fa-angry"></i> 반품</button>
 					                </div>
 										</form>
 					            </div>
 					        </div>
 					    </div>
-						<!-- End of return item modal -->
-					
-					
+						<!-- End of return item modal 주윤-->
 					
 					</c:forEach>
 				</div>

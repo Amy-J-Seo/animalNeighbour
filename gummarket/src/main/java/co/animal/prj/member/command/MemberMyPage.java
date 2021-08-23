@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.animal.prj.common.Command;
 import co.animal.prj.member.service.MemberService;
@@ -24,7 +23,6 @@ public class MemberMyPage implements Command {
 		MemberService mDao = new MemberServiceImpl();
 		String mId = request.getParameter("mId");
 		mVo.setmId(mId);
-		
 		PaymentServiceImpl pDao = new PaymentServiceImpl();
 		PaymentVO pVo = new PaymentVO();
 		pVo.setmId(mId);
@@ -34,7 +32,6 @@ public class MemberMyPage implements Command {
 		request.setAttribute("member", mDao.memberSelect(mVo));
 		
 		list = pDao.memberPaymentSelectList(pVo);
-		System.out.println(list.toString());
 		
 		request.setAttribute("list", list );
 		

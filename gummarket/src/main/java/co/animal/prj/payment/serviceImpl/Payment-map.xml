@@ -10,7 +10,7 @@
 		SELECT * FROM payment
 	</select>
 	<insert id="paymentInsert" parameterType="co.animal.prj.payment.vo.PaymentVO">
-		insert into payment values(p_seq.nextval, #{mId}, #{sNo}, #{productId}, default, #{payAmount}, #{payConfirmNum}, null)
+		insert into payment values(p_seq.nextval, #{mId}, #{sNo}, #{productId}, default, #{payAmount}, #{payConfirmNum}, default)
 	</insert>
 	
 	<select id="memberPaymentSelectList" resultType="co.animal.prj.payment.vo.PaymentVO">
