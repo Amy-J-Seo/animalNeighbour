@@ -138,6 +138,26 @@ $(document).ready(function () {
     			})
     		})
     		
+    		//멤버인포모달 판매물품 가져오기
+    		$('#memberInfoModal').on('click', function(e){
+	  			e.preventDefault();
+    			console.log($('#memberInfoModal').text());
+    			
+    			//멤버의 판매물품 hit순으로 세개 가져오기
+    			$.ajax({
+    				url: 'GetMemberTopThreeSItemServlet',
+    				method: 'post',
+    				data: {
+    					mId: '${item.mId}'
+    				},
+    				dataType: 'json', 
+    				success: addToModal,
+    				error: function (reject) {
+    					console.error(reject);
+    				}
+				})
+   			});
+    		//End of 멤버인포모달 판매물품 가져오기 
     		
 });
 //end of ajax

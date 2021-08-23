@@ -15,7 +15,6 @@ public class RegisterCheck implements Command {
 		MemberService dao =new MemberServiceImpl();
 		MemberVO vo =new MemberVO();
 		String auth= request.getParameter("authPass");
-		System.out.println(auth);
 		if(auth == null) {
 			
 			String message="인증에 실패했습니다. 다시시도해주세요";
@@ -40,9 +39,7 @@ public class RegisterCheck implements Command {
 		vo.setPetInfo(request.getParameter("petInfo"));
 		vo.setAddress(address);
 		
-		System.out.println(vo.getNickname() + "스팟1");
 		int result = dao.memberInsert(vo);
-		System.out.println(vo);
 		String page= "";
 		if(result !=0) {
 			String message= vo.getNickname()+"님 개껌장터에 가입하신걸 환영합니다!";
