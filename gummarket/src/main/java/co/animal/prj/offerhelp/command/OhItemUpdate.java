@@ -27,7 +27,7 @@ public class OhItemUpdate implements Command {
 		vo.setOhDetails(request.getParameter("ohDetails"));
 		
 		int n = ohDao.offerHelpUpdate(vo);
-		
+		System.out.println(n + "dddddddddddd ohitem update");
 		String path = "";
 		if (n !=0) {
 			

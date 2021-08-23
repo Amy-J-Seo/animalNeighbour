@@ -66,13 +66,13 @@
 <body id="page-top">
 
 	<!-- Main Content -->
-	<div id="content">
+	<div id="content" >
 
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
 			<!-- Main page search Form -->
-			<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content-wrapper" class="d-flex flex-column mt-4">
 
 				<div class="continer my-auto pt-4 pb-3 ">
 			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 500; font-size: 1.5rem;" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>

@@ -331,14 +331,14 @@ function fhItemDelete(n) {
 				<br />
 				<p><hr></p>
 				
-				<div class="card-header py-3">
-				${item.fhCategory } : ${item.fhTitle }
+				<div class="card-header py-3 d-flex justify-content-between">
+				<div><h3>${item.fhCategory } : ${item.fhTitle }</h3></div>
 				
-					 <a class="btn btn-danger btn-sm ml-3" style="float:right;" href="#" data-toggle="modal"
+					 <div style="float:right"><a class="btn btn-danger btn-sm ml-3" style="float:right;" href="#" data-toggle="modal"
 					data-target="#reportModal" ><i class="fas fa-bullhorn"></i> 신고하기</a>
 					
 						<span class="pr-3" style="float:right; font-size: 20px;" id="likeNum"><i class="far fa-thumbs-up"></i> ${item.fhLike}
-					</span>
+					</span></div>
 					
 				</div>
 				
@@ -363,7 +363,7 @@ function fhItemDelete(n) {
 				
 				<div class="card-body">		    
 				    <div class="card-header">
-				        <h3>Comments</h3> 
+				        <h4>Comments</h4> 
 				    </div>
 				
 				    <div class="card-body" >

@@ -8,7 +8,7 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
-   <title>도움 드려요 글 등록</title>
+   <title>도움 드려요 글 수정</title>
 
 <!-- Custom fonts for this template from register.html-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -49,7 +49,7 @@
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
-                             	어떤 도움을 찾으시나요?
+                             	어떤 도움을 주시나요?
                              	</div>
                                  <div class="col-lg-12">
                                     <div class="form-group col-lg-9 col-sm-12 mb-3 mb-sm-0">
@@ -58,6 +58,7 @@
                                       <option value="walk">산책/놀이</option>
                                       <option value="dayCare">데이케어</option>
                                       <option value="longCare">장기케어</option>
+                                      <option value="lost">주인찾아요!</option>
                                     </select>
                                      </div>
                           	    </div>
@@ -100,8 +101,10 @@
                   <div class="pb-3 mx-auto"  style="align-items: center;">
 				
 				<!-- To do style again -->
-				<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"><i class="far fa-check-circle"></i> 내용수정</button>
-				<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);"><i class="fas fa-eraser"></i> 내용삭제</button>
+				<button class="btn btn-md mr-5"  type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+				<i class="far fa-check-circle"></i> 내용수정</button>
+				<button class="btn btn-md mr-5"  type="reset" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+				<i class="fas fa-eraser"></i> 내용삭제</button>
 				<a class="btn btn-danger btn-md" href="#" data-toggle="modal"
 					data-target="#cancelWriteModal"><i class="fas fa-undo-alt"></i> 메인으로</a>
 				
