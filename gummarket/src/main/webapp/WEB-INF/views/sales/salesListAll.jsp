@@ -24,7 +24,7 @@
 	</style>
 </head>
 
-<body id="top-page">
+<body id="page-top">
 	<section>
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="continer my-auto pb-3">

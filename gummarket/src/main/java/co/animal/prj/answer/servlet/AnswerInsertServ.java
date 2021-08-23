@@ -15,6 +15,8 @@ import co.animal.prj.answer.serviceImpl.AnswerServiceImpl;
 import co.animal.prj.answer.vo.AnswerVO;
 import co.animal.prj.comments.service.CommentsService;
 import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
+import co.animal.prj.csc.serviceImpl.CscServiceImpl;
+import co.animal.prj.csc.vo.CscVO;
 import co.animal.prj.sales.vo.SalesVO;
 
 
@@ -49,6 +51,13 @@ public class AnswerInsertServ extends HttpServlet {
 		System.out.println( vo.getaContents()+" acontents");
 		
 		ansDao.answerInsert(vo);
+		
+		
+		// 답변중/ 답변 완료 바꾸기
+		CscServiceImpl csDao = new CscServiceImpl();
+		CscVO cVo = new CscVO();
+		cVo.setCsNo(Integer.valueOf(request.getParameter("csNo")));
+		csDao.cscAnswer(cVo);
 		
 		//request.setAttribute("sNo", vo.getsNo());
 		

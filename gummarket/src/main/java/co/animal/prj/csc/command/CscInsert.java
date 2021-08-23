@@ -21,7 +21,6 @@ public class CscInsert implements Command {
 		vo.setCsTitle(request.getParameter("csTitle"));
 		
 		int no = cscDao.cscInsert(vo);
-		cscDao.cscAnswer(vo);
 		System.out.println(no);
 		//입력된거 가져와서 바로 디테일 페이지로!
 		vo.setCsNo(no);

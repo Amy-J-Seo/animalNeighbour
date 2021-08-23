@@ -12,6 +12,13 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+ header {
+  position: fixed;
+  display: flex;
+  }
+  
 </style>
 <title>개껌장터</title>
 </head>
