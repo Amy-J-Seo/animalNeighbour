@@ -279,7 +279,8 @@
 					data: {
 						category: $('#itemCategory').text(),
 						rWhy: $('#sReport input[name="reason"]').val(),
-						sNo: $('#sReport #sNo').val()
+						sNo: $('#sReport #sNo').val(),
+						mId:'${list[0].mId}'
 					},
 					dataType: 'json',
 					success: function (response) {
@@ -321,7 +322,7 @@
 
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
-		<div class="continer my-auto pl-4 pb-3">
+		<div class="continer pl-4 pb-3"  style="margin-left: 5rem;">
 			<!-- 카테고리마다 타이틀 변경 -주윤 -->
 			<c:if test="${list[0].sCategory == 'clothing' }">
 				<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">
@@ -341,7 +342,7 @@
 			</c:if>
 		</div>
 		<!-- DataTales Example -->
-		<div class="card shadow mb-4" style="margin-left: 4rem; margin-right: 4rem">
+		<div class="card shadow mb-4" style="margin-left: 10rem; margin-right: 10rem">
 			<!-- card title + btns  -->
 			<div class="card-header py-3">
 				<h2 class="m-0 font-weight-bold text-dark" style="text-align: center;">${list[0].sTitle }

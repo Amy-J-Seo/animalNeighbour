@@ -23,7 +23,7 @@
 	}
   </style>
 </head>
-<body>
+<body id="page-top">
 	<section>
 		
     <div class="container px-4 px-lg-5 mt-5">
@@ -82,6 +82,22 @@
 			<button type="button" class="btn btn-outline-warning mt-auto" onclick="location.href='salesListAll.do'" ><i class="fas fa-search-plus"></i>더 많은 상품 보기</button>
 		</div>
    		<p></p>	
+   		<br>
+   		<hr>
+   		<!-- 이벤트 베너 (해당 이벤트 페이지 만들고 링크 걸기) -->
+   		<div align="center">
+   		<h4> * 진 행 중 이 벤 트 *</h4>
+   		</div>
+   		<div class="row" >
+   			<div class="col-lg-6 col-sm-3 mb-3 mb-sm-0 " >
+   				<img alt="배너1" src="img/이벤트배너1.png" width="500px">
+   			</div>
+   			<div class="col-lg-6 col-sm-3 mb-3 mb-sm-0 mt-50">
+   				<img alt="배너2" src="img/공유하기배너.png" width="550px" height="150px" class="img-responsive center-block" >
+   			</div>
+   			<br>
+   		</div>
+   		<br>
 	</div>
 	
 	 <!-- 스타일 수정완료했습니다. 어떤 이유인지 css에서 충돌이 있는지 클래스가 적용되지 않았어요... -->

@@ -43,14 +43,15 @@ public class salesItemReportServlet extends HttpServlet {
 		vo.setCategory(category);
 		vo.setrWhy(rWhy);
 		vo.setMainNo(sNo);
+		vo.setmId(request.getParameter("mId"));
 		
 		System.out.println(vo.toString());
 		
 		ReportServiceImpl rDao = new ReportServiceImpl();
-		rDao.reportInsert(vo);
+		int insert = rDao.reportInsert(vo);
 		
 		Gson gson = new GsonBuilder().create();
-		response.getWriter().print(gson.toJson(vo));
+		response.getWriter().print(gson.toJson(insert));
 	}
 
 }
