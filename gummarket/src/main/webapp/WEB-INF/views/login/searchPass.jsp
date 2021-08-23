@@ -85,9 +85,8 @@ function checkValue() {
 											 <input
 											type="hidden" value="${info.mName }" name="mName"><input
 											type="hidden" value="${info.email }" name="email">
-										<br> <input type="submit" value="확인"
-											class="btn btn-warning btn-user btn-block">
-									</div>
+										<br> <button type="submit" 
+											class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>확인</button>									</div>
 								</form>
 							</div>
 						</div>
@@ -110,7 +109,7 @@ function checkValue() {
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-warning btn-user btn-block"
-						data-dismiss="modal">닫기</button>
+						data-dismiss="modal"><i class="fas fa-times-circle"></i>닫기</button>
 				</div>
 			</div>
 		</div>

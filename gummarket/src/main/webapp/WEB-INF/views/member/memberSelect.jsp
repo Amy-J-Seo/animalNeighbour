@@ -182,7 +182,7 @@ $(() => {
 										</div>
 										<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
 										 onclick="execution_daum_address()">
-											<span>우편번호수정하기</span>
+											<span><i class="fas fa-home"></i>우편번호수정하기</span>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -237,15 +237,15 @@ $(() => {
 									</div>
 									<br>
 									<button type="submit" onclick=""
-										class="btn btn-danger btn-md btn-user btn-block"
-										style="background-color: red; color: rgb(255, 255, 255);">
+										class="btn btn-md mr-5 btn-md btn-user btn-block "
+										style="background-color:rgb(255, 190, 83) ; color: rgb(255, 255, 255);">
 										<i class="fas fa-user-cog"></i>&nbsp;수정하기
 									</button>
 
-									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
+									<button class="btn btn-danger btn-md btn-user btn-block"
 										type="button" onclick="location.href='home.do'"
-										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog fa-2x"></i>&nbsp; 홈으로가기
+										style="background-color: red; color: rgb(255, 255, 255);">
+										<i class="fas fa-undo-alt"></i>&nbsp; 메인으로
 									</button>
 								</form>
 								<br>
@@ -273,7 +273,7 @@ $(() => {
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-warning btn-user btn-block"
-						data-dismiss="modal">닫기</button>
+						data-dismiss="modal"><i class="fas fa-check"></i>확인</button>
 				</div>
 			</div>
 		</div>

@@ -63,9 +63,9 @@
 											<br>
 										<input type="email" id="email" name="email"
 											placeholder="회원님의 이메일을 입력해주세요." required="required"
-											class="form-control form-control-user"><br> <input
-											type="submit" value="확인"
-											class="btn btn-warning btn-user btn-block">
+											class="form-control form-control-user"><br> <button
+											type="submit" 
+											class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>확인</button>
 									</div>
 								</form>
 							</div>
