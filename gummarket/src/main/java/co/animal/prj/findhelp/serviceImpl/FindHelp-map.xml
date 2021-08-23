@@ -58,5 +58,9 @@
 		update findhelp set fhlike = fhlike+1 where fhno=#{fhNo}
 	</update>
 	
+	<!-- admin main page 멍냥케어 글 수  -->
+	<select id="careNum"  resultType="Integer">
+		SELECT (SELECT COUNT(*) FROM findhelp) + (SELECT COUNT(*) FROM offerhelp) FROM DUAL
+	</select>
 	
 </mapper>

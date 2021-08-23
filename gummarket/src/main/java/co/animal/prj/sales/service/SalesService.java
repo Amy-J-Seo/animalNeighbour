@@ -29,4 +29,8 @@ public interface SalesService {
 	public List<SalesVO> findFood();
 	public List<SalesVO> findEtc();
 	public List<SalesVO> findShare();
+	
+	
+	//admin main page
+	public int salesNum();
 }

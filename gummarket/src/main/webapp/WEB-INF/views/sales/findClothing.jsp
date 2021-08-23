@@ -6,34 +6,39 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 전체 상품 조회</title>
-
+<!--Hover css-->
+<link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+<style type="text/css">
+	.card{
+		    border-radius: 4px;
+		    background: #fff;
+		    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+		    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+		  	cursor: pointer;
+		}
+	
+	.card:hover{
+	     	transform: scale(1.05);
+	  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+	}
+  </style>
 </head>
 <body id="top-page">
 	<section>
-		<div id="content-wrapper" class="d-flex flex-column">
+		<div class="container px-4 px-lg-5 mt-5">
 			<div class="continer my-auto pb-3">
-				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 600;">On sale items!</p>
-			</div>
-			<div class="continer my-auto">
 				<div class="row">
-				<!-- 카테고리별 -->
-					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="center">
-						<ul class="navbar-nav ml-auto">
-							<li class="ml-3"></li>
-						
-							<li style="margin: auto;">
-								<a href="findClothing.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 900;">의류/하네스</a>&nbsp;|&nbsp; 
-								<a href="findFood.do" style="text-decoration: none; color: rgb(94, 94, 94)">음식</a>&nbsp;|&nbsp; 
-								<a href="findEtc.do" style="text-decoration: none; color: rgb(94, 94, 94)">기타</a>&nbsp;|&nbsp; 
-								<a href="findShare.do" style="text-decoration: none; color: rgb(94, 94, 94)">나눔</a>&nbsp;|&nbsp; 
-								<!-- <a href="offerHelpMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">도움드려요</a>&nbsp;|&nbsp; 
-								<a href="lostMain.do" style="text-decoration: none; color: rgb(94, 94, 94)">미아찾기</a> -->
-							</li>
-						</ul>
+					<p class="h3" style="color: rgb(255, 190, 83); font-weight: 900;">On sale items!</p>
+				</div>
+				<div class="row d-flex justify-content-between align-items-center">
+					<!-- 카테고리별 -->
+					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0">
+						<a href="findClothing.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 600;">의류/하네스</a>&nbsp;|&nbsp;
+						<a href="findFood.do" style="text-decoration: none; color: rgb(94, 94, 94)">음식</a>&nbsp;|&nbsp;
+						<a href="findEtc.do" style="text-decoration: none; color: rgb(94, 94, 94)">기타</a>&nbsp;|&nbsp;
+						<a href="findShare.do" style="text-decoration: none; color: rgb(94, 94, 94)">나눔</a>
 					</div>
-					
-					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="center">
-					<!-- Main Content -->
+		
 					<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
 						<!-- 검색창 -->
 						<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
@@ -72,7 +77,7 @@
 	                    <img class="card-img-top" src="img/salesImg/${list.sImg }" alt="상품이미지" />
 	                    <!-- 상품 details-->
 	                    <div class="card-body p-4">
-	                        <div class="text-center">
+	                        <div class="text-left">
 	                            <!-- 상품 타이틀-->
 	                            <h5 class="fw-bolder">${list.sTitle}</h5>
 	                            <!-- 상품 별점?-->
@@ -84,10 +89,10 @@
 	                                <div class="bi-star-fill"></div>
 	                            </div>
 	                            <!-- 조회수-->
-	                            <div>조회수 :${list.sHit }</div>
-	                            <div>카테고리: ${list.sCategory }</div>
-	                            <div>가격: ${list.sPrice }</div>
-	                            <div>할인 된 가격: ${list.sNetPrice }</div>
+	                       		<i class="fas fa-paw"></i>조회수 :${list.sHit }<br>
+	                            <i class="fas fa-paw"></i>카테고리: ${list.sCategory }<br>
+	                            <i class="fas fa-paw"></i>가격: ${list.sPrice }<br>
+	                           	<i class="fas fa-paw"></i> 할인 된 가격: ${list.sNetPrice }<br>
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->
