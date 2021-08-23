@@ -111,7 +111,6 @@
 				}
 			})
 		})
-	});
 	   //멤버인포모달 판매물품 가져오기
 	   $('#memberInfoModal').on('click', function(e){
 	      e.preventDefault();
@@ -119,7 +118,7 @@
 	      
 	      //멤버의 판매물품 hit순으로 세개 가져오기
 	      $.ajax({
-	         url: 'GetMemberTopThreeSItemServlet', //='../AddItemServ.do'
+	         url: 'GetMemberTopThreeSItemServlet', 
 	         method: 'post',
 	         data: {
 	            mId: '${list[0].mId}'
@@ -133,6 +132,7 @@
 	      
 	      
 	   });
+	});
 	   
 	   
 	//멤버모달콜백
@@ -141,19 +141,35 @@
 	   console.log(data);
 	    $('#toAddSalesListDiv').empty();
 	   for (let i = 0; i < data.length; i++) {
+		   
+		   		const sNo = data[i].sNo;
+		   		const sHit = data[i].sHit;
 	         
 	         const divCol = $('<div />').addClass('col-lg-4 text-center align-items-center');
-	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.5rem");
+	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.8rem");
 	            const catP = $('<p/>').text(data[i]['sCategory']);
 	            const titleP = $('<p/>').text(data[i]['sTitle']);
 	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
 	           
+	            const frm = $('<input />').attr()
+	            //자세히보기 버튼 클릭하면 salesSelect.do로 가자!
+	            btn.click(salesSelect(sNo, sHit));
+	            
 	            $(divCol).append(img, catP, titleP, btn);
 	                       
 	            $('#toAddSalesListDiv').append(divCol);
 	         
 	      };
 	   };
+	   
+	   
+	//자세히보기 버튼-> 상세페이지로 가기
+	function salesSelect(sNo, sHit){
+		console.log(sNo);
+		
+	}
+	   
+	   
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
