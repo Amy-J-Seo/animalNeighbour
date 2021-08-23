@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animal.prj.admin.command.AdminMain;
 import co.animal.prj.command.Home;
 import co.animal.prj.comments.command.CommentInsert;
 import co.animal.prj.common.Command;
@@ -137,7 +138,10 @@ public class FrontController extends HttpServlet {
 		map.put("/csUpdate.do", new CsUpdate());
 		map.put("/csItemDelete.do", new CsItemDelete());
 		map.put("/everyCscList.do", new EveryCscList());//관리자가 보는 전체 페이지
-
+		
+		//주윤언니 frontController admin메인 페이지 불러오는거 여기로..!
+		map.put("/adminMain.do", new AdminMain());
+		
 		//주윤 세일즈 서치버튼 추가
 		map.put("/KeywordSearchSales.do", new KeywordSearchSales());
 		
