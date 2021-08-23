@@ -96,7 +96,10 @@
 			}
 			var code = "";
 			function emailAuthentication() {
-
+				if(document.frm.inputEmailForm.value==null){
+					alert("이메일을 입력해주세요");
+					return;
+				}
 				$.ajax({
 					url: "requestAuthEmail.do?email=" + frm.email.value,
 					type: "GET",
@@ -199,8 +202,18 @@
 										</div>
 										<div class="form-group row">
 											<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">휴대폰번호</div>
-											<div class="col-lg-5 col-sm- mb-3 mb-sm-0 ">
-												<input type="text" id="phone" name="phone" placeholder="휴대번호"
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone1" name="phone1" maxlength="3" pattern="^01[0-9]{1}"
+													required="required" class="form-control form-control-user"
+													onkeyup="next(this.value,3,'phone2');">
+											</div>
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone2" name="phone2" maxlength="4"pattern="[0-9]{4}"
+													required="required" class="form-control form-control-user"
+													onkeyup="next(this.value,4,'phone3');">
+											</div>
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone3" name="phone3" maxlength="4"pattern="[0-9]{4}"
 													required="required" class="form-control form-control-user">
 											</div>
 
