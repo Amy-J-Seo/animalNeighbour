@@ -113,4 +113,8 @@
 	<select id="findShare" resultType="co.animal.prj.sales.vo.SalesVO">
 		select * from sales where scategory='free' and shide='n'
 	</select>
+	
+	<select id="salesNum" resultType="Int">
+		select count(*) from sales
+	</select>
 </mapper>

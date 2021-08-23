@@ -115,4 +115,10 @@ public class SalesServiceImpl implements SalesService {
 
 	}
 
+	@Override
+	public int salesNum() {
+		// TODO Auto-generated method stub
+		return map.salesNum();
+	}
+
 }

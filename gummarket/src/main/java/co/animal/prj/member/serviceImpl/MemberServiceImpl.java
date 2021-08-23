@@ -64,4 +64,10 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return map.loginSearch(vo);
 	}
+	@Override
+	public int memberNum() {
+		// TODO Auto-generated method stub
+		int num = map.memberNum();
+		return num;
+	}
 }

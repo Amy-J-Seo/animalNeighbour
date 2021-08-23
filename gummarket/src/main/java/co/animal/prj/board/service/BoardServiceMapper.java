@@ -14,4 +14,8 @@ public interface BoardServiceMapper {
 	public int boardInsert(BoardVO vo);
 	public int bUpdateLike(BoardVO vo);
 	public int bUpdateHit(BoardVO vo); //hit 증가
+	
+	//Admin Main 게시글 수 가져오기
+	public int noticeNum();
+	public int eventNum();
 }

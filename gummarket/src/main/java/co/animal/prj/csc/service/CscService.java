@@ -13,4 +13,7 @@ public interface CscService {
 	public int cscInsert(CscVO vo);
 	
 	public List<CscVO> cscMyList(CscVO vo);
+	
+	//답변 입력하면 status 변경
+	public int cscAnswer(CscVO vo);
 }

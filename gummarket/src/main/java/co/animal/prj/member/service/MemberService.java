@@ -20,4 +20,7 @@ public interface MemberService {
 	public int usedPointUpdate(MemberVO vo);
 	//주윤 결제과정 배송요청 업데이트
 	public int shippingInfoUpdate(MemberVO vo);
+	
+	//인영 멤버 수 가져오기
+	public int memberNum();
 }

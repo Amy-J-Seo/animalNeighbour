@@ -28,4 +28,6 @@ public interface SalesServiceMapper {
 	public List<SalesVO> findFood();
 	public List<SalesVO> findEtc();
 	public List<SalesVO> findShare();
+	
+	public int salesNum();
 }
