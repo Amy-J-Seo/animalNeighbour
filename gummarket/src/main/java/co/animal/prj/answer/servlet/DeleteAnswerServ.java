@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.answer.serviceImpl.AnswerServiceImpl;
 import co.animal.prj.answer.vo.AnswerVO;
 import co.animal.prj.comments.serviceImpl.CommentsServiceImpl;
+import co.animal.prj.csc.serviceImpl.CscServiceImpl;
+import co.animal.prj.csc.vo.CscVO;
 import co.animal.prj.sales.vo.SalesVO;
 
 
@@ -33,6 +35,12 @@ public class DeleteAnswerServ extends HttpServlet {
 		vo.setCsNo(csNo);
 		System.out.println(vo.getCsNo());
 		System.out.println(answerDao.answerDelete(vo));
+		
+		//삭제하고 답변중으로 바꾸기
+		CscServiceImpl cDao = new CscServiceImpl();
+		CscVO cVo = new CscVO();
+		cVo.setCsNo(vo.getCsNo());
+		cDao.answerDeleteUpdate(cVo);
 	}
 
 

@@ -14,4 +14,5 @@ public interface CscServiceMapper {
 	public List<CscVO> cscMyList(CscVO vo);
 	
 	public int cscAnswer(CscVO vo);
+	public int answerDeleteUpdate(CscVO vo);
 }
