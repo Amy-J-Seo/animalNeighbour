@@ -7,6 +7,22 @@
 <meta charset="UTF-8">
 <title>도움찾기 전체 리스트</title>
 
+<!--Hover css-->
+<link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+<style type="text/css">
+	.card {
+		border-radius: 4px;
+		background: #fff;
+		box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+		transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+		cursor: pointer;
+	}
+
+	.card:hover {
+		transform: scale(1.05);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+	}
+</style>
 
 <script>
 function getDetails(num) {
@@ -40,6 +56,7 @@ function getDetails(num) {
 					<div class="input-group">
 						<input id="keyWord" name="keyWord" type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
 							placeholder="Search title for..." aria-label="Search" aria-describedby="basic-addon2">
+						<input id="category" name="category" type="hidden" value="findhelp">
 						<div class="input-group-append">
 							<button class="btn" type="submit" id="searchBtn"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
 								<i class="fas fa-search fa-sm"></i>
@@ -57,7 +74,7 @@ function getDetails(num) {
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<!-- 모든 도움찾기 글 카드로 보여주기!! -->	
 			 <c:if test="${not empty message }">
-			 	<div>${message }</div> ffff
+			 	<div>${message }</div>
 			 </c:if>
 			 
 			 <c:if test="${not empty list }">

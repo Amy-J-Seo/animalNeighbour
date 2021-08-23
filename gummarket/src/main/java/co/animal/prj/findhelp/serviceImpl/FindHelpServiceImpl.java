@@ -65,4 +65,10 @@ public class FindHelpServiceImpl implements FindHelpService {
 		return map.findHelpSelectListByMember(vo);
 	}
 
+	@Override
+	public int careNum() {
+		// TODO Auto-generated method stub
+		return map.careNum();
+	}
+
 }

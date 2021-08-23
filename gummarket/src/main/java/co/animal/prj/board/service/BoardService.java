@@ -8,6 +8,7 @@ public interface BoardService {
 	public List<BoardVO> boardSelectList();
 	public List<BoardVO> boardSelectListEvent();
 	public List<BoardVO> boardSelectListNotice();
+	public List<BoardVO> boardSelectListByKeyWord(BoardVO vo);
 	public BoardVO boardSelect(BoardVO vo);
 	public int boardUpdate(BoardVO vo);
 	public int boardDelete(BoardVO vo);
@@ -15,4 +16,8 @@ public interface BoardService {
 	public int bUpdateLike(BoardVO vo);
 	
 	public int bUpdateHit(BoardVO vo); //hit 증가
+	
+	//Admin Main 게시글 수 가져오기
+	public int noticeNum();
+	public int eventNum();
 }

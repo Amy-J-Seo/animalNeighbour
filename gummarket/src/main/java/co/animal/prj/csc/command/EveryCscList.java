@@ -18,6 +18,18 @@ public class EveryCscList implements Command {
 		
 		List<CscVO> list= cscDao.cscSelectList();
 		
+		
+		String status = "";
+		
+		for(int i=0; i<list.size(); i++) {
+			status = list.get(i).getCsStatus();
+			if (!status.equals("n")) {
+				list.get(i).setCsStatus("답변중");
+			}else {
+				list.get(i).setCsStatus("답변완료");
+			}
+		}
+		
 		request.setAttribute("list", list);
 		
 		return "csc/myCscList";

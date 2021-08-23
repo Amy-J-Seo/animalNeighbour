@@ -37,7 +37,7 @@ public class Login implements Command {
 				
 			
 				if(session.getAttribute("role").equals("ADMIN")) {
-					page = "admin/adminMain";
+					page = "adminMain.do";
 				}else {
 					page = "home.do";					
 				}

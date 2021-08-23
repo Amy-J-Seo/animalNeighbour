@@ -25,9 +25,8 @@ $(document).ready(function(){
 	/* 배송요청사항 */
 	$('#shippingInfoSaveBtn').on('click', function(){
 		let shippingRequest = $('#bRequest').val()
-		alert(shippingRequest);
-		$('#bShippingInfo').text(shippingRequest);
 		
+		$('#bShippingInfo').text(shippingRequest);
 		/* 적용버튼 누르면 디비업데이트 */
 		$.ajax({
          	   url:'UpdateShippingInfoServlet', //'../AddItemServlet.do'
@@ -43,15 +42,13 @@ $(document).ready(function(){
 	   	                console.error(reject);
 	   	            } 
             	});
-		
-		
-	})
+		})
 	
 	
 		/* 할인하기 */
 	$('#applyDiscountBtn').click(
 			function applyDiscount(){
-				let origP = ${sale.sPrice};
+				let origP = ${sale.sNetPrice};
 				let point=$('#pointToUse').val();
 				$('#discountFee').text(point);
 				let netP = origP-point;
@@ -198,12 +195,12 @@ $(document).ready(function(){
 			<div class="card-header py-3" style="float:right;">주문상품 확인</div>
 			<div class="card-body row mb-2" style="float:right;">
 				<div class="col-lg-2">
-					<img src="img/pink.webp" style="width:150px; height:150px" ><br>
+					<img src="img/salesImg/${sale.sImg }" style="width:150px; height:150px" ><br>
 				</div>
 				<div class="col-lg-7 pt-3" style="font-size: 1.3rem">
 					<p>상품명 : <span id="itemName">${sale.sTitle }</span></p>
 					<p>판매자 : <span id="itemSeller">${sale.mId }</span></p>
-					<p>가격 : <span id="itemPrice">${sale.sPrice }</span></p>
+					<p>가격 : <span id="itemPrice">${sale.sNetPrice }</span></p>
 				</div>
 				<div class="col-lg-3">
 					<div style="float:right;">
@@ -235,13 +232,13 @@ $(document).ready(function(){
 				<div class="card-header py-3" style="float:right;">결제 금액</div>
 				<div class="card-body row mb-2" style="float:right;">
 					<div class="col-lg-9">
-						<p>상품금액 : <span>${sale.sPrice }</span></p>
+						<p>상품금액 : <span>${sale.sNetPrice }</span></p>
 						<!-- 배송비 칼럼? -->
 						<p>배송비 : <span id="shippingFee">0</span></p>
 						<!-- ?? -->
 						<p>할인금액 : <span id="discountFee">0</span></p>
 						<hr>
-						<p>총액 : <span id="totalAmount">${sale.sPrice }</span></p>
+						<p>총액 : <span id="totalAmount">${sale.sNetPrice }</span></p>
 					</div>
 					<div class="col-lg-3">
 						<div style="float:right;">
@@ -250,12 +247,13 @@ $(document).ready(function(){
 				</div>
 			<!-- 끝 적립금 사용 -->
 			</div>
-			
 			<div class="mx-auto pb-4" style="align-items: center;">
 				<button type="button" id="payment_process" class="btn btn-warning btn-lg justfy-item-center mr-2">결 제 하 기</button>
-				<button class="btn btn-danger btn-lg justfy-item-center ml-2"> 취   소 </button>
+				<button class="btn btn-danger btn-lg justfy-item-center ml-2" onclick="window.history.back()"> 취   소 </button>
 			</div>
-			
+			<form >
+			<input>
+			</form>
 		
 		
 	</div>

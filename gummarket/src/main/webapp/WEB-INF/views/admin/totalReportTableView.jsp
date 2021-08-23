@@ -58,6 +58,7 @@
                                   <th>카테고리</th>
                                   <th>신고글 번호</th>
                                   <th>이유</th>
+                                  <th>글 상태</th>
                                   <c:if test="${session.role eq 'ADMIN'}">
                                   <th colspan="2">조치</th>
                                   </c:if>
@@ -72,6 +73,7 @@
                                             <td>${item.category }</td>
                                             <td>${item.mainNo }</td>
                                             <td>${item.rWhy }</td>
+                                            <td>${item.rHide }</td>
                                             <c:if test="${session.role eq 'ADMIN'}">
                                             <td><form id="checkOutMainFrm" name="checkOutMainFrm" action="getMainPost.doBB" method="post">
                                             <input type="hidden" id="mainNo" name="mainNo">

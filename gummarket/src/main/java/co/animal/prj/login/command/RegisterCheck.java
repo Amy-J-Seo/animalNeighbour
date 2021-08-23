@@ -30,11 +30,17 @@ public class RegisterCheck implements Command {
 		address+=" ";
 		address+=request.getParameter("address3");
 		
+		String phone="";
+		phone= request.getParameter("phone1");
+		phone+="-";
+		phone+=request.getParameter("phone2");
+		phone+="-";
+		phone+=request.getParameter("phone3");
 		vo.setmId(request.getParameter("mId"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setmName(request.getParameter("mName"));
 		vo.setNickname(request.getParameter("nickname"));
-		vo.setPhone(request.getParameter("phone"));
+		vo.setPhone(phone);
 		vo.setEmail(request.getParameter("email"));
 		vo.setPetInfo(request.getParameter("petInfo"));
 		vo.setAddress(address);

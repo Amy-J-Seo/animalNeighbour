@@ -27,6 +27,7 @@ public class SearchPass implements Command {
 			String page="";
 			if(vo !=null) {
 				request.setAttribute("info", vo);
+				System.out.println(vo + "이메일값 받나요?");
 				page="login/searchPass";
 			}else {
 				request.setAttribute("message", "아이디 혹은 이메일 정보가 없습니다. 다시입력해주세요.");
