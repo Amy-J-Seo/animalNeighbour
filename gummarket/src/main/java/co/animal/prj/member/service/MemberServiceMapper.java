@@ -21,6 +21,9 @@ public interface MemberServiceMapper {
 	public int usedPointUpdate(MemberVO vo);
 	//juyun payment -> shipping info update
 	public int shippingInfoUpdate(MemberVO vo);
+	
+	//인영 멤버 수 가져오기
+	public int memberNum();
 }
 	
 

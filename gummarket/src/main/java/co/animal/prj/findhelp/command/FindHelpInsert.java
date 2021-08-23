@@ -25,8 +25,9 @@ public class FindHelpInsert implements Command {
       String fileName2 = "";
       String orgfileName1 = "";
       String orgfileName2 = "";
+
       
-      String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\fhImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
+      String uploadPath = "C:\\Users\\User\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\fhImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
       //out.print(uploadPath);
 
       String page ="";
@@ -59,7 +60,7 @@ public class FindHelpInsert implements Command {
 		String writerId =String.valueOf(session.getAttribute("mId"));
 		vo.setmId(writerId);
 		vo.setFhCategory(multi.getParameter("fhCategory"));
-		vo.setFhTitle(multi.getParameter("fhTitle"));		
+		vo.setFhTitle(multi.getParameter("fhTitle"));	
 		vo.setFhAnimal(multi.getParameter("fhAnimal"));
 		vo.setFhSize(multi.getParameter("fhSize"));
 		vo.setFhAge(Integer.valueOf(multi.getParameter("fhAge")));
@@ -72,12 +73,13 @@ public class FindHelpInsert implements Command {
 		System.out.println(n + "item added successfully + FindHelpInsert.java");
 //		------insert finished---------
 //		img insert
-		 iVo.setImgPath(fileName2);
-	      iVo.setiMainNum(n);
+		iVo.setImgPath(fileName2);
+	    iVo.setiMainNum(n);
 	      
-	      System.out.println(iVo.toString());
-	      int nn = imgDao.fhImageInsert(iVo);
-	      
+	    System.out.println(iVo.toString());
+	    
+	    int nn = imgDao.fhImageInsert(iVo);
+	    
 	      if( nn !=0) {
 //		작성된 글 디테일 페이지로 이동
 	    	  dao= new FindHelpServiceImpl();

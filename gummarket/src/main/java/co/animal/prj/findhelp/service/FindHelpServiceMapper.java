@@ -15,4 +15,6 @@ public interface FindHelpServiceMapper {
 	public int findHelpInsert(FindHelpVO vo);
 	public int updateLike(FindHelpVO vo);
 	public int memberTotalfh(FindHelpVO vo);
+	
+	public int careNum();
 }

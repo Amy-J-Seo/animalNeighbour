@@ -67,5 +67,17 @@ public class BoardServiceImpl implements BoardService {
 		return map.bUpdateHit(vo);
 	}
 
+	@Override
+	public int noticeNum() {
+		// TODO Auto-generated method stub
+		return map.noticeNum();
+	}
+
+	@Override
+	public int eventNum() {
+		// TODO Auto-generated method stub
+		return map.eventNum();
+	}
+
 
 }

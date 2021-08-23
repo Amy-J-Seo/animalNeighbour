@@ -48,4 +48,10 @@ public class CscServiceImpl implements CscService {
 		return map.cscMyList(vo);
 	}
 
+	@Override
+	public int cscAnswer(CscVO vo) {
+		// TODO Auto-generated method stub
+		return map.cscAnswer(vo);
+	}
+
 }
