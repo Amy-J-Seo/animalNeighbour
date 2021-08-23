@@ -503,7 +503,8 @@
                               <input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
                               <textarea class="form-control" id="cContent" name="cContent"
                                  rows="3"></textarea>
-                              <button type="submit" class="btn btn-dark mt-3" style="float:right;">댓글
+                                 <br>	
+                              <button type="submit" class="btn btn-md mr-5" style="float:right; background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">댓글
                                  등록</button>
                            </li>
                         </ul>

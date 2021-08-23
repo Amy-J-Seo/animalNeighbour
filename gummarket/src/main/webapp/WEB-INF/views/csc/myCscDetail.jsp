@@ -59,12 +59,13 @@
 			//답글 조회 콜백함수
 			function itemListFnc(data) {
 				console.log(data);
+				$('#aNo').val(data.aNo);
 				if (data['aNo'] != 0) { //글 있을 때만 보이게 하기 위해 
 
 					const divCase = $('<div />').attr('class', ' justify-content-between').attr("id", data['csNo']);
 					const divMain = $('<div />').attr('class', 'align-items-left');
 
-					let title = $('<div />').css("font-size", "1.3rem").text(data['aTitle']).addClass("pl-2");
+					let title = $('<div id="title" />').css("font-size", "1.3rem").text(data['aTitle']).addClass("pl-2");
 					let pre = $('<pre />').text(data['aContents']);
 					console.log(pre);
 
@@ -79,10 +80,8 @@
 					$(divCase).append(divMain);
 
 					const btnDiv = $('<div />');
-					const delBtn = $('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text(
-						"Delete");
-					const updBtn = $('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text(
-						"Edit");
+					const delBtn = $('<button id="delBtn"/>').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+					const updBtn = $('<button id="updBtn"/>').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 
 					delBtn.click(kill);
 					updBtn.click(update);
@@ -127,22 +126,25 @@
 		//입력처리 후 콜백함수
 		function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
 			console.log(data)
-			const divCase = $('<div />').attr('class', 'd-flex justify-content-between').attr("id", data['csNo']);
-			const divMain = $('<div />').attr('class', 'align-items-center');
+			const divCase = $('<div />').attr('class', ' justify-content-between').attr("id", data['csNo']);
+					const divMain = $('<div />').attr('class', 'align-items-left');
 
-			let title = $('<div />').css("font-size", "1.5rem").text(data['aTitle']).addClass("pl-2");
+			let title = $('<div id="title" />').css("font-size", "1.3rem").text(data['aTitle']).addClass("pl-2");
+			let comment = $('<pre />').text(data['aContents']);
+			/*let title = $('<div />').css("font-size", "1.5rem").text(data['aTitle']).addClass("pl-2");
 			let comment = $('<span />').css({
 				"font-size": "1.5rem",
 				"margin-left": "30px"
-			}).text(data['aContents']);
-			$(divMain).append(title, comment);
+			}).text(data['aContents']);*/
+			let br = $('<br/>')
+			$(divMain).append(title, br, comment);
 
 			//console.log(data[i]['cmId']);
 			$(divCase).append(divMain);
 
-			const btnDiv = $('<div />');
-			const delBtn = $('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
-			const updBtn = $('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
+			const btnDiv = $('<div/>');
+			const delBtn = $('<button id="delBtn"/>').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
+			const updBtn = $('<button id="updBtn"/>').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 
 			delBtn.click(kill);
 			updBtn.click(update);
@@ -153,7 +155,8 @@
 			console.log(divCase);
 			$('#commentsBody').append(divCase);
 			$('#commentsBody h4').remove(); // 답변중 h4테그 숨기기! 
-
+			$('#reply #aTitle').val("") //입력 후 textarea에 있던거 없애기
+			$('#reply #aContents').val("")
 		}
 
 
@@ -183,51 +186,56 @@
 
 			let modForm = $("#showComUpdate");
 			$(this).parent().append(modForm);
-			let csNo = $(this).parent().parent().attr('id');
-			console.log($(this).parent().parent().children().eq(1));
+			let aNo = $(this).parent().parent().attr('id');
+			console.log($(this).parent().parent().children().eq(0));
 			let content = $(this).parent().parent().children().eq(0).children().eq(2).text();
+			let title =$(this).parent().parent().children().eq(0).children().eq(0).text();
+			console.log();
 			/* $(this).children().eq(0).hide(); */
 			modForm.show();
 
-			$(modForm).find("#cUpdated").val(content);
-			$(modForm).find('#csNo').val(csNo);
+			$(modForm).find("#cUpdated").val(title);
+			$(modForm).find("#aContents").val(content);
+			$(modForm).find('#csNo').val(aNo);
+			//수정 버튼 누르면 있던 버튼 안보이게 함
+			$('#updBtn').hide();
+			$('#delBtn').hide();
 		}
 
 		//업데이트 -> 성공! 이름 
 		function updateCom() {
-			event.preventDefault(); //디폴트값은 못들어가게
+			// event.preventDefault(); //디폴트값은 못들어가게
 			let s = $('#updateRep').serialize();
+			console.log(s);
 
 			//폼 전송처리
-			$.ajax({
+			 $.ajax({
 				url: $('#updateRep').attr('action'),
 				method: 'post',
 				data: $('#updateRep').serialize(), //파라미터로 넘김
 				dataType: 'json', //받아오는 값
-				success: updateItemFunc,
+				success: function(data){
+					console.log(data)
+					console.log($('#aNo').val());
+					$('pre').text(data['aContents']);
+					$('#title').text(data.aTitle);
+					$('#showComUpdate').hide();
+				},
 				error: function (reject) {
 					console.error(reject);
 				}
-			})
+			}) 
+
+			
 		}
 
 		function updateItemFunc(data) {
-
-			$.ajax({
-				url: 'UpdateAnswerServ',
-				data: {
-					cNo: $(this).parent().attr('id')
-				},
-				success: function () {
-					$('#' + data.cNo).children().eq(0).children().eq(2).text(data
-						.cContents); //$('#'+data.cNo) :data.cNo를 id로 가진 tr을 가져옴~
-					$('#showComUpdate').hide();
-				},
-				error: function (e) {
-					alert("수정에서 에러발생!!")
-					console.error(e);
-				}
-			})
+			console.log(data)
+			console.log($('#aNo').val());
+			$('pre').text(data['aContents']);
+			$('#title').text(data.aTitle);
+			$('#showComUpdate').hide();
+			
 		}
 	</script>
 
@@ -301,12 +309,11 @@
 				<div id="answerInput" class="card-body">
 					<form id="reply" action="AnswerInsertServ" method="post">
 						<ul class="list-group list-group-flush">
-
-							<li class="list-group-item"><input class="form-control" type="text" id="aTitle"
-									name="aTitle" placeholder="글제목">
-								<br> <input type="hidden" id="csNo" name="csNo" value="${csc.csNo }"> <textarea
-									class="form-control" id="aContents" name="aContents" rows="3"
-									placeholder="답변내용을 입력해주세요"></textarea>
+							<li class="list-group-item">
+								<input class="form-control" type="text" id="aTitle" name="aTitle" placeholder="글제목">
+								<br> 
+								<input type="hidden" id="csNo" name="csNo" value="${csc.csNo }"> 
+								<textarea class="form-control" id="aContents" name="aContents" rows="3" placeholder="답변내용을 입력해주세요"></textarea>
 								<div align="right">
 									<button type="submit" class="btn btn-dark mt-3">답변 등록</button>
 								</div>
@@ -315,7 +322,19 @@
 					</form>
 				</div>
 			</div>
-
+			
+			 <!-- 댓글 수정하면 보이게 -->
+               <div id="showComUpdate" align="left">
+                  <form id="updateRep" name="updateRep" action="UpdateAnswerServ" method="post">
+                     <input type="hidden" id="aNo" name="aNo" >
+                     <input type="text" id="cUpdated" name="aTitle" >
+                     <textarea rows="3" class="form-control" id="aContents" name="aContents"></textarea>
+                     <p></p>
+                     <button type="button" id="updated" name="updated" class="btn btn-md mr-5"
+                        style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);"
+                        onclick="updateCom()">수정하기!</button>
+                  </form>
+               </div>
 
 			<p></p>
 
