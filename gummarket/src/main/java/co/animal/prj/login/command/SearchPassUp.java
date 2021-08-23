@@ -19,6 +19,7 @@ public class SearchPassUp implements Command {
 		vo.setEmail(request.getParameter("email"));
 		vo.setPassword(request.getParameter("password"));
 		 System.out.println(name+ "스팟 서치패스1");
+		 System.out.println(request.getParameter("email")+"스팟 이메일");
 		 int u=dao.updatePassword(vo);
 		 System.out.println(u+"스팟 서치패스2");
 		String page="";
