@@ -21,9 +21,12 @@
 		<!-- SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd' -->
 	</select>
 	
+	<select id="boardSelectListByKeyWord" resultType="co.animal.prj.board.vo.BoardVO">
+		SELECT * FROM board where bTitle like '%'||#{bTitle}||'%' and bison='n' and bcategory=#{bCategory}
+	</select>
+	
 	<select id="boardSelect" resultType="co.animal.prj.board.vo.BoardVO">
 		SELECT * FROM board where bNo = #{bNo}
-			
 	</select>
 	
 	<insert id="boardInsert" parameterType="co.animal.prj.board.vo.BoardVO">

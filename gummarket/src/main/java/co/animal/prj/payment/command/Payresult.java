@@ -18,10 +18,15 @@ public class Payresult implements Command {
 		PaymentVO vo = new PaymentVO();
 		
 		vo.setmId(request.getParameter("buyerId"));
+		System.out.println(vo.toString()+"1");
 		vo.setsNo(Integer.valueOf(request.getParameter("sNo")));
+		System.out.println(vo.toString()+"2");
 		vo.setProductId(request.getParameter("productId"));
+		System.out.println(vo.toString()+"3");
 		vo.setPayAmount(Integer.valueOf(request.getParameter("payAmount")));
+		System.out.println(vo.toString()+"4");
 		vo.setPayConfirmNum(Integer.valueOf(request.getParameter("payConfirmNum")));
+		System.out.println(vo.toString()+"5");
 		int n =pDao.paymentInsert(vo);
 		System.out.println(n +"건 입력 페이리저트 자바");
 		

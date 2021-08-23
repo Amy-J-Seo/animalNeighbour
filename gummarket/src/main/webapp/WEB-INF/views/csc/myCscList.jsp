@@ -68,14 +68,32 @@
 				       </div>
 		                
 		                <!-- return to menu btn...  and to the list btn -->
-		                <div class="pb-3 mx-auto"  style="align-items: center;">
-		                	<c:if test="${session.role == 'USER' }">
-							<!-- To do style again -->
-							<button class="btn btn-md mr-5" type="button" onclick="location.href='cscForm.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-							<i class="far fa-edit"></i> 새 문의 작성</button>
-					
-                             </c:if>
-                            
+		               
+             <c:if test="${session.role eq 'ADMIN' }">
+             <!-- return to menu btn...  and to the list btn -->
+             <div class="pb-3 mx-auto" style="align-items: center;">
+                 <button class="btn btn-md mr-5" type="button" onclick="location.href='adminMain.doBB'"
+                     style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+                     <i class="fas fa-user-cog fa-2x"></i>&nbsp;  관리자 메인으로</button>
+             </div>
+             <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
+           
+             <c:if test="${session.role eq 'USER' }">
+             <!-- return to menu btn...  and to the list btn -->
+             <div class="pb-3 mx-auto d-flex" style="align-items: center;">
+                    
+					<button class="btn btn-md mr-5" type="button" onclick="location.href='cscForm.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+					<i class="far fa-edit fa-2x"></i> 새 문의 작성</button>
+            		 <form id="toUserMainFrm" name="toUserMainFrm" action="memberMyPage.doBB" method="post">
+            		 	<input type="hidden" id="mId" name="mId">
+	                	 <button class="btn btn-md mr-5" type="submit" onClick="backToUserMain('${item.mId}')"
+	                	  style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+	                     <i class="fas fa-user fa-2x"></i>&nbsp;  유저 메인으로</button>
+                     </form>
+             </div>
+             <!-- end of return to menu btn...  and to the list btn -->
+             </c:if>
 						</div>
 						<!-- end of return to menu btn...  and to the list btn -->
 	          </div>

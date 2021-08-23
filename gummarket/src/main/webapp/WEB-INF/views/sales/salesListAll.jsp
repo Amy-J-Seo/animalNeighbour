@@ -159,6 +159,7 @@
 	<script>
 		function getSalesDetail(n, h) {
 			salesFrm.sNo.value = n;
+			
 			salesFrm.sHit.value = h;
 			salesFrm.submit();
 		}

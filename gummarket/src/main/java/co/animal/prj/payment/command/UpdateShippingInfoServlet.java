@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import co.animal.prj.member.serviceImpl.MemberServiceImpl;
 import co.animal.prj.member.vo.MemberVO;
 
@@ -23,7 +26,7 @@ public class UpdateShippingInfoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 		
 		MemberServiceImpl mDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
@@ -37,8 +40,9 @@ request.setCharacterEncoding("utf-8");
 		
 		System.out.println(vo.toString() +"       updateShipping servlet");
 
-		int n = mDao.usedPointUpdate(vo);
+		int n = mDao.shippingInfoUpdate(vo);
 		System.out.println(n +"건 업데이트 처리 완료");
+		
 		
 		
 	}

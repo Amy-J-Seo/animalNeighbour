@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int usedPointUpdate(MemberVO vo) {
+		System.out.println(vo.toString());
 		int n = map.usedPointUpdate(vo);
 		sqlSession.commit();
 		return n;
