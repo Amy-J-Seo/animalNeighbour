@@ -279,7 +279,7 @@ function fhItemDelete(n) {
 			<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">  도움 찾아요!</p>
 	</div>
 		<!-- DataTales Example -->
-		<div class="card shadow mt-4 mb-4" style="margin-left: 4rem; margin-right: 4rem">
+		<div class="card shadow mt-4 mb-4"  style="margin-left: 10rem; margin-right: 10rem">
 			<div class="card-header py-3">
 				<h3 class="m-0 font-weight-bold text-dark" style="text-align: center;" >${item.fhTitle }</h3>
 				<!-- 로그인세션확인해서 본인만 글 수정하고 삭제 가능하도록 -->
@@ -350,25 +350,26 @@ function fhItemDelete(n) {
 				        <div id="commentsBody"></div>
 				        
 				        <!-- 댓글 입력 -->
-				<div class="card mb-2">
-					<div class="card-header bg-light">
-					     <i class="fa fa-comment fa"></i> Comments
+						<div class="card mb-2">
+							<div class="card-header bg-light">
+							     <i class="fa fa-comment fa"></i> Comments
+							</div>
+							<div class="card-body">
+								<form id="reply" action="FhCommentInsertServlet" method="post">
+									<ul class="list-group list-group-flush">
+									    <li class="list-group-item">
+									    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
+										
+										<input type="hidden" id="cMainNum" name="cMainNum" value="${item.fhNo }">
+										<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
+										<button type="submit" class="btn btn-warning mt-3" style="float:right;">댓글 등록</button>
+									    </li>
+									</ul>
+								</form>
+							</div>
+						</div>
 					</div>
-					<div class="card-body">
-						<form id="reply" action="FhCommentInsertServlet" method="post">
-							<ul class="list-group list-group-flush">
-							    <li class="list-group-item">
-							    <img class="rounded-circle" src="img/undraw_profile_1.svg" style="width: 2.5rem; height:2.5rem;"><span class="pl-3" style="font-size: 2rem;">${nickname }</span>
-								
-								<input type="hidden" id="cMainNum" name="cMainNum" value="${item.fhNo }">
-								<textarea class="form-control" id="cContent" name="cContent" rows="3"></textarea>
-								<button type="submit" class="btn btn-warning mt-3" style="float:right;">댓글 등록</button>
-							    </li>
-							</ul>
-						</form>
-					</div>
-				</div>
-				    </div>
+				
 				    <hr>
 				    <!-- 댓글 수정하면 보이게 (테스트)-->
 				    <!-- css 다시 -->

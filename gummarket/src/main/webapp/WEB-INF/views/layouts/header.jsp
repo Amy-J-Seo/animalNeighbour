@@ -49,7 +49,7 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-
+			<nav class="topbar fixed-top">
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
@@ -160,6 +160,7 @@
 								style="background-color: rgb(252, 221, 33);">로 그 인</button></li>
 					</c:if>
 				</ul>
+			</nav>
 			</nav>
 			<!-- End of Topbar -->
 			

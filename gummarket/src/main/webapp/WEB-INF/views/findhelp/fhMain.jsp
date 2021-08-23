@@ -35,12 +35,9 @@ function getDetails(num) {
 
 </head>
 <body id="page-top">
-
-   <!-- page wrapper -->
-   <div id="wrapper">
-
+	<div class="container px-4 px-lg-5 mt-5">
    <!-- Main page-->
-   <div id="content-wrapper" class="d-flex flex-column">
+   <div class="continer my-auto pb-3">
       <!-- page title & link -->
       <div class="continer my-auto pt-4 pb-3 ">
          <a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900; font-size:2.5rem" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>
@@ -84,12 +81,13 @@ function getDetails(num) {
                        <!-- find help image-->
                        <img class="card-img-top" src="img/fhImg/${item.fhImg }" alt="" />
                        <!-- find help details-->
-                       <div class="card-body pt-4 pr-4 pl-4 pb-0">
-                           <div class="text-center">
+                       <div class="card-body p-4 ">
+                           <div class="text-left">
                                <!-- find help title-->
-                               <h5 class="fw-bolder">${item.fhTitle}</h5>
-                               <h6>${item.fhCategory } | ${item.fhAnimal }</h6>
-                               <P>${item.fhNeed }</P>
+                              <h5 class="fw-bolder">${item.fhTitle}</h5>
+                              <i class="fas fa-paw"></i> 카테고리 : ${item.fhCategory } <br>
+                              <i class="fas fa-paw"></i> 동 물 : ${item.fhAnimal }<br>
+                              <i class="fas fa-paw"></i> 어떤 도움? : ${item.fhNeed }
                            </div>
                        </div>
                        <!-- Product actions-->
