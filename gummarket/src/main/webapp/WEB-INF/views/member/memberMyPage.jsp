@@ -88,10 +88,8 @@ function returnItem(){
 	       	 confirmPurchase: "return",
 	        },
 	        success: function(response){
-	        	let pNo = response+"confirm";
-	        	let div =$('#mainReturnBtn');
-	        	console.log(div)
-	        	
+	        	let div= document.getElementById(response);
+	        	console.log($(div).children())
 	    		//이러니까 제일 위에꺼? 그게 바뀌던데... 디브에 아이디를 줘야할듯...
 	    		$('#closeRModal').click();
 	    		//$('#returnItemForm').submit(); //환불신청 폼 열어주기.
@@ -141,13 +139,13 @@ function returnItem(){
 		            	<div class="col-3" style="baorder:none">
 							<img class="align-items-center " src="img/salesImg/${item.sImg }" style="width:120px; height:120px">
 						</div>
-		                <div class="col-9 card-body pl-3 pr-3">
+		                <div class="col-9 card-body pl-3 pr-3" id="${item.pNo }">
 		                   <div class="row">
 		                   		<div class="col-8 align-items-center ">
 		                   		<p>카테고리: ${item.sCategory }</p>
 		                   		<p>상품명: ${item.sTitle }</p>
 		                   		</div>
-		                   		<div class="col-4" id="${item.pNo }">
+		                   		<div class="col-4" >
 		                   		<p></p>
 		                   		<c:if test="${item.confirmPurchase == 'n'}">
 		                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
@@ -156,8 +154,9 @@ function returnItem(){
 		                   		<c:if test="${item.confirmPurchase == 'yes'}">
 		                   		<button id="" class="btn">구매확정 완료!</button>
 		                   		</c:if>
-		                   		
-		                   		<button id="mainReturnBtn" class="btn" style="display:none;">반품절차 시작!</button>
+		                   		<c:if test="${item.confirmPurchase == 'return'}">
+		                   		<button  class="btn">반품절차 시작!</button>
+		                   		</c:if>
 		                   		</div>
 		                   </div>
 		                   <div class="row">

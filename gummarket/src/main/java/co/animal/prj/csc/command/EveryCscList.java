@@ -23,7 +23,7 @@ public class EveryCscList implements Command {
 		
 		for(int i=0; i<list.size(); i++) {
 			status = list.get(i).getCsStatus();
-			if (!status.equals("n")) {
+			if (status.equals("n")) {
 				list.get(i).setCsStatus("답변중");
 			}else {
 				list.get(i).setCsStatus("답변완료");

@@ -54,6 +54,10 @@
 		update member set shippinginfo = #{shippingInfo} where mid=#{mId}
 	</update>
 	
+	<update id="updateAddress" parameterType="co.animal.prj.member.vo.MemberVO">
+		update member set address = #{address} where mid=#{mId}
+	</update>
+	
 	<!-- 멤버 수 가져와서 admin main페이지에 뿌려주기 (인영) -->
 	<select id="memberNum" resultType="Integer">
 		select count(*) from member
