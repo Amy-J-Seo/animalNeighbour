@@ -49,9 +49,9 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-
+			<nav class="topbar fixed-top">
 			<!-- Topbar -->
-			<nav class="navbar navbar-expand topbar"
+			<nav class="navbar navbar-expand "
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
 
@@ -71,8 +71,8 @@
 			
 			<!-- 여기부터 회색헤더 -->
 			<!-- Topbar -->
-			<nav class="navbar navbar-expand topbar static-top"
-				style="background-color: rgb(244, 244, 244);">
+			<nav class="navbar navbar-expand topbar static-top "
+				style="background-color: rgb(244, 244, 244);" >
 				
 				<!-- 로그인 세션 없을 시 로그인 페이지로 -->
 				<c:if test="${not empty session.mId }">
@@ -129,7 +129,7 @@
 									<a class="dropdown-item" href="adminMain.doBB">
 										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 관리자 메인
 									</a>
-								 <a class="dropdown-item" href="memberSelect.do">
+								 <a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
 										<i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 									</a>
 								<a class="dropdown-item" href="#"> 
@@ -156,6 +156,7 @@
 					</c:if>
 				</ul>
 			</nav>
+			</nav>
 			<!-- End of Topbar -->
 			
  <!-- Logout Modal-->
@@ -169,7 +170,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
+                <div class="modal-body">정말로 떠나실 건가요?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
                     <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>
