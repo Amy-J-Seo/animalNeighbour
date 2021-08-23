@@ -8,6 +8,7 @@ public interface BoardService {
 	public List<BoardVO> boardSelectList();
 	public List<BoardVO> boardSelectListEvent();
 	public List<BoardVO> boardSelectListNotice();
+	public List<BoardVO> boardSelectListByKeyWord(BoardVO vo);
 	public BoardVO boardSelect(BoardVO vo);
 	public int boardUpdate(BoardVO vo);
 	public int boardDelete(BoardVO vo);

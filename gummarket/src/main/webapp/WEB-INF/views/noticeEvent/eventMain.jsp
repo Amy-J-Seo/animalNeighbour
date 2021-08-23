@@ -44,29 +44,37 @@ function getDetails(n, h) {
 		</div>
 		<div class="continer my-auto">
 		<!-- Main Content -->
-		<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
-		
-			<!-- 메인화면 Search 폼-->
-			<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block;">
-				<div class="input-group">
-					<input type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
-						placeholder="Search for..." aria-label="Search"
-						aria-describedby="basic-addon2">
-					<div class="input-group-append">
-					<!-- 서치버튼 색 바꾸고 싶으면 바꾸어도 됩니다. -->
-						<button class="btn" type="button"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
-							<i class="fas fa-search fa-sm"></i>
-						</button>
+		<!-- 메인화면 Search 폼-->
+			<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
+				<form id="searchFrm" name="searchFrm" method="post" action="keywordSearch.doBB" class="d-none d-sm-inline-block form-inline navbar-search" style="display: block;">
+					<div class="input-group">
+						<input id="keyWord" name="keyWord" type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
+							placeholder="Search title for..." aria-label="Search" aria-describedby="basic-addon2">
+						<input id="category" name="category" type="hidden" value="event">
+						<div class="input-group-append">
+							<button class="btn" type="submit" id="searchBtn"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+			<!-- End of 메인화면 Search 폼-->
 		</div>
 	
 
 	<!-- Main page card items area -->
     <div class="container px-4 px-lg-5 mt-5">
+	    <c:if test="${not empty message }">
+		 	<div class="align-center d-flex justify-content-center" style="width: 100%; height: 400px; ">
+		 		<h2 class="text-center justify-content-center">${message }</h2>
+		 	
+		 	</div>
+		 </c:if>
+	    
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        	
+        
 			<!-- 모든 도움찾기 글 카드로 보여주기!! -->	
 			 <c:forEach var="item" items="${list}"> 
 	            <div class="col mb-5">

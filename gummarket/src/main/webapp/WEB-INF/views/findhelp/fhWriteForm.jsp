@@ -45,6 +45,7 @@
                                       <option value="walk">산책/놀이</option>
                                       <option value="dayCare">데이케어</option>
                                       <option value="longCare">장기케어</option>
+                                      <option value="missingDog">미아찾기</option>
                                     </select>
                                      </div>
                           	    </div>

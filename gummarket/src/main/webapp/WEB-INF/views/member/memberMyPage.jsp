@@ -9,7 +9,7 @@
 <script>
 //ajax
 $(document).ready(function () {
-	//여기해야해...!!
+	// 총 작성 글 넘버들 불러오기
 	 $.ajax({
          url: "GetTotalNumbersServlet", //'../AddItemServlet'
          method: 'post',
@@ -72,6 +72,17 @@ function getTotalFH(){
 function getTotalOH(){
 	$('#frmForTotalOH').submit();
 }
+function returnItem(){
+	//반품하기 버튼 누르고
+	
+	alert($('#returnItemForm #returnMsg').val())
+	$('#returnItemForm').submit();
+	
+	//ajax사용해서 반품 버튼이 눌리면 페이먼트 테이블 confirmpurchase -> return으로 바꾸고
+	//버튼 삭제하고 -> 반품 진행중 넣어주기
+}
+
+
 
 </script>
 </head>
@@ -117,8 +128,13 @@ function getTotalOH(){
 		                   		</div>
 		                   		<div class="col-4">
 		                   		<p></p>
+		                   		<c:if test="${item.confirmPurchase != 'yes'}">
 		                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
 		                   		data-toggle="modal" data-target="#confirmP">구매확정</button>
+		                   		</c:if>
+		                   		<c:if test="${item.confirmPurchase == 'yes'}">
+		                   		<button id="" class="btn">구매확정 완료!</button>
+		                   		</c:if>
 		                   		</div>
 		                   </div>
 		                   <div class="row">
@@ -128,8 +144,15 @@ function getTotalOH(){
 		                   		</div>
 		                   		<div class="col-4 align-items-center">
 		                   		<p></p>
+		                   		<c:if test="${item.confirmPurchase != 'yes'}">
+		                   		<form id="returnItemForm" name="returnItemForm" method="post" action="returnItem.doBB">
+		                   		<input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
+		                   		<input type="hidden" id="returnMsg" name="returnMsg" value="상품 반품을 신청합니다.">
 			                   		<button id="BtnReturnItemBtn" class="btn"
-			                   		 style="background-color:rgb(235, 76, 36);color:white;" type="submit">반품신청</button>
+			                   		 style="background-color:rgb(235, 76, 36);color:white;" onclick="returnItem()">반품신청</button>
+		                   		 </form>
+		                   		</c:if>
+		                   		
 		                   		</div>
 		                   </div>
 		                </div>

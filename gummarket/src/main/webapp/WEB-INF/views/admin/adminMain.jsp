@@ -25,7 +25,7 @@
             	<div class="card-header py-3">
 					<h3 class="m-0 font-weight-bold text-dark pb-3" style="text-align: center;" >Total Member
 					 </h3>
-					 <button class="btn btn-sm mr-1"  onclick="location.href='memberList.do?mId='${session.mId}" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
+					 <button class="btn btn-sm mr-1"  onclick="location.href='memberList.do'" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255); float:right;">
 					 <i class="fas fa-search-plus"></i> 더보기</button>
 				</div>
                 <div class="card-body">

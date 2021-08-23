@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>장터 전체 상품 조회</title>
@@ -160,6 +159,7 @@
 	<script>
 		function getSalesDetail(n, h) {
 			salesFrm.sNo.value = n;
+			
 			salesFrm.sHit.value = h;
 			salesFrm.submit();
 		}

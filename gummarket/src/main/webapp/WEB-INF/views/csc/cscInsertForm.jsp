@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,19 @@
 			<div class="container" >
 			<form class="user" id="frm" name="frm" action="cscInsert.do" method="post" >
 		    	<div class="row">
+		    		<c:if test="${not empty message }">
+	    				<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="left">
+				    		<br>
+				    		<br>
+							<label for="csTitle"><i class="fas fa-question-circle">&nbsp;${message }</i></label><br>
+							<input type="text" class="form-control" id="csTitle" name="csTitle" placeholder="무엇에 관한 내용인가요">	<br><br>
+							<label for="csContents"><i class="far fa-edit">&nbsp;contents</i></label><br>
+							<textarea rows="5" cols="50" class="form-control" id="csContents" 
+							name="csContents" placeholder="주문번호 ${pNo }에 대한 반품 신청. 상세하게 내용을 입력 해 주세요. "></textarea>	    
+		    			</div>
+		    		</c:if>
+		    	
+		    		<c:if test="${empty message }">
 		    		<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="left">
 		    		<br><br>
 						<label for="csTitle"><i class="fas fa-question-circle">&nbsp;title</i></label><br>
@@ -37,6 +51,7 @@
 						<label for="csContents"><i class="far fa-edit">&nbsp;contents</i></label><br>
 						<textarea rows="5" cols="50" class="form-control" id="csContents" name="csContents" placeholder="내용을 입력해주세요"></textarea>	    
 		    		</div>
+		    		</c:if>
 		    		<!-- csc에 넣을만한 예쁜 사진 필요...! -->
 		    		<div class="col-lg-1 mb-sm-0">
 		    		</div>

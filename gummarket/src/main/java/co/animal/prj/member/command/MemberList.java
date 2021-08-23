@@ -14,6 +14,7 @@ public class MemberList implements Command {
 		MemberService dao =new MemberServiceImpl();
 		
 		request.setAttribute("list", dao.memberSelectList());
+		System.out.println(dao.memberSelectList());
 		return "member/memberList";
 	}
 
