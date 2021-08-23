@@ -77,6 +77,9 @@ function returnItem(){
 	
 	alert($('#returnItemForm #returnMsg').val())
 	$('#returnItemForm').submit();
+	
+	//ajax사용해서 반품 버튼이 눌리면 페이먼트 테이블 confirmpurchase -> return으로 바꾸고
+	//버튼 삭제하고 -> 반품 진행중 넣어주기
 }
 
 
