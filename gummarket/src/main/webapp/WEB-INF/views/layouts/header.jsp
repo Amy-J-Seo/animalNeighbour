@@ -171,8 +171,8 @@
                 </div>
                 <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
-                    <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-dog"></i>머물기</button>
+                    <a class="btn btn-warning btn-user btn-block" href="logout.do"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
                 </div>
             </div>
         </div>
