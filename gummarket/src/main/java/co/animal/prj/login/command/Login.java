@@ -26,7 +26,6 @@ public class Login implements Command {
 		
 		if (vo !=null){
 			
-			System.out.println(vo.getNickname()+vo.getmId()+vo.getRole() +"  Login.java");
 			
 			session.setAttribute("nickname", vo.getNickname());
 			session.setAttribute("mId", vo.getmId());
@@ -36,7 +35,6 @@ public class Login implements Command {
 			
 			if(session.getAttribute("state").equals(state)) {
 				
-				System.out.println(state +"Login.java");
 			
 				if(session.getAttribute("role").equals("ADMIN")) {
 					page = "adminMain.do";
@@ -46,7 +44,6 @@ public class Login implements Command {
 			
 			}else {
 				String message ="현재 휴면계정입니다. 관리자에게 문의하세요";
-				System.out.println(message +"  Login.java");
 				session.invalidate(); // 세션 삭제
 				request.setAttribute("message", message);
 				page="login/loginForm";
@@ -55,7 +52,6 @@ public class Login implements Command {
 		
 		else{
 			String message = "존재하지 않는 아이디 혹은 비밀번호가 틀렸습니다.";
-			System.out.println(message);
 			request.setAttribute("message", message);
 			page = "login/loginForm";
 		}
