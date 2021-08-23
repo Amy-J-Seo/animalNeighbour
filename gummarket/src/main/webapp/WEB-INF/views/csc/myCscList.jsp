@@ -30,7 +30,6 @@
 	/*주윤: 사용자 나의문의 리스트에서 유저메인으로 갈 때
 	아이디 전달해서 구매 내역과 개인 정보 불러오기 */
 	function backToUserMain(mId){
-		alert($('#toUserMainFrm #mId').val())
 		$('#toUserMainFrm').submit();
 	}	/* 끝 : 사용자 나의문의 리스트에서 유저메인으로 갈 때
 	아이디 전달해서 구매 내역과 개인 정보 불러오기 */

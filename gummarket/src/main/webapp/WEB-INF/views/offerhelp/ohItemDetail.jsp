@@ -7,7 +7,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 </head>
-<!-- like button css -->
+
+  
 <style>
 
 </style>
@@ -63,7 +64,7 @@
 			method:'post',
 			dataType: 'json',
 			data: {
-				sNo:$('#cMainNum').val()
+				ohNo:$('#cMainNum').val()
 			},
 			success: itemListFnc,
 			error: function () {
@@ -95,21 +96,6 @@
 		         const delBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Delete");
 		         const updBtn=$('<button />').attr("class", "btn btn-warning mr-2").css("float", "right").text("Edit");
 		         
-			         //신고하기(신고하기 어디로???)
-			         const reportForm = $('<form/>').attr('action', '#');
-			         const reportBtn 
-			         	= $('<a />').addClass("btn btn-danger btn-md")
-			         				.attr({
-			         					'href':"#",
-			         					"data-toggle":"modal",
-			         					"data-target":"#reportModal"
-			         					})
-			         				.append($('<i/>').addClass("fas fa-bullhorn").text('신고하기'));
-		         
-		         reportForm.append(reportBtn);
-		         
-		         reportBtn.click();
-		         
 		         delBtn.click(kill);
 				 updBtn.click(update);
 		         btnDiv.append(delBtn, updBtn);
@@ -120,10 +106,6 @@
 	        	 
 		         $(divCase).append(btnDiv);
 	         }
-	         if(mId != data[i]['cmId']){
-		         $(divCase).append(reportForm);
-	         }
-	         
 	         
 		$('#commentsBody').append(divCase);
 	      
@@ -277,10 +259,6 @@
 				  </c:if>				
 			</div>
 			<div class="card-body">
-				<div style="width:100%" class="d-flex justify-content-center">
-				<!-- img class card-img 하고 싶은데 그러면 풀 화면일때 이미지가 너무 커서 줄이려고 해 봤지만 ㅠㅠ 안되네요... -->
-					
-			</div>
 				<br>
 			<div class="mb-4">
 				<h5 class="m-0 font-weight-bold pr-5" style="float:right;">
@@ -288,8 +266,7 @@
 					<span>닉네임 : ${item.mId }</span>
 					<i class="fas fa-paw"></i>
 					<span>나의 동네: ${item.ohAddress }</span>
-					<i class="fas fa-paw"></i>
-					<span>무슨 도움 : ${item.ohDetails }</span>
+					
 				</h5>
 			</div>
 				<br />
@@ -317,8 +294,8 @@
 					<!-- end of user info -->
 					<hr>
 						<div>
-							<p>${item.ohHistory }</p>
-							<p>${item.ohContents }</p>
+							<p>경력 : ${item.ohHistory }</p>
+							<p>상세내용: ${item.ohDetails }</p>
 						</div>
 					
 					</div>
@@ -372,7 +349,7 @@
 					<button class="btn btn-md mr-5" type="button" onclick="location.href='#'"
 						style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
 						<i class="fas fa-phone-alt"></i> 연락하기</button>
-					<button class="btn btn-md mr-5" type="button" onclick="location.href='findHelpMain.doBB'"
+					<button class="btn btn-md mr-5" type="button" onclick="location.href='offerHelpMain.do'"
 						style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
 						<i class="fas fa-undo-alt"></i> 메인으로</button>
 				</div>
@@ -499,6 +476,10 @@
         </div>
     </div>
 	<!-- End of memberInfo modal -->
+
+
+
+
 
 </body>
 

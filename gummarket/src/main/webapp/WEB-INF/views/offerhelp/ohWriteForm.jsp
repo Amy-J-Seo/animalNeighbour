@@ -40,7 +40,7 @@
                              <hr>
                              
                              	<div class="col-lg-3 col-sm-12 mb-3 mb-sm-0">
-                             	어떤 도움을 찾으시나요?
+                             	어떤 도움을 주시겠어요?
                              	</div>
                                  <div class="col-lg-12">
                                     <div class="form-group col-lg-9 col-sm-12 mb-3 mb-sm-0">
@@ -49,25 +49,23 @@
                                       <option value="walk">산책/놀이</option>
                                       <option value="dayCare">데이케어</option>
                                       <option value="longCare">장기케어</option>
+                                       <option value="lost">주인찾아요!</option>
                                     </select>
                                      </div>
                           	    </div>
                               <hr>
                                  <div class="form-group">
-                                     <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none;" class="col-lg-11"
-                                     id="mId" name="mId" placeholder="닉네임" required>
+                                     <span><i class="fas fa-pencil-alt pr-2"></i></span><input type="text" style="border:none; " class="col-lg-11"
+                                     id="mId" name="mId" placeholder="닉네임" value="${session.nickname }" disabled>
                                  </div>
                                  <hr>
                                      <div class="form-group row">
-                                  		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                     <span><i class="fas fa-paw"></i></span><input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohCategory" name="ohCategory" placeholder="산책메이트입니다.">
-                                 </div>
-                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
-                                    <span><i class="fas fa-weight"></i></span> <input type="text" style="border:none;" class="col-lg-10"
-                                     id="ohTitle" name="ohTitle" placeholder="제목을 입력해 주세요">
-                                 </div>
-                              </div>
+                                  		
+		                                 <div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
+		                                    <span><i class="fas fa-weight"></i></span> <input type="text" style="border:none;" class="col-lg-10"
+		                                     id="ohTitle" name="ohTitle" placeholder="제목을 입력해 주세요">
+		                                 </div>
+		                              </div>
                                      <hr>
                                      <div class="form-group row">
                                   		<div class="form-group col-lg-6 col-sm-6 mb-3 mb-sm-0">
