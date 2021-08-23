@@ -146,14 +146,11 @@
 		   		const sHit = data[i].sHit;
 	         
 	         const divCol = $('<div />').addClass('col-lg-4 text-center align-items-center');
-	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.8rem");
+	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "10rem");
 	            const catP = $('<p/>').text(data[i]['sCategory']);
 	            const titleP = $('<p/>').text(data[i]['sTitle']);
 	           
-	            
-	            /* <form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
-	            <input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
-	            */
+	         
 	            const frm = $('<form />').attr(
 	            		{id:'salesDetail',
 	            		action:"salesSelect.do",
@@ -175,14 +172,7 @@
 	      };
 	   };
 	   
-	   
-	//자세히보기 버튼-> 상세페이지로 가기
-	function salesSelect(sNo, sHit){
-		console.log(sNo);
-		
-	}
-	   
-	   
+
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
@@ -656,15 +646,18 @@
 
 							<div class="card-body row">
 								<!-- 사용자 프로필 사진+이름 -->
-								<div class=" col-lg-4 text-center align-items-center">
+								<div class="col-lg-4 text-center d-flex justify-content-center align-items-center">
+									<div>
 									<img class="rounded-circle" src="img/undraw_profile_1.svg"
-										style="width: 2.5rem; height:2.5rem;">
-									<p>${member.mId }</p>
-									<p>${member.nickname } 님</p>
+										style="width: 10rem; height:10rem;">
+									<p></p>
+									<h4><p>${member.mId }</p></h4>
+									
+									<h5>${list[0].mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
+									</div>
 								</div>
 
 								<div class=" col-lg-8 text-center align-items-center">
-									<h5>${list[0].mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
 									<p>판매 물품 확인하기</p>
 									<!-- ajax로 불러온 정보 붙이는 div -->
 									<div>

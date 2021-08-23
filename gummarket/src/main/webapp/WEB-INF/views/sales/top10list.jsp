@@ -25,18 +25,14 @@
 </head>
 <body>
 	<section>
-		<div id="content-wrapper" class="d-flex flex-column">
-			<div class="continer my-auto pb-3">
-				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">인기상품 top 10 !</p>
-			</div>
-			<div class="continer my-auto">
-				<!-- Main Content -->
-				<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
-				</div>
-			</div>
-		</div>
 		
     <div class="container px-4 px-lg-5 mt-5">
+		<div id="continer my-auto pb-3" >
+			<div class="row  mt-10">
+				<p class="h3 mb-20 mt-10 " style="color: rgb(255, 190, 83); font-weight: 900;">인기상품 top 10 !</p>
+			</div>
+			<p></p>
+		</div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <!--인기메뉴 카드로 보여주기 c:foreach활용! -->
         	<c:forEach var="list" items="${list }">
