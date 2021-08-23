@@ -55,8 +55,8 @@
 			required="required" class="form-control form-control-user"
 			placeholder="아이디를 입력해주세요.">
 		    <br>
-		    <input type="submit" value="중복확인"
-		    class="btn btn-warning btn-user btn-block"> 
+		    <button type="submit" 
+		    class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>중복확인</button>
 		</form> 
 		</div>
 	</div> 

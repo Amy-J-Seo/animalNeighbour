@@ -74,9 +74,9 @@
 	<br>
 	<br>	
 	<hr> 
-	<button type="button" onclick="javascript:history.back()" class="btn btn-warning btn-user btn-block">다시시도</button>
+	<button type="button" onclick="javascript:history.back()" class="btn btn-warning btn-user btn-block"><i class="fas fa-undo"></i>다시시도</button>
 	<br>
-	<button type="button" onclick="javascript:window.close()" class="btn btn-warning btn-user btn-block">창닫기</button>
+	<button type="button" onclick="javascript:window.close()" class="btn btn-warning btn-user btn-block"><i class="fas fa-times-circle"></i>창닫기</button>
 	</div>
 	</div> 
 </body>

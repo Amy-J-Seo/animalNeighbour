@@ -123,11 +123,16 @@
 									<p align="left">회원님의 이름과 이메일을 입력해주세요.</p>
 								</div>
 								<form id="frm" name="frm" action="searchPass.do" method="post" onsubmit="return checkValue()">
+									
 									<div class="form-group">
+									<div class="form-group row">
+										<div class="col-lg-5 col-sm- mb-3 mb-sm-0 ">
 										<input type="text" id="mName" name="mName"
 											placeholder="회원님의 이름을 입력해주세요."
 											class="form-control form-control-user" required="required">
-										<br>
+											</div>
+											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 "></div>
+											</div>
 
 										<div class="form-group row">
 											<div class="col-lg-5 col-sm- mb-3 mb-sm-0 ">
@@ -137,7 +142,7 @@
 											</div>
 											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
 												<button onclick="emailAuthentication()" id="eamilAuthBtn"
-													class="btn btn-warning btn-user btn-block">인증메일보내기</button>
+													class="btn btn-warning btn-user btn-block"><i class="fas fa-envelope-square"></i>인증메일보내기</button>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -158,7 +163,7 @@
 
 										<br>
 										<button type="submit" onclick=""
-											class="btn btn-warning btn-user btn-block">확인</button>
+											class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>확인</button>
 									</div>
 								</form>
 							</div>
@@ -181,7 +186,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-warning btn-user btn-block"
-						data-dismiss="modal">확인</button>
+						data-dismiss="modal"><i class="fas fa-check"></i>확인</button>
 				</div>
 			</div>
 		</div>
