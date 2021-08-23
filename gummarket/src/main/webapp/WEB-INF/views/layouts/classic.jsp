@@ -23,8 +23,9 @@
 <title>개껌장터</title>
 </head>
 <body>
-
-<tiles:insertAttribute name="header" />
+<div class="topbar">
+<tiles:insertAttribute  name="header" />
+</div>
 <tiles:insertAttribute name="body" />
 <tiles:insertAttribute name="footer" />
 	
