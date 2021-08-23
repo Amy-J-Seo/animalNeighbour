@@ -54,8 +54,8 @@
 		int cnt= dao.checkId(mId); 
 		out.println("<p class='h3'> 입력 ID :" + mId + "</p>");
 		if(cnt==0){ 
-			out.println("<p>사용 가능한 아이디입니다.</p>"); 
-			out.println("<a href='javascript:apply(\"" + mId + "\")'>[적용]</a>"); 
+			out.println("<p class='h5'>사용 가능한 아이디입니다.</p>"); 
+			out.println("<a class='h4' href='javascript:apply(\"" + mId + "\")'>사용하기</a>"); 
 	%>
 		<script> 
 		function apply(mId){ 
@@ -71,7 +71,8 @@
 		out.println("<p style='color: red'>해당 아이디는 사용하실 수 없습니다.</p>"); 
 		}//if end 
 	%> 
-		
+	<br>
+	<br>	
 	<hr> 
 	<button type="button" onclick="javascript:history.back()" class="btn btn-warning btn-user btn-block">다시시도</button>
 	<br>

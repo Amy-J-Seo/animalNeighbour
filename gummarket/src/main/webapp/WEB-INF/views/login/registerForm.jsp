@@ -37,13 +37,7 @@
 				window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=250");
 			}
 
-			function winopen1() {
-				frm = document.getElementById('frm');
-				window.open("", "a", "width=600, height=600");
-				frm.action = "registerCheck.do";
-				frm.method = "post";
-				frm.submit();
-			}
+			
 			/* 다음 주소 연동 */
 			function execution_daum_address() {
 				new daum.Postcode({
@@ -106,9 +100,7 @@
 					success: function (data) {
 						console.log(data);
 						localStorage.setItem('emailAuthent', data);
-						alert("이메일 전송되었습니다.")
 						document.frm.inputEmailForm.readOnly = true;
-						
 						document.frm.authCodeCheckBtn.disabled = false;
 						document.frm.inputAuthCode.disabled = false;
 						code = data;
@@ -125,6 +117,7 @@
 				if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
 					return false;
 				}
+				alert("인증번호가 전송되었습니다.")
 				document.frm.eamilAuthBtn.disabled = true;
 			    return true;
 			}
