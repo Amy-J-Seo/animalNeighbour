@@ -149,10 +149,16 @@
 	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.8rem");
 	            const catP = $('<p/>').text(data[i]['sCategory']);
 	            const titleP = $('<p/>').text(data[i]['sTitle']);
-	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
 	           
-	            const frm = $('<input />').attr()
+	            
+	            <form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
+	            <input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
+	           
+	            const frm = $('<form />').attr('id','salesDetail').attr('action')
+	            const form = $('<input />').attr('type','hidden').attr('id','')
 	            //자세히보기 버튼 클릭하면 salesSelect.do로 가자!
+	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
+	        
 	            btn.click(salesSelect(sNo, sHit));
 	            
 	            $(divCol).append(img, catP, titleP, btn);
