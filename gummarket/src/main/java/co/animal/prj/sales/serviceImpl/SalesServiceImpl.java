@@ -70,6 +70,27 @@ public class SalesServiceImpl implements SalesService {
 	}
 
 	@Override
+	public List<SalesVO> salesListTop3(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.salesListTop3(vo);
+	}
+
+	@Override
+	public List<SalesVO> salesSelectListByKeyWord(SalesVO vo) {
+		return map.salesSelectListByKeyWord(vo);
+	}
+
+	@Override
+	public List<SalesVO> salesListByMember(SalesVO vo) {
+		return map.salesListByMember(vo);
+	}
+
+	@Override
+	public int memberTotalS(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalS(vo);
+	}
+
 	public List<SalesVO> findClothing() {
 		// TODO Auto-generated method stub
 		return map.findClothing();
@@ -91,6 +112,7 @@ public class SalesServiceImpl implements SalesService {
 	public List<SalesVO> findShare() {
 		// TODO Auto-generated method stub
 		return map.findShare();
+
 	}
 
 }

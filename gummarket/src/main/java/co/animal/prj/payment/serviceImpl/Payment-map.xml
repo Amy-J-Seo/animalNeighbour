@@ -10,8 +10,20 @@
 		SELECT * FROM payment
 	</select>
 	<insert id="paymentInsert" parameterType="co.animal.prj.payment.vo.PaymentVO">
-		insert into payment values(p_seq.nextval, #{mId}, #{sNo}, #{productId}, default, #{paymentAmount}, #{payConfirmNum})
+		insert into payment values(p_seq.nextval, #{mId}, #{sNo}, #{productId}, default, #{payAmount}, #{payConfirmNum}, null)
 	</insert>
+	
+	<select id="memberPaymentSelectList" resultType="co.animal.prj.payment.vo.PaymentVO">
+			select b.sCategory, b.sTitle, b.sImg, a.pNo, a.mid, a.sno, a.pdate, a.payamount 
+      		from payment a left outer join sales b
+      		on (a.sno = b.sno) 
+      		where b.mid = #{mId}
+	</select>
+	
+	<update id="confirmPurchase" parameterType="co.animal.prj.payment.vo.PaymentVO">
+		update payment set confirmpurchase = #{confirmPurchase} where pNo = #{pNo}
+	</update>
+
 <!--  	<select id="" resultType="">
 
 	</select>

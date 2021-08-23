@@ -21,17 +21,60 @@
 
 <script>
 $(document).ready(function(){
+	
+	/* 배송요청사항 */
+	$('#shippingInfoSaveBtn').on('click', function(){
+		let shippingRequest = $('#bRequest').val()
+		alert(shippingRequest);
+		$('#bShippingInfo').text(shippingRequest);
+		
+		/* 적용버튼 누르면 디비업데이트 */
+		$.ajax({
+         	   url:'UpdateShippingInfoServlet', //'../AddItemServlet.do'
+	   	            method: 'post',
+	   	            data: {
+	   	            	shippingInfo: shippingRequest,
+            			mId:'${member.mId}'
+	   	            },
+	   	            success: function(response){
+	   	            	console.log(response);
+	   	            },
+	   	            error: function (reject) {
+	   	                console.error(reject);
+	   	            } 
+            	});
+		
+		
+	})
+	
+	
 		/* 할인하기 */
 	$('#applyDiscountBtn').click(
 			function applyDiscount(){
-				let origP = ${sale.sPrice}
-				let discP=$('#pointToUse').val()
-				alert(discP);
-				alert(origP);
-				$('#discountFee').text(discP);
-				let netP = origP-discP
-				$('#totalAmount').text(netP)	
-				alert(netP)
+				let origP = ${sale.sPrice};
+				let point=$('#pointToUse').val();
+				$('#discountFee').text(point);
+				let netP = origP-point;
+				$('#totalAmount').text(netP);	
+				let buyerId='${member.mId}';
+				
+				/* 적용버튼 누르면 디비업데이트 */
+				$.ajax({
+		         	   url:'UpdatePointServlet', //'../AddItemServlet.do'
+			   	            method: 'post',
+			   	            data: {
+			   	            	usedPoint: $('#pointToUse').val(),
+		            			mId:buyerId
+			   	            },
+			   	            success: function(response){
+			   	            	console.log(response);
+			   	            },
+			   	            error: function (reject) {
+			   	                console.error(reject);
+			   	            } 
+		            	});
+				
+				
 				}
 		);
 		
@@ -59,37 +102,39 @@ $(document).ready(function(){
             buyer_postcode: "우편번호",
             m_redirect_url: 'http://localhost/gummarket/payresult.doBB'
         }, function (rsp) { // callback
-            console.log(rsp);
-     	   	var msg="";
-            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-			 
-            alert("결제 성공");
-            
-            /* 결제 성공 시 결과 저장 */
-            $.ajax({
-         	   url:'payresult.doBB', //'../AddItemServlet.do'
-	   	            method: 'post',
-	   	            data: {
-	   	            	buyerId: buyerId,
-            			sNo: sNo,
-            			productId: rsp.merchant_uid,
-            			paymentAmount: rsp.paid_amount,
-            			payConfirmNum:rsp.apply_num
-	   	            },
-	   	            success: function(response){
-	   	            	console.log(response);
-	   	            	$('#toPayResult').submit();
-	   	            	
-	   	            },
-	   	            error: function (reject) {
-	   	                console.error(reject);
-	   	            } 
-            	});
-            
-            	$('#toPayResult').submit();
-            } else {	
-	               alert("결제에 실패하였습니다. :" + rsp.error_msg);
-            }
+	            console.log(rsp);
+	     	   	var msg="";
+	            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+				 
+	            alert("결제 성공");
+	            
+	            /* 결제 성공 시 결과 저장 */
+	            $.ajax({
+	         	   url:'payresult.doBB', //'../AddItemServlet.do'
+		   	            method: 'post',
+		   	            data: {
+		   	            	buyerId: buyerId,
+	            			sNo: sNo,
+	            			productId: rsp.merchant_uid,
+	            			payAmount: rsp.paid_amount,
+	            			payConfirmNum:rsp.apply_num
+		   	            },
+		   	            success: function(response){
+		   	            	console.log(response);
+		   	            	$('#toPayResult').submit();
+		   	            	
+		   	            },
+		   	            error: function (reject) {
+		   	                console.error(reject);
+		   	            } 
+	            	});
+	            
+	            	$('#toPayResult').submit();
+	            	//리스트에서 아이템 지우기...
+	            	
+	            } else {	
+		               alert("결제에 실패하였습니다. " + rsp.error_msg);
+	            }
         	
         });
                       
@@ -133,8 +178,9 @@ $(document).ready(function(){
 					<p>주소 : <span id="bAddress">${member.address }</span></p>
 					<p>이메일 : <span id="bEmail">${member.email }</span></p>
 					<p>전화번호 : <span id="bPhone">${member.phone }</span></p>
-					<p>배송요청 : <input type="text" id="bRequest" name = "request">
-					<button class="btn btn-warning">저장</button></p>
+					<p>배송요청사항 : <span id="bShippingInfo">${member.shippingInfo }</span></p>
+					<p>배송요청 업데이트 : <input type="text" id="bRequest" name = "request">
+					<button id="shippingInfoSaveBtn" class="btn btn-warning">저장</button></p>
 				</div>
 				<div class="col-lg-3">
 					<div style="float:right;">

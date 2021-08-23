@@ -14,32 +14,44 @@ public class ReportServiceImpl implements ReportService {
 	private ReportServiceMapper map = sqlSession.getMapper(ReportServiceMapper.class);
 	@Override
 	public List<ReportVO> reportSelectList() {
-		// TODO Auto-generated method stub
 		return map.reportSelectList();
 	}
 
 	@Override
 	public ReportVO reportSelect(ReportVO vo) {
-		// TODO Auto-generated method stub
 		return map.reportSelect(vo);
 	}
 
 	@Override
 	public int reportUpdate(ReportVO vo) {
-		// TODO Auto-generated method stub
 		return map.reportUpdate(vo);
 	}
 
 	@Override
 	public int reportDelete(ReportVO vo) {
-		// TODO Auto-generated method stub
 		return map.reportDelete(vo);
 	}
 
 	@Override
 	public int reportInsert(ReportVO vo) {
-		// TODO Auto-generated method stub
 		return map.reportInsert(vo);
+	}
+
+	@Override
+	public List<ReportVO> reportSelectListByMember(ReportVO vo) {
+		return map.reportSelectListByMember(vo);
+	}
+
+	@Override
+	public int memberTotalR(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalR(vo);
+	}
+
+	@Override
+	public int reportFinished(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return map.reportFinished(vo);
 	}
 
 }

@@ -19,6 +19,7 @@ import co.animal.prj.csc.command.CsItemUpdateForm;
 import co.animal.prj.csc.command.CsUpdate;
 import co.animal.prj.csc.command.CscForm;
 import co.animal.prj.csc.command.CscInsert;
+import co.animal.prj.csc.command.EveryCscList;
 import co.animal.prj.csc.command.MyCscDetail;
 import co.animal.prj.csc.command.MyCscList;
 import co.animal.prj.login.command.IdCheckForm;
@@ -28,20 +29,14 @@ import co.animal.prj.login.command.LoginForm;
 import co.animal.prj.login.command.Logout;
 import co.animal.prj.login.command.RegisterCheck;
 import co.animal.prj.login.command.RegisterForm;
+
 import co.animal.prj.login.command.SearchId;
 import co.animal.prj.login.command.SearchIdForm;
 import co.animal.prj.login.command.SearchPass;
 import co.animal.prj.login.command.SearchPassForm;
 import co.animal.prj.login.command.SearchPassUp;
-import co.animal.prj.lost.command.LostDetail;
-import co.animal.prj.lost.command.LostInsert;
-import co.animal.prj.lost.command.LostItemDelete;
-import co.animal.prj.lost.command.LostItemUpdate;
-import co.animal.prj.lost.command.LostItemUpdateForm;
-import co.animal.prj.lost.command.LostMain;
-import co.animal.prj.lost.command.WritelostForm;
-import co.animal.prj.member.command.MemberCheck;
 
+import co.animal.prj.member.command.MemberCheck;
 import co.animal.prj.member.command.MemberDetail;
 import co.animal.prj.member.command.MemberList;
 import co.animal.prj.member.command.MemberSelect;
@@ -59,10 +54,14 @@ import co.animal.prj.offerhelp.command.OhItemUpdate;
 import co.animal.prj.offerhelp.command.OhItemUpdateForm;
 import co.animal.prj.offerhelp.command.WriteOHForm;
 import co.animal.prj.sales.command.DeleteSales;
+
+import co.animal.prj.sales.command.KeywordSearchSales;
+
 import co.animal.prj.sales.command.FindClothing;
 import co.animal.prj.sales.command.FindEtc;
 import co.animal.prj.sales.command.FindFood;
 import co.animal.prj.sales.command.FindShare;
+
 import co.animal.prj.sales.command.SalesInsert;
 import co.animal.prj.sales.command.SalesInsertForm;
 import co.animal.prj.sales.command.SalesListAll;
@@ -105,9 +104,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberUpdate.do", new MemberUpdate()); //관리자 회원 정보수정
 		map.put("/userUpdate.do",new UserUpdate());		//회원 수정페이지
 		map.put("/memberCheck.do", new MemberCheck());	//회원 수정 비밀번호
-		map.put("/memberSelect.do", new MemberSelect()); //유저 마이페이지
+		map.put("/memberSelect.do", new MemberSelect()); //유저 프로필페이지 (주윤이고침. 마이페이지는 자기 글+구매등 보여줄것)
 		map.put("/requestAuthEmail.do",new RequestAuthEmail());
-		
 		
 		
 		
@@ -130,7 +128,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findEtc.do", new FindEtc());
 		map.put("/findShare.do", new FindShare());
 	
-		
+		//csc
 		map.put("/myCscList.do", new MyCscList()); //고객용 - 내 문의 내역
 		map.put("/cscForm.do", new CscForm()); // csc입력폼
 		map.put("/cscInsert.do", new CscInsert());//csc 입력
@@ -138,8 +136,11 @@ public class FrontController extends HttpServlet {
 		map.put("/csItemUpdateForm.do", new CsItemUpdateForm());//csc update
 		map.put("/csUpdate.do", new CsUpdate());
 		map.put("/csItemDelete.do", new CsItemDelete());
+		map.put("/everyCscList.do", new EveryCscList());//관리자가 보는 전체 페이지
 
-
+		//주윤 세일즈 서치버튼 추가
+		map.put("/KeywordSearchSales.do", new KeywordSearchSales());
+		
 		//제은 맵 offerhelp
 		map.put("/offerHelpMain.do", new OfferHelpMain());
 		map.put("/ohDetail.do", new OhDetail());
@@ -149,19 +150,6 @@ public class FrontController extends HttpServlet {
 		map.put("/ohItemUpdateForm.do", new OhItemUpdateForm());
 		map.put("/ohItemDelete.do", new OhItemDelete());
 		map.put("/ohItemDetail.do", new OhDetail());
-
-		//제은 맵 lost
-		map.put("lostMain.do", new LostMain());
-		map.put("/lostDetail.do", new LostDetail());
-		map.put("/writelostForm.do", new WritelostForm());	
-		map.put("/lostInsert.do", new LostInsert());
-		map.put("/lostItemUpdate", new LostItemUpdate());
-		map.put("/lostItemUpdateForm.do", new LostItemUpdateForm());
-		map.put("/lostItemDelete.do", new LostItemDelete());
-		
-		
-		
-		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -171,9 +159,9 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println(path);
+		System.out.println("PATH:: " + path);
 		Command command = map.get(path);
-		System.out.println(command);
+		System.out.println("COMMAND :::" + command);
 		
 		String viewPage = command.execute(request, response);
 		

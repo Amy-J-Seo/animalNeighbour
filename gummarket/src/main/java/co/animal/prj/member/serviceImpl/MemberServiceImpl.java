@@ -43,6 +43,18 @@ public class MemberServiceImpl implements MemberService{
 		return map.emailDupleCheck(vo);
 	}
 	@Override
+	public int usedPointUpdate(MemberVO vo) {
+		int n = map.usedPointUpdate(vo);
+		sqlSession.commit();
+		return n;
+	}
+	@Override
+	public int shippingInfoUpdate(MemberVO vo) {
+		int n = map.shippingInfoUpdate(vo);
+		sqlSession.commit();
+	    return n;
+    }
+    
 	public int updatePassword(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return map.updatePassword(vo);

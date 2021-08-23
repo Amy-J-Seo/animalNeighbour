@@ -6,7 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>장터 전체 상품 조회</title>
+    <!--Hover css-->
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+    <style type="text/css">
+    	.card{
+			    border-radius: 4px;
+			    background: #fff;
+			    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+			    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+			  	cursor: pointer;
+			}
 
+		.card:hover{
+		     	transform: scale(1.05);
+		  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+		}
+    </style>
 </head>
 <body id="top-page">
 	<section>
@@ -15,6 +30,7 @@
 				<p class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">On sale items!</p>
 			</div>
 			<div class="continer my-auto">
+
 				<div class="row">
 				<!-- 카테고리별 -->
 					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="center">
@@ -32,21 +48,19 @@
 						</ul>
 					</div>
 					
-					<div class="col-lg-6 col-sm-6 mb-3 mb-sm-0" align="center">
-					<!-- Main Content -->
-					<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
-						<!-- 검색창 -->
-						<form class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
-							<div class="input-group">
-								<input type="text" class="form-control bg-light border-0 small" style="background-color: rgb(244, 244, 244);"
-									placeholder="Search for..." aria-label="Search"
-									aria-describedby="basic-addon2">
-								<div class="input-group-append">
-								<!-- 서치버튼 색 바꾸고 싶으면 바꾸어도 됩니다. -->
-									<button class="btn btn-primary" type="button" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
-										<i class="fas fa-search fa-sm"></i>
-									</button>
-								</div>
+				<!-- Main Content -->
+				<div id="content" class ="mt-4 mb-4" style="margin: 0 auto; width:250px;">
+					<!-- 검색창 -->
+					<form id="searchFrm" name="searchFrm" method="post" action="KeywordSearchSales.do" class="d-none d-sm-inline-block form-inline navbar-search" style="display: block">
+						<div class="input-group">
+							<input  id="keyWord" name="keyWord" type="text" class="form-control bg-light border-0 small" style="background-color: rgb(244, 244, 244);"
+								placeholder="Search title for..." aria-label="Search"
+								aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<button id="searchBtn" class="btn btn-primary" type="submit" style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);" >
+									<i class="fas fa-search fa-sm"></i>
+								</button>
+
 							</div>
 						</form>
 					</div>
@@ -84,10 +98,10 @@
 	                                <div class="bi-star-fill"></div>
 	                            </div>
 	                            <!-- 조회수-->
-	                            <div>조회수 :${list.sHit }</div>
-	                            <div>카테고리: ${list.sCategory }</div>
-	                            <div>가격: ${list.sPrice }</div>
-	                            <div>할인 된 가격: ${list.sNetPrice }</div>
+	                            <p>조회수 :${list.sHit }</p>
+	                            <p>카테고리: ${list.sCategory }</p>
+	                            <p>가격: ${list.sPrice }</p>
+	                            <p>할인 된 가격: ${list.sNetPrice }</p>
 	                        </div>
 	                    </div>
 	                    <!-- Product actions-->

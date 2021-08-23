@@ -47,4 +47,22 @@ public class FindHelpServiceImpl implements FindHelpService {
 		return map.findHelpLike(vo);
 	}
 
+	@Override
+	public List<FindHelpVO> findHelpSelectListByKeyWord(FindHelpVO vo) {
+		// TODO Auto-generated method stub
+		return map.findHelpSelectListByKeyWord(vo);
+	}
+
+	@Override
+	public int memberTotalfh(FindHelpVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberTotalfh(vo);
+	}
+
+	@Override
+	public List<FindHelpVO> findHelpSelectListByMember(FindHelpVO vo) {
+		// TODO Auto-generated method stub
+		return map.findHelpSelectListByMember(vo);
+	}
+
 }

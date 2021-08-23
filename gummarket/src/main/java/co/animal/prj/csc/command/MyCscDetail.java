@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import co.animal.prj.common.Command;
 import co.animal.prj.csc.serviceImpl.CscServiceImpl;
 import co.animal.prj.csc.vo.CscVO;
+import co.animal.prj.member.serviceImpl.MemberServiceImpl;
+import co.animal.prj.member.vo.MemberVO;
 
 public class MyCscDetail implements Command {
 
@@ -18,10 +20,8 @@ public class MyCscDetail implements Command {
 		
 		vo.setCsNo(Integer.valueOf(request.getParameter("csNo")));
 		
-		
 		request.setAttribute("csc", cscDao.cscSelect(vo));
-		
-		
+	
 		return "csc/myCscDetail";
 	}
 
