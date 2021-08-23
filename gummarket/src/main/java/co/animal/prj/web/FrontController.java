@@ -171,7 +171,7 @@ public class FrontController extends HttpServlet {
 		
 		if(viewPage.equals("json"))
 			return;
-		
+
 		// making view resolve..
 		if (!viewPage.endsWith(".do")) { // home.do
 			if (!viewPage.endsWith(".jsp")) { // use tiles

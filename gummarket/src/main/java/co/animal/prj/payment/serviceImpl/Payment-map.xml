@@ -14,10 +14,10 @@
 	</insert>
 	
 	<select id="memberPaymentSelectList" resultType="co.animal.prj.payment.vo.PaymentVO">
-			select b.sCategory, b.sTitle, b.sImg, a.pNo, a.mid, a.sno, a.pdate, a.payamount 
+			select b.sCategory, b.sTitle, b.sImg, a.pNo, a.mid, a.sno, a.pdate, a.payamount , a.CONFIRMPURCHASE
       		from payment a left outer join sales b
       		on (a.sno = b.sno) 
-      		where b.mid = #{mId}
+      		where a.mid = #{mId}
 	</select>
 	
 	<update id="confirmPurchase" parameterType="co.animal.prj.payment.vo.PaymentVO">

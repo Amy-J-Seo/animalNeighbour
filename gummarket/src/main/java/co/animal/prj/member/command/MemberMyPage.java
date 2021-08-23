@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.animal.prj.common.Command;
 import co.animal.prj.member.service.MemberService;
@@ -17,9 +18,11 @@ public class MemberMyPage implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String mId = request.getParameter("mId");
+		
+		
 		MemberVO mVo =new MemberVO();
 		MemberService mDao = new MemberServiceImpl();
+		String mId = request.getParameter("mId");
 		mVo.setmId(mId);
 		
 		PaymentServiceImpl pDao = new PaymentServiceImpl();
@@ -29,9 +32,11 @@ public class MemberMyPage implements Command {
 		List<PaymentVO> list = new ArrayList<PaymentVO>();
 		
 		request.setAttribute("member", mDao.memberSelect(mVo));
+		
 		list = pDao.memberPaymentSelectList(pVo);
-		request.setAttribute("list", list );
 		System.out.println(list.toString());
+		
+		request.setAttribute("list", list );
 		
 		return "member/memberMyPage";
 	}

@@ -31,7 +31,7 @@
                              </div>
                              <p></p>
                              <br>
-                             session mid ${session.mId}
+                             
                              <!-- form start -->
                              <form class="user" id="frm" name="frm" action="boardInsert.doBB" method="post" enctype="multipart/form-data">
                              <input type="hidden" id="mId" name="mId" value="${session.mId}">

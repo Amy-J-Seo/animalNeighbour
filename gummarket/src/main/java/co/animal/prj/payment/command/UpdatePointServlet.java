@@ -35,6 +35,7 @@ public class UpdatePointServlet extends HttpServlet {
 		int usedPoint = Integer.valueOf(request.getParameter("usedPoint"));
 		vo.setmId(mId);
 		vo.setReviewPoint(usedPoint);
+		System.out.println(usedPoint);
 		System.out.println(vo.toString() +"             updatePoinst servlet");
 //		이게 작동안함 ㅠㅠㅠㅠ 고쳐야해....
 		int n = mDao.usedPointUpdate(vo);
