@@ -71,22 +71,14 @@ public class FindHelpInsert implements Command {
 		int n = dao.findHelpInsert(vo);
 		System.out.println(n + "item added successfully + FindHelpInsert.java");
 //		------insert finished---------
-//		img insert
-		 iVo.setImgPath(fileName2);
-	      iVo.setiMainNum(n);
-	      
-	      System.out.println(iVo.toString());
-	      int nn = imgDao.fhImageInsert(iVo);
-	      
-	      if( nn !=0) {
+//		
+	      if( n !=0) {
 //		작성된 글 디테일 페이지로 이동
 	    	  dao= new FindHelpServiceImpl();
 	  		
 	  		request.setAttribute("item", dao.findHelpSelect(vo));
 	         page ="findhelp/fhItemDetail";
-	      }else {
-	         page="home/error";
-	      }	
+	      }
       } catch (Exception e) {
           e.getStackTrace();
        } // 업로드 종료
