@@ -146,30 +146,33 @@
 		   		const sHit = data[i].sHit;
 	         
 	         const divCol = $('<div />').addClass('col-lg-4 text-center align-items-center');
-	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "2.8rem");
+	            let img = $('<img />').attr("src","img/salesImg/"+data[i]['sImg']).css('width', "10rem");
 	            const catP = $('<p/>').text(data[i]['sCategory']);
 	            const titleP = $('<p/>').text(data[i]['sTitle']);
-	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
 	           
-	            const frm = $('<input />').attr()
+	         
+	            const frm = $('<form />').attr(
+	            		{id:'salesDetail',
+	            		action:"salesSelect.do",
+	            		method:"post"})
+	            const inputSNo = $('<input />').attr('type','hidden').attr('name','sNo').val(data[i]['sNo']);
+	            const inputSHit = $('<input />').attr('type','hidden').attr('name','sHit').val(data[i]['sHit']);
 	            //자세히보기 버튼 클릭하면 salesSelect.do로 가자!
-	            btn.click(salesSelect(sNo, sHit));
+	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
+	        	
+	           	$(frm).append(inputSNo,inputSHit);
+	            btn.click(function(){
+	            	$(frm).submit();
+	            });
 	            
-	            $(divCol).append(img, catP, titleP, btn);
+	            $(divCol).append(img, catP, titleP, frm, btn);
 	                       
 	            $('#toAddSalesListDiv').append(divCol);
 	         
 	      };
 	   };
 	   
-	   
-	//자세히보기 버튼-> 상세페이지로 가기
-	function salesSelect(sNo, sHit){
-		console.log(sNo);
-		
-	}
-	   
-	   
+
 	let fields = ['cmId', 'cContents'];
 	//입력처리 후 콜백함수
 	function addItemFunc(data) { //{itmeNo: ?, itemName:? ......}
@@ -276,7 +279,8 @@
 					data: {
 						category: $('#itemCategory').text(),
 						rWhy: $('#sReport input[name="reason"]').val(),
-						sNo: $('#sReport #sNo').val()
+						sNo: $('#sReport #sNo').val(),
+						mId:'${list[0].mId}'
 					},
 					dataType: 'json',
 					success: function (response) {
@@ -318,7 +322,7 @@
 
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
-		<div class="continer my-auto pl-4 pb-3">
+		<div class="continer pl-4 pb-3"  style="margin-left: 5rem;">
 			<!-- 카테고리마다 타이틀 변경 -주윤 -->
 			<c:if test="${list[0].sCategory == 'clothing' }">
 				<p id="itemCategory" class="h3 mb-0 mt-5 ml-5" style="color: rgb(255, 190, 83); font-weight: 900;">
@@ -338,7 +342,7 @@
 			</c:if>
 		</div>
 		<!-- DataTales Example -->
-		<div class="card shadow mb-4" style="margin-left: 4rem; margin-right: 4rem">
+		<div class="card shadow mb-4" style="margin-left: 10rem; margin-right: 10rem">
 			<!-- card title + btns  -->
 			<div class="card-header py-3">
 				<h2 class="m-0 font-weight-bold text-dark" style="text-align: center;">${list[0].sTitle }
@@ -643,15 +647,18 @@
 
 							<div class="card-body row">
 								<!-- 사용자 프로필 사진+이름 -->
-								<div class=" col-lg-4 text-center align-items-center">
+								<div class="col-lg-4 text-center d-flex justify-content-center align-items-center">
+									<div>
 									<img class="rounded-circle" src="img/undraw_profile_1.svg"
-										style="width: 2.5rem; height:2.5rem;">
-									<p>${member.mId }</p>
-									<p>${member.nickname } 님</p>
+										style="width: 10rem; height:10rem;">
+									<p></p>
+									<h4><p>${member.mId }</p></h4>
+									
+									<h5>${list[0].mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
+									</div>
 								</div>
 
 								<div class=" col-lg-8 text-center align-items-center">
-									<h5>${list[0].mId }님의 리뷰 포인트: ${member.reviewPoint }</h5>
 									<p>판매 물품 확인하기</p>
 									<!-- ajax로 불러온 정보 붙이는 div -->
 									<div>
