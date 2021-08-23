@@ -32,7 +32,7 @@ public class RequestAuthEmail implements Command {
 		// mail server 설정
 		String host = "smtp.gmail.com";
 		String user = "gkwlal3@gmail.com"; // 자신의 구글 계정
-		String password = "wprkffid@123";// 자신의 구글 패스워드
+		String password = "Wprkffid@123";// 자신의 구글 패스워드
 
 		// 메일 받을 주소
 		String to_email = inputedEmail;
@@ -62,9 +62,14 @@ public class RequestAuthEmail implements Command {
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 
 			// 메일 제목
-			msg.setSubject("호준아 성공한거 축하해 ㅠ", "UTF-8");
+			msg.setSubject("[개껌장터] 인증번호를 안내 드립니다.", "UTF-8");
 			// 메일 내용
-			msg.setText("인증 번호 :" + AuthenticationKey);
+			msg.setText("인증번호를 안내 드립니다.\r\n"
+					+ "\r\n"
+					+ "안녕하세요.개껌장터 입니다.\r\n"
+					+ "요청하신 인증번호를 안내 드립니다.\r\n"
+					+ "아래번호를 인증번호 입력란에 입력해 주세요.\r\n"
+					+ "인증 번호 :" + AuthenticationKey);
 
 			Transport.send(msg);
 			System.out.println("이메일 전송 : " + AuthenticationKey);

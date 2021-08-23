@@ -21,7 +21,7 @@ public class MemberSelect implements Command {
 		
 		if(vo != null) {
 			request.setAttribute("list", dao.memberSelect(vo));
-			System.out.println(request.getAttribute("message1")+"메시지 확인");
+			System.out.println(request.getAttribute("message")+"메시지 확인");
 			page="member/memberSelect";
 		}else {
 		String message="비밀번호를 정확하게 입력해 주세요.";

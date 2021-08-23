@@ -105,7 +105,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userUpdate.do",new UserUpdate());		//회원 수정페이지
 		map.put("/memberCheck.do", new MemberCheck());	//회원 수정 비밀번호
 		map.put("/memberSelect.do", new MemberSelect()); //유저 프로필페이지 (주윤이고침. 마이페이지는 자기 글+구매등 보여줄것)
-		map.put("/requestAuthEmail.do",new RequestAuthEmail());
+		map.put("/requestAuthEmail.do",new RequestAuthEmail()); //이메일인증
 		
 		
 		
