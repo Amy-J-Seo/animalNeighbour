@@ -84,15 +84,20 @@
 					style="width: 85px; height: 85px;"></a>
 				</c:if>
 				
-				<ul class="navbar-nav ml-auto" style="font-family: SeoulNamsanM; font-size:35px">
-					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
-					<li style="margin: auto;">
-						<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>
-						&nbsp;|&nbsp; <a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a>
-					</li>
-						
-						
-				</ul>
+				<c:if test="${not empty session.mId }">
+					<ul class="navbar-nav ml-auto" style="font-family: SeoulNamsanM; font-size:20px">
+						<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
+						<li style="margin: auto;">
+							<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">이벤트</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">공지</a>
+						</li>
+					</ul>
+				</c:if>
 
 				<ul class="navbar-nav ml-auto">
 					<!-- 사용자 세션 로그인 기록에 아이디가 있으면 이름과 사진 보여주기 -->
