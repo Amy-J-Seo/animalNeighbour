@@ -14,4 +14,6 @@ public interface ReportService {
 	public int reportInsert(ReportVO vo);
 	public int memberTotalR(ReportVO vo); //사용자 report 숫자
 	public int reportFinished(ReportVO vo); //관리자가 리포트 삭제 후 완료 업데이트
+	
+	public int reportNum(); //관리자 메인 페이지에서 보일 리포트 수(인영)
 }

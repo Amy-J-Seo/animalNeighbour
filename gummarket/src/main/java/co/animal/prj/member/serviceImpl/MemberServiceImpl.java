@@ -67,6 +67,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int memberNum() {
 		// TODO Auto-generated method stub
-		return map.memberNum();
+		int num = map.memberNum();
+		return num;
 	}
 }

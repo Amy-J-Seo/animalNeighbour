@@ -57,7 +57,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 신고 게시글 수</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${reportNum }</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-bell fa-4x text-gray-300"></i>
@@ -80,7 +80,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 총 거래 게시글</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${sales }</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-money-bill-wave fa-4x text-gray-300"></i>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">120</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${care }</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
@@ -146,7 +146,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 이벤트 글 수</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${event }</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-bell fa-4x text-gray-300"></i>
@@ -171,7 +171,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 공지 글 수</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${notice }</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-money-bill-wave fa-4x text-gray-300"></i>

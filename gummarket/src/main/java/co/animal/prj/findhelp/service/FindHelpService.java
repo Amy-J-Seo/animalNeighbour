@@ -17,4 +17,7 @@ public interface FindHelpService {
 	public int updateLike(FindHelpVO vo);
 	public int memberTotalfh(FindHelpVO vo);
 	
+	//adminMain page 멍냥케어 게시글 수(인영)
+	public int careNum();
+	
 }
