@@ -151,17 +151,24 @@
 	            const titleP = $('<p/>').text(data[i]['sTitle']);
 	           
 	            
-	            <form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
+	            /* <form id="likeFrm" name="likeFrm" action="UpdSalesLikeServlet" method="post">
 	            <input type="hidden" id="cMainNum" name="cMainNum" value="${list[0].sNo }">
-	           
-	            const frm = $('<form />').attr('id','salesDetail').attr('action')
-	            const form = $('<input />').attr('type','hidden').attr('id','')
+	            */
+	            const frm = $('<form />').attr(
+	            		{id:'salesDetail',
+	            		action:"salesSelect.do",
+	            		method:"post"})
+	            const inputSNo = $('<input />').attr('type','hidden').attr('name','sNo').val(data[i]['sNo']);
+	            const inputSHit = $('<input />').attr('type','hidden').attr('name','sHit').val(data[i]['sHit']);
 	            //자세히보기 버튼 클릭하면 salesSelect.do로 가자!
 	            const btn = $('<button />').addClass("btn btn-warning mr-2").text("자세히보기");
-	        
-	            btn.click(salesSelect(sNo, sHit));
+	        	
+	           	$(frm).append(inputSNo,inputSHit);
+	            btn.click(function(){
+	            	$(frm).submit();
+	            });
 	            
-	            $(divCol).append(img, catP, titleP, btn);
+	            $(divCol).append(img, catP, titleP, frm, btn);
 	                       
 	            $('#toAddSalesListDiv').append(divCol);
 	         
