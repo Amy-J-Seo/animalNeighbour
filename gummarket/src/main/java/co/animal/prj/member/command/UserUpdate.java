@@ -45,8 +45,8 @@ public class UserUpdate implements Command {
 		System.out.println(n);
 		String page = "";
 		if (n != 0) {
-			String message1 = vo.getmName() + "님의 정보를 성공적으로 수정완료했습니다.";
-			request.setAttribute("message1", message1);
+			String message = vo.getmName() + "님의 정보를 성공적으로 수정완료했습니다.";
+			request.setAttribute("message", message);
 			page = "memberSelect.do";
 		} else {
 			String message1 ="예기치 못한 오류가 발생했습니다. 잠시후 시도해주세요.";

@@ -148,7 +148,7 @@
 									<button type="submit" onclick=""
 										class="btn btn-danger btn-md btn-user btn-block"
 										style="background-color: red; color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog"></i>&nbsp;수정
+										<i class="fas fa-user-cog"></i>&nbsp;수정하기
 									</button>
 
 									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
