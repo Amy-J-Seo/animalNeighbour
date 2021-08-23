@@ -169,7 +169,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
+                <div class="modal-body">정말로 떠나실 건가요?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
                     <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>

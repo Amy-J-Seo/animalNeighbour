@@ -17,7 +17,7 @@ public class IdCheckPro implements Command {
 		
 		request.setAttribute("cnt", result);
 		
-		return "login/idCheckPro";
+		return "login/idCheckPro.jsp";
 	}
 
 }

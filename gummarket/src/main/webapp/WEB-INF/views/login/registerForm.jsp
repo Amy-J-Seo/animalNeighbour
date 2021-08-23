@@ -34,7 +34,7 @@
 			}
 
 			function winopen() {
-				window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=350");
+				window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=250");
 			}
 
 			function winopen1() {
@@ -96,10 +96,9 @@
 			}
 			var code = "";
 			function emailAuthentication() {
-				if(document.frm.inputEmailForm.value==null){
-					alert("이메일을 입력해주세요");
-					return;
-				}
+				if (!emailValCheck()){
+			    	return false;
+			    }
 				$.ajax({
 					url: "requestAuthEmail.do?email=" + frm.email.value,
 					type: "GET",
@@ -107,9 +106,9 @@
 					success: function (data) {
 						console.log(data);
 						localStorage.setItem('emailAuthent', data);
-						alert("이메일 전송성공")
+						alert("이메일 전송되었습니다.")
 						document.frm.inputEmailForm.readOnly = true;
-						document.frm.eamilAuthBtn.disabled = true;
+						
 						document.frm.authCodeCheckBtn.disabled = false;
 						document.frm.inputAuthCode.disabled = false;
 						code = data;
@@ -120,7 +119,23 @@
 					}
 				});
 			}
-
+			function emailValCheck(){
+				var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				var email = frm.email.value;
+				if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
+					return false;
+				}
+				document.frm.eamilAuthBtn.disabled = true;
+			    return true;
+			}
+			function check(pattern, taget, message) {
+				if(pattern.test(taget)) {
+			    	return true;
+			    }
+			    alert(message);
+			    return false;
+			}
+			
 			function authCodeCheck() {
 
 				var inputCode = $("#inputAuthCode").val(); // 입력코드
@@ -237,7 +252,7 @@
 											<div class="col-lg-3 col-sm-3 mb-3 mb-sm-0 ">
 												<input type="text" id="inputAuthCode" name="authCode"
 													placeholder="인증번호입력" class="form-control form-control-user"
-													disabled="disabled">
+													disabled="disabled" required="required">
 											</div>
 											<span id="mail_check_input_box_warn"></span>
 											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
@@ -310,7 +325,8 @@
 				</div>
 			</div>
 		</div>
-
+		
+		
 	</body>
 
 	</html>
