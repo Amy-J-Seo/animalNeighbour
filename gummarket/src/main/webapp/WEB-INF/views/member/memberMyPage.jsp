@@ -90,10 +90,10 @@ function returnItem(){
 	        },
 	        success: function(response){
 	        	let div= document.getElementById(response);
-	        	console.log($(div))
+	        	//console.log($(div))
 	    		//이러니까 제일 위에꺼? 그게 바뀌던데... 디브에 아이디를 줘야할듯...
 	    		$('#closeRModal').click();
-	    		//$('#returnItemForm').submit(); //환불신청 폼 열어주기.
+	    		$('#returnItemForm').submit(); //환불신청 폼 열어주기.
 	        },
 	        error: function (reject) {
 	            console.log(reject);

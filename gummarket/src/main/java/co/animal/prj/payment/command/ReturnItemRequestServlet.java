@@ -35,7 +35,6 @@ public class ReturnItemRequestServlet extends HttpServlet {
 		
 		vo.setpNo(pNo);
 		vo.setConfirmPurchase(confirmP);
-		System.out.println(vo.toString() +"  returnItemRequestServ");
 		pDao.confirmPurchase(vo);
 		
 		Gson gson = new GsonBuilder().create();

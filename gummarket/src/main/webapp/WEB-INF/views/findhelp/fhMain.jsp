@@ -87,11 +87,17 @@ function getDetails(num) {
 
 
     <div class="container px-4 px-lg-5 mt-5">
+    
+    <c:if test="${not empty message }">
+             <div class="align-center d-flex justify-content-center" style="width: 100%; height: 400px; ">
+		 		<i class="far fa-dizzy fa-4x mr-3"></i>
+		             	<br>
+		 		<h2 class="text-center justify-content-center">${message }</h2>
+		 	 </div>
+          </c:if>
+    
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
          <!-- 모든 도움찾기 글 카드로 보여주기!! -->   
-          <c:if test="${not empty message }">
-             <div>${message }</div>
-          </c:if>
           
           <c:if test="${not empty list }">
           <c:forEach var="item" items="${list}"> 
