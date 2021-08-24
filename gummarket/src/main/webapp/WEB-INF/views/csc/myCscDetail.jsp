@@ -26,6 +26,7 @@
 
 
 
+
 		//댓글 불러오기 ajax
 		$(document).ready(function () {
 

@@ -319,7 +319,7 @@
 
 </script>
 
-<body id="page-top">
+<body>
 
 
 	<!-- Begin Page Content -->
@@ -344,6 +344,7 @@
 			</c:if>
 		</div>
 		<!-- DataTales Example -->
+		<div  style="margin-top: 3rem;">
 		<div class="card shadow mb-4" style="margin-left: 10rem; margin-right: 10rem">
 			<!-- card title + btns  -->
 			<div class="card-header py-3">
@@ -543,6 +544,7 @@
 				<button class="btn btn-secondary" style="float: right;" onclick="window.history.back()">To Main</button>
          </div>
       </div><!--  End of DataTales Example -->
+      </div>
    </div>
    <!-- 
       메인으로 가기 버튼
