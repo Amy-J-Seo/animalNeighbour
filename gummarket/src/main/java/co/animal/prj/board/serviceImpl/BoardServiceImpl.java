@@ -79,5 +79,11 @@ public class BoardServiceImpl implements BoardService {
 		return map.eventNum();
 	}
 
+	@Override
+	public List<BoardVO> boardSelectListByKeyWord(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return map.boardSelectListByKeyWord(vo);
+	}
+
 
 }

@@ -28,28 +28,8 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- 카카오 API -->
-<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script type="text/javascript">	
-	window.Kakao.init("b170e6c8bb0d86b449f0f677f1ae873f");
-	
-	 function kakaoLogin(){
-	        window.Kakao.Auth.login({
-	            scope:'profile_nickname, account_email,',
-	            success: function(authObj) {
-	            console.log(authObj);
-	            window.Kakao.API.request({
-	                url:'/v2/user/me',
-	                success: res => {
-	                    const kakao_account = res.kakao_account;
-	                    console.log(kakao_account);
-	                    this.login(kakao_account);
-	                }
-	            });
-	            },
-	            
-	        });
-	    }
 	 
 	 $(() => {
    		var result = '<c:out value="${message}" />';
@@ -95,12 +75,9 @@
 
 										<input type="password" id="password" name="password"
 											placeholder="비밀번호" required="required"
-											class="form-control form-control-user"><br> <input
-											type="submit" value="로그인"
-											class="btn btn-warning btn-user btn-block"> <a
-											href="javascript:kakaoLogin();"><br> <img
-											src="http://gi.esmplus.com/buybye1/page/kakao-login.png"
-											style="height: 40px; width: auto"></a>
+											class="form-control form-control-user"><br> <button
+											type="submit" 
+											class="btn btn-warning btn-user btn-block"><i class="fas fa-paw"></i>로그인</button>
 									</div>
 								</form>
 							</div>
@@ -128,7 +105,7 @@
 					<p>message</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal"><i class="fas fa-check"></i>확인</button>
 				</div>
 			</div>
 		</div>

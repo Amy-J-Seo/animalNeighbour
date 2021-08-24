@@ -12,7 +12,7 @@ public class Logout implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();	// 세션 삭제
-		return "login/loginForm.jsp";
+		return "login/loginForm";
 	}
 
 }

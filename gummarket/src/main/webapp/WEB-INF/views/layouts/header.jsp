@@ -49,10 +49,14 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-			<nav class="topbar fixed-top">
+
 			<!-- Topbar -->
-			<nav class="navbar navbar-expand "
+			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
+				<c:if test="${not empty session.mId }">
+				<!-- 로긴세션있을 때 지역날씨 -->
+					  <i class="fas fa-globe-asia mr-1 text-gray-800"></i><span class="js-weather text-gray-800"></span>
+					  </c:if>
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
 
 					<!-- 노란헤더 이벤트, 공지사항 링크 -->
@@ -71,13 +75,15 @@
 			
 			<!-- 여기부터 회색헤더 -->
 			<!-- Topbar -->
-			<nav class="navbar navbar-expand topbar static-top "
-				style="background-color: rgb(244, 244, 244);" >
+			<nav class="navbar navbar-expand topbar static-top"
+				style="background-color: rgb(244, 244, 244);">
 				
 				<!-- 로그인 세션 없을 시 로그인 페이지로 -->
 				<c:if test="${not empty session.mId }">
 				<a href="home.do"><img src="img/logo1.png"
 					style="width: 85px; height: 85px;"></a>
+					
+					
 				</c:if>
 				<c:if test="${empty session.mId }">
 				<a href="loginForm.do"><img src="img/logo1.png"
@@ -101,7 +107,7 @@
 						<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="mr-2 d-none d-lg-inline text-gray-600 large">${session.nickname }님</span>
-							<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+							<img class="img-profile rounded-circle" src="https://search3.kakaocdn.net/argon/600x0_65_wr/EG8FNB1zv3c">
 						</a> 
 						<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown" style="font-size: 15px">
@@ -113,7 +119,7 @@
 								<a class="dropdown-item" href="memberMyPage.doBB?mId=${session.mId }">
 									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 마이 페이지
 								</a>
-								<a class="dropdown-item" href="#"> 
+								<a class="dropdown-item" href="myCscList.do"> 
 									<i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i> 내 문의내역
 								</a>
 								
@@ -132,7 +138,7 @@
 								 <a class="dropdown-item" href="memberCheck.do?mId=${session.mId }">
 										<i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i> 나의 정보
 									</a>
-								<a class="dropdown-item" href="#"> 
+								<a class="dropdown-item" href="everyCscList.do"> 
 									<i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i> 회원 문의
 								</a>
 									<a class="dropdown-item" href="memberList.do"> <i
@@ -156,7 +162,6 @@
 					</c:if>
 				</ul>
 			</nav>
-			</nav>
 			<!-- End of Topbar -->
 			
  <!-- Logout Modal-->
@@ -170,10 +175,10 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">정말로 떠나실 건가요?</div>
+                <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
-                    <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-dog"></i>머물기</button>
+                    <a class="btn btn-warning btn-user btn-block" href="logout.do"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
                 </div>
             </div>
         </div>
@@ -203,6 +208,8 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
+	
+	 <script src="js/weather.js"></script>
 </body>
 
 </html>

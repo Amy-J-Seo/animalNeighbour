@@ -18,16 +18,19 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<!-- daum.address -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script>
+//ajax시작
 $(document).ready(function(){
 	
+
 	/* 배송요청사항 */
 	$('#shippingInfoSaveBtn').on('click', function(){
 		let shippingRequest = $('#bRequest').val()
-		alert(shippingRequest);
-		$('#bShippingInfo').text(shippingRequest);
 		
+		$('#bShippingInfo').text(shippingRequest);
 		/* 적용버튼 누르면 디비업데이트 */
 		$.ajax({
          	   url:'UpdateShippingInfoServlet', //'../AddItemServlet.do'
@@ -43,15 +46,13 @@ $(document).ready(function(){
 	   	                console.error(reject);
 	   	            } 
             	});
-		
-		
-	})
+		})
 	
 	
 		/* 할인하기 */
 	$('#applyDiscountBtn').click(
 			function applyDiscount(){
-				let origP = ${sale.sPrice};
+				let origP = ${sale.sNetPrice};
 				let point=$('#pointToUse').val();
 				$('#discountFee').text(point);
 				let netP = origP-point;
@@ -77,7 +78,7 @@ $(document).ready(function(){
 				
 				}
 		);
-		
+	//아임포트 결제 API	
 	$("#payment_process").click(
         function requestPay() {
            var IMP = window.IMP; // 생략가능
@@ -139,11 +140,84 @@ $(document).ready(function(){
         });
                       
        }
-   );
+   );//import 결제 API 끝
             
-});
+});//ajax 끝
 
+/* 다음 주소 연동 */
+function execution_daum_address() {
+	new daum.Postcode({
+		oncomplete: function (data) {
+			// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+			var addr = ''; // 주소 변수
+			var extraAddr = ''; // 참고항목 변수
 
+			//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+			if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+				addr = data.roadAddress;
+			} else { // 사용자가 지번 주소를 선택했을 경우(J)
+				addr = data.jibunAddress;
+			}
+
+			// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+			if (data.userSelectedType === 'R') {
+				// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+				// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+				if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+					extraAddr += data.bname;
+				}
+				// 건물명이 있고, 공동주택일 경우 추가한다.
+				if (data.buildingName !== '' && data.apartment === 'Y') {
+					extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+				}
+				// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+				if (extraAddr !== '') {
+					extraAddr = ' (' + extraAddr + ')';
+				}
+				// 조합된 참고항목을 해당 필드에 넣는다.
+				addr += extraAddr;
+			} else {
+				addr += ' ';
+			}
+
+			// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			$("#address1").val(data.zonecode);
+			//$("[name=memberAddr1]").val(data.zonecode); // 대체가능
+			$("#address2").val(addr);
+			//$("[name=memberAddr2]").val(addr); // 대체가능
+			// 커서를 상세주소 필드로 이동한다.
+			$("#address3").attr("readonly", false);
+			$("#address3").focus();
+
+		}
+	}).open();
+}//다음주소 연동 끝
+
+//주소 가져온 후 업데이트 버튼
+function updateAddressFunc(){
+	
+	 $.ajax({
+        url: $('#updateAddress').attr('action'), //'../AddItemServlet.do'
+        method: 'post',
+        data: {
+        	address1: $("#address1").val(),
+        	address2: $("#address2").val(),
+        	address3: $("#address3").val(),
+        	memberMId: '${session.mId}'
+        },
+        dataType: 'json',
+        success: function(data){
+        	alert("배송지(주소)가 업데이트 되었습니다!");
+    		$('#closeRModal').click();
+        	$('#bAddress').text(data.address);
+        },
+        error: function (reject) {
+            console.log(reject);
+        }
+	});
+}//주소 가져온 후 업데이트 버튼 끝
 
 
 
@@ -185,8 +259,7 @@ $(document).ready(function(){
 				<div class="col-lg-3">
 					<div style="float:right;">
 					<!-- modal ? -->
-						<button class="btn btn-warning">배송지 변경</button>
-						<button class="btn btn-warning">신규 배송지</button>
+						<button class="btn btn-warning" data-toggle="modal" data-target="#addressUpdateModal" >배송지 변경</button>
 					</div> 
 				</div>
 			</div>
@@ -198,12 +271,12 @@ $(document).ready(function(){
 			<div class="card-header py-3" style="float:right;">주문상품 확인</div>
 			<div class="card-body row mb-2" style="float:right;">
 				<div class="col-lg-2">
-					<img src="img/pink.webp" style="width:150px; height:150px" ><br>
+					<img src="img/salesImg/${sale.sImg }" style="width:150px; height:150px" ><br>
 				</div>
 				<div class="col-lg-7 pt-3" style="font-size: 1.3rem">
 					<p>상품명 : <span id="itemName">${sale.sTitle }</span></p>
 					<p>판매자 : <span id="itemSeller">${sale.mId }</span></p>
-					<p>가격 : <span id="itemPrice">${sale.sPrice }</span></p>
+					<p>가격 : <span id="itemPrice">${sale.sNetPrice }</span></p>
 				</div>
 				<div class="col-lg-3">
 					<div style="float:right;">
@@ -235,13 +308,13 @@ $(document).ready(function(){
 				<div class="card-header py-3" style="float:right;">결제 금액</div>
 				<div class="card-body row mb-2" style="float:right;">
 					<div class="col-lg-9">
-						<p>상품금액 : <span>${sale.sPrice }</span></p>
+						<p>상품금액 : <span>${sale.sNetPrice }</span></p>
 						<!-- 배송비 칼럼? -->
 						<p>배송비 : <span id="shippingFee">0</span></p>
 						<!-- ?? -->
 						<p>할인금액 : <span id="discountFee">0</span></p>
 						<hr>
-						<p>총액 : <span id="totalAmount">${sale.sPrice }</span></p>
+						<p>총액 : <span id="totalAmount">${sale.sNetPrice }</span></p>
 					</div>
 					<div class="col-lg-3">
 						<div style="float:right;">
@@ -250,10 +323,9 @@ $(document).ready(function(){
 				</div>
 			<!-- 끝 적립금 사용 -->
 			</div>
-			
 			<div class="mx-auto pb-4" style="align-items: center;">
 				<button type="button" id="payment_process" class="btn btn-warning btn-lg justfy-item-center mr-2">결 제 하 기</button>
-				<button class="btn btn-danger btn-lg justfy-item-center ml-2"> 취   소 </button>
+				<button class="btn btn-danger btn-lg justfy-item-center ml-2" onclick="window.history.back()"> 취   소 </button>
 			</div>
 			
 		
@@ -295,7 +367,54 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
-    
+    <!-- 배송지 업데이트 모달 -->
+    <div class="modal fade" id="addressUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                    <h5 class="modal-title pt-2" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 배송지를 변경할까요?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                
+                <form id="updateAddress" name="updateAddress" action="UpdateAddressServlet">
+                 <div class="modal-body">
+					<div class="form-group row">
+						<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0 ">주 소</div>
+						<%-- <input type="hidden" id="memberMId" id="memberMId" value="'${session.mId }'"> --%>
+						<div class="col-lg-5 col-sm-3 mb-3 mb-sm-0 ">
+							<input type="text" id="address1" name="address1" readonly="readonly"
+								class="form-control form-control-user" placeholder="우편번호">
+						</div>
+						<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
+							onclick="execution_daum_address()">
+							<span>우편번호찾기</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0 "></div>
+
+						<div class="col-lg-5 col-sm-6 mb-3 mb-sm-0 ">
+							<input type="text" id="address2" name="address2" readonly="readonly"
+								class="form-control form-control-user" placeholder="주소">
+						</div>
+						<div class="col-lg-4 col-sm-6 mb-3 mb-sm-0 ">
+							<input type="text" id="address3" name="address3" readonly="readonly"
+								class="form-control form-control-user" placeholder="상세주소">
+						</div>
+					</div>
+		                <div class="modal-footer">
+		                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
+		                    <button class="btn btn-warning" type="button" id="updateAddressBtnInModal" onclick="updateAddressFunc()"><i class="fas fa-home"></i> 주소 업데이트</button>
+		                </div>
+	                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 배송지 업데이트 모달 끝-->
 <script>
 
 

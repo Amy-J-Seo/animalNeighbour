@@ -15,7 +15,6 @@ public class SearchPass implements Command {
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo =new MemberVO();
 		String auth = request.getParameter("authPass");
-		System.out.println(auth);
 		if (auth == null) {
 
 			String message = "인증에 실패했습니다. 다시시도해주세요";

@@ -37,7 +37,8 @@ public class SalesInsert implements Command {
       String orgfileName2 = "";
       
       //name 오류나면 path 확인 꼭!
-      String uploadPath = "C:\\Users\\User\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg\\"; // upload는 폴더명 / 폴더의 경로를 구해옴
+      String uploadPath = "C:\\Users\\Admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg";//이거 주윤이집 컴터....
+      //String uploadPath = "C:\\Users\\admin\\git\\animalNeighbour\\gummarket\\src\\main\\webapp\\img\\salesImg"; // upload는 폴더명 / 폴더의 경로를 구해옴
       //out.print(uploadPath);
 
       String page ="";

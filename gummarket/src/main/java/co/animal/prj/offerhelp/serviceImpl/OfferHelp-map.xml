@@ -37,18 +37,7 @@
     </delete>
 	
 	 <update id="offerHelpUpdate" parameterType="co.animal.prj.offerhelp.vo.OfferHelpVO">
-		update offerhelp set ohCharacter=#{ohCharacter}, ohDetails=#{ohDetails} where ohno=#{ohNo}
+		update offerhelp set ohCategory=#{ohCategory}, ohDetails=#{ohDetails} where ohno=#{ohNo}
 	 </update>
-<!--  	<select id="" resultType="">
 
-	</select>
-	<insert id="" parameterType="">
-
-	</insert>
-	<delete id="" parameterType="">
-
-	</delete>
-	<insert id="" parameterType="">
-
-	</insert>-->
 </mapper>

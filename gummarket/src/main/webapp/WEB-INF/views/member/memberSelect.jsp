@@ -1,39 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/login.css">
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">	
- $(() => {
-   		var result = '<c:out value="${message1}" />';
-   		checkModal(result);
-   		history.replaceState({}, null, null);
-   		
-   		function checkModal(result) {
-   			if(result === '' || history.state){
-   				return;
-   			}else{
-   				// 모달창에 들어갈 메세지
-   				$(".modal-body").html(result);
-   				// 모달창 띄워주기
-   				$("#memberSelect").modal("show");
-   			}
-   		}
-   	})
+$(() => {
+		var result = '<c:out value="${message}" />';
+		checkModal(result);
+		history.replaceState({}, null, null);
+		
+		function checkModal(result) {
+			if(result === '' || history.state){
+				return;
+			}else{
+				// 모달창에 들어갈 메세지
+				$(".modal-body").html(result);
+				// 모달창 띄워주기
+				$("#confirm").modal("show");
+			}
+		}
+	})
    	
    	function execution_daum_address(){
 			new daum.Postcode({
@@ -87,6 +91,7 @@
 		
 		 
 	</script>
+	</head>
 <body>
 	<div class="container">
 
@@ -177,7 +182,7 @@
 										</div>
 										<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
 										 onclick="execution_daum_address()">
-											<span>우편번호수정하기</span>
+											<span><i class="fas fa-home"></i>우편번호수정하기</span>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -232,15 +237,15 @@
 									</div>
 									<br>
 									<button type="submit" onclick=""
-										class="btn btn-danger btn-md btn-user btn-block"
-										style="background-color: red; color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog fa-2x"></i>&nbsp;수정하기
+										class="btn btn-md mr-5 btn-md btn-user btn-block "
+										style="background-color:rgb(255, 190, 83) ; color: rgb(255, 255, 255);">
+										<i class="fas fa-user-cog"></i>&nbsp;수정하기
 									</button>
 
-									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
+									<button class="btn btn-danger btn-md btn-user btn-block"
 										type="button" onclick="location.href='home.do'"
-										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog fa-2x"></i>&nbsp; 홈으로가기
+										style="background-color: red; color: rgb(255, 255, 255);">
+										<i class="fas fa-undo-alt"></i>&nbsp; 메인으로
 									</button>
 								</form>
 								<br>
@@ -255,7 +260,7 @@
 		</div>
 	</div>
 	<!-- 수정 실패 모달 -->
-	<div class="modal fade" id="memberSelect" role="dialog"
+	<div class="modal fade" id="confirm" role="dialog"
 		style="z-index: 100000">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -268,9 +273,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-warning btn-user btn-block"
-						data-dismiss="modal">닫기</button>
+						data-dismiss="modal"><i class="fas fa-check"></i>확인</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+</html>

@@ -180,7 +180,7 @@
 											</div>
 											<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 												<button onclick="winopen()"
-													class="btn btn-warning btn-user btn-block">중복체크</button>
+													class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>중복체크</button>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -237,7 +237,7 @@
 											</div>
 											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
 												<button onclick="emailAuthentication()" id="eamilAuthBtn"
-													class="btn btn-warning btn-user btn-block">인증메일보내기</button>
+													class="btn btn-warning btn-user btn-block"><i class="fas fa-envelope-square"></i>인증메일보내기</button>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -274,7 +274,7 @@
 											</div>
 											<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
 												onclick="execution_daum_address()">
-												<span>우편번호찾기</span>
+												<span><i class="fas fa-home"></i>우편번호찾기</span>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -308,8 +308,8 @@
 												</p>
 											</h6>
 										</div>
-										<button type="submit" onclick="" class="btn btn-warning btn-user btn-block">회원
-											가입</button>
+										<button type="submit" onclick="" class="btn btn-warning btn-user btn-block"><i class="fas fa-dog"></i>회원
+											 가입</button>
 									</form>
 								</div>
 							</div>

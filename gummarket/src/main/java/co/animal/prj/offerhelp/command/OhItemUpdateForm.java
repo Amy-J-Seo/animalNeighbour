@@ -20,8 +20,7 @@ public class OhItemUpdateForm implements Command {
 		
 		vo = ohDao.offerHelpSelect(vo);
 		request.setAttribute("itemToUpdate", vo);
-		// 여기서 게시글 셀렉트 하고
-		// 그걸 리퀘스트.셋 어트리뷰트 해서 리스트 
+		
 		return "offerhelp/ohEditForm";
 	}
 

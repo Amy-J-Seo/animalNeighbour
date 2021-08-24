@@ -41,7 +41,7 @@
 									<!-- 회원상태 휴면으로 변경 -->
 									<!-- 리뷰포인트 , buypoint 전부 초기화 -->
 									
-									<input type="submit" value="탈퇴하기"class="btn btn-warning btn-user btn-block">
+									<button type="submit" class="btn btn-warning btn-user btn-block"><i class="fas fa-sad-tear"></i>회원탈퇴</button>
 								</form>
 							</div>
 						</div>

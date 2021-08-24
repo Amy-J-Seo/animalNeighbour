@@ -41,7 +41,7 @@ function getDetails(num) {
 	<div id="wrapper">
 
 	<!-- Main page-->
-	<div id="content-wrapper" class="d-flex flex-column">
+	<div id="content-wrapper" class="d-flex flex-column mt-4">
 		<!-- page title & link -->
 		<div class="continer my-auto pt-4 pb-3 ">
 			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900; font-size:2.5rem" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>
@@ -56,6 +56,7 @@ function getDetails(num) {
 					<div class="input-group">
 						<input id="keyWord" name="keyWord" type="text" class="form-control border-0 small" style="background-color: rgb(244, 244, 244);"
 							placeholder="Search title for..." aria-label="Search" aria-describedby="basic-addon2">
+						<input id="category" name="category" type="hidden" value="findhelp">
 						<div class="input-group-append">
 							<button class="btn" type="submit" id="searchBtn"  style="background-color: rgb(255, 190, 83); color:rgb(255, 255, 255);">
 								<i class="fas fa-search fa-sm"></i>
@@ -73,7 +74,7 @@ function getDetails(num) {
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<!-- 모든 도움찾기 글 카드로 보여주기!! -->	
 			 <c:if test="${not empty message }">
-			 	<div>${message }</div> ffff
+			 	<div>${message }</div>
 			 </c:if>
 			 
 			 <c:if test="${not empty list }">
