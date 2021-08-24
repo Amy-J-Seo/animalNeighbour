@@ -21,6 +21,7 @@
 			transform: scale(1.05);
 			box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 		}
+		
 	</style>
 </head>
 
@@ -83,14 +84,7 @@
 								<div class="text-left">
 									<!-- 상품 타이틀-->
 									<h5 class="fw-bolder">${list.sTitle}</h5>
-									<!-- 상품 별점?-->
-									<div class="d-flex justify-content-center small text-warning mb-2">
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-									</div>
+									
 									<!-- 조회수-->
 									<i class="fas fa-paw"></i>조회수 :${list.sHit }<br>
 		                            <i class="fas fa-paw"></i>카테고리: ${list.sCategory }<br>

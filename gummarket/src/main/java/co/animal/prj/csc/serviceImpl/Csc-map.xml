@@ -42,6 +42,9 @@
 		update csc set csstatus ='y' where csno=#{csNo}
 	</update>
 	
+	<update id="answerDeleteUpdate" parameterType="co.animal.prj.csc.vo.CscVO">
+		update csc set csstatus ='n' where csno=#{csNo}
+	</update>
 <!--  	
 	<insert id="" parameterType="">
 

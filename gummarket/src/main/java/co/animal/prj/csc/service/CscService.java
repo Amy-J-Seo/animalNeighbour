@@ -16,4 +16,7 @@ public interface CscService {
 	
 	//답변 입력하면 status 변경
 	public int cscAnswer(CscVO vo);
+	
+	//답변 삭제하면 status 변경
+	public int answerDeleteUpdate(CscVO vo);
 }

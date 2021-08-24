@@ -54,4 +54,10 @@ public class CscServiceImpl implements CscService {
 		return map.cscAnswer(vo);
 	}
 
+	@Override
+	public int answerDeleteUpdate(CscVO vo) {
+		// TODO Auto-generated method stub
+		return map.answerDeleteUpdate(vo);
+	}
+
 }

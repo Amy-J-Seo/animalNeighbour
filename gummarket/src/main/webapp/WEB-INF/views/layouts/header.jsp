@@ -49,7 +49,7 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-
+			<nav class="topbar fixed-top">
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
@@ -58,17 +58,8 @@
 					  <i class="fas fa-globe-asia mr-1 text-gray-800"></i><span class="js-weather text-gray-800"></span>
 					  </c:if>
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
-
-					<!-- 노란헤더 이벤트, 공지사항 링크 -->
-					<li class="nav-item mt-2"><a href="eventMain.doBB"
-						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
-							class="mr-2  d-lg-inline small">이벤트</span>
-					</a></li>
-					<li class="mt-2 mr-2">|</li>
-					<li class="nav-item mt-2"><a href="noticeMain.doBB"
-						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
-							class="mr-2 d-lg-inline small">공지사항</span>
-					</a></li>
+					<!-- 공지. 이번트 아래로 내려서 없앰. -->
+	
 				</ul>
 			</nav>
 			<!-- End of Topbar -->
@@ -90,15 +81,20 @@
 					style="width: 85px; height: 85px;"></a>
 				</c:if>
 				
-				<ul class="navbar-nav ml-auto" style="font-family: SeoulNamsanM; font-size:35px">
-					<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
-					<li style="margin: auto;">
-						<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>
-						&nbsp;|&nbsp; <a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어&nbsp;</a>
-					</li>
-						
-						
-				</ul>
+				<c:if test="${not empty session.mId }">
+					<ul class="navbar-nav ml-auto" style="font-family: SeoulNamsanM; font-size:20px">
+						<li style="padding-right: 8rem;">&nbsp;&nbsp;&nbsp;</li>
+						<li style="margin: auto;">
+							<a href="salesListAll.do" style="text-decoration: none; color: rgb(94, 94, 94)">중고장터</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="eventMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">이벤트</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp; 
+							<a href="noticeMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">공지</a>
+						</li>
+					</ul>
+				</c:if>
 
 				<ul class="navbar-nav ml-auto">
 					<!-- 사용자 세션 로그인 기록에 아이디가 있으면 이름과 사진 보여주기 -->
@@ -161,6 +157,7 @@
 								style="background-color: rgb(252, 221, 33);">로 그 인</button></li>
 					</c:if>
 				</ul>
+			</nav>
 			</nav>
 			<!-- End of Topbar -->
 			

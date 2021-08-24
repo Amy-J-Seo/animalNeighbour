@@ -17,4 +17,18 @@ public interface FindHelpServiceMapper {
 	public int memberTotalfh(FindHelpVO vo);
 	
 	public int careNum();
+	
+	public List<FindHelpVO> findDeagu();
+	public List<FindHelpVO> findSeoul();
+	public List<FindHelpVO> findIncheon();
+	public List<FindHelpVO> findBusan();
+	public List<FindHelpVO> findDeajeon();
+	public List<FindHelpVO> findGwangju();
+	public List<FindHelpVO> findGyeongSang();
+	public List<FindHelpVO> findChungCheong();
+	public List<FindHelpVO> findJeolla();
+	public List<FindHelpVO> findGyeongGi();
+	public List<FindHelpVO> findGangWon();
+	public List<FindHelpVO> findJeju();
+	public List<FindHelpVO> findUlsan();
 }

@@ -20,4 +20,18 @@ public interface FindHelpService {
 	//adminMain page 멍냥케어 게시글 수(인영)
 	public int careNum();
 	
+	//멍냉케어 게시글 지역별 찾아오기
+	public List<FindHelpVO> findDeagu();
+	public List<FindHelpVO> findSeoul();
+	public List<FindHelpVO> findIncheon();
+	public List<FindHelpVO> findBusan();
+	public List<FindHelpVO> findDeajeon();
+	public List<FindHelpVO> findGwangju();
+	public List<FindHelpVO> findGyeongSang();
+	public List<FindHelpVO> findChungCheong();
+	public List<FindHelpVO> findJeolla();
+	public List<FindHelpVO> findGyeongGi();
+	public List<FindHelpVO> findGangWon();
+	public List<FindHelpVO> findJeju();
+	public List<FindHelpVO> findUlsan();
 }

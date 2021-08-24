@@ -59,7 +59,7 @@ function getDetails(num) {
 		<a href="findChungCheong.do" style="text-decoration: none; color: rgb(94, 94, 94)">충 청</a>&nbsp;|&nbsp;
 		<a href="findJeolla.do" style="text-decoration: none; color: rgb(94, 94, 94)">전 라</a>&nbsp;|&nbsp;
 		<a href="findGyeongSang.do" style="text-decoration: none; color: rgb(94, 94, 94)">경 상</a>&nbsp;|&nbsp;
-		<a href="findGangWon.do" style="text-decoration: none; color: rgb(94, 94, 94)">강 원</a>&nbsp;|&nbsp;
+		<a href="findGangWon.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 600;">강 원</a>&nbsp;|&nbsp;
 		<a href="findJeju.do" style="text-decoration: none; color: rgb(94, 94, 94)">제 주</a>
 	</div>
 	<p></p>
@@ -85,7 +85,7 @@ function getDetails(num) {
       </div>
    
 
-
+   <!-- Main page card items area -->
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
          <!-- 모든 도움찾기 글 카드로 보여주기!! -->   

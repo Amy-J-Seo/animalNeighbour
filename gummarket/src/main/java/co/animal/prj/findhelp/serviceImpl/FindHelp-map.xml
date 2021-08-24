@@ -8,7 +8,12 @@
 		<!-- id = ServiceMapper 메소드 네임 = ServiceImpl의 map.메소드 네임 -->
 		<!-- resultType, parameterType => VO객체위치 -->
 		
-		select * from findhelp where fhhide='n'
+		<!-- 멤버 조인해서 주소 광역시 두 자리 가져옴. -->
+		select substr(m.address,7,2) as address,f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n'
 	</select>
 	
 	<select id="memberTotalfh" resultType="Int">
@@ -63,4 +68,96 @@
 		SELECT (SELECT COUNT(*) FROM findhelp) + (SELECT COUNT(*) FROM offerhelp) FROM DUAL
 	</select>
 	
+	<!-- 지역별 찾기!! -->
+	<select id="findDeagu" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%대구%'
+	</select>
+	<select id="findSeoul" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%서울%'
+	</select>
+	<select id="findIncheon" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%인천%'
+	</select>
+	<select id="findBusan" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%부산%'
+	</select>
+	<select id="findDeajeon" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%대전%'
+	</select>
+	<select id="findGwangju" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%광주%'
+	</select>
+	<select id="findGyeongSang" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%경상%'
+	</select>
+	<select id="findChungCheong" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%충청%'
+	</select>
+	<select id="findJeolla" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%충청%'
+	</select>
+	<select id="findGyeongGi" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%경기%'
+	</select>
+	<select id="findGangWon" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%강원%'
+	</select>
+	<select id="findJeju" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%제주%'
+	</select>
+	<select id="findUlsan" resultType="co.animal.prj.findhelp.vo.FindHelpVO">
+		select substr(m.address,7,2) as address, f.*
+		From findhelp f
+		join member m 
+		on (f.mid = m.mid)
+		where fhhide='n' and address like'%울산%'
+	</select>
 </mapper>
