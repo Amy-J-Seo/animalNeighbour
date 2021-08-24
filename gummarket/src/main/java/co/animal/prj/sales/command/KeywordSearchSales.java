@@ -22,8 +22,19 @@ public class KeywordSearchSales implements Command {
 		vo.setsTitle(request.getParameter("keyWord"));
 		
 		list = sDao.salesSelectListByKeyWord(vo);
-		request.setAttribute("list", list);
-		return "sales/salesListAll";
+		
+		String path="";
+		
+		if(!(list.isEmpty())) {
+			request.setAttribute("list", list);
+			path= "sales/salesListAll";
+		}else {
+			request.setAttribute("message", "그런 제목의 글은 없어요... 다시 검색해 주세요.");
+			path= "sales/salesListAll";
+		}
+		
+		
+		return path;
 	}
 
 }

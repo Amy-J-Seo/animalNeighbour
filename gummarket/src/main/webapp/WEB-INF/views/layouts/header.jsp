@@ -53,12 +53,12 @@
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
-				<c:if test="${not empty session.mId }">
-				<!-- 로긴세션있을 때 지역날씨 -->
-					  <i class="fas fa-globe-asia mr-1 text-gray-800"></i><span class="js-weather text-gray-800"></span>
-					  </c:if>
+				
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
-					<!-- 공지. 이번트 아래로 내려서 없앰. -->
+					<c:if test="${not empty session.mId }">
+				<!-- 로긴세션있을 때 지역날씨 -->
+					 <span class="align-right"><i class="fas fa-globe-asia mr-2 text-gray-800"></i><span class="js-weather text-gray-800" style=""></span></span>
+					  </c:if>
 	
 				</ul>
 			</nav>

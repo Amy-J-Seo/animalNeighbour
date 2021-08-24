@@ -17,7 +17,7 @@
 			select b.sCategory, b.sTitle, b.sImg, a.pNo, a.mid, a.sno, a.pdate, a.payamount , a.CONFIRMPURCHASE
       		from payment a left outer join sales b
       		on (a.sno = b.sno) 
-      		where a.mid = #{mId}
+      		where a.mid = #{mId} order by a.pNo desc
 	</select>
 	
 	<update id="confirmPurchase" parameterType="co.animal.prj.payment.vo.PaymentVO">

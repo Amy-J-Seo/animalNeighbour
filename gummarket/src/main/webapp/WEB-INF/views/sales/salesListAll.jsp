@@ -64,8 +64,19 @@
 				</div>
 			</div>
 
+
+				<c:if test="${not empty message }">
+		             <div class="align-center d-flex justify-content-center" style="width: 100%; height: 400px; ">
+		             	<i class="far fa-dizzy fa-4x mr-3"></i>
+		             	<br>
+			 			<h2 class="text-center justify-content-center mt-3">${message }</h2>
+			 		</div>
+	            </c:if>
+
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<!--인기메뉴 카드로 보여주기 c:foreach활용! -->
+				
+	            <c:if test="${not empty list }">
 				<c:forEach var="list" items="${list }">
 					<div class="col mb-5">
 						<div class="card h-100">
@@ -100,6 +111,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				</c:if>
 				<!-- 버튼 누르면 salesSelect.do로가서 상세보기 페이지로 넘어감. -->
 				<form id="salesFrm" name="salesFrm" action="salesSelect.do" method="post">
 					<input type="hidden" id="sNo" name="sNo">

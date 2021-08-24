@@ -65,13 +65,16 @@ function getDetails(n, h) {
 
 	<!-- Main page card items area -->
     <div class="container px-4 px-lg-5 mt-5">
+    	<div class="container px-4 px-lg-5 mt-5" style="width: 100%; height: 400px; ">
 	    <c:if test="${not empty message }">
-		 	<div class="align-center d-flex justify-content-center" style="width: 100%; height: 400px; ">
+		 	<div class="align-center d-flex justify-content-center" >
+		 	<i class="far fa-dizzy fa-4x mr-3"></i>
+		             	<br>
 		 		<h2 class="text-center justify-content-center">${message }</h2>
 		 	
 		 	</div>
 		 </c:if>
-	    
+	    </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         	
         
