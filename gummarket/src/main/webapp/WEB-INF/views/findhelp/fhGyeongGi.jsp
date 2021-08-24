@@ -52,11 +52,11 @@ function getDetails(num) {
 		<a href="findIncheon.do" style="text-decoration: none; color: rgb(94, 94, 94)">인 천</a>&nbsp;|&nbsp;
 		<a href="findBusan.do" style="text-decoration: none; color: rgb(94, 94, 94)">부 산</a>&nbsp;|&nbsp;
 		<a href="findDeagu.do" style="text-decoration: none; color: rgb(94, 94, 94)">대 구</a>&nbsp;|&nbsp;
-		<a href="findDeajeon.do" style="text-decoration: none; color: rgb(94, 94, 94)">대 전</a>&nbsp;|&nbsp;
+		<a href="findDeajeon.do" style="text-decoration: none; color:rgb(94, 94, 94)">대 전</a>&nbsp;|&nbsp;
 		<a href="findUlsan.do" style="text-decoration: none; color: rgb(94, 94, 94)">울 산</a>&nbsp;|&nbsp;
-		<a href="findGwangju.do" style="text-decoration: none; color: rgb(94, 94, 94)">광 주</a>&nbsp;|&nbsp;
-		<a href="findGyeongGi.do" style="text-decoration: none; color: rgb(94, 94, 94)">경 기</a>&nbsp;|&nbsp;
-		<a href="findChungCheong.do" style="text-decoration: none; color: rgb(94, 94, 94)">충 청</a>&nbsp;|&nbsp;
+		<a href="findGwangju.do" style="text-decoration: none; color:  rgb(94, 94, 94)">광 주</a>&nbsp;|&nbsp;
+		<a href="findGyeongGi.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 600;">경 기</a>&nbsp;|&nbsp;
+		<a href="findChungCheong.do" style="text-decoration: none; color:  rgb(94, 94, 94) ">충 청</a>&nbsp;|&nbsp;
 		<a href="findJeolla.do" style="text-decoration: none; color: rgb(94, 94, 94)">전 라</a>&nbsp;|&nbsp;
 		<a href="findGyeongSang.do" style="text-decoration: none; color: rgb(94, 94, 94)">경 상</a>&nbsp;|&nbsp;
 		<a href="findGangWon.do" style="text-decoration: none; color: rgb(94, 94, 94)">강 원</a>&nbsp;|&nbsp;

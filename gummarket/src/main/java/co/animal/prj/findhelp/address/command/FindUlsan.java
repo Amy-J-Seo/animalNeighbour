@@ -1,4 +1,4 @@
-package co.animal.prj.findhelp.command;
+package co.animal.prj.findhelp.address.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,15 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import co.animal.prj.common.Command;
 import co.animal.prj.findhelp.serviceImpl.FindHelpServiceImpl;
 
-public class FindHelpMain implements Command {
+public class FindUlsan implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		FindHelpServiceImpl dao= new FindHelpServiceImpl();
-		request.setAttribute("list", dao.findHelpSelectList());
-		//System.out.println(dao.findHelpSelectList());
-		return "findhelp/fhMain";
+		request.setAttribute("list", dao.findGangWon());
+		return "findhelp/fhUlsan";
 	}
 
 }

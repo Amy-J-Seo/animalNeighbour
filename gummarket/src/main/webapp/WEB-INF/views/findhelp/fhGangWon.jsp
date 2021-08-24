@@ -59,7 +59,7 @@ function getDetails(num) {
 		<a href="findChungCheong.do" style="text-decoration: none; color: rgb(94, 94, 94)">충 청</a>&nbsp;|&nbsp;
 		<a href="findJeolla.do" style="text-decoration: none; color: rgb(94, 94, 94)">전 라</a>&nbsp;|&nbsp;
 		<a href="findGyeongSang.do" style="text-decoration: none; color: rgb(94, 94, 94)">경 상</a>&nbsp;|&nbsp;
-		<a href="findGangWon.do" style="text-decoration: none; color: rgb(94, 94, 94)">강 원</a>&nbsp;|&nbsp;
+		<a href="findGangWon.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 600;">강 원</a>&nbsp;|&nbsp;
 		<a href="findJeju.do" style="text-decoration: none; color: rgb(94, 94, 94)">제 주</a>
 	</div>
 	<p></p>

@@ -50,7 +50,7 @@ function getDetails(num) {
       <div class="continer text-center">
 		<a href="findSeoul.do" style="text-decoration: none; color: rgb(94, 94, 94)">서 울</a>&nbsp;|&nbsp;
 		<a href="findIncheon.do" style="text-decoration: none; color: rgb(94, 94, 94)">인 천</a>&nbsp;|&nbsp;
-		<a href="findBusan.do" style="text-decoration: none; color: rgb(94, 94, 94)">부 산</a>&nbsp;|&nbsp;
+		<a href="findBusan.do" style="text-decoration: none; color: rgb(255, 190, 83); font-weight: 600;">부 산</a>&nbsp;|&nbsp;
 		<a href="findDeagu.do" style="text-decoration: none; color: rgb(94, 94, 94)">대 구</a>&nbsp;|&nbsp;
 		<a href="findDeajeon.do" style="text-decoration: none; color: rgb(94, 94, 94)">대 전</a>&nbsp;|&nbsp;
 		<a href="findUlsan.do" style="text-decoration: none; color: rgb(94, 94, 94)">울 산</a>&nbsp;|&nbsp;

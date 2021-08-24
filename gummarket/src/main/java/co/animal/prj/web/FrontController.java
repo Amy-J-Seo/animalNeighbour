@@ -23,6 +23,19 @@ import co.animal.prj.csc.command.CscInsert;
 import co.animal.prj.csc.command.EveryCscList;
 import co.animal.prj.csc.command.MyCscDetail;
 import co.animal.prj.csc.command.MyCscList;
+import co.animal.prj.findhelp.address.command.FindBusan;
+import co.animal.prj.findhelp.address.command.FindChungCheong;
+import co.animal.prj.findhelp.address.command.FindDeagu;
+import co.animal.prj.findhelp.address.command.FindDeajeon;
+import co.animal.prj.findhelp.address.command.FindGangWon;
+import co.animal.prj.findhelp.address.command.FindGwangju;
+import co.animal.prj.findhelp.address.command.FindGyeongGi;
+import co.animal.prj.findhelp.address.command.FindGyeongSang;
+import co.animal.prj.findhelp.address.command.FindIncheon;
+import co.animal.prj.findhelp.address.command.FindJeju;
+import co.animal.prj.findhelp.address.command.FindJeolla;
+import co.animal.prj.findhelp.address.command.FindSeoul;
+import co.animal.prj.findhelp.address.command.FindUlsan;
 import co.animal.prj.login.command.IdCheckForm;
 import co.animal.prj.login.command.IdCheckPro;
 import co.animal.prj.login.command.Login;
@@ -141,6 +154,23 @@ public class FrontController extends HttpServlet {
 		
 		//주윤언니 frontController admin메인 페이지 불러오는거 여기로..!
 		map.put("/adminMain.do", new AdminMain());
+		
+		//인영 멍냥케어 주소별 리스트
+		map.put("/findDeagu.do", new FindDeagu());
+		map.put("/findSeoul.do", new FindSeoul());
+		map.put("/findIncheon.do", new FindIncheon());
+		map.put("/findBusan.do", new FindBusan());
+		map.put("/findDeajeon.do", new FindDeajeon());
+		map.put("/findGwangju.do", new FindGwangju());
+		map.put("/findGyeongSang.do", new FindGyeongSang());
+		map.put("/findChungCheong.do", new FindChungCheong());
+		map.put("/findJeolla.do", new FindJeolla());
+		map.put("/findGyeongGi.do", new FindGyeongGi());
+		map.put("/findGangWon.do", new FindGangWon());
+		map.put("/findUlsan.do", new FindUlsan());
+		map.put("/findJeju.do", new FindJeju());
+	
+		
 		
 		//주윤 세일즈 서치버튼 추가
 		map.put("/KeywordSearchSales.do", new KeywordSearchSales());

@@ -71,4 +71,82 @@ public class FindHelpServiceImpl implements FindHelpService {
 		return map.careNum();
 	}
 
+	@Override
+	public List<FindHelpVO> findDeagu() {
+		// TODO Auto-generated method stub
+		return map.findDeagu();
+	}
+
+	@Override
+	public List<FindHelpVO> findSeoul() {
+		// TODO Auto-generated method stub
+		return map.findSeoul();
+	}
+
+	@Override
+	public List<FindHelpVO> findIncheon() {
+		// TODO Auto-generated method stub
+		return map.findIncheon();
+	}
+
+	@Override
+	public List<FindHelpVO> findBusan() {
+		// TODO Auto-generated method stub
+		return map.findBusan();
+	}
+
+	@Override
+	public List<FindHelpVO> findDeajeon() {
+		// TODO Auto-generated method stub
+		return map.findDeajeon();
+	}
+
+	@Override
+	public List<FindHelpVO> findGwangju() {
+		// TODO Auto-generated method stub
+		return map.findGwangju();
+	}
+
+	@Override
+	public List<FindHelpVO> findGyeongSang() {
+		// TODO Auto-generated method stub
+		return map.findGyeongSang();
+	}
+
+	@Override
+	public List<FindHelpVO> findChungCheong() {
+		// TODO Auto-generated method stub
+		return map.findChungCheong();
+	}
+
+	@Override
+	public List<FindHelpVO> findJeolla() {
+		// TODO Auto-generated method stub
+		return map.findJeolla();
+	}
+
+	@Override
+	public List<FindHelpVO> findGyeongGi() {
+		// TODO Auto-generated method stub
+		return map.findGyeongGi();
+	}
+
+	@Override
+	public List<FindHelpVO> findGangWon() {
+		// TODO Auto-generated method stub
+		return map.findGangWon();
+	}
+
+	@Override
+	public List<FindHelpVO> findJeju() {
+		// TODO Auto-generated method stub
+		return map.findJeju();
+	}
+
+	@Override
+	public List<FindHelpVO> findUlsan() {
+		// TODO Auto-generated method stub
+		return map.findUlsan();
+	}
+
 }
