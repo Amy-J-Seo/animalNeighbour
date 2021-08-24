@@ -30,4 +30,9 @@
 		select count(*) from report where mId=#{mId}
 	</select>
 	
+	<!-- report 수 만들어서 admin페이지에서 보이게 하기 위함 -->
+	<select id="reportNum"  resultType="Int">
+		select count(*) from report
+	</select>
+	
 </mapper>

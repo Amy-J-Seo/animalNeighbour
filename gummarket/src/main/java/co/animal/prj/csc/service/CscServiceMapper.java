@@ -12,4 +12,6 @@ public interface CscServiceMapper {
 	public int cscInsert(CscVO vo);
 	
 	public List<CscVO> cscMyList(CscVO vo);
+	
+	public int cscAnswer(CscVO vo);
 }

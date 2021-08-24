@@ -12,12 +12,20 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+ header {
+  position: fixed;
+  display: flex;
+  }
+  
 </style>
 <title>개껌장터</title>
 </head>
 <body>
-
-<tiles:insertAttribute name="header" />
+<div class="topbar">
+<tiles:insertAttribute  name="header" />
+</div>
 <tiles:insertAttribute name="body" />
 <tiles:insertAttribute name="footer" />
 	

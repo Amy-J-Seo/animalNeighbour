@@ -16,15 +16,22 @@ public class UserUpdate implements Command {
 		MemberVO vo = new MemberVO();
 		String address="";
 		address= request.getParameter("address1");
+		if(address !="") {
+			System.out.println(request.getParameter("address1")+"null값이 아니다.");
+		address= request.getParameter("address1");
 		address+=" ";
 		address+=request.getParameter("address2");
 		address+=" ";
 		address+=request.getParameter("address3");
-		
+		vo.setAddress(address);
+		}else {
+		vo.setAddress(request.getParameter("address"));
+		}
 		vo.setmId(request.getParameter("mId"));
 		vo.setmName(request.getParameter("mName"));
 		vo.setNickname(request.getParameter("nickname"));
-		vo.setAddress(address);
+		
+		
 		vo.setPhone(request.getParameter("phone"));
 		vo.setPetInfo(request.getParameter("petInfo"));
 		vo.setReviewPoint(Integer.valueOf(request.getParameter("reviewPoint")));
@@ -33,15 +40,17 @@ public class UserUpdate implements Command {
 		vo.setPassword(request.getParameter("password"));
 		vo.setGrade(request.getParameter("grade"));
 		vo.setEmail(request.getParameter("email"));
+		System.out.println(vo);
 		int n = dao.memberUpdate(vo);
+		System.out.println(n);
 		String page = "";
 		if (n != 0) {
 			String message = vo.getmName() + "님의 정보를 성공적으로 수정완료했습니다.";
 			request.setAttribute("message", message);
 			page = "memberSelect.do";
 		} else {
-			String message ="예기치 못한 오류가 발생했습니다. 잠시후 시도해주세요.";
-			request.setAttribute("message", message);
+			String message1 ="예기치 못한 오류가 발생했습니다. 잠시후 시도해주세요.";
+			request.setAttribute("message1", message1);
 			page="memberSelect.do";
 		}
 		return page;

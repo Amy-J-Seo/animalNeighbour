@@ -17,11 +17,12 @@ public class MemberMyPage implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String mId = request.getParameter("mId");
+		
+		
 		MemberVO mVo =new MemberVO();
 		MemberService mDao = new MemberServiceImpl();
+		String mId = request.getParameter("mId");
 		mVo.setmId(mId);
-		
 		PaymentServiceImpl pDao = new PaymentServiceImpl();
 		PaymentVO pVo = new PaymentVO();
 		pVo.setmId(mId);
@@ -29,9 +30,10 @@ public class MemberMyPage implements Command {
 		List<PaymentVO> list = new ArrayList<PaymentVO>();
 		
 		request.setAttribute("member", mDao.memberSelect(mVo));
+		
 		list = pDao.memberPaymentSelectList(pVo);
+		
 		request.setAttribute("list", list );
-		System.out.println(list.toString());
 		
 		return "member/memberMyPage";
 	}

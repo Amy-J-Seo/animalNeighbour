@@ -68,9 +68,9 @@
 											<br>
 										<input type="password" id="password" name="password"
 											placeholder="비밀번호" required="required"
-											class="form-control form-control-user"><br> <input
-											type="submit" value="확인"
-											class="btn btn-warning btn-user btn-block">
+											class="form-control form-control-user"><br> <button
+											type="submit" 
+											class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>확인</button>
 									</div>
 								</form>
 							</div>
@@ -93,7 +93,7 @@
 					<p>message</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal"><i class="fas fa-check"></i>확인</button>
 				</div>
 			</div>
 		</div>

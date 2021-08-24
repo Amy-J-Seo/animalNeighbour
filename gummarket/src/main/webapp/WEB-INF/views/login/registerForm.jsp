@@ -34,16 +34,10 @@
 			}
 
 			function winopen() {
-				window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=350");
+				window.open("idCheckForm.do", "아이디 중복 체크", "width=400, height=250");
 			}
 
-			function winopen1() {
-				frm = document.getElementById('frm');
-				window.open("", "a", "width=600, height=600");
-				frm.action = "registerCheck.do";
-				frm.method = "post";
-				frm.submit();
-			}
+			
 			/* 다음 주소 연동 */
 			function execution_daum_address() {
 				new daum.Postcode({
@@ -96,7 +90,9 @@
 			}
 			var code = "";
 			function emailAuthentication() {
-
+				if (!emailValCheck()){
+			    	return false;
+			    }
 				$.ajax({
 					url: "requestAuthEmail.do?email=" + frm.email.value,
 					type: "GET",
@@ -104,9 +100,7 @@
 					success: function (data) {
 						console.log(data);
 						localStorage.setItem('emailAuthent', data);
-						alert("이메일 전송성공")
 						document.frm.inputEmailForm.readOnly = true;
-						document.frm.eamilAuthBtn.disabled = true;
 						document.frm.authCodeCheckBtn.disabled = false;
 						document.frm.inputAuthCode.disabled = false;
 						code = data;
@@ -117,7 +111,24 @@
 					}
 				});
 			}
-
+			function emailValCheck(){
+				var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				var email = frm.email.value;
+				if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
+					return false;
+				}
+				alert("인증번호가 전송되었습니다.")
+				document.frm.eamilAuthBtn.disabled = true;
+			    return true;
+			}
+			function check(pattern, taget, message) {
+				if(pattern.test(taget)) {
+			    	return true;
+			    }
+			    alert(message);
+			    return false;
+			}
+			
 			function authCodeCheck() {
 
 				var inputCode = $("#inputAuthCode").val(); // 입력코드
@@ -169,7 +180,7 @@
 											</div>
 											<div class="col-lg-4 col-sm- mb-3 mb-sm-0 ">
 												<button onclick="winopen()"
-													class="btn btn-warning btn-user btn-block">중복체크</button>
+													class="btn btn-warning btn-user btn-block"><i class="fas fa-check"></i>중복체크</button>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -199,8 +210,18 @@
 										</div>
 										<div class="form-group row">
 											<div class="col-lg-2 col-sm- mb-3 mb-sm-0 ">휴대폰번호</div>
-											<div class="col-lg-5 col-sm- mb-3 mb-sm-0 ">
-												<input type="text" id="phone" name="phone" placeholder="휴대번호"
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone1" name="phone1" maxlength="3" pattern="^01[0-9]{1}"
+													required="required" class="form-control form-control-user"
+													onkeyup="next(this.value,3,'phone2');">
+											</div>
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone2" name="phone2" maxlength="4"pattern="[0-9]{4}"
+													required="required" class="form-control form-control-user"
+													onkeyup="next(this.value,4,'phone3');">
+											</div>
+											<div class="col-lg-2 col-sm- mb-1 mb-sm-0 ">
+												<input type="text" id="phone3" name="phone3" maxlength="4"pattern="[0-9]{4}"
 													required="required" class="form-control form-control-user">
 											</div>
 
@@ -216,7 +237,7 @@
 											</div>
 											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
 												<button onclick="emailAuthentication()" id="eamilAuthBtn"
-													class="btn btn-warning btn-user btn-block">인증메일보내기</button>
+													class="btn btn-warning btn-user btn-block"><i class="fas fa-envelope-square"></i>인증메일보내기</button>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -224,7 +245,7 @@
 											<div class="col-lg-3 col-sm-3 mb-3 mb-sm-0 ">
 												<input type="text" id="inputAuthCode" name="authCode"
 													placeholder="인증번호입력" class="form-control form-control-user"
-													disabled="disabled">
+													disabled="disabled" required="required">
 											</div>
 											<span id="mail_check_input_box_warn"></span>
 											<div class="col-lg-3 col-sm- mb-3 mb-sm-0 ">
@@ -253,7 +274,7 @@
 											</div>
 											<div class="btn btn-warning btn-user btn-block col-lg-4 col-sm-3 mb-2 mb-sm-0 address_button"
 												onclick="execution_daum_address()">
-												<span>우편번호찾기</span>
+												<span><i class="fas fa-home"></i>우편번호찾기</span>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -287,8 +308,8 @@
 												</p>
 											</h6>
 										</div>
-										<button type="submit" onclick="" class="btn btn-warning btn-user btn-block">회원
-											가입</button>
+										<button type="submit" onclick="" class="btn btn-warning btn-user btn-block"><i class="fas fa-dog"></i>회원
+											 가입</button>
 									</form>
 								</div>
 							</div>
@@ -297,7 +318,8 @@
 				</div>
 			</div>
 		</div>
-
+		
+		
 	</body>
 
 	</html>

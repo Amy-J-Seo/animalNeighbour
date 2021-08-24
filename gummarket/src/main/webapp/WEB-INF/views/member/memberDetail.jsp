@@ -146,15 +146,15 @@
 									<input type="hidden" id="password" name="password"
 										value="${list.password }">
 									<button type="submit" onclick=""
-										class="btn btn-danger btn-md btn-user btn-block"
-										style="background-color: red; color: rgb(255, 255, 255);">
-										<i class="fas fa-user-cog"></i>&nbsp;수정
+										class="btn btn-md mr-5 btn-md btn-user btn-block"
+										style="background-color:rgb(255, 190, 83) ; color: rgb(255, 255, 255);">
+										<i class="fas fa-user-cog"></i>&nbsp;수정하기
 									</button>
 
-									<button class="btn btn-md mr-5 btn-md btn-user btn-block"
+									<button class=" btn btn-danger btn-md btn-user btn-block"
 										type="button" onclick="location.href='memberList.do'"
-										style="background-color: rgb(255, 190, 83); color: rgb(255, 255, 255);">
-										<i class="fas fa-list"></i>&nbsp; 맴버리스트 보기
+										style="background-color:red ; color: rgb(255, 255, 255);">
+										<i class="fas fa-undo-alt"></i>&nbsp; 맴버리스트 보기
 									</button>
 								</form>
 							</div>

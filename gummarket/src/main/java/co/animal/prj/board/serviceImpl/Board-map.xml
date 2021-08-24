@@ -21,9 +21,12 @@
 		<!-- SELECT * FROM board where bcategory='notice' and bison &lt;&gt; 'd' -->
 	</select>
 	
+	<select id="boardSelectListByKeyWord" resultType="co.animal.prj.board.vo.BoardVO">
+		SELECT * FROM board where bTitle like '%'||#{bTitle}||'%' and bison='n' and bcategory=#{bCategory}
+	</select>
+	
 	<select id="boardSelect" resultType="co.animal.prj.board.vo.BoardVO">
 		SELECT * FROM board where bNo = #{bNo}
-			
 	</select>
 	
 	<insert id="boardInsert" parameterType="co.animal.prj.board.vo.BoardVO">
@@ -50,4 +53,11 @@
 		update board set bhit = bhit + 1 where bNo=#{bNo}
 	</update>
 
+	<!-- admin main페이지 공지사항 수 표시 위함 (인영) -->
+	<select id="noticeNum" resultType="int">
+		select count(*) from board where bcategory='notice'
+	</select>
+	<select id="eventNum" resultType="int">
+		select count(*) from board where bcategory='event'
+	</select>
 </mapper>

@@ -26,7 +26,6 @@ public class GetMemberTopThreeSItemServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,9 +38,10 @@ public class GetMemberTopThreeSItemServlet extends HttpServlet {
 		
 		String mId = request.getParameter("mId");
 		vo.setmId(mId);
-		
 		List<SalesVO> list = new ArrayList<SalesVO>();
 		list = sDao.salesListTop3(vo);
+		
+		System.out.println(list);
 		
 		Gson gson = new GsonBuilder().create();
 		response.getWriter().print(gson.toJson(list));

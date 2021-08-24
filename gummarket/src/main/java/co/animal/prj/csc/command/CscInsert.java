@@ -24,6 +24,7 @@ public class CscInsert implements Command {
 		System.out.println(no);
 		//입력된거 가져와서 바로 디테일 페이지로!
 		vo.setCsNo(no);
+		
 		request.setAttribute("csc", cscDao.cscSelect(vo));
 		
 		return "csc/myCscDetail";
