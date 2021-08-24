@@ -41,7 +41,7 @@ function getDetails(num) {
 	<div id="wrapper">
 
 	<!-- Main page-->
-	<div id="content-wrapper" class="d-flex flex-column">
+	<div id="content-wrapper" class="d-flex flex-column mt-4">
 		<!-- page title & link -->
 		<div class="continer my-auto pt-4 pb-3 ">
 			<a class="h3 ml-5" style="color: rgb(255, 190, 83); font-weight: 900; font-size:2.5rem" href="findHelpMain.doBB">도와줘요 멍냥이웃!</a>

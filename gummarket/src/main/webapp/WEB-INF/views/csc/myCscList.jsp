@@ -26,6 +26,13 @@
 		frm.csNo.value = n;
 		frm.submit();
 	}
+	
+	/*주윤: 사용자 나의문의 리스트에서 유저메인으로 갈 때
+	아이디 전달해서 구매 내역과 개인 정보 불러오기 */
+	function backToUserMain(mId){
+		$('#toUserMainFrm').submit();
+	}	/* 끝 : 사용자 나의문의 리스트에서 유저메인으로 갈 때
+	아이디 전달해서 구매 내역과 개인 정보 불러오기 */
 </script>
 
 </head>
@@ -86,8 +93,8 @@
 					<button class="btn btn-md mr-5" type="button" onclick="location.href='cscForm.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
 					<i class="far fa-edit fa-2x"></i> 새 문의 작성</button>
             		 <form id="toUserMainFrm" name="toUserMainFrm" action="memberMyPage.doBB" method="post">
-            		 	<input type="hidden" id="mId" name="mId">
-	                	 <button class="btn btn-md mr-5" type="submit" onClick="backToUserMain('${item.mId}')"
+            		 	<input type="hidden" id="mId" name="mId" value="${session.mId}">
+	                	 <button class="btn btn-md mr-5" type="submit" onClick="backToUserMain()"
 	                	  style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
 	                     <i class="fas fa-user fa-2x"></i>&nbsp;  유저 메인으로</button>
                      </form>

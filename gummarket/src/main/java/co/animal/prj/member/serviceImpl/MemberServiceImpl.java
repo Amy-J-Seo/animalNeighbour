@@ -71,4 +71,8 @@ public class MemberServiceImpl implements MemberService{
 		int num = map.memberNum();
 		return num;
 	}
+	@Override
+	public int updateAddress(MemberVO vo) {
+		return map.updateAddress(vo);
+	}
 }
