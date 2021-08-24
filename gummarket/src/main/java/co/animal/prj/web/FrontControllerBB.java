@@ -39,7 +39,7 @@ import co.animal.prj.member.command.getTotalSales;
 import co.animal.prj.offerhelp.command.GetTotalOfferHelp;
 import co.animal.prj.payment.command.MakePayment;
 import co.animal.prj.payment.command.Payresult;
-import co.animal.prj.payment.command.ReturnItem;
+import co.animal.prj.payment.command.ReturnItemForm;
 import co.animal.prj.payment.command.ToPayResult;
 import co.animal.prj.report.command.GetMainPost;
 import co.animal.prj.report.command.GetTotalReports;
@@ -95,7 +95,7 @@ public class FrontControllerBB extends HttpServlet {
 		map.put("/getTotalReports.doBB", new GetTotalReports());
 		map.put("/getTotalFindHelp.doBB", new GetTotalFindHelp());
 		map.put("/getTotalOfferHelp.doBB", new GetTotalOfferHelp());
-		map.put("/returnItem.doBB", new ReturnItem()); //상품반품신청 -> csc로
+		map.put("/returnItemForm.doBB", new ReturnItemForm()); //상품반품신청 -> csc로
 		
 		//주윤 거래아이템 결제 페이지
 		map.put("/makePayment.doBB", new MakePayment());

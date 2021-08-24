@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+
+</script>
+
+
 </head>
 <body>
 <!-- Begin Page Content -->
@@ -29,10 +35,13 @@
 						<h3>구매해 주셔서 감사합니다.</h3>
 					<p>판매자가 확인 후 상품을 보낼 예정입니다.</p>
 					<p>결제 정보는 마이페이지에서 확인 가능합니다.</p>
-						<button class="btn btn-md mr-5" type="button" onclick="location.href='#'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-					<i class="fas fa-undo-alt"></i> 마이페이지로</button>
-					<button class="btn btn-md mr-5" type="button" onclick="location.href='salesListAll.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
-					<i class="fas fa-undo-alt"></i> 장터메인으로</button>
+					<form id="frm" name="frm" action="memberMyPage.doBB" method="post">
+					<input type="hidden" id="mId" name="mId" value="${session.mId }">
+						<button class="btn btn-md mr-5" type="submit" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+							<i class="fas fa-undo-alt"></i> 마이페이지로</button>
+						<button class="btn btn-md mr-5" type="button" onclick="location.href='salesListAll.do'" style="background-color: rgb(255, 190, 83);  color:rgb(255, 255, 255);">
+						<i class="fas fa-undo-alt"></i> 장터메인으로</button>
+					</form>
 					</div>
 					
 				</div>

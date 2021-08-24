@@ -53,6 +53,10 @@
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
+				<c:if test="${not empty session.mId }">
+				<!-- 로긴세션있을 때 지역날씨 -->
+					  <i class="fas fa-globe-asia mr-1 text-gray-800"></i><span class="js-weather text-gray-800"></span>
+					  </c:if>
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
 
 					<!-- 노란헤더 이벤트, 공지사항 링크 -->
@@ -78,6 +82,8 @@
 				<c:if test="${not empty session.mId }">
 				<a href="home.do"><img src="img/logo1.png"
 					style="width: 85px; height: 85px;"></a>
+					
+					
 				</c:if>
 				<c:if test="${empty session.mId }">
 				<a href="loginForm.do"><img src="img/logo1.png"
@@ -177,8 +183,8 @@
                 </div>
                 <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">머물기</button>
-                    <a class="btn btn-warning btn-user btn-block" href="logout.do">로그아웃</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-dog"></i>머물기</button>
+                    <a class="btn btn-warning btn-user btn-block" href="logout.do"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
                 </div>
             </div>
         </div>
@@ -208,6 +214,8 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
+	
+	 <script src="js/weather.js"></script>
 </body>
 
 </html>

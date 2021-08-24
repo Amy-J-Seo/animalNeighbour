@@ -58,6 +58,7 @@
                                       <option value="walk">산책/놀이</option>
                                       <option value="dayCare">데이케어</option>
                                       <option value="longCare">장기케어</option>
+                                      <option value="lost">미아찾아요!</option>
                                     </select>
                                      </div>
                           	    </div>

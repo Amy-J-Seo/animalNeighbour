@@ -15,9 +15,10 @@ public class OhItemDelete implements Command {
 		OfferHelpServiceImpl ohDao = new OfferHelpServiceImpl();
 		OfferHelpVO vo = new OfferHelpVO();
 		int ohNo = Integer.valueOf(request.getParameter("ohDelNo"));
+		System.out.println(ohNo);
 		vo.setOhNo(ohNo);
 		vo.setOhHide("h");
-		
+		System.out.println(vo.toString());
 		ohDao.offerHelpDelete(vo);
 		
 		request.setAttribute("list", ohDao.offerHelpSelectList());
