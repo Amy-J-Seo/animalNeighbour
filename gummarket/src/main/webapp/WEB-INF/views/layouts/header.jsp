@@ -58,17 +58,8 @@
 					  <i class="fas fa-globe-asia mr-1 text-gray-800"></i><span class="js-weather text-gray-800"></span>
 					  </c:if>
 				<ul class="navbar-nav ml-auto" style="text-align: center;">
-
-					<!-- 노란헤더 이벤트, 공지사항 링크 -->
-					<li class="nav-item mt-2"><a href="eventMain.doBB"
-						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
-							class="mr-2  d-lg-inline small">이벤트</span>
-					</a></li>
-					<li class="mt-2 mr-2">|</li>
-					<li class="nav-item mt-2"><a href="noticeMain.doBB"
-						style="text-decoration: none; color: rgb(53, 53, 53);"> <span
-							class="mr-2 d-lg-inline small">공지사항</span>
-					</a></li>
+					<!-- 공지. 이번트 아래로 내려서 없앰. -->
+	
 				</ul>
 			</nav>
 			<!-- End of Topbar -->
@@ -98,9 +89,9 @@
 							&nbsp;&nbsp;|&nbsp;&nbsp; 
 							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">멍냥케어</a>
 							&nbsp;&nbsp;|&nbsp;&nbsp; 
-							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">이벤트</a>
+							<a href="eventMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">이벤트</a>
 							&nbsp;&nbsp;|&nbsp;&nbsp; 
-							<a href="findHelpMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">공지</a>
+							<a href="noticeMain.doBB" style="text-decoration: none; color: rgb(94, 94, 94)">공지</a>
 						</li>
 					</ul>
 				</c:if>

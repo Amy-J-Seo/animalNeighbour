@@ -43,7 +43,8 @@
                 		<div class="col-lg-3 col-sm-3 mb-3 mb-sm-0 ">
 	                    	<a href="home.do"><img style="width: 120px; height: 140px; padding-top:15px; margin-left:100px;" src="img/1market.png"></a>
 	                    </div>
-	                    <div class="col-lg-2 col-sm-2 mb-2 mb-sm-0" >
+	                    	
+	                    <div class="col-lg-1 col-sm-2 mb-2 mb-sm-0" >
 	                    	<p></p><p></p>
 							<a href="home.do" style="font-weight: bold; margin-top: 10px;">개껌장터</a><br><br>
 							<a href="findClothing.do">의류/하네스</a><br> 
@@ -51,17 +52,19 @@
 							<a href="findEtc.do">기타</a><br>  
 							<a href="findShare.do">나눔</a>                  
 	                    </div>
-	                    <div class="col-lg-2 col-sm-2 mb-2 mb-sm-0" >
+	                    <div class="col-lg-1 col-sm-2 mb-2 mb-sm-0" >
 	                    	<p></p><p></p>
 							<a href="findHelpMain.doBB" style="font-weight: bold; margin-top: 10px;">멍냥케어</a><br><br>
 							<a href="findHelpMain.doBB">도움 찾아요!</a><br> 
 							<a href="offerHelpMain.do">도움 드려요! </a><br>
 						</div>
-						<div class="col-lg-2 col-sm-2 mb-2 mb-sm-0" > 
+						<div class="col-lg-1 col-sm-2 mb-2 mb-sm-0" > 
 							<p></p><p></p>
 							<a href="#" style="font-weight: bold; margin-top: 10px;">게시판</a><br><br>
 							<a href="eventMain.doBB">이벤트</a><br> 
 							<a href="noticeMain.doBB">공지사항</a><br>                 
+	                    </div>
+	                    <div class="col-lg-2 col-sm-6 mb-3 mb-sm-0">
 	                    </div>
 	                    <div class="col-lg-3 col-sm-6 mb-3 mb-sm-0">
 		                    <c:if test="${session.role=='ADMIN' }">
@@ -74,6 +77,7 @@
                     
 					</div>
 					<br><br>
+					<p></p>
 	                <div class="container my-auto">
 	                    <div class="copyright text-center my-auto">
 	                    	<p></p>
