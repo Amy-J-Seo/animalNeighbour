@@ -76,7 +76,8 @@ function getTotalOH(){
 //반품함수
 function returnItem(){
 	//반품하기 버튼 누르고 멤버페이지 버튼, 테이블 업데이트 주윤
-	
+	let div1=$('#returnItemBtn').parent();
+	console.log($(div1).attr('id'))
 		//ajax사용해서 반품 버튼이 눌리면 페이먼트 테이블 confirmpurchase -> return으로 바꾸고
 		//버튼 삭제하고 -> 반품 진행중 넣어주기
 		$.ajax({
@@ -89,7 +90,7 @@ function returnItem(){
 	        },
 	        success: function(response){
 	        	let div= document.getElementById(response);
-	        	console.log($(div).children())
+	        	console.log($(div))
 	    		//이러니까 제일 위에꺼? 그게 바뀌던데... 디브에 아이디를 줘야할듯...
 	    		$('#closeRModal').click();
 	    		//$('#returnItemForm').submit(); //환불신청 폼 열어주기.
@@ -139,24 +140,46 @@ function returnItem(){
 		            	<div class="col-3" style="baorder:none">
 							<img class="align-items-center " src="img/salesImg/${item.sImg }" style="width:120px; height:120px">
 						</div>
-		                <div class="col-9 card-body pl-3 pr-3" id="${item.pNo }">
+		                <div class="col-9 card-body pl-3 pr-3" >
 		                   <div class="row">
 		                   		<div class="col-8 align-items-center ">
-		                   		<p>카테고리: ${item.sCategory }</p>
-		                   		<p>상품명: ${item.sTitle }</p>
+			                   		<p>카테고리: ${item.sCategory }</p>
+			                   		<p>상품명: ${item.sTitle }</p>
 		                   		</div>
 		                   		<div class="col-4" >
-		                   		<p></p>
-		                   		<c:if test="${item.confirmPurchase == 'n'}">
-		                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
-		                   		data-toggle="modal" data-target="#confirmP">구매확정</button>
-		                   		</c:if>
-		                   		<c:if test="${item.confirmPurchase == 'yes'}">
-		                   		<button id="" class="btn">구매확정 완료!</button>
-		                   		</c:if>
-		                   		<c:if test="${item.confirmPurchase == 'return'}">
-		                   		<button  class="btn">반품절차 시작!</button>
-		                   		</c:if>
+			                   		<c:if test="${item.confirmPurchase == 'n'}">
+			                   		<button id="confirmPBtn" class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" 
+			                   		data-toggle="modal" data-target="#confirmP">구매확정</button>
+			                   		</c:if>
+			                   		<c:if test="${item.confirmPurchase == 'yes'}">
+			                   		<button id="" class="btn">구매확정 완료!</button>
+			                   		</c:if>
+			                   		<c:if test="${item.confirmPurchase == 'return'}">
+			                   		<button  class="btn">반품절차 시작!</button>
+			                   		</c:if>
+			                   		<!-- confirm purchase modal 주윤-->
+								    <div class="modal fade" id="confirmP" tabindex="-1" role="dialog" aria-labelledby="confirmPModalLabel"
+								        aria-hidden="true">
+								        <div class="modal-dialog" role="document">
+								            <div class="modal-content">
+								                <div class="modal-header">
+								                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 구매확정 하시겠어요?</h5>
+								                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								                        <span aria-hidden="true">×</span>
+								                    </button>
+								                </div>
+								                	<form id="confirmItemPFrm" name="confirmItemPFrm" action="returnItemApply.doBB" method="post">
+										                <div class="modal-footer">
+										                	<input type="hidden" id="pNo" name="pNo" value="${item.pNo }">
+										                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
+										                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="acceptItemBtn">
+										                    	<i class="far fa-smile-wink"></i> 네!</button>
+										                </div>
+													</form>
+								            </div>
+								        </div>
+								    </div>
+									<!-- End of confirm purchase modal 주윤-->
 		                   		</div>
 		                   </div>
 		                   <div class="row">
@@ -164,82 +187,60 @@ function returnItem(){
 		                   		<p>구매금액: ${item.payAmount }</p>
 		                   		<p>결제일자: ${item.pDate }</p>
 		                   		</div>
-		                   		<div class="col-4 align-items-center" id="${item.pNo }return">
+		                   		<div class="col-4 align-items-center">
 		                   		<p></p>
 		                   		<c:if test="${item.confirmPurchase =='n'}">
 			                   		<a id="BtnReturnItemBtn" class="btn"
 			                   		 style="background-color:rgb(235, 76, 36);color:white;" data-toggle="modal" data-target="#returnItemModal">반품신청</a>
 		                   		</c:if>
 		                   		
+								<!-- return item modal 주윤-->
+								    <div class="modal fade" id="returnItemModal" tabindex="-1" role="dialog" aria-labelledby="returnItemModalLabel"
+								        aria-hidden="true">
+								        <div class="modal-dialog" role="document">
+								            <div class="modal-content">
+								                <div class="modal-header">
+								                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 반품 하시겠어요?</h5>
+								                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								                        <span aria-hidden="true">×</span>
+								                    </button>
+								                </div>
+								                	<form id="returnItemForm" name="returnItemForm" method="post" action="returnItemForm.doBB">
+								                   		<input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
+								               		 <div class="modal-body">
+														  <input type="radio" id="damagedItem" name="reason" value="damagedItem">
+														  <label for="damagedItem">부서진 상품이 왔어요</label><br>
+														  <input type="radio" id="differentShape" name="reason" value="differentShape">
+														  <label for="differentShape">모양이 광고와 달라요</label><br>
+														  <input type="radio" id="differentColor" name="reason" value="differentColor">
+														  <label for="differentColor">색깔이 광고와 달라요</label><br>
+														  <input type="radio" id="wrongSize" name="reason" value="wrongSize">
+														  <label for="wrongSize">사이즈가 광고와 달라요</label><br>
+														  <input type="radio" id="unableToUse" name="reason" value="unableToUse">
+														  <label for="unableToUse">사용할 수 없어요</label><br>
+														  <input type="radio" id="changeOfMind" name="reason" value="changeOfMind">
+														  <label for="changeOfMind">단순 변심</label><br>
+								                </div>
+								                
+								                <div id="${item.pNo }" class="modal-footer">
+								                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
+								                    <button class="btn btn-danger" type="button" id="returnItemBtn" onclick="returnItem()"><i class="far fa-angry"></i> 반품</button>
+								                </div>
+													</form>
+								            </div>
+								        </div>
+								    </div>
+									<!-- End of return item modal 주윤-->
 		                   		</div>
 		                   </div>
 		                </div>
 					</div>
 					
 					
-					<!-- confirm purchase modal 주윤-->
-				    <div class="modal fade" id="confirmP" tabindex="-1" role="dialog" aria-labelledby="confirmPModalLabel"
-				        aria-hidden="true">
-				        <div class="modal-dialog" role="document">
-				            <div class="modal-content">
-				                <div class="modal-header">
-				                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 구매확정 하시겠어요?</h5>
-				                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				                        <span aria-hidden="true">×</span>
-				                    </button>
-				                </div>
-				                	<form id="confirmItemPFrm" name="confirmItemPFrm" action="returnItemApply.doBB" method="post">
-						                <div class="modal-footer">
-						                	<input type="hidden" id="pNo" name="pNo" value="${item.pNo }">
-						                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
-						                    <button class="btn" style="background-color:rgb(252, 221, 33); color: rgb(94, 94, 94);" type="button" id="acceptItemBtn">
-						                    	<i class="far fa-smile-wink"></i> 네!</button>
-						                </div>
-									</form>
-				            </div>
-				        </div>
-				    </div>
-					<!-- End of confirm purchase modal 주윤-->
 					
 					
 					
-					<!-- return item modal 주윤-->
-					    <div class="modal fade" id="returnItemModal" tabindex="-1" role="dialog" aria-labelledby="returnItemModalLabel"
-					        aria-hidden="true">
-					        <div class="modal-dialog" role="document">
-					            <div class="modal-content">
-					                <div class="modal-header">
-					                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bullhorn"></i> 반품 하시겠어요?</h5>
-					                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-					                        <span aria-hidden="true">×</span>
-					                    </button>
-					                </div>
-					                	<form id="returnItemForm" name="returnItemForm" method="post" action="returnItemForm.doBB">
-					                   		<input type="hidden" id="returnItemPNo" name="returnItemPNo" value="${item.pNo }">
-					               		 <div class="modal-body">
-											  <input type="radio" id="damagedItem" name="reason" value="damagedItem">
-											  <label for="damagedItem">부서진 상품이 왔어요</label><br>
-											  <input type="radio" id="differentShape" name="reason" value="differentShape">
-											  <label for="differentShape">모양이 광고와 달라요</label><br>
-											  <input type="radio" id="differentColor" name="reason" value="differentColor">
-											  <label for="differentColor">색깔이 광고와 달라요</label><br>
-											  <input type="radio" id="wrongSize" name="reason" value="wrongSize">
-											  <label for="wrongSize">사이즈가 광고와 달라요</label><br>
-											  <input type="radio" id="unableToUse" name="reason" value="unableToUse">
-											  <label for="unableToUse">사용할 수 없어요</label><br>
-											  <input type="radio" id="changeOfMind" name="reason" value="changeOfMind">
-											  <label for="changeOfMind">단순 변심</label><br>
-					                </div>
-					                
-					                <div class="modal-footer">
-					                    <button class="btn btn-secondary" type="button" id="closeRModal" data-dismiss="modal">취소</button>
-					                    <button class="btn btn-danger" type="button" id="returnItemBtn" onclick="returnItem()"><i class="far fa-angry"></i> 반품</button>
-					                </div>
-										</form>
-					            </div>
-					        </div>
-					    </div>
-						<!-- End of return item modal 주윤-->
+					
 					
 					</c:forEach>
 				</div>
