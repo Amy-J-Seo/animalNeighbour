@@ -49,7 +49,7 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-
+			<nav class="topbar fixed-top">
 			<!-- Topbar -->
 			<nav class="navbar navbar-expand topbar"
 				style="height: 2rem; background-color: rgb(252, 221, 33); font-family: SeoulNamsanM;">
@@ -70,6 +70,7 @@
 							class="mr-2 d-lg-inline small">공지사항</span>
 					</a></li>
 				</ul>
+				
 			</nav>
 			<!-- End of Topbar -->
 			
@@ -161,6 +162,7 @@
 								style="background-color: rgb(252, 221, 33);">로 그 인</button></li>
 					</c:if>
 				</ul>
+				</nav> 
 			</nav>
 			<!-- End of Topbar -->
 			
@@ -175,7 +177,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">정말로 떠나실 건가요? ㅠㅠ</div>
+                <div class="modal-body">정말로 떠나실 건가요?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-dog"></i>머물기</button>
                     <a class="btn btn-warning btn-user btn-block" href="logout.do"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
